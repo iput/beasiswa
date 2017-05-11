@@ -25,7 +25,7 @@
 <!-- Preloader START -->
 <div class="stage-wrapper">
     <div class="stage">
-      	
+
     <div class="preloader-wrapper big active">
       <div class="spinner-layer">
         <div class="circle-clipper left">
@@ -37,12 +37,12 @@
         </div>
       </div>
     </div>
-	
+
     </div>
 </div>
 <!-- Preloader END -->
 <!-- Header START -->
-<header> 
+<header>
   <!-- Navigation Bar on the top, for medium and small devices -->
   <div class="brand-logo hide-on-large-only"><img src="<?php echo base_url('imgs/admin-logo-full.svg') ?>" alt="logo" class="logo responsive-img"></div>
   <div class="navbar-fixed hide-on-large-only">
@@ -63,19 +63,19 @@
       <li class="logo hide-on-med-and-down"><img src="imgs/admin-logo-full.svg" alt="logo" class="logo responsive-img"></li>
       <li class="side-nav-inline hide-on-med-only"><a href="#" class="inline waves-effect" target="_blank"><i class="mdi-action-exit-to-app"></i></a> <a href="#" class="inline waves-effect"><i class="mdi-action-perm-identity"></i></a> <a href="#search-in-modal" class="inline waves-effect modal-trigger"><i class="mdi-action-search"></i></a></li>
       <li><a href="#" class="waves-effect"><i class="mdi-action-dashboard left"></i><span>Beranda</span></a></li>
-      <li><a href="messages.html" class="waves-effect"><i class="mdi-communication-email left"></i><span>Pesan</span></a></li>
+      <li><a href="#" class="waves-effect"><i class="mdi-communication-email left"></i><span>Profile</span></a></li>
       <li>
         <ul class="collapsible" data-collapsible="accordion">
-          <li><a class="collapsible-header waves-effect"><i class="mdi-action-description left"></i><span>Pages</span><span class="neutral badge">4</span></a>
+          <li><a class="collapsible-header waves-effect"><i class="mdi-action-description left"></i><span>Manajemen User</span><span class="neutral badge">4</span></a>
             <div class="collapsible-body">
               <ul>
-                <li><a href="account.html">Account</a></li>
+                <li><a href="#">Penerima Beasiswa</a></li>
                 <li class="divider"></li>
-                <li><a href="login.html" target="_blank">Login</a></li>
+                <li><a href="#" target="_blank">Pengguna Sistem</a></li>
                 <li class="divider"></li>
-                <li><a href="register.html" target="_blank">Register</a></li>
+                <li><a href="#" target="_blank">Register</a></li>
                 <li class="divider"></li>
-                <li><a href="reset-password.html" target="_blank"><span>Reset Password</span></a></li>
+                <li><a href="#" target="_blank"><span>Reset Password</span></a></li>
               </ul>
             </div>
           </li>
@@ -172,5 +172,5 @@
     </div>
     <div class="modal-footer"> <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Search now</a> </div>
   </div>
-  <!-- Search in Modal END --> 
+  <!-- Search in Modal END -->
 </header>
