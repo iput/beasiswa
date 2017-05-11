@@ -12,9 +12,9 @@ class C_mahasiswa extends CI_Controller
 
   public function index()
   {
-    $this->load->view('attribute/header_mhs');
-    $this->load->view('mahasiswa/dashboard');
-    $this->load->view('attribute/footer');
+    $this->load->view('attribute/Header_mhs');
+    $this->load->view('mahasiswa/Dashboard');
+    $this->load->view('attribute/Footer');
   }
 }
  ?>

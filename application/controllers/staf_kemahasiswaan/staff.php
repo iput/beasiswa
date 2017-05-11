@@ -11,9 +11,9 @@ class Staff extends CI_Controller
   }
   public function index()
   {
-    $this->load->view('attribute/header_staff');
-    $this->load->view('staff_kemahasiswaan/dashboard');
-    $this->load->view('attribute/footer');
+    $this->load->view('attribute/Header_staff');
+    $this->load->view('staff_kemahasiswaan/Dashboard');
+    $this->load->view('attribute/Footer');
   }
 }
  ?>
