@@ -60,10 +60,22 @@
   <!-- Side Navigation - fixed for large (nice scroll with Simplebar plugin), slide/drag for medium and small devices -->
   <div id="slide-menu" class="side-nav fixed" data-simplebar-direction="vertical">
     <ul class="side-nav-main">
-      <li class="logo hide-on-med-and-down"><img src="imgs/admin-logo-full.svg" alt="logo" class="logo responsive-img"></li>
+      <li class="logo hide-on-med-and-down"><img src="<?php base_url('imgs/idea-bulb.jpg');?>" alt="logo" class="logo responsive-img"></li>
       <li class="side-nav-inline hide-on-med-only"><a href="#" class="inline waves-effect" target="_blank"><i class="mdi-action-exit-to-app"></i></a> <a href="#" class="inline waves-effect"><i class="mdi-action-perm-identity"></i></a> <a href="#search-in-modal" class="inline waves-effect modal-trigger"><i class="mdi-action-search"></i></a></li>
-      <li><a href="#" class="waves-effect"><i class="mdi-action-dashboard left"></i><span>Beranda</span></a></li>
       <li><a href="#" class="waves-effect"><i class="mdi-communication-email left"></i><span>Profile</span></a></li>
+      <li>
+        <ul class="collapsible" data-collapsible="accordion">
+          <li><a class="collapsible-header waves-effect"><i class="mdi-editor-format-paint left"></i><span>Request Beasiswa</span></a>
+            <div class="collapsible-body">
+              <ul>
+                <li><a href="#">Master</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Setting</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </li>
       <li><a href="#" class="waves-effect"><i class="mdi-action-dashboard left"></i><span>Seleksi Mahasiswa</span></a></li>
       <li><a href="#" class="waves-effect"><i class="mdi-communication-email left"></i><span>Manajemen Beasiswa</span></a></li>
       <li><a href="#" class="waves-effect"><i class="mdi-action-dashboard left"></i><span>Manajemen Berita</span></a></li>
