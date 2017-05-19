@@ -7,7 +7,7 @@
 <meta name="msapplication-tap-highlight" content="no">
 <meta name="description" content="Mate Rio is a responsive Admin Template based on Material Design by Google.">
 <meta name="keywords" content="materialize, admin template, google material, dashboard template, responsive admin template,">
-<title>Beasiswa | Kasubag Fakultas</title>
+<title>Beasiswa | Mahasiswa</title>
 
 <!-- Preloader stage (extracted for first show) -->
 <link href="<?php echo base_url('assets/css/preloader-stage.css')?>" type="text/css" rel="stylesheet" media="screen">
