@@ -75,7 +75,7 @@
               </ul>
             </div>
           </li>
-          <li><a class="collapsible-header waves-effect"><i class="mdi-editor-format-paint left"></i><span>laporan</span></a>
+          <li><a class="collapsible-header waves-effect"> <i class="material-icons">work</i><span>laporan</span></a>
             <div class="collapsible-body">
               <ul>
                 <li><a href="#">Pemohon Beasiswa</a></li>
