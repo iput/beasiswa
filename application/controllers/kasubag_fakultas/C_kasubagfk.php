@@ -12,9 +12,9 @@ class C_kasubagfk extends CI_Controller
 
   public function index()
   {
-    $this->load->view('attribute/Header_kasubag_fk');
-    $this->load->view('kasubag_fk/Dashboard');
-    $this->load->view('attribute/Footer');
+    $this->load->view('attribute/header_kasubag_fk');
+    $this->load->view('kasubag_fk/dashboard');
+    $this->load->view('attribute/footer');
   }
 }
  ?>
