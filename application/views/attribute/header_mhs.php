@@ -9,7 +9,7 @@
 <meta name="keywords" content="materialize, admin template, google material, dashboard template, responsive admin template,">
 <title>Beasiswa | Mahasiswa</title>
 
-<!-- Preloader stage (extracted for first show) -->
+<!--stage (extracted for first show) -->
 <link href="<?php echo base_url('assets/css/preloader-stage.css')?>" type="text/css" rel="stylesheet" media="screen">
 <link href="<?php echo base_url('assets/css/materialize.css')?>" type="text/css" rel="stylesheet" media="screen">
 <link rel="stylesheet" href="http://fonts.googleapis.com/icon?family=Material+Icons">
