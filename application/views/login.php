@@ -1,9 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
-
-
-<!-- Mirrored from mate.creatingo.com/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 24 Apr 2017 12:22:31 GMT -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
@@ -15,10 +11,8 @@
 
 <link href="<?php echo base_url()?>assets/css/materialize.css" type="text/css" rel="stylesheet" media="screen">
 <link rel="stylesheet" href="http://fonts.googleapis.com/icon?family=Material+Icons">
-<!-- Additional plugins styles -->
 <link href="<?php echo base_url()?>assets/css/plugins/prism.css" type="text/css" rel="stylesheet" media="screen">
 <link href="<?php echo base_url()?>assets/css/plugins/simplebar.css" type="text/css" rel="stylesheet" media="screen">
-<!-- Assistance.css are used only for template support. No need to use it on "production" -->
 <link href="<?php echo base_url()?>assets/css/assistance.css" type="text/css" rel="stylesheet" media="screen">
 <style type="text/css">
 html,
@@ -53,7 +47,7 @@ main {
       <form class="login-form">
         <div class="row primary-color form-header">
           <div class="col s4">
-            <img src="imgs/admin-logo-full.svg" alt="logo" class="logo responsive-img-height">
+            <img src="<?php echo base_url();?>imgs/admin-logo-full.svg" alt="logo" class="logo responsive-img-height">
           </div>
 		  <div class="col s8 right-align">
             <h4 class="light white-text">Login</h4>
@@ -91,7 +85,7 @@ main {
       </form>
     </div>
   </div>
-  </div><!-- container end -->
+  </div>
 
 </main>
 <!-- Main End -->
@@ -100,15 +94,11 @@ main {
 <!-- jQuery Library -->
 <script type="text/javascript" src="<?php echo base_url()?>assets/js/bin/jquery-2.1.4.min.js"></script>
 <script>if (!window.jQuery) { document.write('<script src="<?php echo base_url()?>assets/js/bin/jquery-2.1.4.min.js"><\/script>'); }</script>
-<!-- jQuery Plugins -->
 <script type="text/javascript" src="<?php echo base_url()?>assets/js/bin/plugins/prism.js"></script>
 <script type="text/javascript" src="<?php echo base_url()?>assets/js/bin/plugins/simplebar.min.js"></script>
 <!--materialize js-->
 <script type="text/javascript" src="<?php echo base_url()?>assets/js/bin/materialize.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url()?>assets/js/bin/initialize.js"></script>
-<!-- ScrollFire initialize -->
 
 </body>
-
-<!-- Mirrored from mate.creatingo.com/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 24 Apr 2017 12:22:31 GMT -->
 </html>
