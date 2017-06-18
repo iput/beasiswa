@@ -2,7 +2,7 @@
 /**
  *
  */
-class C_kabag extends CI_Controller
+class C_request extends CI_Controller
 {
 
   function __construct()
@@ -13,7 +13,7 @@ class C_kabag extends CI_Controller
   public function index()
   {
     $this->load->view('attribute/header_kabag');
-    $this->load->view('kabag/kabag');
+    $this->load->view('kabag/request');
     $this->load->view('attribute/footer');
 
   }

@@ -19,6 +19,8 @@
 <link href="<?php echo base_url('assets/css/plugins/justifiedGallery.css')?>" type="text/css" rel="stylesheet" media="screen">
 <!-- Assistance.css are used only for template support. No need to use it on "production" -->
 <link href="<?php echo base_url('assets/css/assistance.css')?>" type="text/css" rel="stylesheet" media="screen">
+<!-- data table -->
+<link href="<?php echo base_url('assets/datatable_material/dataTables.material.min.css')?>" type="text/css" rel="stylesheet" media="screen">
 </head>
 
 <body class="loading">
@@ -68,9 +70,9 @@
           <li><a class="collapsible-header waves-effect"><i class="mdi-editor-format-paint left"></i><span>Request Beasiswa</span></a>
             <div class="collapsible-body">
               <ul>
-                <li><a href="#">Master</a></li>
+                <li><a href="<?php echo base_url('kasubag/C_master_scoring');?>">Master Scoring</a></li>
                 <li class="divider"></li>
-                <li><a href="#">Setting</a></li>
+                <li><a href="<?php echo base_url('kasubag/C_requested');?>">Requested</a></li>
               </ul>
             </div>
           </li>

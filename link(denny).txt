@@ -1,0 +1,5 @@
+>> Kabag:
+http://localhost/beasiswa/kabag/C_request
+
+>> Kasubag Kemahasiswaan
+http://localhost/beasiswa/kasubag/C_master_scoring

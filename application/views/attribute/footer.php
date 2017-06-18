@@ -1,3 +1,11 @@
+<style media="screen">
+	.tengah{
+		overflow-x: scroll;
+	}
+	.bersih{
+		clear: both;
+	}
+</style>
 <script type="text/javascript" src="<?php echo base_url('assets/js/bin/jquery-2.1.4.min.js')?>"></script>
 <script>if (!window.jQuery) { document.write('<script src="<?php echo base_url('assets/js/bin/jquery-2.1.4.min.js')?>"><\/script>'); }</script>
 <!-- jQuery Plugins -->
@@ -15,6 +23,9 @@
 <script type="text/javascript" src="<?php echo base_url('assets/js/bin/plugins/jquery.justifiedGallery.min.js')?>"></script>
 <!-- count to js-->
 <script type="text/javascript" src="<?php echo base_url('assets/js/bin/plugins/jquery.countTo.js')?>"></script>
+<!-- data table -->
+<script type="text/javascript" src="<?php echo base_url('assets/datatable_material/jquery.dataTables.min.js')?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/datatable_material/dataTables.material.min.js')?>"></script>
 <script>
 		var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
 		var lineChartData = {

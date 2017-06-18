@@ -19,6 +19,8 @@
 <link href="<?php echo base_url('assets/css/plugins/justifiedGallery.css')?>" type="text/css" rel="stylesheet" media="screen">
 <!-- Assistance.css are used only for template support. No need to use it on "production" -->
 <link href="<?php echo base_url('assets/css/assistance.css')?>" type="text/css" rel="stylesheet" media="screen">
+<!-- data table -->
+<link href="<?php echo base_url('assets/datatable_material/dataTables.material.min.css')?>" type="text/css" rel="stylesheet" media="screen">
 </head>
 
 <body class="loading">
@@ -69,9 +71,9 @@
           <li><a class="collapsible-header waves-effect"><i class="mdi-action-description left"></i><span>Pendaftaran</span><span class="neutral badge">2</span></a>
             <div class="collapsible-body">
               <ul>
-                <li><a href="#">Buka Pendaftaran</a></li>
+                <li><a href="<?php echo base_url('/kabag/C_request')?>">Buka Pendaftaran</a></li>
                 <li class="divider"></li>
-                <li><a href="#" target="_blank">Daftar Beasiswa Aktif</a></li>
+                <li><a href="#">Daftar Beasiswa Aktif</a></li>
               </ul>
             </div>
           </li>
