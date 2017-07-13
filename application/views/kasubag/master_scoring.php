@@ -8,7 +8,7 @@
             <div class="col s12 m6">
               <h4>
                 Master Scoring Beasiswa
-                <a class="btn-floating waves-effect waves-light primary-color z-depth-0" title="Confirmed"><i class="material-icons">add</i></a>
+                <button class="btn-floating waves-effect waves-light primary-color z-depth-0" onclick="add_data()" title="Tambah Data"><i class="material-icons">add</i></button>
               </h4>
             </div>
           </div>
@@ -83,29 +83,121 @@
 </main>
 
 <script type="text/javascript">
+
+  var save_method;
+
   document.addEventListener("DOMContentLoaded", function(event) {
     datatable();
   });
 
   function datatable() {
-    $('#tabel').DataTable( {
-        // columnDefs: [
-        //     {
-        //         targets: [ 0, 1, 2 ],
-        //         className: 'mdl-data-table__cell--non-numeric'
-        //     }
-        // ],
-        columnDefs: [
-            {
-                targets: [ -1 ],
-                orderable: false,
-            }
-        ],
-        "dom": '<"row" <"col s6 m6 l3 left"l><"col s6 m6 l3 right"f>><"bersih tengah" rt><"bottom"ip>',
-        language : {
-            sLengthMenu: "Tampilkan _MENU_",
-            sSearch: "Cari:"
-        }
+    var dataTable = $('#tabel').DataTable({
+      "processing":true,
+      "serverSide":true,
+      "order":[],
+      "ajax":{
+          url:"<?php echo base_url('kasubag/C_master_scoring/datatable'); ?>",
+          type:"POST"
+      },
+      "columnDefs":[
+          {
+              "targets":[2,-1],
+              "orderable":false,
+          },
+      ],
+      "dom": '<"row" <"col s6 m6 l3 left"l><"col s6 m6 l3 right"f>><"bersih tengah" rt><"bottom"ip>',
+      language : {
+          sLengthMenu: "Tampilkan _MENU_",
+          sSearch: "Cari:"
+      }
     });
   }
+
+  function add_data() {
+    arr = 0;
+    save_method = 'add';
+    $('#formInput')[0].reset();
+    $('#scoreInput').empty();
+    $('#modal1').openModal();
+  }
+
+  var arr = 0;
+  function add_score_input() {
+    score_input = `
+      <div class="input-field col s10">
+        <input name="score[`+arr+`]" id="score[`+arr+`]" type="text">
+        <label for="score[`+arr+`]">Scoring `+(arr+1)+`</label>
+      </div>
+      <div class="input-field col s2">
+        <input name="bobot[`+arr+`]" id="bobot[`+arr+`]" type="text">
+        <label for="bobot[`+arr+`]">Bobot<label>
+      </div>
+    `;
+    $("#scoreInput").append(score_input);
+    arr+=1;
+  }
+
+  function save()
+  {
+    var url;
+    if(save_method == 'add')
+    {
+      url = "<?php echo site_url('kasubag/C_master_scoring/add_data')?>";
+    }
+    else
+    {
+      url = "<?php echo site_url('kasubag/C_master_scoring/update_data')?>";
+    }
+        $.ajax({
+          url : url,
+          type: "POST",
+          data: $('#formInput').serialize(),
+          dataType: "JSON",
+          success: function(data)
+          {
+             $('#modal1').closeModal();
+             reload_table();
+          },
+          error: function (jqXHR, textStatus, errorThrown)
+          {
+              alert('Error adding / update data');
+          }
+      });
+  }
 </script>
+
+<!-- Modal Structure -->
+<div id="modal1" class="modal">
+  <div class="modal-content">
+    <h4>Master Scoring Beasiswa</h4>
+    <hr><br>
+    <form action="#" id="formInput">
+    <div class="">
+      <div class="input-field">
+        <input id="jenisScoring" type="text" name="jenisScoring">
+        <label for="jenisScoring">Jenis Scoring</label>
+      </div>
+
+      <div class="row">
+        <div class="col s12 m12">
+          <div class="card blue-grey">
+            <div class="card-content white-text center">
+              SCORING
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row" id="scoreInput">
+      </div>
+
+    </div>
+    </form>
+    <div class="">
+      <button class="btn-floating waves-effect waves-light" title="Tambah Scoring" onclick="add_score_input()"><i class="material-icons">add</i></button>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class=" modal-action modal-close waves-effect waves-green btn-flat" onclick="save()">Simpan</button>
+  </div>
+</div>

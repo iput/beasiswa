@@ -25,11 +25,10 @@
               <thead>
                 <tr>
                     <th data-field="id" style="width: 3%;">#</th>
-                    <th data-field="bea">Beasiswa</th>
-                    <th data-field="dibuka">Dibuka</th>
-                    <th data-field="berakhir">Berakhir</th>
+                    <th data-field="beasiswa">Beasiswa</th>
+                    <th data-field="penyelenggara">Penyelenggara</th>
                     <th data-field="selektor">Selektor</th>
-                    <th data-field="status">Konfirm</th>
+                    <th data-field="status">Status</th>
                     <th data-field="konfirmasi">Keterangan</th>
                     <th data-field="aksi">Aksi</th>
                 </tr>
@@ -38,52 +37,44 @@
                 <tr>
                   <td>1</td>
                   <td>BRI</td>
-                  <td>11 Agustus 2017</td>
-                  <td>14 September 2017</td>
+                  <td>Bank BRI</td>
                   <td><i class="material-icons" title="Kasubag. Kemahasiswaan">radio_button_checked</i></td>
                   <td>
                     <a class="btn-floating waves-effect waves-light primary-color" title="Confirmed"><i class="material-icons">done</i></a>
                   </td>
                   <td class="success-text">Telah Dikonfirmasi</td>
                   <td>
-                    <a class="btn-floating waves-effect waves-light" title="Kirim Permintaan"><i class="material-icons">send</i></a>
                     <a class="btn-floating waves-effect waves-light blue" title="Lihat Detail"><i class="material-icons">description</i></a>
-                    <a class="btn-floating waves-effect waves-light yellow accent-4" title="Edit"><i class="material-icons">mode_edit</i></a>
-                    <a class="btn-floating waves-effect waves-light red" title="Hapus"><i class="material-icons">delete</i></a>
                   </td>
                 </tr>
                 <tr>
                   <td>2</td>
                   <td>Prestasi</td>
-                  <td>11 Agustus 2017</td>
-                  <td>14 September 2017</td>
-                  <td><i class="material-icons" title="Kasubag. Kemahasiswaan Fakultas">radio_button_unchecked</i></td>
+                  <td>UIN Maliki</td>
+                  <td>
+                    <i class="material-icons" title="Keduanya">star</i>
+                  </td>
                   <td>
                     <a class="btn-floating waves-effect waves-light red" title="Not Confirmed"><i class="material-icons">clear</i></a>
                   </td>
                   <td class="alert-text" style="max-width: 330px;">Scoring pekerjaan orang tua belum masuk</td>
                   <td>
-                    <a class="btn-floating waves-effect waves-light" title="Kirim Permintaan"><i class="material-icons">send</i></a>
                     <a class="btn-floating waves-effect waves-light blue" title="Lihat Detail"><i class="material-icons">description</i></a>
-                    <a class="btn-floating waves-effect waves-light yellow accent-4" title="Edit"><i class="material-icons">mode_edit</i></a>
-                    <a class="btn-floating waves-effect waves-light red" title="Hapus"><i class="material-icons">delete</i></a>
                   </td>
                 </tr>
                 <tr>
                   <td>3</td>
                   <td>BNI</td>
-                  <td>11 Agustus 2017</td>
-                  <td>14 September 2017</td>
-                  <td><i class="material-icons" title="Keduanya">star</i></td>
+                  <td>Bank BNI</td>
+                  <td>
+
+                  </td>
                   <td>
                     <a class="btn-floating waves-effect waves-light red" title="Not Confirmed"><i class="material-icons">clear</i></a>
                   </td>
-                  <td class="alert-text" style="max-width: 330px;"></td>
+                  <td class="blue-text" style="max-width: 330px;">Belum pernah melakukan request</td>
                   <td>
-                    <a class="btn-floating waves-effect waves-light" title="Kirim Permintaan"><i class="material-icons">send</i></a>
                     <a class="btn-floating waves-effect waves-light blue" title="Lihat Detail"><i class="material-icons">description</i></a>
-                    <a class="btn-floating waves-effect waves-light yellow accent-4" title="Edit"><i class="material-icons">mode_edit</i></a>
-                    <a class="btn-floating waves-effect waves-light red" title="Hapus"><i class="material-icons">delete</i></a>
                   </td>
                 </tr>
               </tbody>

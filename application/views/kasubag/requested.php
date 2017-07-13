@@ -25,30 +25,27 @@
                 <tr>
                     <th data-field="id" style="width: 3%;">#</th>
                     <th data-field="bea">Beasiswa</th>
-                    <th data-field="dibuka">Dibuka</th>
-                    <th data-field="berakhir">Berakhir</th>
+                    <th data-field="penyelenggara">Penyelenggara</th>
                     <th data-field="selektor">Selektor</th>
                     <th data-field="konfirmasi">Keterangan</th>
-                    <th data-field="status">Konfirm</th>
+                    <th data-field="status">Status</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td>1</td>
                   <td>BRI</td>
-                  <td>11 Agustus 2017</td>
-                  <td>14 September 2017</td>
+                  <td>Bank BRI</td>
                   <td><i class="material-icons" title="Kasubag. Kemahasiswaan">radio_button_checked</i></td>
                   <td class="success-text">Telah Dikonfirmasi</td>
                   <td>
-                    <a class="btn-floating waves-effect waves-light primary-color z-depth-0" title="Not Confirmed"><i class="material-icons">done</i></a>
+                    <a class="btn-floating waves-effect waves-light primary-color z-depth-0" title="Confirmed"><i class="material-icons">done</i></a>
                   </td
                 </tr>
                 <tr>
                   <td>2</td>
                   <td>Prestasi</td>
-                  <td>11 Agustus 2017</td>
-                  <td>14 September 2017</td>
+                  <td>UIN Maliki</td>
                   <td><i class="material-icons" title="Kasubag. Kemahasiswaan Fakultas">radio_button_unchecked</i></td>
                   <td class="alert-text" style="max-width: 330px;">Scoring pekerjaan orang tua belum masuk</td>
                   <td>
@@ -58,9 +55,10 @@
                 <tr>
                   <td>3</td>
                   <td>BNI</td>
-                  <td>11 Agustus 2017</td>
-                  <td>14 September 2017</td>
-                  <td><i class="material-icons" title="Keduanya">star</i></td>
+                  <td>Bank BNI</td>
+                  <td>
+                    <!-- <i class="material-icons" title="Keduanya">star</i> -->
+                  </td>
                   <td class="alert-text" style="max-width: 330px;"></td>
                   <td>
                     <a class="btn-floating waves-effect waves-light red modal-trigger" href="#modal1" title="Not Confirmed"><i class="material-icons">clear</i></a>
@@ -116,7 +114,7 @@
           <option value="2">Penghasilan Ayah</option>
           <option value="1">Pekerjaan Ibu</option>
           <option value="3">Penghasilan Ibu</option>
-          <option value="">HAPUS POINT SCORING</option>
+          <option value="">--[ HAPUS POINT SCORING ]--</option>
         </select>
       </div>
       <div class="input-field col s12">
