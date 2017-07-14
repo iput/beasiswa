@@ -21,6 +21,9 @@
 <link href="<?php echo base_url('assets/css/assistance.css')?>" type="text/css" rel="stylesheet" media="screen">
 <!-- data table -->
 <link href="<?php echo base_url('assets/datatable_material/dataTables.material.min.css')?>" type="text/css" rel="stylesheet" media="screen">
+<!-- sweetalert -->
+<script src="<?php echo base_url('assets/sweetalert/sweetalert.min.js');?>" charset="utf-8"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/sweetalert/sweetalert.css');?>">
 </head>
 
 <body class="loading">

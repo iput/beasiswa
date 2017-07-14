@@ -62,7 +62,7 @@
                     <a class="btn-floating waves-effect waves-light blue" title="Lihat Detail"><i class="material-icons">description</i></a>
                   </td>
                 </tr>
-                <tr>
+                <!-- <tr>
                   <td>3</td>
                   <td>BNI</td>
                   <td>Bank BNI</td>
@@ -76,7 +76,7 @@
                   <td>
                     <a class="btn-floating waves-effect waves-light blue" title="Lihat Detail"><i class="material-icons">description</i></a>
                   </td>
-                </tr>
+                </tr> -->
               </tbody>
             </table>
           </div>

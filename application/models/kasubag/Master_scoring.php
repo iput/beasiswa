@@ -4,9 +4,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Master_scoring extends CI_Model {
 
   var $table = "kategori_skor";
-  // SELECT kategori_skor.id, kategori_skor.nama jenis, set_sub_kategori_skor.nama sub, set_sub_kategori_skor.skor
-  // FROM kategori_skor
-  // LEFT JOIN set_sub_kategori_skor ON kategori_skor.id=set_sub_kategori_skor.idKategoriSkor
   var $select_column = array("kategori_skor.id", "kategori_skor.nama");
   var $order_column = array("kategori_skor.id", "kategori_skor.nama", null, null);
 
@@ -80,5 +77,54 @@ class Master_scoring extends CI_Model {
     $this->db->insert_batch('set_sub_kategori_skor', $data);
 		return $this->db->insert_id();
   }
+
+  public function get_by_id($id)
+	{
+		$this->db->from('kategori_skor');
+		$this->db->where('kategori_skor.id',$id);
+		$query = $this->db->get();
+		return $query->row();
+	}
+
+  public function get_by_id_sub($id)
+	{
+		$this->db->from('set_sub_kategori_skor');
+		$this->db->where('set_sub_kategori_skor.idKategoriSkor',$id);
+		$query = $this->db->get();
+		return $query->result();
+	}
+
+  public function update_kategori($where, $data)
+  {
+    $this->db->update($this->table, $data, $where);
+		return $this->db->affected_rows();
+  }
+
+  public function insert_sub_kategori($dataSub)
+  {
+    $this->db->insert('set_sub_kategori_skor', $dataSub);
+		return $this->db->insert_id();
+  }
+
+  public function update_sub_kategori($where, $data)
+  {
+    $this->db->update('set_sub_kategori_skor', $data, $where);
+		return $this->db->affected_rows();
+  }
+
+  public function delete_sub_kategori($idSub)
+  {
+    $this->db->where('id', $idSub);
+		$this->db->delete('set_sub_kategori_skor');
+  }
+
+  public function delete_by_id($id)
+	{
+		$this->db->where('id', $id);
+		$this->db->delete($this->table);
+    #karena db sudah relasi jadi query dibawah di komen
+    // $this->db->where('idKategoriSkor', $id);
+		// $this->db->delete('set_sub_kategori_skor');
+	}
 
 }

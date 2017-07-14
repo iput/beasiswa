@@ -1,7 +1,4 @@
 <?php defined('BASEPATH')OR exit('tidak ada akses diizinkan');
-/**
- *
- */
 class C_master_scoring extends CI_Controller
 {
 
@@ -30,8 +27,8 @@ class C_master_scoring extends CI_Controller
       $sub_array[] = $row->nama;
       $sub_array[] = $this->mdl->get_sub_score($row->id);
       $sub_array[] = '
-        <button type="button" name="update" id="'.$row->id.'" class="btn-floating waves-effect waves-light yellow accent-4" title="Edit"><i class="material-icons">mode_edit</i></button>
-        <button type="button" name="delete" id="'.$row->id.'" class="btn-floating waves-effect waves-light red" title="Hapus"><i class="material-icons">delete</i></button>
+        <button type="button" name="edit" id="'.$row->id.'" onclick="edit('."'".$row->id."'".')" class="btn-floating waves-effect waves-light yellow accent-4" title="Edit"><i class="material-icons">mode_edit</i></button>
+        <button type="button" name="remove" id="'.$row->id.'" onclick="remove('."'".$row->id."','".$row->nama."'".')" class="btn-floating waves-effect waves-light red" title="Hapus"><i class="material-icons">delete</i></button>
         ';
       $data[] = $sub_array;
     }
@@ -61,7 +58,68 @@ class C_master_scoring extends CI_Controller
       );
     }
     $insert_sub_kategori = $this->mdl->save_sub_kategori($data);
+    echo json_encode(array("status" => TRUE));
+  }
 
+  public function edit_data($id)
+  {
+    $kategori = $this->mdl->get_by_id($id);
+    $namaKategori = $kategori->nama;
+    $idKategori = $kategori->id;
+
+    $subSkor = $this->mdl->get_by_id_sub($id);
+    $data = array();
+    $data [0] = array(
+      'namaJenis' => $namaKategori,
+      'idJenis' => $idKategori
+    );
+    $i = 1;
+    foreach ($subSkor as $sub) {
+      $data[$i] = array(
+        'idSub' => $sub->id,
+        'sub' => $sub->nama,
+        'skor' => $sub->skor
+      );
+      $i+=1;
+    }
+    echo json_encode($data);
+  }
+
+  public function update_data()
+  {
+    $idKategori = $this->input->post('idJenisScoring');
+    $data_kategori = array(
+      'nama' => $this->input->post('jenisScoring'),
+    );
+    $this->mdl->update_kategori(array('id' => $idKategori), $data_kategori);
+
+    $count_score = count($this->input->post('score'));
+    for ($i=0;$i<$count_score;$i++) {
+      $idSub = $this->input->post('idSub['.$i.']');
+      $sub = $this->input->post('score['.$i.']');
+      $skor = $this->input->post('bobot['.$i.']');
+      $dataSub = array(
+        'idKategoriSkor' => $idKategori,
+        'nama' => $sub,
+        'skor' => $skor,
+      );
+      if ($idSub==null && $sub!=null) {
+        # insert
+        $this->mdl->insert_sub_kategori($dataSub);
+      }elseif ($idSub!=null && $sub!=null) {
+        # update
+        $this->mdl->update_sub_kategori(array('id' => $idSub), $dataSub);
+      }elseif ($idSub!=null && $sub==null) {
+        # delete
+        $this->mdl->delete_sub_kategori($idSub);
+      }
+    }
+    echo json_encode(array("status" => TRUE));
+  }
+
+  public function delete_data($id)
+  {
+    $this->mdl->delete_by_id($id);
     echo json_encode(array("status" => TRUE));
   }
 }

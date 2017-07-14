@@ -85,13 +85,15 @@
 <script type="text/javascript">
 
   var save_method;
+  var arr = 0;
+  var dataTable;
 
   document.addEventListener("DOMContentLoaded", function(event) {
     datatable();
   });
 
   function datatable() {
-    var dataTable = $('#tabel').DataTable({
+    dataTable = $('#tabel').DataTable({
       "processing":true,
       "serverSide":true,
       "order":[],
@@ -113,6 +115,10 @@
     });
   }
 
+  function reload_table(){
+    dataTable.ajax.reload(null,false);
+  }
+
   function add_data() {
     arr = 0;
     save_method = 'add';
@@ -121,10 +127,10 @@
     $('#modal1').openModal();
   }
 
-  var arr = 0;
   function add_score_input() {
     score_input = `
       <div class="input-field col s10">
+        <input type="hidden" id="idSub[`+arr+`]" name="idSub[`+arr+`]">
         <input name="score[`+arr+`]" id="score[`+arr+`]" type="text">
         <label for="score[`+arr+`]">Scoring `+(arr+1)+`</label>
       </div>
@@ -148,21 +154,98 @@
     {
       url = "<?php echo site_url('kasubag/C_master_scoring/update_data')?>";
     }
+    $.ajax({
+      url : url,
+      type: "POST",
+      data: $('#formInput').serialize(),
+      dataType: "JSON",
+      success: function(data)
+      {
+         $('#modal1').closeModal();
+         reload_table();
+      },
+      error: function (jqXHR, textStatus, errorThrown)
+      {
+          alert('Error adding/update data');
+      }
+    });
+  }
+
+  function edit(id) {
+    arr = 0;
+    save_method = 'update';
+    $('#formInput')[0].reset();
+    $('#scoreInput').empty();
+
+    $.ajax({
+      url : "<?php echo site_url('kasubag/C_master_scoring/edit_data/')?>/" + id,
+      type: "GET",
+      dataType: "JSON",
+      success: function(data)
+      {
+        $('#jenisScoring').val(data[0].namaJenis);
+        $('#idJenisScoring').val(data[0].idJenis);
+
+        for (var i = 1; i < data.length; i++) {
+          idSub = data[i].idSub;
+          sub = data[i].sub;
+          skor = data[i].skor;
+          score_input = `
+            <div class="input-field col s10">
+              <input type="hidden" id="idSub[`+arr+`]" name="idSub[`+arr+`]" value="`+idSub+`">
+              <input name="score[`+arr+`]" id="score[`+arr+`]" type="text" value="`+sub+`">
+              <label for="score[`+arr+`]">Scoring `+(arr+1)+`</label>
+            </div>
+            <div class="input-field col s2">
+              <input name="bobot[`+arr+`]" id="bobot[`+arr+`]" type="text" value="`+skor+`">
+              <label for="bobot[`+arr+`]">Bobot<label>
+            </div>
+          `;
+          $("#scoreInput").append(score_input);
+          arr+=1;
+        }
+
+        $('#modal1').openModal();
+      },
+      error: function (jqXHR, textStatus, errorThrown)
+      {
+          alert('Error get data');
+      }
+    });
+  }
+
+  function remove(id, nama) {
+    swal({
+  		title: '"'+nama+'"',
+  		text: "Apakah anda yakin ingin menghapus jenis scoring ini?",
+  		type: "warning",
+  		showCancelButton: true,
+  		confirmButtonColor: '#F44336',
+  		confirmButtonText: 'Hapus',
+  		cancelButtonText: "Batal",
+  		closeOnConfirm: false,
+  		closeOnCancel: false
+  	},
+  	function(isConfirm){
+      if (isConfirm){
         $.ajax({
-          url : url,
+          url : "<?php echo site_url('kasubag/C_master_scoring/delete_data/')?>/"+id,
           type: "POST",
-          data: $('#formInput').serialize(),
           dataType: "JSON",
           success: function(data)
           {
-             $('#modal1').closeModal();
-             reload_table();
+            reload_table();
+            swal("Terhapus :(", "Jenis scoring pilihan telah berhasil dihapus!", "success");
           },
           error: function (jqXHR, textStatus, errorThrown)
           {
-              alert('Error adding / update data');
+            swal("Erorr!", "Terjadi masalah saat penghapusan data!", "error");
           }
-      });
+        });
+      } else {
+        swal("Dibatalkan :)", "Penghapusan jenis scoring dibatalkan!", "error");
+      }
+  	});
   }
 </script>
 
@@ -174,6 +257,7 @@
     <form action="#" id="formInput">
     <div class="">
       <div class="input-field">
+        <input type="hidden" id="idJenisScoring" name="idJenisScoring">
         <input id="jenisScoring" type="text" name="jenisScoring">
         <label for="jenisScoring">Jenis Scoring</label>
       </div>

@@ -52,18 +52,18 @@
                     <a class="btn-floating waves-effect waves-light red modal-trigger" href="#modal1" title="Not Confirmed"><i class="material-icons">clear</i></a>
                   </td
                 </tr>
-                <tr>
+                <!-- <tr>
                   <td>3</td>
                   <td>BNI</td>
                   <td>Bank BNI</td>
-                  <td>
+                  <td> -->
                     <!-- <i class="material-icons" title="Keduanya">star</i> -->
-                  </td>
+                  <!-- </td>
                   <td class="alert-text" style="max-width: 330px;"></td>
                   <td>
                     <a class="btn-floating waves-effect waves-light red modal-trigger" href="#modal1" title="Not Confirmed"><i class="material-icons">clear</i></a>
                   </td
-                </tr>
+                </tr> -->
               </tbody>
             </table>
           </div>
