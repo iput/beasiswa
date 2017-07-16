@@ -70,12 +70,12 @@
       <li><a href="#" class="waves-effect"><i class="mdi-communication-email left"></i><span>Profile</span></a></li>
       <li>
         <ul class="collapsible" data-collapsible="accordion">
-          <li><a class="collapsible-header waves-effect"><i class="mdi-editor-format-paint left"></i><span>Request Beasiswa</span></a>
+          <li><a class="collapsible-header waves-effect"><i class="mdi-editor-format-paint left"></i><span>Pengaturan Beasiswa</span></a>
             <div class="collapsible-body">
               <ul>
                 <li><a href="<?php echo base_url('kasubag/C_master_scoring');?>">Master Scoring</a></li>
                 <li class="divider"></li>
-                <li><a href="<?php echo base_url('kasubag/C_requested');?>">Requested</a></li>
+                <li><a href="<?php echo base_url('kasubag/C_requested');?>">Pengaturan</a></li>
               </ul>
             </div>
           </li>

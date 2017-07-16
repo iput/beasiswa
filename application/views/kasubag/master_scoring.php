@@ -130,12 +130,12 @@
   function add_score_input() {
     score_input = `
       <div class="input-field col s10">
-        <input type="hidden" id="idSub[`+arr+`]" name="idSub[`+arr+`]">
+        <input type="hidden" id="idSub[`+arr+`]" name="idSub[`+arr+`]" class="validate">
         <input name="score[`+arr+`]" id="score[`+arr+`]" type="text">
         <label for="score[`+arr+`]">Scoring `+(arr+1)+`</label>
       </div>
       <div class="input-field col s2">
-        <input name="bobot[`+arr+`]" id="bobot[`+arr+`]" type="text">
+        <input name="bobot[`+arr+`]" id="bobot[`+arr+`]" type="text" class="validate">
         <label for="bobot[`+arr+`]">Bobot<label>
       </div>
     `;
@@ -192,19 +192,20 @@
           skor = data[i].skor;
           score_input = `
             <div class="input-field col s10">
-              <input type="hidden" id="idSub[`+arr+`]" name="idSub[`+arr+`]" value="`+idSub+`">
+              <input type="hidden" id="idSub[`+arr+`]" name="idSub[`+arr+`]" value="`+idSub+`" class="validate">
               <input name="score[`+arr+`]" id="score[`+arr+`]" type="text" value="`+sub+`">
               <label for="score[`+arr+`]">Scoring `+(arr+1)+`</label>
             </div>
             <div class="input-field col s2">
-              <input name="bobot[`+arr+`]" id="bobot[`+arr+`]" type="text" value="`+skor+`">
+              <input name="bobot[`+arr+`]" id="bobot[`+arr+`]" type="text" value="`+skor+`" class="validate">
               <label for="bobot[`+arr+`]">Bobot<label>
             </div>
           `;
           $("#scoreInput").append(score_input);
           arr+=1;
         }
-
+        reloadJs('materialize', 'min');
+        reloadJs('initialize', 'nomin');
         $('#modal1').openModal();
       },
       error: function (jqXHR, textStatus, errorThrown)
@@ -258,7 +259,7 @@
     <div class="">
       <div class="input-field">
         <input type="hidden" id="idJenisScoring" name="idJenisScoring">
-        <input id="jenisScoring" type="text" name="jenisScoring">
+        <input id="jenisScoring" type="text" name="jenisScoring" class="validate">
         <label for="jenisScoring">Jenis Scoring</label>
       </div>
 
@@ -276,9 +277,11 @@
       </div>
 
     </div>
+    <hr>
     </form>
     <div class="">
       <button class="btn-floating waves-effect waves-light" title="Tambah Scoring" onclick="add_score_input()"><i class="material-icons">add</i></button>
+      Tambahkan scoring beasiswa. <br><br><small class="blue-text">**Untuk menhapus, biarkan kosong pada isian scoring.</small>
     </div>
   </div>
   <div class="modal-footer">
