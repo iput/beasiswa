@@ -112,7 +112,7 @@
                       <?php
                         $arrPhp = 0;
                         $metode = "add";
-                        if ($skor != null) {
+                        if ($idSetBea != null) {
                           $metode = "update";
                           foreach ($skor as $sk) {
                             $dt = '
