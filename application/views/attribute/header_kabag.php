@@ -21,6 +21,9 @@
 <link href="<?php echo base_url('assets/css/assistance.css')?>" type="text/css" rel="stylesheet" media="screen">
 <!-- data table -->
 <link href="<?php echo base_url('assets/datatable_material/dataTables.material.min.css')?>" type="text/css" rel="stylesheet" media="screen">
+<!-- sweetalert -->
+<script src="<?php echo base_url('assets/sweetalert/sweetalert.min.js');?>" charset="utf-8"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/sweetalert/sweetalert.css');?>">
 </head>
 
 <body class="loading">
@@ -51,10 +54,10 @@
     <nav>
       <div class="nav-wrapper">
         <ul class="right">
-          <li class="hide-on-small-only"><a href="#search-in-modal" class="modal-trigger"><i class="material-icons">search</i></a></li>
-          <li class="hide-on-small-only"><a href="account.html"><i class="material-icons">perm_identity</i></a></li>
-          <li class="hide-on-small-only"><a href="login.html" target="_blank"><i class="material-icons">exit_to_app</i></a></li>
-          <li class="toogle-side-nav"><a href="#" data-activates="slide-menu" class="button-collapse"><i class="material-icons">menu</i></a></li>
+          <li class="hide-on-small-only"><a href="#search-in-modal" class="modal-trigger"><i class="mdi-action-search"></i></a></li>
+          <li class="hide-on-small-only"><a href="account.html"><i class="mdi-action-perm-identity"></i></a></li>
+          <li class="hide-on-small-only"><a href="login.html" target="_blank"><i class="mdi-action-exit-to-app"></i></a></li>
+          <li class="toogle-side-nav"><a href="#" data-activates="slide-menu" class="button-collapse"><i class="mdi-navigation-menu"></i></a></li>
         </ul>
       </div>
     </nav>
@@ -68,7 +71,7 @@
       <li><a href="#" class="waves-effect"><i class="mdi-communication-email left"></i><span>Profile</span></a></li>
       <li>
         <ul class="collapsible" data-collapsible="accordion">
-          <li><a class="collapsible-header waves-effect"><i class="mdi-action-description left"></i><span>Pendaftaran</span><span class="neutral badge">2</span></a>
+          <li><a class="collapsible-header waves-effect"><i class="mdi-action-settings left"></i><span>Pendaftaran</span><span class="neutral badge">2</span></a>
             <div class="collapsible-body">
               <ul>
                 <li><a href="<?php echo base_url('/kabag/C_request')?>">Buka Pendaftaran</a></li>
@@ -77,7 +80,7 @@
               </ul>
             </div>
           </li>
-          <li><a class="collapsible-header waves-effect"> <i class="material-icons">work</i><span>laporan</span></a>
+          <li><a class="collapsible-header waves-effect"> <i class="mdi-action-work"></i><span>laporan</span></a>
             <div class="collapsible-body">
               <ul>
                 <li><a href="#">Pemohon Beasiswa</a></li>

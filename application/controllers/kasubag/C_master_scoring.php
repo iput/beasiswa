@@ -27,8 +27,8 @@ class C_master_scoring extends CI_Controller
       $sub_array[] = $row->nama;
       $sub_array[] = $this->mdl->get_sub_score($row->id);
       $sub_array[] = '
-        <button type="button" name="edit" id="'.$row->id.'" onclick="edit('."'".$row->id."'".')" class="btn-floating waves-effect waves-light yellow accent-4" title="Edit"><i class="material-icons">mode_edit</i></button>
-        <button type="button" name="remove" id="'.$row->id.'" onclick="remove('."'".$row->id."','".$row->nama."'".')" class="btn-floating waves-effect waves-light red" title="Hapus"><i class="material-icons">delete</i></button>
+        <button type="button" name="edit" id="'.$row->id.'" onclick="edit('."'".$row->id."'".')" class="btn-floating waves-effect waves-light yellow accent-4" title="Edit"><i class="mdi-editor-mode-edit"></i></button>
+        <button type="button" name="remove" id="'.$row->id.'" onclick="remove('."'".$row->id."','".$row->nama."'".')" class="btn-floating waves-effect waves-light red" title="Hapus"><i class="mdi-action-delete">delete</i></button>
         ';
       $data[] = $sub_array;
     }

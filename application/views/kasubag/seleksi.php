@@ -4,19 +4,48 @@
     <div id="dashboard">
       <div class="section">
         <div id="responsive" class="section">
+          <h4>
+            Seleksi Penerima Beasiswa
+          </h4>
           <div class="row">
-            <div class="col s6">
-              <h4>
-                List Beasiswa
-                <a href="<?php echo base_url('kasubag/C_requested/pengaturan')?>" class="btn-floating waves-effect waves-light primary-color z-depth-0" title="Tambah Data"><i class="mdi-content-add"></i></a>
-              </h4>
-            </div>
-            <div class="col s6">
-              <p>
-                <blockquote>
-                <font size="4pt">Keterangan: </font><br> <i class="mdi-toggle-radio-button-on"></i> = Kasubag. Kemahasiswaan. <br> <i class="mdi-toggle-radio-button-off"></i> = Kasubag. Kemahasiswaan Fakultas. <br> <i class="mdi-action-stars"></i> = Keduanya.
-                </blockquote>
-              </p>
+            <div class="col m12">
+              <div class="card-panel"> <!-- warna card -->
+                <div class="row">
+                  <div class="input-field col m3">
+                    <select>
+                      <option value="" disabled selected>Choose your option</option>
+                      <option value="1">Option 1</option>
+                      <option value="2">Option 2</option>
+                      <option value="3">Option 3</option>
+                    </select>
+                    <label>Nama Beasiswa</label>
+                  </div>
+                  <div class="input-field col m3">
+                    <select>
+                      <option value="" disabled selected>Choose your option</option>
+                      <option value="1">Option 1</option>
+                      <option value="2">Option 2</option>
+                      <option value="3">Option 3</option>
+                    </select>
+                    <label>Tahun</label>
+                  </div>
+                  <div class="input-field col m3">
+                    <select>
+                      <option value="" disabled selected>Choose your option</option>
+                      <option value="1">Option 1</option>
+                      <option value="2">Option 2</option>
+                      <option value="3">Option 3</option>
+                    </select>
+                    <label>Materialize Select</label>
+                  </div>
+                  <div class="input-field col m1">
+                    <button class="btn-floating waves-effect waves-light orange" onclick="add_data()" title="Tambah Data"><i class="material-icons">search</i></button>
+                  </div>
+                  <div class="input-field col m2">
+                    <small class="blue-text">* Atur filter dahulu untuk menampilkan data!</small>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         <div class="row">
@@ -85,7 +114,7 @@
 var dataTable;
 
 document.addEventListener("DOMContentLoaded", function(event) {
-  datatable();
+  // datatable();
 });
 
 function datatable() {

@@ -8,7 +8,7 @@
             <div class="col s12 m6">
               <h4>
                 Master Scoring Beasiswa
-                <button class="btn-floating waves-effect waves-light primary-color z-depth-0" onclick="add_data()" title="Tambah Data"><i class="material-icons">add</i></button>
+                <button class="btn-floating waves-effect waves-light primary-color z-depth-0" onclick="add_data()" title="Tambah Data"><i class="mdi-content-add"></i></button>
               </h4>
             </div>
           </div>

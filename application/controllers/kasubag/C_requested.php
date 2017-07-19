@@ -64,20 +64,20 @@ class C_requested extends CI_Controller
       $sub_array[] = $row->penyelenggaraBea;
       if ($row->selektor == "1") {
         # kasubag kemahasiswaan
-        $sub_array[] = '<i class="material-icons" title="Kasubag. Kemahasiswaan">radio_button_checked</i> Kms';
+        $sub_array[] = '<i class="mdi-toggle-radio-button-on" title="Kasubag. Kemahasiswaan"></i> Kms';
       }elseif ($row->selektor == "2") {
         # kasubag kemahasiswaan fakultas
-        $sub_array[] = '<i class="material-icons" title="Kasubag. Kemahasiswaan Fakultas">radio_button_unchecked</i> Fks';
+        $sub_array[] = '<i class="mdi-toggle-radio-button-off" title="Kasubag. Kemahasiswaan Fakultas"></i> Fks';
       }elseif ($row->selektor == "3") {
         # keduanya
-        $sub_array[] = '<i class="material-icons" title="Keduanya">star</i> 2K';
+        $sub_array[] = '<i class="mdi-action-stars" title="Keduanya"></i> 2K';
       }
       $status = $row->statusBeasiswa;
       if ($status=="0" || $status=="1" ||$status=="3") {
         # aktif/confirmed
         $sub_array[] = '<span class="success-text">Telah Dikonfirmasi</span>';
         $sub_array[] = '
-          <a class="btn-floating waves-effect waves-light primary-color z-depth-0" title="Confirmed"><i class="material-icons">done</i></a>
+          <a class="btn-floating waves-effect waves-light primary-color z-depth-0" title="Confirmed"><i class="mdi-action-done"></i></a>
           ';
       }else{
         # ditolak
@@ -85,7 +85,7 @@ class C_requested extends CI_Controller
         $alamat = base_url('kasubag/C_requested/pengaturan');
         $sub_array[] = '
             <form action="'.$alamat.'" method="post">
-              <button class="btn-floating waves-effect waves-light red" title="Not Confirmed" type="submit" name="idPengaturan" value="'.$row->id.'"><i class="material-icons">settings</i></button>
+              <button class="btn-floating waves-effect waves-light red" title="Not Confirmed" type="submit" name="idPengaturan" value="'.$row->id.'"><i class="mdi-action-settings"></i></button>
             </form>
           ';
       }
