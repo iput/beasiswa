@@ -65,7 +65,7 @@
   <!-- Side Navigation - fixed for large (nice scroll with Simplebar plugin), slide/drag for medium and small devices -->
   <div id="slide-menu" class="side-nav fixed" data-simplebar-direction="vertical">
     <ul class="side-nav-main">
-      <li class="logo hide-on-med-and-down"><img src="<?php base_url('imgs/idea-bulb.jpg');?>" alt="logo" class="logo responsive-img"></li>
+      <li class="logo hide-on-med-and-down"><img src="<?php echo base_url('imgs/admin-logo-full.svg')?>" alt="logo" class="logo responsive-img"></li>
       <li class="side-nav-inline hide-on-med-only"><a href="#" class="inline waves-effect" target="_blank"><i class="mdi-action-exit-to-app"></i></a> <a href="#" class="inline waves-effect"><i class="mdi-action-perm-identity"></i></a> <a href="#search-in-modal" class="inline waves-effect modal-trigger"><i class="mdi-action-search"></i></a></li>
       <li><a href="#" class="waves-effect"><i class="mdi-communication-email left"></i><span>Profile</span></a></li>
       <li>
