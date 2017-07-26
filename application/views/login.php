@@ -1,9 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
-
-
-<!-- Mirrored from mate.creatingo.com/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 24 Apr 2017 12:22:31 GMT -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
@@ -109,6 +105,4 @@ main {
 <!-- ScrollFire initialize -->
 
 </body>
-
-<!-- Mirrored from mate.creatingo.com/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 24 Apr 2017 12:22:31 GMT -->
 </html>
