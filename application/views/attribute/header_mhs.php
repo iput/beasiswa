@@ -7,22 +7,21 @@
 <meta name="msapplication-tap-highlight" content="no">
 <meta name="description" content="Mate Rio is a responsive Admin Template based on Material Design by Google.">
 <meta name="keywords" content="materialize, admin template, google material, dashboard template, responsive admin template,">
-<title>Beasiswa | Kasubag Fakultas</title>
+<title>Beasiswa | Mahasiswa</title>
 
-<!-- Preloader stage (extracted for first show) -->
 <link href="<?php echo base_url('assets/css/preloader-stage.css')?>" type="text/css" rel="stylesheet" media="screen">
 <link href="<?php echo base_url('assets/css/materialize.css')?>" type="text/css" rel="stylesheet" media="screen">
 <link rel="stylesheet" href="http://fonts.googleapis.com/icon?family=Material+Icons">
-<!-- Additional plugins styles -->
 <link href="<?php echo base_url('assets/css/plugins/prism.css')?>" type="text/css" rel="stylesheet" media="screen">
 <link href="<?php echo base_url('assets/css/plugins/simplebar.css')?>" type="text/css" rel="stylesheet" media="screen">
 <link href="<?php echo base_url('assets/css/plugins/justifiedGallery.css')?>" type="text/css" rel="stylesheet" media="screen">
-<!-- Assistance.css are used only for template support. No need to use it on "production" -->
 <link href="<?php echo base_url('assets/css/assistance.css')?>" type="text/css" rel="stylesheet" media="screen">
+<!-- sweetalert -->
+<script src="<?php echo base_url('assets/sweetalert/sweetalert.min.js');?>" charset="utf-8"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/sweetalert/sweetalert.css');?>">
 </head>
 
 <body class="loading">
-<!-- Preloader START -->
 <div class="stage-wrapper">
     <div class="stage">
 
@@ -40,32 +39,16 @@
 
     </div>
 </div>
-<!-- Preloader END -->
-<!-- Header START -->
 <header>
-  <!-- Navigation Bar on the top, for medium and small devices -->
-  <div class="brand-logo hide-on-large-only"><img src="<?php echo base_url('imgs/admin-logo-full.svg') ?>" alt="logo" class="logo responsive-img"></div>
-  <div class="navbar-fixed hide-on-large-only">
-    <nav>
-      <div class="nav-wrapper">
-        <ul class="right">
-          <li class="hide-on-small-only"><a href="#search-in-modal" class="modal-trigger"><i class="material-icons">search</i></a></li>
-          <li class="hide-on-small-only"><a href="account.html"><i class="material-icons">perm_identity</i></a></li>
-          <li class="hide-on-small-only"><a href="login.html" target="_blank"><i class="material-icons">exit_to_app</i></a></li>
-          <li class="toogle-side-nav"><a href="#" data-activates="slide-menu" class="button-collapse"><i class="material-icons">menu</i></a></li>
-        </ul>
-      </div>
-    </nav>
-  </div>
   <!-- Side Navigation - fixed for large (nice scroll with Simplebar plugin), slide/drag for medium and small devices -->
   <div id="slide-menu" class="side-nav fixed" data-simplebar-direction="vertical">
     <ul class="side-nav-main">
-      <li class="logo hide-on-med-and-down"><img src="imgs/admin-logo-full.svg" alt="logo" class="logo responsive-img"></li>
-      <li class="side-nav-inline hide-on-med-only"><a href="#" class="inline waves-effect" target="_blank"><i class="mdi-action-exit-to-app"></i></a> <a href="#" class="inline waves-effect"><i class="mdi-action-perm-identity"></i></a> <a href="#search-in-modal" class="inline waves-effect modal-trigger"><i class="mdi-action-search"></i></a></li>
+      <li class="logo hide-on-med-and-down"><img src="<?php echo base_url();?>imgs/admin-logo-full.svg" alt="logo" class="logo responsive-img"></li>
+      <li class="side-nav-inline hide-on-med-only"><a href="<?php echo base_url();?>C_login/logout" class="inline waves-effect" title="Logout"><i class="mdi-action-exit-to-app"></i></a> <a href="<?php echo base_url();?>mahasiswa/C_mahasiswa/profile" class="inline waves-effect" title="Profile"><i class="mdi-action-perm-identity"></i></a> <a href="#search-in-modal" class="inline waves-effect modal-trigger"><i class="mdi-action-search"></i></a></li>
       <li><a href="#" class="waves-effect"><i class="mdi-action-dashboard left"></i><span>Beranda</span></a></li>
-      <li><a href="#" class="waves-effect"><i class="mdi-communication-email left"></i><span>Profile</span></a></li>
+      <!-- <li><a href="#" class="waves-effect"><i class="mdi-communication-email left"></i><span>Profile</span></a></li> -->
       <li><a href="#" class="waves-effect"><i class="mdi-communication-email left"></i><span>Daftar Beasiswa</span></a></li>
-      <li><a href="#" class="waves-effect"><i class="mdi-communication-email left"></i><span>Penerimaan Beasiswa</span></a></li>
+      <li><a href="<?php echo base_url();?>mahasiswa/C_mahasiswa/pengumuman_penerima_beasiswa" class="waves-effect"><i class="mdi-communication-email left"></i><span>Penerima Beasiswa</span></a></li>
       <li><a href="#" class="waves-effect"><i class="mdi-communication-email left"></i><span>Status Beasiswa</span></a></li>
       <li>
         <ul class="collapsible" data-collapsible="accordion">
@@ -100,5 +83,4 @@
     </div>
     <div class="modal-footer"> <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Search now</a> </div>
   </div>
-  <!-- Search in Modal END -->
 </header>
