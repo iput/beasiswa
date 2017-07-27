@@ -20,7 +20,15 @@ class M_dashboard extends CI_Model
         // menghapus query dari memory
         $query = null;
     }
+    function daftar_berita()
+    {	$query = $this->db->query("SELECT judulBerita,topikBerita,penulisBerita,kontenBerita,tglInBerita FROM berita");
 
+        // mengembalikan hasil query
+        return $query->result();
+
+        // menghapus query dari memory
+        $query = null;
+    }
 
 
 

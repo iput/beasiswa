@@ -8,12 +8,14 @@ class C_dashboard extends CI_Controller
     function __construct()
     {
         parent::__construct();
+        $this->load->model('m_dashboard');
     }
 
     public function index()
     {
-        $this->load->model('m_dashboard');
+
         $data['daftar_bea']= $this->m_dashboard->daftar_bea();
+        $data['daftar_berita']=$this->m_dashboard->daftar_berita();
         $this->load->view('Dashboard',$data);
         unset($data);
     }
@@ -21,8 +23,6 @@ class C_dashboard extends CI_Controller
     {
         $this->load->view('login');
     }
-    public function daftar_bea(){
 
-    }
 }
 

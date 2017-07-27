@@ -16,6 +16,8 @@
     <link href="<?php echo base_url()?>assets/css/achmad/css/animate.css" rel="stylesheet" type="text/css">
     <link href="<?php echo base_url()?>assets/css/achmad/css/ionicons.min.css" rel="stylesheet" type="text/css">
     <link href="<?php echo base_url()?>assets/css/achmad/css/style.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo base_url()?>assets/css/achmad/style.min.css" rel="stylesheet" type="text/css">
+
     <script src="<?php echo base_url()?>assets/js/achmad/js/modernizr.custom.js"></script>
 
     <!-- Favicons -->
@@ -161,37 +163,65 @@
 <section id="faq" class="faq-section sec-padded-1x z-depth-1">
     <div class="container">
         <div class="row">
-            <div class="col m5 l5 hide-on-small-only center">
-                <img src="<?php echo base_url()?>assets/img/bg-screen-2.png" alt="" class="responsive-img">
-            </div>
-            <div class="col s12 m7 l7">
+
+            <div class="section">
                 <div class="center-heading">
                     <h3 class="white-text">Berita</h3>
                     <span class="center-line red"></span>
                     <p class="white-text">Beberapa informasi penting yang terupdate :</p>
                 </div>
-                <ul class="collapsible z-depth-2" data-collapsible="accordion">
-                    <li>
-                        <div class="collapsible-header active"><i class="ion-android-more-vertical"></i>First</div>
-                        <div class="collapsible-body"><p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.</p></div>
-                    </li>
-                    <li>
-                        <div class="collapsible-header"><i class="ion-android-more-vertical"></i>Second</div>
-                        <div class="collapsible-body"><p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p></div>
-                    </li>
-                    <li>
-                        <div class="collapsible-header"><i class="ion-android-more-vertical"></i>Third</div>
-                        <div class="collapsible-body"><p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p></div>
-                    </li>
-                    <li>
-                        <div class="collapsible-header"><i class="ion-android-more-vertical"></i>Fourth</div>
-                        <div class="collapsible-body"><p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p></div>
-                    </li>
-                    <li>
-                        <div class="collapsible-header"><i class="ion-android-more-vertical"></i>Fifth</div>
-                        <div class="collapsible-body"><p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p></div>
-                    </li>
+                <div id="blog-post-full">
+                    <!-- medium size post-->
+                    <? foreach ($daftar_berita as $r){
+                        echo "<div class='card medium'>
+                        <div class='card-image'>
+                        <img src='assets/img/news-3.jpg' alt='simple' class='responsive-img'>
+                        <span class='card-title'>".$r->judulBerita."</span>
+                        <span class='card-title blog-post-full-cat right orange'><a href='#'>#".$r->topikBerita."</a></span>
+                        </div>
+                        <div class='card-content'>
+                            <p class='ultra-small'>".$r->tglInBerita."</p>
+                            <p>".$r->kontenBerita."</p>
+
+                        </div>
+                        <div class='card-action'>
+                            By <a href='#'>".$r->penulisBerita."</a>
+                            <a href='#' class='right'>Read more ></a>
+                        </div>
+                    </div>";
+                    }
+                    ?>
+
+                    <div class="card medium">
+                        <div class="card-image">
+                            <img src="<?php echo base_url()?>assets/img/news-3.jpg" alt="simple" class="responsive-img">
+                            <span class="card-title">Small post style</span>
+                            <span class="card-title blog-post-full-cat right orange"><a href="#">#HTML</a></span>
+                        </div>
+                        <div class="card-content">
+                            <p class="ultra-small">June 30, 2015</p>
+                            <p>I am a very simple full width blog post. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+
+                        </div>
+                        <div class="card-action">
+                            By <a href="#">John Doe</a>
+                            <a href="#" class="right">Read more ></a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <ul class="col s4 offset-s5 pagination">
+                            <li class="disabled"><a href="#!"><i class="ion-chevron-left"></i></a></li>
+                            <li class="active"><a href="#!">1</a></li>
+                            <li class="waves-effect"><a href="#!">2</a></li>
+                            <li class="waves-effect"><a href="#!">3</a></li>
+                            <li class="waves-effect"><a href="#!">4</a></li>
+                            <li class="waves-effect"><a href="#!">5</a></li>
+                            <li class="waves-effect"><a href="#!"><i class="ion-chevron-right"></i></a></li>
                 </ul>
+
+
             </div><!-- Col ends -->
         </div><!-- Row ends -->
     </div><!-- Container ends -->
