@@ -10,9 +10,9 @@ class C_requested extends CI_Controller
 
   public function index()
   {
-    $this->load->view('attribute/header_kasubag');
+    $this->load->view('attribute/hKasubag');
     $this->load->view('kasubag/requested');
-    $this->load->view('attribute/footer');
+    $this->load->view('attribute/FooterKasubag');
   }
 
   public function pengaturan()
@@ -46,9 +46,9 @@ class C_requested extends CI_Controller
         'skor' => null
       );
     }
-    $this->load->view('attribute/header_kasubag');
+    $this->load->view('attribute/hKasubag');
     $this->load->view('kasubag/pengaturan', $data);
-    $this->load->view('attribute/footer');
+    $this->load->view('attribute/FooterKasubag');
   }
 
   public function datatable(){

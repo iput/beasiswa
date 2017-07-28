@@ -8,7 +8,7 @@
  	function __construct()
  	{
  		parent::__construct();
- 		$this->load->model('Kasubag/Berita');
+ 		$this->load->model('kasubag/Berita');
  	}
 
  	public function tambahBerita()
@@ -23,6 +23,15 @@
  		$this->session->set_flashdata('sukses','Data Berita berhasil ditambahkan');
  		redirect('kasubag/Kasubag/daftarBerita');
 
+ 	}
+
+ 	public function detailberita($id)
+ 	{
+ 		$data['berita']=$this->Berita->editBerita($id);
+ 		
+ 		$this->load->view('attribute/hKasubag');
+ 		$this->load->view('kasubag/detailBerita', $data);
+ 		$this->load->view('attribute/FooterKasubag');
  	}
 
  	public function editBerita()

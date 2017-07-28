@@ -13,15 +13,15 @@ class Kasubag extends CI_Controller
 
   public function index()
   {
-    $this->load->view('attribute/header_kasubag');
+    $this->load->view('attribute/hKasubag');
     $this->load->view('kasubag/dashboard');
-    $this->load->view('attribute/footer');
+    $this->load->view('attribute/FooterKasubag');
   }
 
   public function daftarBerita()
   {
     $data['berita']=$this->Berita->daftarBerita();
-    $this->load->view('attribute/Header_kasubag');
+    $this->load->view('attribute/hKasubag');
     $this->load->view('kasubag/Berita', $data);
     $this->load->view('attribute/FooterKasubag'); 
   }

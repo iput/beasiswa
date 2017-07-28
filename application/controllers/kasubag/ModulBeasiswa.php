@@ -8,13 +8,13 @@
  	function __construct()
  	{
  		parent::__construct();
- 		$this->load->model('Kasubag/Beasiswa');
+ 		$this->load->model('kasubag/Beasiswa');
  	}
 
  	public function index()
  	{
  		$data['bea']= $this->Beasiswa->daftarBeasiswa();
- 		$this->load->view('attribute/header_kasubag');
+ 		$this->load->view('attribute/hKasubag');
     	$this->load->view('kasubag/Beasiswa', $data);
     	$this->load->view('attribute/FooterKasubag');
  	}

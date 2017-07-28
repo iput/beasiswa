@@ -15,7 +15,7 @@
               <td>Penulis</td>
               <td>Tanggal Input Berita</td>
               <td>Konten</td>
-              <td>Aksi</td>
+              <td><i class="material-icons">pageview</i></td>
             </tr>
           </thead>
           <tbody id="dataBerita">
@@ -28,8 +28,7 @@
                 <td><?php echo $rows['tglInBerita'] ?></td>
                 <td><?php echo $rows['kontenBerita'] ?></td>
                 <td>
-                  <a href="javascript:;" data="<?php echo $rows['idBerita'] ?>" class="btn-floating z-depth-0 btn green btnEditBerita" ><i class="material-icons">mode_edit</i></a>
-                  <a href="<?php echo base_url('kasubag/ModulBerita/hapusBerita/'.$rows['idBerita']) ?>" class="btn btn-floating red  z-depth-0" onclick="return alertConfirm()"><i class="material-icons">delete</i></a>
+                  <a href="<?php echo base_url('kasubag/modulBerita/detailBerita/'.$rows['idBerita']) ?>"  class="btn z-depth-0 btn green"><i class="material-icons left">visibility</i> Detail</a>
                 </td>
               </tr>
             <?php endforeach ?>
@@ -119,6 +118,7 @@
   <script type="text/javascript">
   	$(function() {
   		$('#dataBerita').on('click','.btnEditBerita', function() {
+
   			var id = $(this).attr('data');
   			$('#editBerita').openModal('show');
         $.ajax({
@@ -156,6 +156,7 @@
         confirmButtonColor: "#DD6B55",
         confirmButtonText: "Ya",
         closeOnConfirm: false }, 
-        function(){   swal("Deleted!", "Your imaginary file has been deleted.", "success"); });
+        function(){
+          swal("Deleted!", "Your imaginary file has been deleted.", "success"); });
   }
 </script>
