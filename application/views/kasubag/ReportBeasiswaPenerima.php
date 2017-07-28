@@ -49,11 +49,15 @@
 				</div>
 			</div>
 		</form>
-		<div class="row">
-			<div class="col s5">
-				<a href="" class="btn green"><i class="material-icons left">print</i>Cetak Data</a>
-			</div>
-		</div>
+		<div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+    	<a class="btn-floating btn-large red">
+      		<i class="large material-icons">print</i>
+    	</a>
+    		<ul>
+      			<li><a class="btn-floating green" href="<?php echo base_url('kasubag/ModulLaporan/semuaData') ?>" title="Cetak Semua data"><i class="material-icons">view_headline</i></a></li>
+      			<li><a class="btn-floating blue darken-1" title="Cetak data berdasarkan filter"><i class="material-icons">recent_actors</i></a></li>
+    		</ul>
+  		</div>
 		<table class="striped highlight bordered">
 			<thead>
 				<tr>

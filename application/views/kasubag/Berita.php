@@ -1,40 +1,41 @@
 <!-- Main START -->
 <main>
   <div class="container">
-    <h1 class="thin">Berita</h1>
     <div id="dashboard">
       <div class="section">
-      <div class="card-panel success" style="display: none;"></div>
-      <a class="modal-trigger waves-effect waves-light btn blue" href="#tambahBerita"><i class="material-icons left">add</i>Tambah Berita</a>
+      <div id="responsive" class="section">
+        <div class="card-panel success" style="display: none;"></div>
+      <h4>List Berita <a class="btn-floating modal-trigger waves-effect waves-light primary-color z-depth-0" href="#tambahBerita"><i class="material-icons" title="Tambah Berita Baru">add</i></a></h4>
         <table class="bordered striped" id="tabelBerita">
-        	<thead>
-        		<tr>
-        			<td>#</td>
-        			<td>Judul Berita</td>
-        			<td>Topik Berita</td>
-        			<td>Penulis</td>
-        			<td>Tanggal Input Berita</td>
-        			<td>Konten</td>
-        			<td>Aksi</td>
-        		</tr>
-        	</thead>
-        	<tbody id="dataBerita">
-        		<?php foreach ($berita as $rows): ?>
-        			<tr>
-        				<td><?php echo $rows['idBerita'] ?></td>
-        				<td><?php echo $rows['judulBerita'] ?></td>
-        				<td><?php echo $rows['topikBerita'] ?></td>
-        				<td><?php echo $rows['penulisBerita'] ?></td>
-        				<td><?php echo $rows['tglInBerita'] ?></td>
-        				<td><?php echo $rows['kontenBerita'] ?></td>
-        				<td>
-        					<a href="javascript:;" data="<?php echo $rows['idBerita'] ?>" class="btn-floating btn green btnEditBerita" ><i class="material-icons">mode_edit</i></a>
-        					<a href="<?php echo base_url('kasubag/ModulBerita/hapusBerita/'.$rows['idBerita']) ?>" class="btn btn-floating red" onclick="return confirm('apakah anda yakin akan menghapus berita <?php echo $rows['judulBerita'] ?> ?')"><i class="material-icons">delete</i></a>
-        				</td>
-        			</tr>
-        		<?php endforeach ?>
-        	</tbody>
+          <thead>
+            <tr>
+              <td>#</td>
+              <td>Judul Berita</td>
+              <td>Topik Berita</td>
+              <td>Penulis</td>
+              <td>Tanggal Input Berita</td>
+              <td>Konten</td>
+              <td>Aksi</td>
+            </tr>
+          </thead>
+          <tbody id="dataBerita">
+            <?php foreach ($berita as $rows): ?>
+              <tr>
+                <td><?php echo $rows['idBerita'] ?></td>
+                <td><?php echo $rows['judulBerita'] ?></td>
+                <td><?php echo $rows['topikBerita'] ?></td>
+                <td><?php echo $rows['penulisBerita'] ?></td>
+                <td><?php echo $rows['tglInBerita'] ?></td>
+                <td><?php echo $rows['kontenBerita'] ?></td>
+                <td>
+                  <a href="javascript:;" data="<?php echo $rows['idBerita'] ?>" class="btn-floating z-depth-0 btn green btnEditBerita" ><i class="material-icons">mode_edit</i></a>
+                  <a href="<?php echo base_url('kasubag/ModulBerita/hapusBerita/'.$rows['idBerita']) ?>" class="btn btn-floating red  z-depth-0" onclick="return alertConfirm()"><i class="material-icons">delete</i></a>
+                </td>
+              </tr>
+            <?php endforeach ?>
+          </tbody>
         </table>
+      </div>
       </div>
     </div>
   </div>
@@ -70,8 +71,8 @@
       	</div>
       	<div class="row">
       		<div class="input-field">
-      			<a href="#!" class="modal-action modal-close waves-effect waves-green btn red"><i class="mdi-navigation-close left"></i>Tutup</a>
-      			<button type="submit" class="btn green"><i class="material-icons left">done</i>Simpan Berita</button>
+      			<a href="#!" class="modal-action modal-close waves-effect waves-green btn red z-depth-0" title="kembali ke menu"><i class="mdi-navigation-close left"></i>Batal</a>
+      			<button type="submit" class="btn green z-depth-0" title="Tambahkan Berita"><i class="material-icons left">done</i>Simpan</button>
       		</div>
       	</div>
       </form>
@@ -109,7 +110,7 @@
       	<div class="row">
       		<div class="input-field">
       			<a href="#!" class="modal-action modal-close waves-effect red btn"><i class="mdi-navigation-cancel left"></i>Tutup</a>
-      			<button type="submit" class="btn green"><i class="mdi-navigation-refresh left"></i>Update Berita</button>
+      			<button type="submit" class="btn green"><i class="mdi-navigation-refresh left"></i>Update</button>
       		</div>
       	</div>
       </form>
@@ -143,4 +144,18 @@
   </script>
 <script type="text/javascript">
   $('#tabelBerita').dataTable();
+</script>
+
+<script type="text/javascript">
+  function alertConfirm() {
+      swal({
+        title: "Yakin akan menghapus data ini ?",
+        text: "Apakah anda yakin akan menghapus data ini ?",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "Ya",
+        closeOnConfirm: false }, 
+        function(){   swal("Deleted!", "Your imaginary file has been deleted.", "success"); });
+  }
 </script>

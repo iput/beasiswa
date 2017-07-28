@@ -17,6 +17,8 @@
  		$data['fakultas']=$this->ReportBeasiswa->dataFakultas();
  		$data['jurusan']=$this->ReportBeasiswa->dataJurusan();
  		$data['beasiswa']=$this->Beasiswa->daftarBeasiswa();
+ 		$data['databea'] = $this->ReportBeasiswa->dataPenerimaBeasiswa();
+
  		$this->load->view('attribute/Header_kasubag');
  		$this->load->view('kasubag/ReportBeasiswa', $data);
  		$this->load->view('attribute/FooterKasubag');
@@ -31,5 +33,11 @@
  		$this->load->view('attribute/Header_kasubag');
  		$this->load->view('kasubag/ReportBeasiswaPenerima', $data);
  		$this->load->view('attribute/FooterKasubag');
+ 	}
+
+ 	public function semuaData()
+ 	{
+ 		$data['databea'] = $this->ReportBeasiswa->dataPenerimaBeasiswa();
+ 		$this->load->view('kasubag/masterDataBeaPDF', $data);
  	}
  } ?>

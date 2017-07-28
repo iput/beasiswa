@@ -25,6 +25,8 @@
 <!-- JS -->
 <script type="text/javascript" src="<?php echo base_url('assets/js/bin/jquery-2.1.4.min.js')?>"></script>
 <script type="text/javascript" src="<?php echo base_url('assets/datatables/js/jquery.dataTables.min.js') ?>"></script>
+<script src="<?php echo base_url('assets/sweetalert/sweetalert.min.js');?>" charset="utf-8"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/sweetalert/sweetalert.css');?>">
 </head>
 
 <body class="loading">
@@ -71,7 +73,7 @@
       <li><a href="#" class="waves-effect"><i class="mdi-action-dashboard left"></i><span>Beranda</span></a></li>
       <li><a href="#" class="waves-effect"><i class="mdi-action-account-child left"></i><span>Profile</span></a></li>
       <li><a href="#" class="waves-effect"><i class="mdi-action-dashboard left"></i><span>Seleksi Mahasiswa</span></a></li>
-      <li><a href="<?php echo base_url('kasubag/ModulBeasiswa') ?>" class="waves-effect"><i class="mdi-social-school left"></i><span>Manajemen Beasiswa</span></a></li>
+      <li><a href="<?php echo base_url('kasubag/C_requested') ?>" class="waves-effect"><i class="mdi-social-school left"></i><span>Manajemen Beasiswa</span></a></li>
       <li><a href="<?php echo base_url('kasubag/Kasubag/daftarBerita') ?>" class="waves-effect"><i class="mdi-notification-event-note left"></i><span>Manajemen Berita</span></a></li>
       <li><a href="#" class="waves-effect"><i class="mdi-communication-email left"></i><span>Ubah Status Mahasiswa</span></a></li>
       <li>
