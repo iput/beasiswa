@@ -70,6 +70,16 @@ main {
         </div>
         <div class="row">
           <div class="input-field col s12">
+            <select>
+              <option>Pilih Level Pengguna</option>
+              <option>Kemahasiswaan</option>
+              <option>kabag</option>
+              <option>Kasubag</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
             <a href="index-2.html" class="btn-large waves-effect waves-light col s12">Login</a>
           </div>
         </div>

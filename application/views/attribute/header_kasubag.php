@@ -9,6 +9,7 @@
 <meta name="keywords" content="materialize, admin template, google material, dashboard template, responsive admin template,">
 <title>Beasiswa | Kasubag Kemahasiswaan</title>
 
+<!-- CSS -->
 <!-- Preloader stage (extracted for first show) -->
 <link href="<?php echo base_url('assets/css/preloader-stage.css')?>" type="text/css" rel="stylesheet" media="screen">
 <link href="<?php echo base_url('assets/css/materialize.css')?>" type="text/css" rel="stylesheet" media="screen">
@@ -19,6 +20,11 @@
 <link href="<?php echo base_url('assets/css/plugins/justifiedGallery.css')?>" type="text/css" rel="stylesheet" media="screen">
 <!-- Assistance.css are used only for template support. No need to use it on "production" -->
 <link href="<?php echo base_url('assets/css/assistance.css')?>" type="text/css" rel="stylesheet" media="screen">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/datatables/css/jquery.dataTables.min.css') ?>">
+
+<!-- JS -->
+<script type="text/javascript" src="<?php echo base_url('assets/js/bin/jquery-2.1.4.min.js')?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/datatables/js/jquery.dataTables.min.js') ?>"></script>
 </head>
 
 <body class="loading">
@@ -63,19 +69,19 @@
       <li class="logo hide-on-med-and-down"><img src="imgs/admin-logo-full.svg" alt="logo" class="logo responsive-img"></li>
       <li class="side-nav-inline hide-on-med-only"><a href="#" class="inline waves-effect" target="_blank"><i class="mdi-action-exit-to-app"></i></a> <a href="#" class="inline waves-effect"><i class="mdi-action-perm-identity"></i></a> <a href="#search-in-modal" class="inline waves-effect modal-trigger"><i class="mdi-action-search"></i></a></li>
       <li><a href="#" class="waves-effect"><i class="mdi-action-dashboard left"></i><span>Beranda</span></a></li>
-      <li><a href="#" class="waves-effect"><i class="mdi-communication-email left"></i><span>Profile</span></a></li>
+      <li><a href="#" class="waves-effect"><i class="mdi-action-account-child left"></i><span>Profile</span></a></li>
       <li><a href="#" class="waves-effect"><i class="mdi-action-dashboard left"></i><span>Seleksi Mahasiswa</span></a></li>
-      <li><a href="#" class="waves-effect"><i class="mdi-communication-email left"></i><span>Manajemen Beasiswa</span></a></li>
-      <li><a href="#" class="waves-effect"><i class="mdi-action-dashboard left"></i><span>Manajemen Berita</span></a></li>
+      <li><a href="<?php echo base_url('kasubag/ModulBeasiswa') ?>" class="waves-effect"><i class="mdi-social-school left"></i><span>Manajemen Beasiswa</span></a></li>
+      <li><a href="<?php echo base_url('kasubag/Kasubag/daftarBerita') ?>" class="waves-effect"><i class="mdi-notification-event-note left"></i><span>Manajemen Berita</span></a></li>
       <li><a href="#" class="waves-effect"><i class="mdi-communication-email left"></i><span>Ubah Status Mahasiswa</span></a></li>
       <li>
         <ul class="collapsible" data-collapsible="accordion">
-          <li><a class="collapsible-header waves-effect"><i class="mdi-editor-format-paint left"></i><span>laporan</span></a>
+          <li><a class="collapsible-header waves-effect"><i class="mdi-action-assignment left"></i><span>laporan</span></a>
             <div class="collapsible-body">
               <ul>
-                <li><a href="#">Pemohon Beasiswa</a></li>
+                <li><a href="<?php echo base_url('kasubag/ModulLaporan') ?>">Pemohon Beasiswa</a></li>
                 <li class="divider"></li>
-                <li><a href="#">Penerima Beasiswa</a></li>
+                <li><a href="<?php echo base_url('kasubag/ModulLaporan/penerimaBeasiswa') ?>">Penerima Beasiswa</a></li>
                 <li class="divider"></li>
                 <li><a href="">Grafik Perbandingan Pemohon & Penerima</a></li>
               </ul>
