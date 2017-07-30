@@ -1,13 +1,9 @@
 >> Kabag:
 http://localhost/beasiswa/kabag/C_request
 
->> Kasubag Kemahasiswaan
+>> Kasubag Kemahasiswaan:
 http://localhost/beasiswa/kasubag/C_master_scoring
+http://localhost/beasiswa/kasubag/C_requested
 
-tabel db bea:
-- hapus "status_tabel"
-- tambah "selektor"
-- tambah "keterangan"
-
-.:random:.
-bug - kasubag di pengaturan beasiswa, jika scoring kosong trus di tekan simpan, maka error dan insert lagi
+>> Mahasiswa:
+http://localhost/beasiswa/mahasiswa/c_formulir (baru menampilkan view)
