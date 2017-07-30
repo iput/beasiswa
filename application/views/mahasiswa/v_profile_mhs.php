@@ -1,7 +1,6 @@
 <main>
 	<div class="container">
-		<h1 class="thin">My Account</h1>
-		<!--  Tables Section-->
+		<h3>Profile Mahasiswa</h3>
 		<div id="messages" class="mailbox section">
 			<div class="row">
 				<div class="col s12">
@@ -23,21 +22,34 @@
 										<div class="col s12 m8 push-m4">
 											<!-- Personal info FIELDS -->
 											<div class="input-field">
-												<input id="first_name" type="text" class="validate" value="Caroline">
-												<label for="first_name">First Name</label>
+												<input id="first_name" type="text" class="validate" placeholder="Angkatan">
+												<label for="first_name">Angkatan</label>
 											</div>
 											<div class="input-field">
-												<input id="last_name" type="text" class="validate" value="Doe">
-												<label for="last_name">Last Name</label>
+												<input id="last_name" type="text" class="validate" placeholder="NIM">
+												<label for="last_name">NIM</label>
 											</div>
 											<div class="input-field">
-												<input id="phone" type="tel" class="validate" value="+1 22 333 444 555">
-												<label for="phone">Phone</label>
+												<input id="phone" type="tel" class="validate" placeholder="Nama Mahasiswa" readonly>
+												<label for="phone">Nama Mahasiswa</label>
+											</div>
+											<div class="input-field">
+												<input id="last_name" type="text" class="validate" placeholder="Tempat Lahir">
+												<label for="last_name">Tempat Lahir</label>
+											</div>
+											<div class="input-field">
+												<input id="last_name" type="text" class="validate" placeholder="Tanggal Lahir">
+												<label for="last_name">Tanggal Lahir</label>
+											</div>
+											<div class="input-field">
+												<input id="last_name" type="text" class="validate" placeholder="Asal Kota">
+												<label for="last_name">Asal Kota</label>
 											</div>
 											<div class="input-field">
 												<input id="email" type="email" class="validate" value="info(at)cretingo.com">
 												<label for="email" data-error="wrong" data-success="right">Email</label>
 											</div>
+
 											<div class="input-field with-note">
 												<input id="skills" type="text" class="validate" value="html, css, sass, js, php">
 												<label for="skills">Skills</label>

@@ -4,6 +4,9 @@ http://localhost/beasiswa/kabag/C_request
 >> Kasubag Kemahasiswaan
 http://localhost/beasiswa/kasubag/C_master_scoring
 
+>> Mahasiswa
+http://localhost/beasiswa/mahasiswa/C_mahasiswa/pengumuman_penerima_beasiswa
+
 tabel db bea:
 - hapus "status_tabel"
 - tambah "selektor"
