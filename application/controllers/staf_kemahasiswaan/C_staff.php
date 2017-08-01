@@ -1,7 +1,5 @@
 <?php defined('BASEPATH')OR exit('akses ditolak');
-/**
- *
- */
+
 class C_staff extends CI_Controller
 {
 

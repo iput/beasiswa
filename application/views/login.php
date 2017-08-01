@@ -74,12 +74,11 @@ main {
           <div class="input-field col s12">
             <select name="levelPengguna" id="levelPengguna">
               <option>Pilih Level Pengguna</option>
-              <option value="1">Kemahasiswaan</option>
+              <option value="1">Staff Kemahasiswaan</option>
               <option value="2">Kasubag</option>
               <option value="3">Kasubag Fakultas</option>
               <option value="4">kabag</option>
-              <option value="5">Staf Mahasiswa</option>
-              <option value="6">Mahasiswa</option>
+              <option value="5">Mahasiswa</option>
             </select>
             <label for="levelPengguna">Level Pengguna</label>
           </div>
