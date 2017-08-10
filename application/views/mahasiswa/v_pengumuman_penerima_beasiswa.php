@@ -75,7 +75,7 @@
                         <tr>
                           <?php
                           $no=1;
-                          foreach ($data->result() as $key) 
+                          foreach ($data as $key) 
                           {
                             ?>
                             <td><?php echo $no++;?></td>

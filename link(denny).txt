@@ -7,3 +7,4 @@ http://localhost/beasiswa/kasubag/C_requested
 
 >> Mahasiswa:
 http://localhost/beasiswa/mahasiswa/c_formulir (baru menampilkan view)
+http://localhost/beasiswa/mahasiswa/C_mahasiswa/profile

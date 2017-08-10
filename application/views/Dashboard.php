@@ -78,7 +78,7 @@
 
                     <li><a class="waves-effect waves-light" href="#location">Contact</a></li>
 
-                    <li><a href="http://themeforest.net/user/theme_crispy/portfolio?ref=Theme_crispy" class="nav-btn-download waves-effect waves-light btn red white-text"><i class="ion-android-send left"></i>&nbspLogin sekarang</a></li>
+                    <li><a href="<?php echo base_url('Login');?>" class="nav-btn-download waves-effect waves-light btn red white-text"><i class="ion-android-send left"></i>&nbspLogin sekarang</a></li>
                 </ul>
 
                 <!-- Mobile sidebar navigation -->
@@ -90,7 +90,7 @@
 
                     <li><a class="waves-effect waves-light" href="#location">Contact</a></li>
 
-                    <li><a href="http://themeforest.net/user/theme_crispy/portfolio?ref=Theme_crispy" class="nav-btn-download waves-effect waves-light btn red white-text"><i class="ion-android-send left"></i>&nbsp&nbspLogin sekarang</a></li>
+                    <li><a href="<?php echo base_url('Login');?>" class="nav-btn-download waves-effect waves-light btn red white-text"><i class="ion-android-send left"></i>&nbsp&nbspLogin sekarang</a></li>
                 </ul>
             </div><!-- Nav-wrapper ends -->
         </div><!-- Container ends -->

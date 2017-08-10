@@ -21,12 +21,13 @@ class C_mahasiswa extends CI_Controller
     $this->load->view('mahasiswa/v_profile_mhs');
     $this->load->view('attribute/footer');
   }
+
   public function pengumuman_penerima_beasiswa()
   {
     $isi['fakultas']  =$this->db->get('fakultas')->result();
     $isi['tahun']     =$this->db->get('penerima_bea')->result();
     $isi['beasiswa']  =$this->db->get('bea')->result();
-    $isi['data']      =$this->model->getdata();
+    $isi['data']      =$this->model->getdata()->result();
     $this->load->view('attribute/header_mhs');
     $this->load->view('mahasiswa/v_pengumuman_penerima_beasiswa',$isi);
     $this->load->view('attribute/footer');
@@ -39,7 +40,7 @@ class C_mahasiswa extends CI_Controller
 
     foreach($fetch_data as $row)
     {
-      $nmr+=1;
+      $nmr +=1;
       $sub_array = array();
       $sub_array[] = $nmr;
       $sub_array[] = $row->nim;

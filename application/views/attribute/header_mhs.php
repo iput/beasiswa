@@ -43,9 +43,8 @@
   <div id="slide-menu" class="side-nav fixed" data-simplebar-direction="vertical">
     <ul class="side-nav-main">
       <li class="logo hide-on-med-and-down"><img src="<?php echo base_url();?>imgs/admin-logo-full.svg" alt="logo" class="logo responsive-img"></li>
-      <li class="side-nav-inline hide-on-med-only"><a href="<?php echo base_url();?>Login" class="inline waves-effect" title="Logout"><i class="mdi-action-exit-to-app"></i></a> <a href="<?php echo base_url();?>mahasiswa/C_mahasiswa/profile" class="inline waves-effect" title="Profile"><i class="mdi-action-perm-identity"></i></a> <a href="#search-in-modal" class="inline waves-effect modal-trigger"><i class="mdi-action-search"></i></a></li>
+      <li class="side-nav-inline hide-on-med-only"><a href="<?php echo base_url();?>FunctLogin/logout" class="inline waves-effect" title="Logout"><i class="mdi-action-exit-to-app"></i></a> <a href="<?php echo base_url();?>mahasiswa/C_mahasiswa/profile" class="inline waves-effect" title="Profile"><i class="mdi-action-perm-identity"></i></a> <a href="#search-in-modal" class="inline waves-effect modal-trigger"><i class="mdi-action-search"></i></a></li>
       <li><a href="#" class="waves-effect"><i class="mdi-action-dashboard left"></i><span>Beranda</span></a></li>
-      <!-- <li><a href="#" class="waves-effect"><i class="mdi-communication-email left"></i><span>Profile</span></a></li> -->
       <li><a href="#" class="waves-effect"><i class="mdi-communication-email left"></i><span>Daftar Beasiswa</span></a></li>
       <li><a href="<?php echo base_url();?>mahasiswa/C_mahasiswa/pengumuman_penerima_beasiswa" class="waves-effect"><i class="mdi-communication-email left"></i><span>Penerima Beasiswa</span></a></li>
       <li><a href="#" class="waves-effect"><i class="mdi-communication-email left"></i><span>Status Beasiswa</span></a></li>
