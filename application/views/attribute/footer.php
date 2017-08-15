@@ -1,11 +1,19 @@
+<style media="screen">
+	.tengah{
+		overflow-x: scroll;
+	}
+	.bersih{
+		clear: both;
+	}
+</style>
 <script type="text/javascript" src="<?php echo base_url('assets/js/bin/jquery-2.1.4.min.js')?>"></script>
 <script>if (!window.jQuery) { document.write('<script src="<?php echo base_url('assets/js/bin/jquery-2.1.4.min.js')?>"><\/script>'); }</script>
 <!-- jQuery Plugins -->
 <script type="text/javascript" src="<?php echo base_url('assets/js/bin/plugins/prism.js')?>"></script>
 <script type="text/javascript" src="<?php echo base_url('assets/js/bin/plugins/simplebar.min.js')?>"></script>
 <!--materialize js-->
-<script type="text/javascript" src="<?php echo base_url('assets/js/bin/materialize.min.js')?>"></script>
-<script type="text/javascript" src="<?php echo base_url('assets/js/bin/initialize.js')?>"></script>
+<script id="material" type="text/javascript" src="<?php echo base_url('assets/js/bin/materialize.min.js')?>"></script>
+<script id="initialize" type="text/javascript" src="<?php echo base_url('assets/js/bin/initialize.js')?>"></script>
 <!-- chart js-->
 <script type="text/javascript" src="<?php echo base_url('assets/js/bin/plugins/charts/chart.core.min.js')?>"></script>
 <script type="text/javascript" src="<?php echo base_url('assets/js/bin/plugins/charts/chart.line.min.js')?>"></script>
@@ -15,6 +23,9 @@
 <script type="text/javascript" src="<?php echo base_url('assets/js/bin/plugins/jquery.justifiedGallery.min.js')?>"></script>
 <!-- count to js-->
 <script type="text/javascript" src="<?php echo base_url('assets/js/bin/plugins/jquery.countTo.js')?>"></script>
+<!-- data table -->
+<script type="text/javascript" src="<?php echo base_url('assets/datatable_material/jquery.dataTables.min.js')?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/datatable_material/dataTables.material.min.js')?>"></script>
 <script>
 		var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
 		var lineChartData = {
@@ -153,6 +164,25 @@
 
 	}
 
+	//function Denny
+	function reloadJs(idJs, ext) {
+    if (ext=="min") {
+      src = "<?php echo base_url('assets/js/bin/')?>"+idJs+".min.js";
+    }else{
+      src = "<?php echo base_url('assets/js/bin/')?>"+idJs+".js";
+    }
+    $('#'+idJs).remove();
+    $('<script/>').attr({
+        "src": src,
+        'id': idJs
+    }).appendTo('body');
+  }
+
+	$('.datepicker').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 5, // Creates a dropdown of 15 years to control year
+		format: "yyyy-mm-dd"
+  });
 
 	</script>
 </body>

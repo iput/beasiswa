@@ -9,6 +9,7 @@ class C_kabag extends CI_Controller
   {
     parent::__construct();
   }
+
   public function index()
   {
     $this->load->view('attribute/header_kabag');
@@ -17,4 +18,4 @@ class C_kabag extends CI_Controller
 
   }
 }
- ?>
+?>

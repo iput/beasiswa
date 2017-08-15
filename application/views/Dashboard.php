@@ -78,7 +78,11 @@
 
                     <li><a class="waves-effect waves-light" href="#location">Contact</a></li>
 
-                    <li><a href="http://themeforest.net/user/theme_crispy/portfolio?ref=Theme_crispy" class="nav-btn-download waves-effect waves-light btn red white-text"><i class="ion-android-send left"></i>&nbspLogin sekarang</a></li>
+
+
+
+                    <li><a href="<?php echo base_url('Login');?>" class="nav-btn-download waves-effect waves-light btn red white-text"><i class="ion-android-send left"></i>&nbspLogin sekarang</a></li>
+
                 </ul>
 
                 <!-- Mobile sidebar navigation -->
@@ -90,7 +94,11 @@
 
                     <li><a class="waves-effect waves-light" href="#location">Contact</a></li>
 
-                    <li><a href="http://themeforest.net/user/theme_crispy/portfolio?ref=Theme_crispy" class="nav-btn-download waves-effect waves-light btn red white-text"><i class="ion-android-send left"></i>&nbsp&nbspLogin sekarang</a></li>
+
+
+
+                    <li><a href="<?php echo base_url('Login');?>" class="nav-btn-download waves-effect waves-light btn red white-text"><i class="ion-android-send left"></i>&nbsp&nbspLogin sekarang</a></li>
+
                 </ul>
             </div><!-- Nav-wrapper ends -->
         </div><!-- Container ends -->
@@ -146,8 +154,8 @@
                                 <tr><td>Kuota Penerima </td><td>: ".$r->kuota."</td> </tr>
                                 <tr><td>Status beasiswa </td><td>: Dibuka  </td> </tr>
                                 <a class='waves-effect waves-light btn red center md-trigger' >Pendaftaran Dibuka</a>
-                                
-                                 
+
+
                         </table>
                     </p>
                 </div>
@@ -367,7 +375,7 @@
                     <li><p>+123 4567890</p></li>
                     <li><p>lol@rolf.com</p></li>
                 </ul>
-                <a class="modal-trigger waves-effect waves-light btn red center md-trigger" data-modal="m-contact">Contact Us</a> <a class="modal-trigger waves-effect waves-light btn red center md-trigger" data-modal="m-sub">Subscribe to our Newsletter</a>
+                <a class="modal-trigger waves-effect waves-light btn blue center modal-trigger teal" href"#m-contact">Contact Us</a> <a class="modal-trigger waves-effect waves-light btn red center md-trigger" data-modal="m-sub">Subscribe to our Newsletter</a>
             </div>
 
         </div><!-- Row ends -->
@@ -407,6 +415,7 @@
 </div><!-- Modal ends -->
 
 <!-- Modal for contact from -->
+
 <div class="md-modal md-effect-1 valign-wrapper" id="m-contact">
     <div class="md-content z-depth-2">
         <h3>Shoot Us a Message</h3>
@@ -494,4 +503,3 @@
 
 
 </html>
-
