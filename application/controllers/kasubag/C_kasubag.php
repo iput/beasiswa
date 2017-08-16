@@ -1,7 +1,7 @@
 <?php defined('BASEPATH')OR exit('tidak ada akses diizinkan');
 /**
- *
- */
+*
+*/
 class C_kasubag extends CI_Controller
 {
 
@@ -17,4 +17,4 @@ class C_kasubag extends CI_Controller
     $this->load->view('attribute/footer');
   }
 }
- ?>
+?>
