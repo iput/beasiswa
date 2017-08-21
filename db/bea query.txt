@@ -14,7 +14,8 @@ SELECT pendaftar.nim nimMhs, identitas_mhs.namaLengkap, pendaftar.idBea, bea.nam
     LEFT JOIN kategori_skor ON pendaftar_skor.idKategori=kategori_skor.id
     LEFT JOIN set_sub_kategori_skor ON pendaftar_skor.idSubKategori=set_sub_kategori_skor.id
     WHERE pendaftar.nim=nimMhs
-) jumlah
+) jumlah,
+pendaftar.status, pendaftar.waktuDiubah updated
 FROM pendaftar
 LEFT JOIN bea ON pendaftar.idBea=bea.id
 LEFT JOIN identitas_mhs ON pendaftar.nim=identitas_mhs.nimMhs

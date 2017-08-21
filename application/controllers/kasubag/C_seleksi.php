@@ -30,7 +30,17 @@ class C_seleksi extends CI_Controller
       $sub_array[] = $row->ipk;
       $sub_array[] = $row->skor;
       $sub_array[] = number_format($row->jumlah,2);
-      $sub_array[] = "aksi";
+      $sub_array[] = $row->updated;
+      if ($row->status==1) {
+        $sub_array[] = '
+          <button class="btn-floating waves-effect waves-light primary-color" title="Confirmed" type="submit" name="idPengaturan" onclick="seleksi('."'".$row->idPendaftar."'".','."'".$row->status."'".');"><i class="mdi-action-done"></i></button>
+        ';
+      }elseif ($row->status==0) {
+        $sub_array[] = '
+          <button class="btn-floating waves-effect waves-light red" title="Not Confirmed" type="submit" name="idPengaturan" onclick="seleksi('."'".$row->idPendaftar."'".','."'".$row->status."'".');"><i class="mdi-content-clear"></i></button>
+        ';
+      }
+
 
       $data[] = $sub_array;
     }
@@ -41,6 +51,27 @@ class C_seleksi extends CI_Controller
       "data"            =>  $data
     );
     echo json_encode($output);
+  }
+
+  public function seleksi($idPendaftar, $status)
+  {
+    $change_status;
+    if ($status=="1") {
+      $change_status = "0";
+    }elseif ($status=="0") {
+      $change_status = "1";
+    }
+    $data = array(
+      'status' => $change_status
+    );
+    $this->mdl->seleksi_penerima(array('id' => $idPendaftar), $data);
+    echo json_encode(array("status" => TRUE));
+  }
+
+  public function getDiterima($idBea)
+  {
+    $data = $this->mdl->infoDiterima($idBea);
+    echo json_encode($data);
   }
 
 }

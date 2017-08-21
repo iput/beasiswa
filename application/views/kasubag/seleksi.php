@@ -1,27 +1,61 @@
 <!-- Main START -->
 <main>
+<style media="screen">
+  .informasi{
+    position: fixed;
+    float: right;
+  }
+
+  .isi-info{
+    display: block;
+    padding: 5px;
+    color: #ffffff;
+  }
+
+  .jumlah-diterima{
+    text-align: center;
+    font-size: 15pt;
+  }
+</style>
+<div class="alert primary-color informasi">
+  <a href="javascript:;" onclick="viewDiterima">
+  <span class="isi-info">
+    Diterima
+    <div class="jumlah-diterima">
+      -
+    </div>
+  </span>
+</a>
+</div>
+
   <div class="container">
     <div id="dashboard">
       <div class="section">
         <div id="responsive" class="section">
           <div class="row">
-            <div class="col s6">
+            <div class="col m6 s12">
               <h4>
                 Seleksi Penerima Beasiswa
+
               </h4>
             </div>
-            <div class="col s6">
+            <div class="col m6 s12">
               <p>
                 <blockquote>
                   <font size="4pt" class="blue-text">Select Beasiswa: </font><br>
                   <select class="" name="filterBea" id="filterBea" onChange="viewTabel()">
-                    <option value="0">-Pilih Beasiswa</option>
+                    <option value="kosong">-Pilih Beasiswa</option>
                     <?php
+                    $arr=0;
                     foreach ($comboBea as $cb) {
-                      echo "<option value='".$cb->id."'>".$cb->namaBeasiswa."</option>";
+                      echo "<option value='".$arr."-".$cb->id."'>".$cb->namaBeasiswa."</option>";
+                      $arr+=1;
                     }
                     ?>
                   </select>
+                  <div id="colorText" class="red-text">
+                    <span id="infoSelektor"></span>
+                  </div>
                 </blockquote>
               </p>
             </div>
@@ -37,6 +71,7 @@
                     <th data-field="ipk">IPK</th>
                     <th data-field="skor">Skor</th>
                     <th data-field="jumlah">Nilai</th>
+                    <th data-field="updated">Updated</th>
                     <th data-field="aksi">Aksi</th>
                   </tr>
                 </thead>
@@ -45,7 +80,6 @@
               </table>
             </div>
           </div>
-
         </div>
       </div>
     </div>
@@ -58,15 +92,82 @@ var dataTable;
 var idBea;
 
 document.addEventListener("DOMContentLoaded", function(event) {
-  // datatable();
+  //already
 });
 
 function viewTabel() {
-  this.idBea = $("#filterBea").val();
+  dataArr = $("#filterBea").val().split("-");
+  this.idBea = this.dataArr[1];
+  viewDetailBea(this.dataArr[0]);
   datatable();
 
   reloadJs('materialize', 'min');
   reloadJs('initialize', 'nomin');
+}
+
+function viewDetailBea(indexArr) {
+  if(indexArr!="kosong"){
+    infoBea = <?php echo json_encode($comboBea)?>;
+    selektor = infoBea[indexArr]['selektor'];
+    if (selektor == "3") {
+      $("#infoSelektor").html("[ 2 Selektor ]");
+      $("#colorText").attr("class","red-text");
+    } else {
+      $("#infoSelektor").html("[ 1 Selektor ]");
+      $("#colorText").attr("class","success-text");
+    }
+  } else {
+    $("#infoSelektor").html("");
+  }
+  getDiterima();
+}
+
+function seleksi(idPendaftar, status)
+{
+  var url = "<?php echo site_url('kasubag/C_seleksi/seleksi')?>";
+  $.ajax({
+    url : url+"/"+idPendaftar+"/"+status,
+    type: "POST",
+    data: $('#formInput').serialize(),
+    dataType: "JSON",
+    success: function(data)
+    {
+      getDiterima();
+      reload_table();
+    },
+    error: function (jqXHR, textStatus, errorThrown)
+    {
+      alert('Error adding/update data');
+    }
+  });
+}
+
+function reload_table(){
+  dataTable.ajax.reload(null,false);
+}
+
+function getDiterima()
+{
+  if($("#filterBea").val()!="kosong"){
+    dataArr = $("#filterBea").val().split("-");
+    id_bea = this.dataArr[1];
+    var url = "<?php echo site_url('kasubag/C_seleksi/getDiterima')?>";
+    $.ajax({
+      url : url+"/"+id_bea,
+      type: "POST",
+      dataType: "JSON",
+      success: function(data)
+      {
+        $(".jumlah-diterima").html(data);
+      },
+      error: function (jqXHR, textStatus, errorThrown)
+      {
+        alert('Error get data!');
+      }
+    });
+  }else{
+    $(".jumlah-diterima").html("-");
+  }
 }
 
 function datatable() {
@@ -81,7 +182,7 @@ function datatable() {
     },
     "columnDefs":[
       {
-        "targets":[2,-1],
+        "targets":[0,-1],
         "orderable":false,
       },
     ],
@@ -92,4 +193,5 @@ function datatable() {
     }
   });
 }
+
 </script>
