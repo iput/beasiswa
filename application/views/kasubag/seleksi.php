@@ -107,10 +107,7 @@ function viewTabel() {
 }
 
 function myTimer() {
-  dataArr = $("#filterBea").val().split("-");
-  this.idBea = dataArr[1];
-  viewDetailBea(dataArr[0]);
-
+  getDiterima();
   reload_table();
 }
 
@@ -121,14 +118,15 @@ function viewDetailBea(indexArr) {
     if (selektor == "3") {
       $("#infoSelektor").html("[ 2 Selektor ]");
       $("#colorText").attr("class","red-text");
-      // this.myVar = setInterval(myTimer , 5000);
+      this.myVar = setInterval(myTimer , 5000);
     } else {
       $("#infoSelektor").html("[ 1 Selektor ]");
       $("#colorText").attr("class","success-text");
-      window.clearInterval(this.myVar)
+      window.clearInterval(this.myVar);
     }
   } else {
     $("#infoSelektor").html("");
+    window.clearInterval(this.myVar);
   }
   getDiterima();
 }
