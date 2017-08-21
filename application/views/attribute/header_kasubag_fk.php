@@ -19,6 +19,12 @@
 <link href="<?php echo base_url('assets/css/plugins/justifiedGallery.css')?>" type="text/css" rel="stylesheet" media="screen">
 <!-- Assistance.css are used only for template support. No need to use it on "production" -->
 <link href="<?php echo base_url('assets/css/assistance.css')?>" type="text/css" rel="stylesheet" media="screen">
+
+<!-- data table -->
+<link href="<?php echo base_url('assets/datatable_material/dataTables.material.min.css')?>" type="text/css" rel="stylesheet" media="screen">
+<!-- sweetalert -->
+<script src="<?php echo base_url('assets/sweetalert/sweetalert.min.js');?>" charset="utf-8"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/sweetalert/sweetalert.css');?>">
 </head>
 
 <body class="loading">
@@ -64,7 +70,7 @@
       <li class="side-nav-inline hide-on-med-only"><a href="<?php echo base_url();?>FunctLogin/logout" class="inline waves-effect" title="Logout"><i class="mdi-action-exit-to-app"></i></a> <a href="<?php echo base_url();?>mahasiswa/C_mahasiswa/profile" class="inline waves-effect" title="Profile"><i class="mdi-action-perm-identity"></i></a> <a href="#search-in-modal" class="inline waves-effect modal-trigger"><i class="mdi-action-search"></i></a></li>
       <li><a href="#" class="waves-effect"><i class="mdi-action-dashboard left"></i><span>Beranda</span></a></li>
       <li><a href="#" class="waves-effect"><i class="mdi-communication-email left"></i><span>Profile</span></a></li>
-      <li><a href="#" class="waves-effect"><i class="mdi-action-dashboard left"></i><span>Seleksi Mahasiswa</span></a></li>
+      <li><a href="<?php echo base_url('kasubag_fakultas/C_seleksi')?>" class="waves-effect"><i class="mdi-action-dashboard left"></i><span>Seleksi Mahasiswa</span></a></li>
       <li>
         <ul class="collapsible" data-collapsible="accordion">
           <li><a class="collapsible-header waves-effect"><i class="mdi-editor-format-paint left"></i><span>laporan</span></a>
