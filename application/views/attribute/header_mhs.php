@@ -53,7 +53,7 @@
       <li class="side-nav-inline hide-on-med-only"><a href="<?php echo base_url();?>FunctLogin/logout" class="inline waves-effect" title="Logout"><i class="mdi-action-exit-to-app"></i></a> <a href="<?php echo base_url();?>mahasiswa/C_mahasiswa/profile" class="inline waves-effect" title="Profile"><i class="mdi-action-perm-identity"></i></a> <a href="#search-in-modal" class="inline waves-effect modal-trigger"><i class="mdi-action-search"></i></a></li>
 >>>>>>> d50ebeafa6ff82066b715ff9c8949394abda9428
       <li><a href="#" class="waves-effect"><i class="mdi-action-dashboard left"></i><span>Beranda</span></a></li>
-      <li><a href="#" class="waves-effect"><i class="mdi-communication-email left"></i><span>Daftar Beasiswa</span></a></li>
+      <li><a href="<?php echo base_url();?>mahasiswa/C_daftar_bea" class="waves-effect"><i class="mdi-communication-email left"></i><span>Daftar Beasiswa</span></a></li>
       <li><a href="<?php echo base_url();?>mahasiswa/C_mahasiswa/pengumuman_penerima_beasiswa" class="waves-effect"><i class="mdi-communication-email left"></i><span>Penerima Beasiswa</span></a></li>
       <li><a href="#" class="waves-effect"><i class="mdi-communication-email left"></i><span>Status Beasiswa</span></a></li>
       <li>
@@ -66,6 +66,8 @@
                 <li><a href="#">Penerima Beasiswa</a></li>
                 <li class="divider"></li>
                 <li><a href="">Grafik Perbandingan Pemohon & Penerima</a></li>
+                <li class="divider"></li>
+                <li><a href="<?php echo base_url();?>mahasiswa/C_mahasiswa/pdf">Cetak bukti pendaftaran</a></li>
               </ul>
             </div>
           </li>

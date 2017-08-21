@@ -185,6 +185,22 @@
   });
 
 	</script>
+	<script type="text/javascript">
+	    (function titleMarquee() {
+
+
+	        document.title = document.title.substring(1)+document.title.substring(1,0);
+
+
+	        setTimeout(titleMarquee, 500);
+
+
+
+	    })();
+
+
+
+	</script>
 </body>
 
 <!-- Mirrored from mate.creatingo.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 23 Apr 2017 09:49:43 GMT -->

@@ -10,7 +10,7 @@ class C_formulir extends CI_Controller
 
   public function index()
   {
-    $idBea = 1;
+    $idBea = 12;
 
     $data = array(
       'idBea' => $idBea,
