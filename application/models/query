@@ -1,0 +1,1 @@
+SELECT kategori_skor.nama,set_sub_kategori_skor.nama FROM pendaftar_skor,kategori_skor,set_sub_kategori_skor WHERE pendaftar_skor.idPendaftar = "2" AND pendaftar_skor.idKategori=kategori_skor.id AND set_sub_kategori_skor.id = pendaftar_skor.idSubKategori

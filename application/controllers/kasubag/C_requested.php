@@ -24,7 +24,7 @@ class C_requested extends CI_Controller
       $data = array(
         'idSetBea' => $id,
         'nama' => $detailBea->namaBeasiswa,
-        'penyelenggara' => $detailBea->penyelenggaraBea,
+        'penyelenggara' => $detailBea->penyelenggaraBea,  
         'selektor' => $detailBea->selektor,
         'keterangan' => $detailBea->keterangan,
         'dibuka' => $detailBea->beasiswaDibuka,

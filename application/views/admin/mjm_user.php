@@ -114,7 +114,74 @@
             <a href="#!" class=" modal-action modal-close waves-effect btn-flat right"><i class="mdi-close right"></i>Batalkan</a></div>
 
     </div>
+    <div id="modal2" class="modal">
+        <div class="modal-content no-padding">
+            <nav class="">
+                <div class="nav-wrapper">
+                    <div class="left col s7">
+                        <p class="modal-title blue-grey-text text-lighten-4" style="margin:0; padding-left:20px;">Tambah
+                            user baru </p>
+                    </div>
+                    <div class="col s5">
+                        <ul class="right">
+                            <li><a href="#!"><i class="modal-action modal-close mdi-navigation-close"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <div class="form-pad">
+                <form action="#" id="form">
+                    <input type="hidden" value="" name="id"/>
+                    <div class="input-field">
+                        <input name="userId" id="to_email" type="text" class="validate">
 
+                        <label for="to_email" data-error="Harap isi dengan angka" data-success="Benar">User ID</label>
+
+                    </div>
+                    <div class="input-field">
+                        <input name="password" id="subject" type="text" class="validate">
+                        <label for="subject">Password</label>
+
+                    </div>
+                    <div class="row">
+
+                        <div class="input-field col s12">
+                            <select class="form-control" name="idLevel" id="levelPengguna">
+                                <option>Pilih Level Pengguna</option>
+                                <option value="1">Staff Kemahasiswaan</option>
+                                <option value="2">Kasubag</option>
+                                <option value="3">Kasubag Fakultas</option>
+                                <option value="4">kabag</option>
+                                <option value="5">Mahasiswa</option>
+                                <option value="6">Admin</option>
+
+                            </select>
+                            <label for="levelPengguna">Level Pengguna</label>
+                            <span class="mdi-action-help"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <select name="status" id="levelPengguna2">
+                                <option>Pilih status user</option>
+                                <option value="open">Aktif</option>
+                                <option value="close">Tidak Aktif</option>
+
+                            </select>
+                            <label for="levelPengguna2">Status user </label>
+                            <span class="mdi-action-help"></span>
+                            <p>(Aktif= boleh mengakses sistem/Tidak Aktif = tidak bisa akses sistem)<br><br></p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
+        <div class="modal-footer"><a href="#!" id="btnSave" class=" modal-action modal-close waves-effect btn-flat left" onclick="save()"><i class="mdi-content-save right"></i>Simpan</a>
+            <a href="#!" class=" modal-action modal-close waves-effect btn-flat right"><i class="mdi-close right"></i>Batalkan</a></div>
+
+    </div>
 </main>
 <script type="text/javascript">
     var save_method;
@@ -162,7 +229,7 @@
         save_method = 'update';
         $('#form')[0].reset(); // reset form on modals
         $('input[name=password]').attr('disabled',true);
-        $('select[name=idLevel]').val(1).attr('selected',true);
+
 
         //Ajax Load data from ajax
         $.ajax({
@@ -178,11 +245,12 @@
                 $('[name="id"]').val(data.id);
                 $('[name="userId"]').val(data.userId);
                 $('[name="password"]').val(data.password);
+                $('option[name="masbro"]').val(data.idLevel);
 
-                $('select[name="idLevel"] option[value="'+appenddata1+'"]').attr("selected","selected");
+
                 $('[name="status"]').val(data.status);
 
-                $('#modal1').openModal(); // show bootstrap modal when complete loaded
+                $('#modal2').openModal(); // show bootstrap modal when complete loaded
                 $('.modal-title').text('Edit User'); // Set title to Bootstrap modal title
 
             },

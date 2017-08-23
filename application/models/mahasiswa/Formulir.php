@@ -11,6 +11,20 @@ class Formulir extends CI_Model {
     $query = $this->db->get();
     return $query->row();
   }
+  function data_pendaftar()
+  { // query binding ditandai dengan "?" untuk security
+    // $query = $this->db->query("SELECT 'pendaftar.idBea,jurusan.namaJur,pendaftar.nim,identitas_mhs.namaLengkap,bea.namaBeasiswa,pendaftar.semester,pendaftar.sks,pendaftar.ipk,pendaftar.alamatMalang,identitas_mhs.alamatLengkap,identitas_mhs.noTelp' FROM 'pendaftar,bea,identitas_mhs,jurusan WHERE bea.id = pendaftar.idBea' AND'pendaftar.id = 2' AND 'pendaftar.nim=identitas_mhs.nimMhs AND jurusan.id = identitas_mhs.idJrs'");
+
+    $this->db->select('pendaftar.idBea as idbea,jurusan.namaJur as jurusan,pendaftar.nim as pendaftarnim,identitas_mhs.namaLengkap as namalengkap,bea.namaBeasiswa as namabea,pendaftar.semester as semester,pendaftar.sks as sks,pendaftar.ipk as ipk,pendaftar.alamatMalang as alamatmalang,identitas_mhs.alamatLengkap as alamatlengkap,identitas_mhs.noTelp as telp,identitas_mhs.tempatLahir as tempatLahir,identitas_mhs.tglLahir as tgl');
+    $this->db->from('pendaftar,bea,identitas_mhs,jurusan');
+    $this->db->where('bea.id = pendaftar.idBea')AND('pendaftar.id = "0"')AND('pendaftar.nim=identitas_mhs.nimMhs AND jurusan.id = identitas_mhs.idJrs');
+    $query = $this->db->get();
+    // mengembalikan hasil query
+    return $query;
+    
+   
+
+  }
 
   public function get_skor_bea($id)
   {

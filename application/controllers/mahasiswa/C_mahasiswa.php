@@ -1,5 +1,5 @@
 <?php defined('BASEPATH') OR exit('akses tidak dapat diterima');
-require_once APPPATH.'third_party/tcpdf/tcpdf'.EXT;
+
 class C_mahasiswa extends CI_Controller
 {
 
@@ -7,6 +7,17 @@ class C_mahasiswa extends CI_Controller
     {
         parent::__construct();
         $this->load->model("mahasiswa/PengumumanPenerimaBeasiswa", 'model');
+        $this->load->model("mahasiswa/Formulir", 'm_aplikasi');
+    }
+    public function data_pendaftar()
+    {   
+        
+        // mengambils hanya satu baris (menggunakan fungsi row()) 
+        // di model m_aplikasi function daftar_tugas dengan parameter $nim
+        $data['pendaftar'] = $this->m_aplikasi->data_pendaftar();
+        
+        $this->load->view('mahasiswa/pdfreport',$data);
+        unset($data);
     }
 
     public function index()
@@ -18,12 +29,7 @@ class C_mahasiswa extends CI_Controller
 
     function pdf()
     {
-        $this->load->helper('pdf_helper');
-        /*
-            ---- ---- ---- ----
-            your code here
-            ---- ---- ---- ----
-        */
+
         $this->load->view('mahasiswa/pdfreport');
     }
 

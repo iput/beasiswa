@@ -48,7 +48,7 @@ main {
       <form class="login-form" action="<?php echo base_url('functLogin/prosesLogin') ?>" method="post">
         <div class="row primary-color form-header">
           <div class="col s4">
-            <img src="<?php echo base_url();?>imgs/admin-logo-full.svg" alt="logo" class="logo responsive-img-height">
+            <img src="<?php echo base_url();?>assets/img/uin.png" alt="logo" class="logo responsive-img-height">
           </div>
 		  <div class="col s8 right-align">
             <h4 class="light white-text">Login</h4>
