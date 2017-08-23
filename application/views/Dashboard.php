@@ -171,7 +171,7 @@
                     <p class="white-text">Beberapa informasi penting yang terupdate :</p>
                 </div>
                 <div id="blog-post-full">
-                    <!-- medium size post-->
+                <!-- medium size post-->
                     <? foreach ($daftar_berita as $r){
                         echo "<div class='card medium'>
                         <div class='card-image'>
@@ -182,7 +182,6 @@
                         <div class='card-content'>
                             <p class='ultra-small'>".$r->tglInBerita."</p>
                             <p>".$r->kontenBerita."</p>
-
                         </div>
                         <div class='card-action'>
                             By <a href='#'>".$r->penulisBerita."</a>

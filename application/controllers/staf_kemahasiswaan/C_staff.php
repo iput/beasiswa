@@ -22,7 +22,7 @@ class C_staff extends CI_Controller
 
     $user = $this->session->userdata('id');
     $data['user'] = $this->mdl->getdata($user);
-    $this->load->view('attribute/header_staff');
+    $this->load->view('attribute/header_staff',$data);
     $this->load->view('staff_kemahasiswaan/v_profile_staff',$data);
     $this->load->view('attribute/footer');
   }
