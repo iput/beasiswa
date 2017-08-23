@@ -8,8 +8,6 @@
 <meta name="description" content="Mate Rio is a responsive Admin Template based on Material Design by Google.">
 <meta name="keywords" content="materialize, admin template, google material, dashboard template, responsive admin template,">
 <title>Beasiswa | Kasubag Kemahasiswaan</title>
-
-<!-- Preloader stage (extracted for first show) -->
 <link href="<?php echo base_url('assets/css/preloader-stage.css')?>" type="text/css" rel="stylesheet" media="screen">
 <link href="<?php echo base_url('assets/css/materialize.css')?>" type="text/css" rel="stylesheet" media="screen">
 <link rel="stylesheet" href="http://fonts.googleapis.com/icon?family=Material+Icons">
@@ -55,8 +53,8 @@
       <div class="nav-wrapper">
         <ul class="right">
           <li class="hide-on-small-only"><a href="#search-in-modal" class="modal-trigger"><i class="mdi-action-search"></i></a></li>
-          <li class="hide-on-small-only"><a href="account.html"><i class="mdi-action-perm-identity"></i></a></li>
-          <li class="hide-on-small-only"><a href="login.html" target="_blank"><i class="mdi-action-exit-to-app"></i></a></li>
+          <li class="hide-on-small-only"><a href="<?php echo base_url();?>kasubag/Kasubag/profile"><i class="mdi-action-perm-identity"></i></a></li>
+          <li class="hide-on-small-only"><a href="<?php echo base_url();?>FunctLogin/logout"><i class="mdi-action-exit-to-app"></i></a></li>
           <li class="toogle-side-nav"><a href="#" data-activates="slide-menu" class="button-collapse"><i class="mdi-navigation-menu"></i></a></li>
         </ul>
       </div>
@@ -66,7 +64,7 @@
   <div id="slide-menu" class="side-nav fixed" data-simplebar-direction="vertical">
     <ul class="side-nav-main">
       <li class="logo hide-on-med-and-down"><img src="<?php echo base_url('imgs/admin-logo-full.svg')?>" alt="logo" class="logo responsive-img"></li>
-      <li class="side-nav-inline hide-on-med-only"><a href="#" class="inline waves-effect" target="_blank"><i class="mdi-action-exit-to-app"></i></a> <a href="#" class="inline waves-effect"><i class="mdi-action-perm-identity"></i></a> <a href="#search-in-modal" class="inline waves-effect modal-trigger"><i class="mdi-action-search"></i></a></li>
+      <li class="side-nav-inline hide-on-med-only"><a href="<?php echo base_url();?>FunctLogin/logout" class="inline waves-effect" title="Logout"><i class="mdi-action-exit-to-app"></i></a> <a href="<?php echo base_url();?>kasubag/Kasubag/profile" class="inline waves-effect" title="Profile"><i class="mdi-action-perm-identity"></i></a> <a href="#search-in-modal" class="inline waves-effect modal-trigger"><i class="mdi-action-search"></i></a></li>
       <li><a href="#" class="waves-effect"><i class="mdi-communication-email left"></i><span>Profile</span></a></li>
       <li>
         <ul class="collapsible" data-collapsible="accordion">

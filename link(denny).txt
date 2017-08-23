@@ -1,16 +1,12 @@
 >> Kabag:
 http://localhost/beasiswa/kabag/C_request
 
->> Kasubag Kemahasiswaan
+>> Kasubag Kemahasiswaan:
 http://localhost/beasiswa/kasubag/C_master_scoring
+http://localhost/beasiswa/kasubag/C_requested
 
->> Mahasiswa
-http://localhost/beasiswa/mahasiswa/C_mahasiswa/pengumuman_penerima_beasiswa
+>> Mahasiswa:
+http://localhost/beasiswa/mahasiswa/c_formulir (baru menampilkan view)
+http://localhost/beasiswa/mahasiswa/C_mahasiswa/profile
 
-tabel db bea:
-- hapus "status_tabel"
-- tambah "selektor"
-- tambah "keterangan"
-
-.:random:.
-bug - kasubag di pengaturan beasiswa, jika scoring kosong trus di tekan simpan, maka error dan insert lagi
+23 Agustus 2017

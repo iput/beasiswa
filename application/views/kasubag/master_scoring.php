@@ -281,7 +281,7 @@
     </form>
     <div class="">
       <button class="btn-floating waves-effect waves-light" title="Tambah Scoring" onclick="add_score_input()"><i class="material-icons">add</i></button>
-      Tambahkan scoring beasiswa. <br><br><small class="blue-text">**Untuk menhapus, biarkan kosong pada isian scoring.</small>
+      Tambahkan scoring beasiswa. <br><br><small class="blue-text">**Untuk menghapus, biarkan kosong pada isian scoring.</small>
     </div>
   </div>
   <div class="modal-footer">

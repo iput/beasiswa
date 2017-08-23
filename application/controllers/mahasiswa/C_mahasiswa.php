@@ -7,6 +7,7 @@ class C_mahasiswa extends CI_Controller
   {
     parent::__construct();
     $this->load->model("mahasiswa/PengumumanPenerimaBeasiswa",'model');
+    $this->load->model("mahasiswa/Profile",'mdl');
   }
 
   public function index()
@@ -17,8 +18,10 @@ class C_mahasiswa extends CI_Controller
   }
   public function profile()
   { 
+    $key = $this->session->userdata('username');
+    $data['user'] = $this->mdl->getdata($key);
     $this->load->view('attribute/header_mhs');
-    $this->load->view('mahasiswa/v_profile_mhs');
+    $this->load->view('mahasiswa/v_profile_mhs',$data);
     $this->load->view('attribute/footer');
   }
 

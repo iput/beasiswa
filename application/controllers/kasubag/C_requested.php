@@ -119,17 +119,19 @@ class C_requested extends CI_Controller
     $insert_bea = $this->mdl->save_bea($data_bea);
 
     $count_score = count($this->input->post('score'));
-    $data = array();
-    for ($i=0;$i<$count_score;$i++) {
-      $skor = $this->input->post('score['.$i.']');
-      if ($skor != "HAPUS") {
-        $data[]= array(
-          'idBea' => $insert_bea,
-          'idKategoriSkor' => $skor,
-        );
+    if ($this->input->post('score')) {
+      $data = array();
+      for ($i=0;$i<$count_score;$i++) {
+        $skor = $this->input->post('score['.$i.']');
+        if ($skor != "HAPUS") {
+          $data[]= array(
+            'idBea' => $insert_bea,
+            'idKategoriSkor' => $skor,
+          );
+        }
       }
+      $insert_sub_bea = $this->mdl->save_sub_bea($data);
     }
-    $insert_sub_bea = $this->mdl->save_sub_bea($data);
     echo json_encode(array("status" => TRUE));
   }
 

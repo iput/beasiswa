@@ -32,27 +32,27 @@
                       <input name="idSetBea" type="hidden" class="validate" value="<?php echo $idSetBea;?>">
                       <div class="input-field col m12">
                         <i class="mdi-maps-local-library prefix"></i>
-                        <input id="nama" name="nama" type="text" class="validate" value="<?php echo $nama;?>">
+                        <input id="nama" name="nama" type="text" class="validate" value="<?php echo $nama;?>" required="required">
                         <label for="nama">Nama Beasiswa</label>
                       </div>
                       <div class="input-field col m12">
                         <i class="mdi-social-location-city prefix"></i>
-                        <input id="penyelenggara" name="penyelenggara" type="text" class="validate" value="<?php echo $penyelenggara;?>">
+                        <input id="penyelenggara" name="penyelenggara" type="text" class="validate" value="<?php echo $penyelenggara;?>" required="required">
                         <label for="penyelenggara">Penyelenggra</label>
                       </div>
                       <div class="input-field col m12">
                         <i class="mdi-action-alarm-add prefix"></i>
-                        <input id="dibuka" name="dibuka" type="date" class="validate datepicker" value="<?php echo $dibuka;?>">
+                        <input id="dibuka" name="dibuka" type="date" class="validate datepicker" value="<?php echo $dibuka;?>" required="required">
                         <label for="dibuka">Beasiswa Dibuka <span>*Thn-Bln-Tgl</span></label>
                       </div>
                       <div class="input-field col m12">
                         <i class="mdi-action-alarm-off prefix"></i>
-                        <input id="ditutup" name="ditutup" type="date" class="validate datepicker" value="<?php echo $ditutup;?>">
+                        <input id="ditutup" name="ditutup" type="date" class="validate datepicker" value="<?php echo $ditutup;?>" required="required">
                         <label for="ditutup">Beasiswa Ditutup <span>*Thn-Bln-Tgl</span></label>
                       </div>
                       <div class="input-field col m12">
                         <i class="mdi-action-open-in-browser prefix"></i>
-                        <input id="kuota" name="kuota" type="text" class="validate" value="<?php echo $kuota;?>">
+                        <input id="kuota" name="kuota" type="text" class="validate" value="<?php echo $kuota;?>" required="required">
                         <label for="kuota">Kuota</label>
                       </div>
                       <div class="input-field col m12">
@@ -74,13 +74,13 @@
                               $dua = "checked";
                             }
                          ?>
-                        <input class="with-gap" name="selektor" type="radio" value="1" id="kemahasiswaan" <?php echo $kms; ?>>
+                        <input class="with-gap" name="selektor" type="radio" value="1" id="kemahasiswaan" <?php echo $kms; ?> required="required">
                         <label for="kemahasiswaan">Kasubag Kemahasiswaan</label>
                         <br>
-                        <input class="with-gap" name="selektor" type="radio" value="2" id="fakultas" <?php echo $fks; ?>>
+                        <input class="with-gap" name="selektor" type="radio" value="2" id="fakultas" <?php echo $fks; ?> required="required">
                         <label for="fakultas">Kasubag Fakultas</label>
                         <br>
-                        <input class="with-gap" name="selektor" type="radio" value="3" id="keduanya" <?php echo $dua; ?>>
+                        <input class="with-gap" name="selektor" type="radio" value="3" id="keduanya" <?php echo $dua; ?> required="required">
                         <label for="keduanya">Keduanya</label>
                       </div>
                     </div>

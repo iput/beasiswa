@@ -1,109 +1,86 @@
 <!-- Main START -->
 <main>
+<style media="screen">
+  .informasi{
+    position: fixed;
+    float: right;
+  }
+
+  .isi-info{
+    display: block;
+    padding: 5px;
+    color: #ffffff;
+  }
+
+  .jumlah-diterima{
+    text-align: center;
+    font-size: 15pt;
+  }
+</style>
+<div class="alert primary-color informasi">
+  <a href="javascript:;" onclick="viewDiterima">
+  <span class="isi-info">
+    Diterima
+    <div class="jumlah-diterima">
+      -
+    </div>
+  </span>
+</a>
+</div>
+
   <div class="container">
     <div id="dashboard">
       <div class="section">
         <div id="responsive" class="section">
-          <h4>
-            Seleksi Penerima Beasiswa
-          </h4>
           <div class="row">
-            <div class="col m12">
-              <div class="card-panel"> <!-- warna card -->
-                <div class="row">
-                  <div class="input-field col m3">
-                    <select>
-                      <option value="" disabled selected>Choose your option</option>
-                      <option value="1">Option 1</option>
-                      <option value="2">Option 2</option>
-                      <option value="3">Option 3</option>
-                    </select>
-                    <label>Nama Beasiswa</label>
+            <div class="col m6 s12">
+              <h4>
+                Seleksi Penerima Beasiswa
+
+              </h4>
+            </div>
+            <div class="col m6 s12">
+              <p>
+                <blockquote>
+                  <font size="4pt" class="blue-text">Select Beasiswa: </font><br>
+                  <select class="" name="filterBea" id="filterBea" onChange="viewTabel()">
+                    <option value="kosong">-Pilih Beasiswa</option>
+                    <?php
+                    $arr=0;
+                    foreach ($comboBea as $cb) {
+                      echo "<option value='".$arr."-".$cb->id."'>".$cb->namaBeasiswa."</option>";
+                      $arr+=1;
+                    }
+                    ?>
+                  </select>
+                  <div id="colorText" class="red-text">
+                    <span id="infoSelektor"></span>
                   </div>
-                  <div class="input-field col m3">
-                    <select>
-                      <option value="" disabled selected>Choose your option</option>
-                      <option value="1">Option 1</option>
-                      <option value="2">Option 2</option>
-                      <option value="3">Option 3</option>
-                    </select>
-                    <label>Tahun</label>
-                  </div>
-                  <div class="input-field col m3">
-                    <select>
-                      <option value="" disabled selected>Choose your option</option>
-                      <option value="1">Option 1</option>
-                      <option value="2">Option 2</option>
-                      <option value="3">Option 3</option>
-                    </select>
-                    <label>Materialize Select</label>
-                  </div>
-                  <div class="input-field col m1">
-                    <button class="btn-floating waves-effect waves-light orange" onclick="add_data()" title="Tambah Data"><i class="material-icons">search</i></button>
-                  </div>
-                  <div class="input-field col m2">
-                    <small class="blue-text">* Atur filter dahulu untuk menampilkan data!</small>
-                  </div>
-                </div>
-              </div>
+                </blockquote>
+              </p>
             </div>
           </div>
-        <div class="row">
-          <div class="col s12">
-            <table class="striped" id="tabel">
-              <thead>
-                <tr>
+          <div class="row">
+            <div class="col s12">
+              <table class="striped" id="tabel">
+                <thead>
+                  <tr>
                     <th data-field="id" style="width: 3%;">#</th>
-                    <th data-field="bea">Beasiswa</th>
-                    <th data-field="penyelenggara">Penyelenggara</th>
-                    <th data-field="selektor">Selektor</th>
-                    <th data-field="konfirmasi">Keterangan</th>
-                    <th data-field="status">Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>BRI</td>
-                  <td>Bank BRI</td>
-                  <td><i class="material-icons" title="Kasubag. Kemahasiswaan">radio_button_checked</i></td>
-                  <td class="success-text">Telah Dikonfirmasi</td>
-                  <td>
-                    <a class="btn-floating waves-effect waves-light primary-color z-depth-0" title="Confirmed"><i class="material-icons">done</i></a>
-                  </td
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Prestasi</td>
-                  <td>UIN Maliki</td>
-                  <td><i class="material-icons" title="Kasubag. Kemahasiswaan Fakultas">radio_button_unchecked</i></td>
-                  <td class="alert-text" style="max-width: 330px;">Scoring pekerjaan orang tua belum masuk</td>
-                  <td>
-                    <form action="<?php echo base_url('kasubag/C_requested/pengaturan')?>" method="post">
-                      <button class="btn-floating waves-effect waves-light red" title="Not Confirmed" type="submit" name="idPengaturan" value="bismillah"><i class="material-icons">settings</i></button>
-                    </form>
-                  </td
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>BNI</td>
-                  <td>Bank BNI</td>
-                  <td>
-                    <i class="material-icons" title="Keduanya">star</i>
-                  </td>
-                  <td class="alert-text" style="max-width: 330px;"></td>
-                  <td>
-                    <form action="<?php echo base_url('kasubag/C_requested/pengaturan')?>" method="post">
-                      <button class="btn-floating waves-effect waves-light red" title="Not Confirmed" type="submit" name="idPengaturan" value="bisa"><i class="material-icons">settings</i></button>
-                    </form>
-                  </td
-                </tr>
-              </tbody>
-            </table>
+                    <th data-field="nim">NIM</th>
+                    <th data-field="nama">Nama</th>
+                    <th data-field="ipk">IPK</th>
+                    <th data-field="skor">Skor</th>
+                    <th data-field="jumlah">Nilai</th>
+                    <th data-field="updated">Updated</th>
+                    <th data-field="aksi">Aksi</th>
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
-
-      </div>
       </div>
     </div>
   </div>
@@ -112,31 +89,118 @@
 <script type="text/javascript">
 
 var dataTable;
+var idBea;
+var myVar;
 
 document.addEventListener("DOMContentLoaded", function(event) {
-  // datatable();
+  //already
 });
+
+function viewTabel() {
+  dataArr = $("#filterBea").val().split("-");
+  this.idBea = dataArr[1];
+  viewDetailBea(dataArr[0]);
+  datatable();
+
+  reloadJs('materialize', 'min');
+  reloadJs('initialize', 'nomin');
+}
+
+function myTimer() {
+  getDiterima();
+  reload_table();
+}
+
+function viewDetailBea(indexArr) {
+  if(indexArr!="kosong"){
+    infoBea = <?php echo json_encode($comboBea)?>;
+    selektor = infoBea[indexArr]['selektor'];
+    if (selektor == "3") {
+      $("#infoSelektor").html("[ 2 Selektor ]");
+      $("#colorText").attr("class","red-text");
+      this.myVar = setInterval(myTimer , 5000);
+    } else {
+      $("#infoSelektor").html("[ 1 Selektor ]");
+      $("#colorText").attr("class","success-text");
+      window.clearInterval(this.myVar);
+    }
+  } else {
+    $("#infoSelektor").html("");
+    window.clearInterval(this.myVar);
+  }
+  getDiterima();
+}
+
+function seleksi(idPendaftar, status)
+{
+  var url = "<?php echo site_url('kasubag/C_seleksi/seleksi')?>";
+  $.ajax({
+    url : url+"/"+idPendaftar+"/"+status,
+    type: "POST",
+    data: $('#formInput').serialize(),
+    dataType: "JSON",
+    success: function(data)
+    {
+      getDiterima();
+      reload_table();
+    },
+    error: function (jqXHR, textStatus, errorThrown)
+    {
+      alert('Error adding/update data');
+    }
+  });
+}
+
+function reload_table(){
+  dataTable.ajax.reload(null,false);
+}
+
+function getDiterima()
+{
+  if($("#filterBea").val()!="kosong"){
+    dataArr = $("#filterBea").val().split("-");
+    id_bea = dataArr[1];
+    var url = "<?php echo site_url('kasubag/C_seleksi/getDiterima')?>";
+    $.ajax({
+      url : url+"/"+id_bea,
+      type: "POST",
+      dataType: "JSON",
+      success: function(data)
+      {
+        $(".jumlah-diterima").html(data);
+      },
+      error: function (jqXHR, textStatus, errorThrown)
+      {
+        alert('Error get data!');
+      }
+    });
+  }else{
+    $(".jumlah-diterima").html("-");
+  }
+}
 
 function datatable() {
   dataTable = $('#tabel').DataTable({
+    "destroy":true,
     "processing":true,
     "serverSide":true,
     "order":[],
     "ajax":{
-        url:"<?php echo base_url('kasubag/C_requested/datatable'); ?>",
-        type:"POST"
+      url:"<?php echo base_url('kasubag/C_seleksi/datatable'); ?>/"+this.idBea,
+      type:"POST"
     },
     "columnDefs":[
-        {
-            "targets":[2,-1],
-            "orderable":false,
-        },
+      {
+        "targets":[0,-1],
+        "orderable":false,
+      },
     ],
     "dom": '<"row" <"col s6 m6 l3 left"l><"col s6 m6 l3 right"f>><"bersih tengah" rt><"bottom"ip>',
     language : {
-        sLengthMenu: "Tampilkan _MENU_",
-        sSearch: "Cari:"
+      sLengthMenu: "Tampilkan _MENU_",
+      sSearch: "Cari"
     }
   });
 }
+
 </script>
