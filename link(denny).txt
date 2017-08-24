@@ -9,4 +9,4 @@ http://localhost/beasiswa/kasubag/C_requested
 http://localhost/beasiswa/mahasiswa/c_formulir (baru menampilkan view)
 http://localhost/beasiswa/mahasiswa/C_mahasiswa/profile
 
-23 Agustus 2017
+24 Agustus 2017
