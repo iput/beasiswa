@@ -13,7 +13,7 @@ class LoginMod extends CI_Model
 	public function actLogin($username, $password, $level)
 	{	
 
-		$query = $this->db->query("SELECT * FROM akses WHERE userId=? AND password=? AND idLevel=?", array($username, $password, $level));
+		$query = $this->db->query("SELECT * FROM akses WHERE userId=? AND password=? AND idLevel=? AND status='open'", array($username, $password, $level));
  		if ($query) {
  			return $query;
  		}else{

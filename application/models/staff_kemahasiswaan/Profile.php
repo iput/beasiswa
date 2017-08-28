@@ -9,7 +9,7 @@ class Profile extends CI_Model {
 
 	public function getdata($key)
 	{
-		$this->db->where('id',$key);
+		$this->db->where('idAkses',$key);
 		$hasil = $this->db->get('profil_admin');
 		return $hasil;
 	}

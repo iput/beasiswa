@@ -84,7 +84,7 @@
                             <td><?php echo $key->namaFk ;?></td>
                             <td><?php echo $key->namaJur ;?></td>
                             <td><?php echo $key->namaBeasiswa ;?></td>
-                            <td><?php echo $key->tahun ;?></td>
+                            <td><?php echo $key->waktuDiubah ;?></td>
                           </tr>
                           <?php }?> 
                         </tbody>

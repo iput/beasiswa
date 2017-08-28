@@ -39,10 +39,11 @@ public function prosesLogin()
 	$username = $this->filter($username);
 
 	$password= $this->input->post('password');
-	$password= md5($password);
+	// $password= md5($password);
 	$password = $this->filter($password);
 
 	$level = $this->input->post('levelPengguna');
+	
 
 	$prosesLog = $this->mod->actLogin($username, $password, $level)->row();
 	$result = count($prosesLog);
@@ -50,6 +51,7 @@ public function prosesLogin()
 	if ($result>0) {
 		if ($username==$prosesLog->userId) {
 			if ($password==$prosesLog->password) {
+				// if ($status==$prosesLog->status) {
 				if ($prosesLog->idLevel==1) {
 					$data = array(
 						'id'		=>$prosesLog->id,
@@ -92,22 +94,39 @@ public function prosesLogin()
 					$this->session->set_userdata($data);
 
 					redirect('mahasiswa/C_mahasiswa');
+
+				}else if($prosesLog->idLevel==6){
+					$data = array(
+						"id"=>$prosesLog->id,
+						"username"=>$prosesLog->userId,
+						"level"=>$prosesLog->level,
+						"status"=>$prosesLog->status);
+					$this->session->set_userdata($data);
+
+					redirect('C_admin');
+
 				}else{
 					$this->session->set_flashdata('gagal','Level tidak terpenuhi');
 					redirect('functLogin');
 				}
-			}else{
-				$this->session->set_flashdata('gagal','Password salah');
+
+
+			/*else{
+				$this->session->set_flashdata('gagal','terdaftar');
 				redirect('functLogin');
-			}
+			}*/
 		}else{
-			$this->session->set_flashdata('gagal','Username tidak tepat');
-			redirect('functLogin');	
+			$this->session->set_flashdata('gagal','Password salah');
+			redirect('functLogin');
 		}
 	}else{
-		$this->session->set_flashdata('gagal','Data anda tidak terdaftar dalam sistem');
-		redirect('functLogin');
+		$this->session->set_flashdata('gagal','Username tidak tepat');
+		redirect('functLogin');	
 	}
+}else{
+	$this->session->set_flashdata('gagal','Data anda tidak terdaftar dalam sistem');
+	redirect('functLogin');
+}
 
 }
 }

@@ -134,16 +134,16 @@
             </div>
         </div>
         <div class="row center">
-        <? foreach ($daftar_bea as $r){
-            echo "<div class='col s12 m6 l3'>
+        <?php foreach ($daftar_bea as $r): ?>
+            <div class='col s12 m6 l3'>
                 <div class='card-panel overview-section-box wow fadeIn' data-wow-delay='0.1s'>
 
-                    <h3>".$r->namaBeasiswa."</h3>
+                    <h3><?php echo $r->namaBeasiswa?></h3>
                     <p>
                         <table>
-                                <tr><td>Penyelenggara bea </td><td>: ".$r->penyelenggaraBea ."</td> </tr>
-                                <tr><td>Periode pendaftaran </td><td>: ".$r->beasiswadibuka ." sampai dengan ".$r->beasiswatutup ."</td> </tr>
-                                <tr><td>Kuota Penerima </td><td>: ".$r->kuota."</td> </tr>
+                                <tr><td>Penyelenggara bea </td><td>:<?php echo $r->penyelenggaraBea?></td> </tr>
+                                <tr><td>Periode pendaftaran </td><td>: <?php echo $r->beasiswadibuka ?> sampai dengan <?php echo $r->beasiswatutup?></td> </tr>
+                                <tr><td>Kuota Penerima </td><td>: <?php echo $r->kuota?></td> </tr>
                                 <tr><td>Status beasiswa </td><td>: Dibuka  </td> </tr>
                                 <a class='waves-effect waves-light btn red center md-trigger' >Pendaftaran Dibuka</a>
                                 
@@ -151,9 +151,8 @@
                         </table>
                     </p>
                 </div>
-            </div>";
-        }
-        ?>
+            </div>
+        <?php endforeach; ?>
             <!-- Col ends -->
             <!-- Col ends -->
         </div><!-- Row ends -->
@@ -171,42 +170,25 @@
                     <p class="white-text">Beberapa informasi penting yang terupdate :</p>
                 </div>
                 <div id="blog-post-full">
-                <!-- medium size post-->
-                    <? foreach ($daftar_berita as $r){
-                        echo "<div class='card medium'>
+                    <!-- medium size post-->
+                    <?php foreach ($daftar_berita as $r): ?>
+                       <div class='card medium'>
                         <div class='card-image'>
                         <img src='assets/img/news-3.jpg' alt='simple' class='responsive-img'>
-                        <span class='card-title'>".$r->judulBerita."</span>
-                        <span class='card-title blog-post-full-cat right orange'><a href='#'>#".$r->topikBerita."</a></span>
+                        <span class='card-title'><?php echo $r->judulBerita?></span>
+                        <span class='card-title blog-post-full-cat right orange'><a href='#'><?php echo $r->topikBerita?></a></span>
                         </div>
                         <div class='card-content'>
-                            <p class='ultra-small'>".$r->tglInBerita."</p>
-                            <p>".$r->kontenBerita."</p>
+                            <p class='ultra-small'><?php echo $r->tglInBerita?></p>
+                            <p><?php echo $r->kontenBerita?></p>
+
                         </div>
                         <div class='card-action'>
-                            By <a href='#'>".$r->penulisBerita."</a>
-                            <a href='#' class='right'>Read more ></a>
-                        </div>
-                    </div>";
-                    }
-                    ?>
-
-                    <div class="card medium">
-                        <div class="card-image">
-                            <img src="<?php echo base_url()?>assets/img/news-3.jpg" alt="simple" class="responsive-img">
-                            <span class="card-title">Small post style</span>
-                            <span class="card-title blog-post-full-cat right orange"><a href="#">#HTML</a></span>
-                        </div>
-                        <div class="card-content">
-                            <p class="ultra-small">June 30, 2015</p>
-                            <p>I am a very simple full width blog post. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
-
-                        </div>
-                        <div class="card-action">
-                            By <a href="#">John Doe</a>
-                            <a href="#" class="right">Read more ></a>
+                            By <a href='#'><?php echo $r->penulisBerita?></a>
+                            <a href='<?php echo base_url('C_dashboard/DetailBerita/'.$r->idBerita);?>' class='right'>Read more</a>
                         </div>
                     </div>
+                    <?php endforeach; ?>
                 </div>
 
 

@@ -23,6 +23,11 @@ class C_dashboard extends CI_Controller
     {
         $this->load->view('login');
     }
+    
+    public function DetailBerita($id) {
+        $data['berita']= $this->m_dashboard->detailBerita($id)->row();
+        $this->load->view('moreInfo', $data);
+    }
 
 }
 

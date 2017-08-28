@@ -21,13 +21,23 @@ class M_dashboard extends CI_Model
         $query = null;
     }
     function daftar_berita()
-    {	$query = $this->db->query("SELECT judulBerita,topikBerita,penulisBerita,kontenBerita,tglInBerita FROM berita");
+    {	$query = $this->db->query("SELECT idBerita, judulBerita,topikBerita,penulisBerita,kontenBerita,tglInBerita FROM berita");
 
         // mengembalikan hasil query
         return $query->result();
 
         // menghapus query dari memory
         $query = null;
+    }
+
+    public function detailBerita($id) {
+        $data = $this->db->query("select * from berita where idBerita=?", array($id));
+        if ($data) {
+            return $data;
+        } else {
+            return false;
+        }
+        unset($data);
     }
 
 

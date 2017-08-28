@@ -6,32 +6,33 @@ class C_daftar_bea extends CI_Controller
   {
     parent::__construct();
     $this->load->model("mahasiswa/DaftarBeasiswa",'mdl');
+    $this->load->model("mahasiswa/Formulir",'mod');
   }
 
   public function index()
   {
     $this->load->view('attribute/header_mhs');
-    $this->load->view('mahasiswa/daftar_beaaa');
+    $this->load->view('mahasiswa/daftar_bea');
     $this->load->view('attribute/footer');
   }
 
   public function pengaturan()
   {
+    $nim = $this->session->userdata('username');
     $id = $this->input->post('idPengaturan');
-    // $id = 6;
     if ($id != null) {
-      $detailBea= $this->mdl->get_by_id_bea($id);
+      $dataMhs = $this->mod->getdataMhs_byId($nim);
       $data = array(
-        'idSetBea' => $id,
-        'nama' => $detailBea->namaBeasiswa,
-        'penyelenggara' => $detailBea->penyelenggaraBea,
-        'selektor' => $detailBea->selektor,
-        'keterangan' => $detailBea->keterangan,
-        'dibuka' => $detailBea->beasiswaDibuka,
-        'ditutup' => $detailBea->beasiswaTutup,
-        'kuota' => $detailBea->kuota,
-        'skor' => $this->mdl->get_skor_by_idBea($id),
-        'combo' => $this->mdl->get_scoring()
+        'idBea' => $id,
+        'namaBea' => $this->mod->get_nama_bea($id),
+        'combo' => $this->mod->get_skor_bea($id),
+        'jurusan' => $this->mod->get_jurusan(),
+        'nim' => $dataMhs->nimMhs,
+        'nama' => $dataMhs->namaLengkap,
+        'tempatLahir' => $dataMhs->tempatLahir,
+        'tglLahir' => $dataMhs->tglLahir,
+        'asalKota' => $dataMhs->asalKota,
+        'noTelp' => $dataMhs->noTelp
         );
     }else {
       $data = array(
@@ -46,9 +47,8 @@ class C_daftar_bea extends CI_Controller
         'skor' => null
         );
     }
-    // $this->load->view('attribute/header_mhs');
     $this->load->view('mahasiswa/formulir', $data);
-    // $this->load->view('attribute/footer');
+    $this->load->view('attribute/footer');
   }
 
   public function datatable(){
@@ -76,7 +76,7 @@ class C_daftar_bea extends CI_Controller
       }else{
         # ditolak
         $sub_array[] = '<span class="alert-text">'.$row->keterangan.'</span>';
-        $alamat = base_url('mahasiswa/C_formulir');
+        $alamat = base_url('mahasiswa/C_daftar_bea/pengaturan');
         $sub_array[] = '
         <form action="'.$alamat.'" method="post">
           <button class="btn-floating waves-effect waves-light red" title="Daftar" type="submit" name="idPengaturan" value="'.$row->id.'"><i class="mdi-action-account-balance-wallet"></i></button>
@@ -127,51 +127,7 @@ class C_daftar_bea extends CI_Controller
     echo json_encode(array("status" => TRUE));
   }
 
-  public function update_data()
-  {
-    $data_bea = array(
-      'namaBeasiswa' => $this->input->post('nama'),
-      'penyelenggaraBea' => $this->input->post('penyelenggara'),
-      'beasiswaDibuka' => $this->input->post('dibuka'),
-      'beasiswaTutup' => $this->input->post('ditutup'),
-      'kuota' => $this->input->post('kuota'),
-      'selektor' => $this->input->post('selektor')
-      );
-    $idSetBea = $this->input->post('idSetBea');
-    $this->mdl->update_setting_bea(array('id' => $idSetBea), $data_bea);
 
-    $count_score = count($this->input->post('score'));
-    for ($i=0;$i<$count_score;$i++) {
-      $skor = $this->input->post('score['.$i.']');
-      $idSet = $this->input->post('idSet['.$i.']');
-      if ($skor != null && $idSet == null && $skor != "HAPUS") {
-        # insert kategori
-        $data= array(
-          'idBea' => $idSetBea,
-          'idKategoriSkor' => $skor,
-          );
-        $this->mdl->insert_setting_sub_bea($data);
-      }elseif ($skor != null && $idSet != null && $skor != "HAPUS") {
-        # update kategori
-        $data= array(
-          'idBea' => $idSetBea,
-          'idKategoriSkor' => $skor,
-          );
-        $this->mdl->update_setting_sub_bea(array('id' => $idSet), $data);
-      }elseif ($skor != null && $idSet != null && $skor == "HAPUS") {
-        # delete kategori
-        $this->mdl->delete_setting_sub_bea($idSet);
-      }
-    }
-    echo json_encode(array("status" => TRUE));
-  }
-
-  public function delete_data()
-  {
-    $id = $this->input->post('idSetBea');
-    $this->mdl->delete_by_id($id);
-    echo json_encode(array("status" => TRUE));
-  }
 
 }
 ?>

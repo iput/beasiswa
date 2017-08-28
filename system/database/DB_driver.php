@@ -1148,7 +1148,7 @@ abstract class CI_DB_driver {
 				array($this->_like_escape_chr, '%', '_'),
 				array($this->_like_escape_chr.$this->_like_escape_chr, $this->_like_escape_chr.'%', $this->_like_escape_chr.'_'),
 				$str
-			);
+				);
 		}
 
 		return $str;
@@ -1417,7 +1417,7 @@ abstract class CI_DB_driver {
 					preg_quote($this->_escape_char[1], '/'),
 					$this->_escape_char[0],
 					$this->_escape_char[1]
-				);
+					);
 			}
 			else
 			{
@@ -1525,9 +1525,9 @@ abstract class CI_DB_driver {
 		}
 
 		return 'UPDATE '.$table.' SET '.implode(', ', $valstr)
-			.$this->_compile_wh('qb_where')
-			.$this->_compile_order_by()
-			.($this->qb_limit ? ' LIMIT '.$this->qb_limit : '');
+		.$this->_compile_wh('qb_where')
+		.$this->_compile_order_by()
+		.($this->qb_limit ? ' LIMIT '.$this->qb_limit : '');
 	}
 
 	// --------------------------------------------------------------------
@@ -1558,8 +1558,8 @@ abstract class CI_DB_driver {
 		if (empty($_operators))
 		{
 			$_les = ($this->_like_escape_str !== '')
-				? '\s+'.preg_quote(trim(sprintf($this->_like_escape_str, $this->_like_escape_chr)), '/')
-				: '';
+			? '\s+'.preg_quote(trim(sprintf($this->_like_escape_str, $this->_like_escape_chr)), '/')
+			: '';
 			$_operators = array(
 				'\s*(?:<|>|!)?=\s*',             // =, <=, >=, !=
 				'\s*<>?\s*',                     // <, <>
@@ -1573,12 +1573,12 @@ abstract class CI_DB_driver {
 				'\s+NOT IN\s*\(.*\)',        // NOT IN (list)
 				'\s+LIKE\s+\S.*('.$_les.')?',    // LIKE 'expr'[ ESCAPE '%s']
 				'\s+NOT LIKE\s+\S.*('.$_les.')?' // NOT LIKE 'expr'[ ESCAPE '%s']
-			);
+				);
 
 		}
 
 		return preg_match('/'.implode('|', $_operators).'/i', $str, $match)
-			? $match[0] : FALSE;
+		? $match[0] : FALSE;
 	}
 
 	// --------------------------------------------------------------------
@@ -1604,8 +1604,8 @@ abstract class CI_DB_driver {
 		}
 
 		return (func_num_args() > 1)
-			? call_user_func_array($function, array_slice(func_get_args(), 1))
-			: call_user_func($function);
+		? call_user_func_array($function, array_slice(func_get_args(), 1))
+		: call_user_func($function);
 	}
 
 	// --------------------------------------------------------------------
@@ -1657,8 +1657,8 @@ abstract class CI_DB_driver {
 	public function cache_delete($segment_one = '', $segment_two = '')
 	{
 		return $this->_cache_init()
-			? $this->CACHE->delete($segment_one, $segment_two)
-			: FALSE;
+		? $this->CACHE->delete($segment_one, $segment_two)
+		: FALSE;
 	}
 
 	// --------------------------------------------------------------------
@@ -1671,8 +1671,8 @@ abstract class CI_DB_driver {
 	public function cache_delete_all()
 	{
 		return $this->_cache_init()
-			? $this->CACHE->delete_all()
-			: FALSE;
+		? $this->CACHE->delete_all()
+		: FALSE;
 	}
 
 	// --------------------------------------------------------------------
@@ -1848,15 +1848,15 @@ abstract class CI_DB_driver {
 		if ($offset = strripos($item, ' AS '))
 		{
 			$alias = ($protect_identifiers)
-				? substr($item, $offset, 4).$this->escape_identifiers(substr($item, $offset + 4))
-				: substr($item, $offset);
+			? substr($item, $offset, 4).$this->escape_identifiers(substr($item, $offset + 4))
+			: substr($item, $offset);
 			$item = substr($item, 0, $offset);
 		}
 		elseif ($offset = strrpos($item, ' '))
 		{
 			$alias = ($protect_identifiers)
-				? ' '.$this->escape_identifiers(substr($item, $offset + 1))
-				: substr($item, $offset);
+			? ' '.$this->escape_identifiers(substr($item, $offset + 1))
+			: substr($item, $offset);
 			$item = substr($item, 0, $offset);
 		}
 		else
@@ -1981,6 +1981,18 @@ abstract class CI_DB_driver {
 	 */
 	protected function _reset_select()
 	{
+	}
+	function pil_enum( $table , $field )
+	{
+		$query = "SHOW COLUMNS FROM ".$table." LIKE '$field'";
+		$row = $this->query("SHOW COLUMNS FROM ".$table." LIKE '$field'")->row()->Type;
+		$regex = "/'(.*?)'/";
+		preg_match_all( $regex , $row, $enum_array );
+		$enum_fields = $enum_array[1];
+		foreach ($enum_fields as $key=>$value){
+			$enums[$value] = $value; 
+		}
+		return $enums;
 	}
 
 }

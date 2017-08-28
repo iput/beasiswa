@@ -8,6 +8,7 @@ class C_mahasiswa extends CI_Controller
     parent::__construct();
     $this->load->model("mahasiswa/PengumumanPenerimaBeasiswa",'model');
     $this->load->model("mahasiswa/Profile",'mdl');
+    $this->load->model("mahasiswa/Formulir", 'm_aplikasi');
   }
 
   public function index()
@@ -16,6 +17,24 @@ class C_mahasiswa extends CI_Controller
     $this->load->view('mahasiswa/dashboard');
     $this->load->view('attribute/footer');
   }
+  public function data_pendaftar($id)
+    {   
+        
+        // mengambils hanya satu baris (menggunakan fungsi row()) 
+        // di model m_aplikasi function daftar_tugas dengan parameter $nim
+        $data['pendaftar'] = $this->m_aplikasi->data_pendaftar($id);
+        $data['kategori'] = $this->m_aplikasi->data_kategori($id);
+
+        
+        $this->load->view('mahasiswa/pdfreport',$data);
+        unset($data);
+    }
+  function pdf()
+    {
+
+        $this->load->view('mahasiswa/pdfreport');
+    }
+
   public function profile()
   { 
     $key = $this->session->userdata('username');
@@ -28,7 +47,7 @@ class C_mahasiswa extends CI_Controller
   public function pengumuman_penerima_beasiswa()
   {
     $isi['fakultas']  =$this->db->get('fakultas')->result();
-    $isi['tahun']     =$this->db->get('penerima_bea')->result();
+    $isi['tahun']     =$this->db->get('pendaftar')->result();
     $isi['beasiswa']  =$this->db->get('bea')->result();
     $isi['data']      =$this->model->getdata()->result();
     $this->load->view('attribute/header_mhs');
@@ -51,7 +70,7 @@ class C_mahasiswa extends CI_Controller
       $sub_array[] = $row->namaFk;
       $sub_array[] = $row->namaJur;
       $sub_array[] = $row->namaBeasiswa;
-      $sub_array[] = $row->tahun;
+      $sub_array[] = $row->waktuDiubah;
       $data[] = $sub_array;
     }
     $output = array(
