@@ -1,0 +1,178 @@
+<?php
+$data_user_login = $user->row();
+?>
+<main>
+	<div class="container">
+		<h3><span class="blue-text">Profile Mahasiswa</span></h3>
+		<div class="col s12 m4 l6">
+			<?php echo $this->session->flashdata('pesan');?></div>
+			<div id="messages" class="mailbox section">
+				<div class="row">
+					<div class="col s12">
+						<div class="z-depth-1">
+							<ul class="tabs account">
+								<li class="col s6 tab"><a class="active" href="#personal">Profile</a></li>
+								<li class="col s6 tab"><a href="#password">Password</a></li>
+								<!-- <li class="col s4 tab"><a href="#privacy">Privacy</a></li> -->
+							</ul>
+						</div>
+					</div>
+					<div class="col s12">
+						<div class="card-panel no-padding">
+							<!-- Personal tab START -->
+							<div id="personal">
+								<form method="post" action="<?php echo base_url(); ?>mahasiswa/C_profileMhs/simpan" enctype="multipart/form-data">
+									<div class="form-pad">
+										<div class="row">
+											<div class="col s12 m6 l6">
+												<!-- <div class="col s12 m6 pull-m6" > -->
+												<div class="col s12" >
+													<!-- Personal info PROFILE PHOTO -->
+													<div class="form-pad center-align col s12 m6 offset-m3">
+														<img class="responsive-img square" src="<?=base_url()?>/assets/img/profile/<?=$data_user_login->fotoMhs;?>">
+														<div class="file-field input-field">
+															<div class="btn no-float primary-color">
+																<i class="material-icons large" >file_upload</i>
+																<input type="file" title="Upload Foto" name="filefoto">
+																<input type="hidden" name="nimm" class="form-control" value="<?php echo $data_user_login->nimMhs;?>">
+																<input type="hidden" name="filelama" value="<?php echo $data_user_login->fotoMhs;?>">
+															</div>
+															<div class="file-path-wrapper hide">
+																<input class="file-path validate center-align" type="text">
+															</div>
+															<div>
+																<small class="blue-text">** Max.size 100Kb, [jpeg |jpg |png]</small>
+															</div>
+														</div>
+													</div>						
+												</div>
+												<!-- <div class="col s12 m6 pull-m6"> -->
+												<div class="col s12">
+													<div class="input-field">
+														<i class="mdi-action-account-balance-wallet prefix"></i>
+														<input id="angkatan" name="angkatan" type="text" class="validate" placeholder="Angkatan" value="<?php echo $data_user_login->angkatan;?>" readonly>
+														<label for="first_name">Angkatan</label>
+													</div>
+													<div class="input-field">
+														<i class="mdi-image-filter-1 prefix"></i>
+														<input name="nim" id="nim" type="text" class="validate" placeholder="NIM" value="<?php echo $this->session->userdata('username');?>" readonly>
+														<label for="last_name">NIM</label>
+													</div>
+													<div class="input-field">
+														<i class="mdi-action-account-box prefix"></i>
+														<input name="namaMhs" id="namaMhs" type="tel" class="validate" placeholder="Nama Mahasiswa" value="<?php echo $data_user_login->namaLengkap;?>" >
+														<label for="phone">Nama Mahasiswa</label>
+													</div>
+
+													<div class="input-field">
+														<i class="mdi-social-location-city prefix"></i>
+														<input name="tempatLahir" id="tempatLahir" type="text" class="validate" placeholder="Tempat Lahir" value="<?php echo $data_user_login->tempatLahir;?>" >
+														<label for="last_name">Tempat Lahir</label>
+													</div>
+													<div class="input-field">
+														<i class="mdi-action-alarm-add prefix"></i>
+														<input name="tglLahir" id="tglLahir" type="date" class="validate datepicker" placeholder="Tanggal Lahir" value="<?php echo $data_user_login->tglLahir;?>" >
+														<label for="last_name">Tanggal Lahir  <span>*Thn-Bln-Tgl</span></label>
+													</div>
+													<div class="input-field">
+														<i class="mdi-communication-location-on prefix"></i>
+														<input id="asalKota" name="asalKota" type="text" class="validate" placeholder="Asal Kota" value="<?php echo $data_user_login->asalKota;?>" >
+														<label for="last_name">Asal Kota</label>
+													</div>
+												</div>
+											</div>
+											<!-- <div class="col s12 m6 push-m6"> -->
+											<div class="col s12 m6 l6">
+												<div class="input-field">
+													<i class="mdi-social-group prefix"></i>
+													<input id="namaOrtu" name="namaOrtu" type="text" class="validate" placeholder="Nama Orang Tua" value="<?php echo $data_user_login->namaOrtu;?>">
+													<label for="first_name">Nama Orang Tua</label>
+												</div>
+												<div class="input-field">
+													<i class="mdi-action-home prefix"></i>
+													<input id="alamatOrtu" name="alamatOrtu" type="text" class="validate" placeholder="Alamat Orang Tua" value="<?php echo $data_user_login->alamatOrtu;?>" >
+													<label for="last_name">Alamat Orang Tua</label>
+												</div>
+												<div class="input-field">
+													<i class="mdi-communication-location-on prefix"></i>
+													<input id="kotaOrtu" name="kotaOrtu" type="tel" class="validate" placeholder="Kota Orang Tua" value="<?php echo $data_user_login->kotaOrtu;?>" >
+													<label for="phone">Kota Orang Tua</label>
+												</div>
+												<div class="input-field">
+													<i class="mdi-communication-location-off prefix"></i>
+													<input id="provinsiOrtu" name="provinsiOrtu" type="text" class="validate" placeholder="Provinsi Orang Tua" value="<?php echo $data_user_login->propinsiOrtu;?>" >
+													<label for="last_name">Provinsi Orang Tua</label>
+												</div>
+												<div class="input-field">
+													<i class="mdi-action-home prefix"></i>
+													<input id="alamat" name="alamat" type="text" class="validate" placeholder="Alamat Lengkap" value="<?php echo $data_user_login->alamatLengkap;?>" >
+													<label for="last_name">Alamat Lengkap</label>
+												</div>
+
+												<div class="input-field with-note">
+													<i class="mdi-communication-call prefix"></i>
+													<input id="noTelp" name="noTelp" type="tel" class="validate" placeholder="Nomor Telephon" value="<?php echo $data_user_login->noTelp;?>" onkeyup="validAngka(this)" maxlength="12">
+													<label for="skills">Nomor Telephon</label>
+													<small class="blue-text">** Isi hanya dengan Angka</small>
+												</div>
+												<div class="input-field with-note">
+													<i class="mdi-communication-email prefix"></i>
+													<input id="email" name="email" type="text" class="validate" value="<?php echo $data_user_login->emailAktif;?>">
+													<label for="skills">Email</label>
+													<small class="blue-text">** Example : name@gmail.com</small>
+												</div>
+											</div>
+
+										</div>
+										<!-- Save Cancel -->
+										<div class="row">
+											<div class="col s12 m8 push-m4 buttons">
+												<button class="waves-effect waves-light btn light-blue accent-4" type="submit" name="action1" value="Update"><i class="material-icons right">done</i>Save</button>
+												<button class="waves-effect waves-light btn blue-grey lighten-2" type="submit" name="action2" disabled=""><i class="material-icons right">clear</i>Cancel</button>
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+							<!-- Personal tab END -->
+							<!-- Password tab START -->
+							<div id="password">
+								<form method="post" action="<?php echo base_url(); ?>mahasiswa/C_profileMhs/simpanPassword">
+									<div class="form-pad">
+										<div class="row">
+											<div class="col s12">
+												<div class="input-field">
+													<input id="current" type="text" class="validate" name="userid" value="<?php echo $this->session->userdata('username');?>" readonly>
+													<label for="current">UserId</label>
+												</div>
+												<div class="input-field">
+													<input id="new" type="password" name="password" class="validate" value="<?php echo md5($this->session->userdata('password'));?>" required>
+													<label for="new">Password</label>
+												</div>
+												<input type="hidden" name="id" value="<?php echo $this->session->userdata('id');?>">
+												<div class="buttons">
+													<button class="waves-effect waves-light btn light-blue accent-4" type="submit" name="action1" onclick="sweet1()"><i class="material-icons right">done</i>Save</button>
+													<button class="waves-effect waves-light btn blue-grey lighten-2" name="action2" disabled=""><i class="material-icons right">clear</i>Cancel</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+							<!-- Password tab END -->
+							<!-- Privacy tab START -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+	<script type="text/javascript">
+		function sweet1() {
+			swal("Update Berhasil!", "Perubahan Disimpan!", "success");
+		}
+
+		function sweet() {
+			swal("SILAHKAN LOGIN!", "Perubahan Disimpan!", "success");
+		}
+	</script>
