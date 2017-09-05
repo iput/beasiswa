@@ -63,25 +63,62 @@
                             $kms="";
                             $fks="";
                             $dua="";
+                            $nmFk="";
+                            $nmFk2="";
                             if ($selektor=="1") {
                               # kasubag kemahasiswaan
                               $kms = "checked";
                             }elseif ($selektor=="2") {
                               # kasubag kemahasiswaan fakultas
+                              $nmFk = "<small class='red-text'>(".$namaFk.")</small>";
                               $fks = "checked";
                             }elseif ($selektor=="3") {
                               # keduanya
+                              $nmFk2 = "<small class='red-text'>(".$namaFk.")</small>";
                               $dua = "checked";
                             }
                          ?>
-                        <input class="with-gap" name="selektor" type="radio" value="1" id="kemahasiswaan" <?php echo $kms; ?> required="required">
+                        <input class="with-gap" name="selektor" onchange="hide_fakultas()" type="radio" value="1" id="kemahasiswaan" <?php echo $kms; ?> required="required">
                         <label for="kemahasiswaan">Kasubag Kemahasiswaan</label>
+                        <div class="input-field col m12"></div>
                         <br>
-                        <input class="with-gap" name="selektor" type="radio" value="2" id="fakultas" <?php echo $fks; ?> required="required">
-                        <label for="fakultas">Kasubag Fakultas</label>
+                        <input class="with-gap" name="selektor" onchange="view_fakultas(1)" type="radio" value="2" id="fakultas" <?php echo $fks; ?> required="required">
+                        <label for="fakultas">Kasubag Fakultas <?php echo $nmFk; ?></label>
+                        <div class="input-field col m12" id="combo_fakultas"></div>
                         <br>
-                        <input class="with-gap" name="selektor" type="radio" value="3" id="keduanya" <?php echo $dua; ?> required="required">
-                        <label for="keduanya">Keduanya</label>
+                        <input class="with-gap" name="selektor" onchange="view_fakultas(2)" type="radio" value="3" id="keduanya" <?php echo $dua; ?> required="required">
+                        <label for="keduanya">Keduanya <?php echo $nmFk2; ?></label>
+                        <div class="input-field col m12" id="combo_fakultas2"></div>
+                        <script type="text/javascript">
+                          var data = <?php echo $combo_fkltas ?>;
+                          function view_fakultas(ind) {
+                            jml_data = data.length;
+                            cf = `
+                            <select name="selektor_fakultas">
+                              <option value="" disabled selected>-Pilihan Fakultas</option>
+                            `;
+                            for (var i = 0; i < jml_data; i++) {
+                              cf += '<option value="'+data[i]['id']+'">'+data[i]['namaFk']+'</option>';
+                            }
+                            cf +='</select>';
+
+                            if (ind==1) {
+                              $('#combo_fakultas').html(cf);
+                              $('#combo_fakultas2').html("");
+                            }else {
+                              $('#combo_fakultas').html("");
+                              $('#combo_fakultas2').html(cf);
+                            }
+
+                            reloadJs('materialize', 'min');
+                            reloadJs('initialize', 'nomin');
+                          }
+
+                          function hide_fakultas() {
+                            $('#combo_fakultas').html("");
+                            $('#combo_fakultas2').html("");
+                          }
+                        </script>
                       </div>
                     </div>
                   </div>
@@ -158,9 +195,10 @@
 <script type="text/javascript">
   var arr = <?php echo $arrPhp ?>;
   var save_method = '<?php echo $metode ?>';
+  // var combo_fakultas;
 
   document.addEventListener("DOMContentLoaded", function(event) {
-    // document ready
+    // combo_fakultas = '<?php echo json_encode($combo_fkltas) ?>';
   });
 
   function save(nama)

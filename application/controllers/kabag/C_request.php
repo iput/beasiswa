@@ -72,6 +72,7 @@ class C_request extends CI_Controller
         'dibuka' => $detailBea->beasiswaDibuka,
         'ditutup' => $detailBea->beasiswaTutup,
         'kuota' => $detailBea->kuota,
+        'namaFk' => $detailBea->namaFk,
         'comboBox' => $subScoring
       );
     }else {
@@ -84,6 +85,7 @@ class C_request extends CI_Controller
         'dibuka' => "",
         'ditutup' => "",
         'kuota' => "",
+        'namaFk' => "",
         'comboBox' => null
       );
     }

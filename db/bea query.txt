@@ -1,6 +1,6 @@
 -- menampilkan dan menghitung skor dan jumlah dan order by jumlah tertinggi dan where idBea
 CREATE VIEW skor_mahasiswa AS
-SELECT pendaftar.nim nimMhs, identitas_mhs.namaLengkap, pendaftar.idBea, bea.namaBeasiswa, pendaftar.ipk, (
+SELECT pendaftar.nim nimMhs, identitas_mhs.namaLengkap, pendaftar.id idPendaftar, pendaftar.idBea, bea.namaBeasiswa, pendaftar.ipk, (
     SELECT SUM(set_sub_kategori_skor.skor)
     FROM pendaftar
     RIGHT JOIN pendaftar_skor ON pendaftar.id=pendaftar_skor.idPendaftar

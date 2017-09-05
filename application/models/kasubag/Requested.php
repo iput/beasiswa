@@ -53,6 +53,7 @@ class Requested extends CI_Model {
   public function get_by_id_bea($id)
 	{
 		$this->db->from($this->table);
+    $this->db->join('fakultas','bea.selektorFakultas=fakultas.id','left');
 		$this->db->where('bea.id',$id);
 		$query = $this->db->get();
 		return $query->row();
@@ -120,4 +121,10 @@ class Requested extends CI_Model {
 		$this->db->delete('set_bea_kategori_skor');
   }
 
+  public function get_fakultas()
+  {
+    $sql="SELECT * FROM fakultas";
+    $data = $this->db->query($sql);
+    return $data->result();
+  }
 }

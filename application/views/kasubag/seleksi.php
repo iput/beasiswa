@@ -116,9 +116,9 @@ function viewDetailBea(indexArr) {
     infoBea = <?php echo json_encode($comboBea)?>;
     selektor = infoBea[indexArr]['selektor'];
     if (selektor == "3") {
-      $("#infoSelektor").html("[ 2 Selektor ]");
+      $("#infoSelektor").html("[ 2 Selektor ] <a href='#' onclick='myTimer()' class='blue-text'>[ Refresh ]</a> ");
       $("#colorText").attr("class","red-text");
-      this.myVar = setInterval(myTimer , 5000);
+      this.myVar = setInterval(myTimer ,15000);
     } else {
       $("#infoSelektor").html("[ 1 Selektor ]");
       $("#colorText").attr("class","success-text");

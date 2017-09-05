@@ -18,7 +18,6 @@ class C_requested extends CI_Controller
   public function pengaturan()
   {
     $id = $this->input->post('idPengaturan');
-    // $id = 6;
     if ($id != null) {
       $detailBea= $this->mdl->get_by_id_bea($id);
       $data = array(
@@ -30,8 +29,10 @@ class C_requested extends CI_Controller
         'dibuka' => $detailBea->beasiswaDibuka,
         'ditutup' => $detailBea->beasiswaTutup,
         'kuota' => $detailBea->kuota,
+        'namaFk' => $detailBea->namaFk,
         'skor' => $this->mdl->get_skor_by_idBea($id),
-        'combo' => $this->mdl->get_scoring()
+        'combo' => $this->mdl->get_scoring(),
+        'combo_fkltas' => json_encode($this->mdl->get_fakultas())
       );
     }else {
       $data = array(
@@ -43,7 +44,9 @@ class C_requested extends CI_Controller
         'dibuka' => "",
         'ditutup' => "",
         'kuota' => "",
-        'skor' => null
+        'namaFk' => "",
+        'skor' => null,
+        'combo_fkltas' => json_encode($this->mdl->get_fakultas())
       );
     }
     $this->load->view('attribute/header_kasubag');
@@ -108,14 +111,28 @@ class C_requested extends CI_Controller
 
   public function add_data()
   {
-    $data_bea = array(
-      'namaBeasiswa' => $this->input->post('nama'),
-      'penyelenggaraBea' => $this->input->post('penyelenggara'),
-      'beasiswaDibuka' => $this->input->post('dibuka'),
-      'beasiswaTutup' => $this->input->post('ditutup'),
-      'kuota' => $this->input->post('kuota'),
-      'selektor' => $this->input->post('selektor')
-    );
+    $slktr = $this->input->post('selektor');
+    if($slktr == "2" || $slktr == "3"){
+      $data_bea = array(
+        'namaBeasiswa' => $this->input->post('nama'),
+        'penyelenggaraBea' => $this->input->post('penyelenggara'),
+        'beasiswaDibuka' => $this->input->post('dibuka'),
+        'beasiswaTutup' => $this->input->post('ditutup'),
+        'kuota' => $this->input->post('kuota'),
+        'selektor' => $this->input->post('selektor'),
+        'selektorFakultas' => $this->input->post('selektor_fakultas')
+      );
+    }else{
+      $data_bea = array(
+        'namaBeasiswa' => $this->input->post('nama'),
+        'penyelenggaraBea' => $this->input->post('penyelenggara'),
+        'beasiswaDibuka' => $this->input->post('dibuka'),
+        'beasiswaTutup' => $this->input->post('ditutup'),
+        'kuota' => $this->input->post('kuota'),
+        'selektor' => $this->input->post('selektor')
+      );
+    }
+
     $insert_bea = $this->mdl->save_bea($data_bea);
 
     $count_score = count($this->input->post('score'));
@@ -137,14 +154,28 @@ class C_requested extends CI_Controller
 
   public function update_data()
   {
-    $data_bea = array(
-      'namaBeasiswa' => $this->input->post('nama'),
-      'penyelenggaraBea' => $this->input->post('penyelenggara'),
-      'beasiswaDibuka' => $this->input->post('dibuka'),
-      'beasiswaTutup' => $this->input->post('ditutup'),
-      'kuota' => $this->input->post('kuota'),
-      'selektor' => $this->input->post('selektor')
-    );
+    $slktr = $this->input->post('selektor');
+    if($slktr == "2" || $slktr == "3"){
+      $data_bea = array(
+        'namaBeasiswa' => $this->input->post('nama'),
+        'penyelenggaraBea' => $this->input->post('penyelenggara'),
+        'beasiswaDibuka' => $this->input->post('dibuka'),
+        'beasiswaTutup' => $this->input->post('ditutup'),
+        'kuota' => $this->input->post('kuota'),
+        'selektor' => $this->input->post('selektor'),
+        'selektorFakultas' => $this->input->post('selektor_fakultas')
+      );
+    }else {
+      $data_bea = array(
+        'namaBeasiswa' => $this->input->post('nama'),
+        'penyelenggaraBea' => $this->input->post('penyelenggara'),
+        'beasiswaDibuka' => $this->input->post('dibuka'),
+        'beasiswaTutup' => $this->input->post('ditutup'),
+        'kuota' => $this->input->post('kuota'),
+        'selektor' => $this->input->post('selektor'),
+        'selektorFakultas' => null
+      );
+    }
     $idSetBea = $this->input->post('idSetBea');
     $this->mdl->update_setting_bea(array('id' => $idSetBea), $data_bea);
 

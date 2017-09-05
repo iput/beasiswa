@@ -82,12 +82,17 @@
 											}elseif ($selektor==3) {
 												$sel = '<i class="mdi-action-stars"></i> - Keduanya';
 											}
+
+											$nfk = "";
+											if ($namaFk!="") {
+												$nfk = ' <small class="red-text">('.$namaFk.')</small>';
+											}
 											?>
 											<div class="col m2 s4">
 												Selektor
 											</div>
 											<div class="col m4 s8">
-												: <span class="blue-text"><?php echo $sel; ?></span>
+												: <span class="blue-text"><?php echo $sel.$nfk; ?></span>
 											</div>
 										</div>
 									</div>

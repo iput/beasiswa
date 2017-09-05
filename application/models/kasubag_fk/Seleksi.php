@@ -72,7 +72,16 @@ class Seleksi extends CI_Model {
   //combobox
   public function getComboBea()
   {
-    $sql = "SELECT * FROM bea WHERE (selektor='2' || selektor='3') && statusBeasiswa='0'";
+    $username = 3; //ganti dengan session username
+    $password = 3; //ganti dengan session password
+
+    $sq = "SELECT fakultas.id idFakultas, fakultas.namaFk FROM akses
+    LEFT JOIN profil_admin ON profil_admin.idAkses = akses.id
+    LEFT JOIN fakultas ON profil_admin.idFakultas = fakultas.id
+    WHERE akses.userId='".$username."' && akses.password='".$password."'";
+    $que = $this->db->query($sq)->row();
+
+    $sql = "SELECT * FROM bea WHERE (selektor='2' || selektor='3') && statusBeasiswa='0' && statusSeleksi='1' && selektorFakultas='".$que->idFakultas."'";
     $query = $this->db->query($sql);
     return $query->result();
   }
