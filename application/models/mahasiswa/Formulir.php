@@ -12,7 +12,7 @@ class Formulir extends CI_Model {
     // $this->db->where('bea.id = pendaftar.idBea')AND('pendaftar.id = "0"')AND('pendaftar.nim=identitas_mhs.nimMhs AND jurusan.id = identitas_mhs.idJrs');
     // $query = $this->db->get();
     // mengembalikan hasil query
-  return $query;
+  return $query->row();
 
   $query = null;
 
@@ -22,10 +22,10 @@ class Formulir extends CI_Model {
 }
 public function data_kategori($id)
 {
-  $query = $this->db->query('SELECT kategori_skor.nama as skor,set_sub_kategori_skor.nama as nama FROM pendaftar_skor,kategori_skor,set_sub_kategori_skor WHERE pendaftar_skor.idPendaftar = "'.$id.'" AND pendaftar_skor.idKategori=kategori_skor.id AND set_sub_kategori_skor.id = pendaftar_skor.idSubKategori');
-  return $query->result();
-  $query = null;
-  unset($id);
+      $query = $this->db->query('SELECT kategori_skor.nama as skor,set_sub_kategori_skor.nama as nama FROM pendaftar_skor,kategori_skor,set_sub_kategori_skor WHERE pendaftar_skor.idPendaftar = "'.$id.'" AND pendaftar_skor.idKategori=kategori_skor.id AND set_sub_kategori_skor.id = pendaftar_skor.idSubKategori');
+      return $query->result();
+     $query = null;
+      unset($id);
 }
 public function get_nama_bea($idBea)
 {

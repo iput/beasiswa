@@ -9,6 +9,7 @@ class C_kabag extends CI_Controller
   {
     parent::__construct();
      $this->load->model("kabag/ProfileKabag",'mdl');
+     $this->load->model('kasubag/Berita');
   }
 
   public function index()
@@ -25,6 +26,14 @@ class C_kabag extends CI_Controller
     $this->load->view('attribute/header_kabag');
     $this->load->view('kabag/profileKabag',$data);
     $this->load->view('attribute/footer');
+  }
+  public function Berita()
+  {
+   $data['berita']=$this->Berita->daftarBerita();
+   $this->load->view('attribute/header_kabag');
+    $this->load->view('kabag/Berita',$data);
+    $this->load->view('attribute/footer');
+
   }
 }
 ?>

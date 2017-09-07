@@ -38,9 +38,9 @@ class M_admin extends CI_Model
 
                 if (count($this->column_search) - 1 == $i) //last loop
                     $this->db->group_end(); //close bracket
+                }
+                $i++;
             }
-            $i++;
-        }
 
         if (isset($_POST['order'])) // here order processing
         {
@@ -75,6 +75,7 @@ class M_admin extends CI_Model
         return $this->db->count_all_results();
     }
 
+
     public function get_by_id($id)
     {
         $this->db->from($this->table);
@@ -83,24 +84,68 @@ class M_admin extends CI_Model
 
         return $query->row();
     }
-
-    public function update($where, $data)
+    public function getLevel($id)
     {
-        $this->db->update($this->table, $data, $where);
-        return $this->db->affected_rows();
-    }
-    public function delete_by_id($id)
-    {
-        $this->db->where('id', $id);
-        $this->db->delete($this->table);
-    }
+     $query = $this->db->query('SELECT akses.idLevel as level FROM akses WHERE akses.userId = "'.$id.'"');
+     return  $query->row();
 
-    public function save($data)
+     }
+     public function getStatus($id)
     {
-        $this->db->insert($this->table, $data);
-        return $this->db->insert_id();
+     $query = $this->db->query('SELECT akses.status FROM akses WHERE akses.userId = "'.$id.'"');
+     return  $query->row();
 
-    }
+     }
+public function update($nim, $data)
+{
+       // query binding ditandai dengan "?" untuk security
+    $hai = null;
+    $hai2 = null;
+    $pilih_hitung = $data['idLevel'];
+      $status= $data['status'];
+      if ($pilih_hitung == "Staff kemahasiswaan"){
+        $hai = 1;
+      }
+      else if ($pilih_hitung == "Kasubag"){
+        $hai = 2;
+      }
+      else if ($pilih_hitung == "Kasubag Fakultas"){
+        $hai = 3;
+      }
+      else if ($pilih_hitung == "Kabag"){
+        $hai = 4;
+      }
+      else if ($pilih_hitung == "Mahasiswa"){
+        $hai = 5;
+      }else if ($pilih_hitung == "Admin"){
+        $hai = 6;
+      }
+
+      if ($status == "Aktif"){
+        $hai2 = "open";
+      }
+      else {
+        $hai2 = "close";
+      }
+
+        $this->db->query("UPDATE `akses` SET `userId` = ?, `password` = ?, `idLevel` = ?, `status` = ? WHERE `akses`.`id` = ? ", array($data['userId'],$data['password'],$hai,$hai2,$nim));
+        
+        // menghapus variabel dari memory
+        unset($nim, $data);
+    
+}
+public function delete_by_id($id)
+{
+    $this->db->where('id', $id);
+    $this->db->delete($this->table);
+}
+
+public function save($data)
+{
+    $this->db->insert($this->table, $data);
+    return $this->db->insert_id();
+
+}
 
 
 }

@@ -19,6 +19,7 @@ class C_admin extends CI_Controller
   }
   public function mjm_user()
   {
+    
     $this->load->view('attribute/header_admin');
     $this->load->view('admin/mjm_user');
     $this->load->view('attribute/footer');
@@ -68,7 +69,7 @@ class C_admin extends CI_Controller
       $sub_array[] = $hai;
       $sub_array[] = $hai2;
       $sub_array[] = '
-        <button type="button" name="edit" id="'.$row->id.'" onclick="edit('."'".$row->id."'".')" class="btn-floating waves-effect waves-light yellow accent-4" title="Edit"><i class="mdi-editor-mode-edit"></i></button>
+      <a name="edit" id="'.$row->id.'" href="'.base_url('C_admin/ajax_edit/'.$row->id).'" class="btn-floating waves-effect waves-light yellow accent-4" title="Edit"><i class="mdi-editor-mode-edit"></i></a>
         <button type="button" name="remove" id="'.$row->id.'" onclick="remove('."'".$row->id."','".$row->userId."'".')" class="btn-floating waves-effect waves-light red" title="Hapus"><i class="mdi-action-delete">delete</i></button>
         ';
       $data[] = $sub_array;
@@ -95,8 +96,13 @@ class C_admin extends CI_Controller
   }
   public function ajax_edit($id)
   {
-    $data = $this->mdl->get_by_id($id);
-    echo json_encode($data);
+    $data['mhs'] = $this->mdl->get_by_id($id);
+    $data['lvl'] = $this->mdl->getLevel($id);
+    $data['status'] = $this->mdl->getStatus($id);
+    $this->load->view('attribute/header_admin');
+    $this->load->view('admin/edit_user',$data);
+    $this->load->view('attribute/footer');
+    unset($data);
   }
   private function _validate()
   {
@@ -150,7 +156,9 @@ class C_admin extends CI_Controller
         'status' => $this->input->post('status'),
 
     );
-    $this->mdl->update(array('id' => $this->input->post('id')), $data);
+    $nim = $this->input->post('lo');
+    $this->mdl->update($nim,$data);
+    redirect(base_url('C_admin/mjm_user'));  
     echo json_encode(array("status" => TRUE));
   }
   public function ajax_delete($id)

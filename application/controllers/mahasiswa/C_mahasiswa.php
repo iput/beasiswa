@@ -26,13 +26,19 @@ class C_mahasiswa extends CI_Controller
         $data['kategori'] = $this->m_aplikasi->data_kategori($id);
 
         
-        $this->load->view('mahasiswa/pdfreport',$data);
+        $this->load->view('mahasiswa/buktipendaftaran',$data);
         unset($data);
     }
-  function pdf()
+  function pdf($id)
     {
+// mengambils hanya satu baris (menggunakan fungsi row())
+      // di model m_aplikasi function daftar_tugas dengan parameter $nim
+      $data['pendaftar'] = $this->m_aplikasi->data_pendaftar($id);
+      $data['kategori'] = $this->m_aplikasi->data_kategori($id);
+      $date['tanggal'] = date("Y-m-d");
 
-        $this->load->view('mahasiswa/pdfreport');
+      $this->load->view('mahasiswa/pdfreport',$data);
+      unset($data);
     }
 
   public function profile()

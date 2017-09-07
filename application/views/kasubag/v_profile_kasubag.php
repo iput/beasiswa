@@ -48,7 +48,7 @@ $data_user_login = $user->row();
 											<div class="col s12">
 												<div class="input-field">
 													<i class="mdi-image-filter-1 prefix"></i>
-													<input id="first_name" type="text" class="validate" value="<?php echo $data_user_login->idAkses;?>">
+													<input id="first_name" type="text" class="validate" value="<?php echo $data_user_login->idAkses;?>" readonly>
 													<label for="first_name">ID Akses</label>
 												</div>
 											<div class="input-field">

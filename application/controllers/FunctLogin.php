@@ -56,8 +56,8 @@ public function prosesLogin()
 					$data = array(
 						'id'		=>$prosesLog->id,
 						"username"	=>$prosesLog->userId,
-						'pass' 		=>$prosesLog->password,
-						'status'	=>$prosesLog->status);
+						"pass" 		=>$prosesLog->password,
+						"status"	=>$prosesLog->status);
 					$this->session->set_userdata($data);
 					redirect('staf_kemahasiswaan/C_staff');
 				}else if($prosesLog->idLevel==2){
