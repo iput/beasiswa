@@ -72,8 +72,8 @@ class Seleksi extends CI_Model {
   //combobox
   public function getComboBea()
   {
-    $username = 3; //ganti dengan session username
-    $password = 3; //ganti dengan session password
+    $username = $this->session->userdata('username'); //ganti dengan session username
+    $password = $this->session->userdata('pass');; //ganti dengan session password
 
     $sq = "SELECT fakultas.id idFakultas, fakultas.namaFk FROM akses
     LEFT JOIN profil_admin ON profil_admin.idAkses = akses.id

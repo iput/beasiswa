@@ -8,7 +8,6 @@ class Kasubag extends CI_Controller
   function __construct()
   {
     parent::__construct();
-    $this->load->model('kasubag/Berita');
     $this->load->model("kasubag/ProfileKasubag",'mdl');
   }
 
@@ -20,13 +19,6 @@ class Kasubag extends CI_Controller
     $this->load->view('attribute/footer');
   }
 
-  public function daftarBerita()
-  {
-    $data['berita']=$this->Berita->daftarBerita();
-    $this->load->view('attribute/header_kasubag');
-    $this->load->view('kasubag/Berita', $data);
-    $this->load->view('attribute/FooterKasubag');
-  }
   public function profile()
   {
     $user = $this->session->userdata('id');

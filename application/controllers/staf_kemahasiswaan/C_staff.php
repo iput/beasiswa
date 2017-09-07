@@ -6,6 +6,7 @@ class C_staff extends CI_Controller
   function __construct()
   {
     parent::__construct();
+    $this->load->model('staff_kemahasiswaan/Berita');
     $this->load->model("staff_kemahasiswaan/Profile",'mdl');
   }
   public function index()
@@ -21,6 +22,14 @@ class C_staff extends CI_Controller
     $this->load->view('attribute/header_staff');
     $this->load->view('staff_kemahasiswaan/v_profile_staff',$data);
     $this->load->view('attribute/footer');
+  }
+
+  public function daftarBerita()
+  {
+    $data['berita']=$this->Berita->daftarBerita();
+    $this->load->view('attribute/header_staff');
+    $this->load->view('staff_kemahasiswaan/Berita', $data);
+    $this->load->view('attribute/footerKasubag');
   }
 }
 ?>

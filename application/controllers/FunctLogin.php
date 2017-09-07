@@ -72,6 +72,7 @@ public function prosesLogin()
 					$data = array(
 						"id"=>$prosesLog->id,
 						"username"=>$prosesLog->userId,
+						"pass"=>$prosesLog->password,
 						"level"=>$prosesLog->level,
 						"status"=>$prosesLog->status);
 					$this->session->set_userdata($data);
