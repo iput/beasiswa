@@ -39,7 +39,7 @@
 
     <!-- Title -->
 
-    <title>SIB-UIN MALIKI MALANG</title>
+    <title>SIBEA</title>
 
 </head>
 
@@ -457,17 +457,12 @@
 <script src="<?php echo base_url()?>assets/achmad/js/classie.js" type="text/javascript"></script>
 <script src="<?php echo base_url()?>assets/achmad/js/config.js" type="text/javascript"></script>
 <script type="text/javascript">
-    (function titleMarquee() {
-
-
-        document.title = document.title.substring(1)+document.title.substring(1,0);
-
-
-        setTimeout(titleMarquee, 500);
-
-
-
-    })();
+    (function titleScroller(text) {
+    document.title = text;
+    setTimeout(function () {
+        titleScroller(text.substr(1) + text.substr(0, 1));
+    }, 500);
+}(" SIBEA - UIN Maulana Malik Ibrahim Malang "));
 
 
 
