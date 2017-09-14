@@ -21,20 +21,20 @@
     <script src="<?php echo base_url()?>assets/achmad/js/modernizr.custom.js"></script>
 
     <!-- Favicons -->
-    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="<?php echo base_url()?>assets/img/icons/favicons/apple-touch-icon-57x57.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo base_url()?>assets/img/icons/favicons/apple-touch-icon-114x114.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo base_url()?>assets/img/icons/favicons/apple-touch-icon-72x72.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo base_url()?>assets/img/icons/favicons/apple-touch-icon-144x144.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="<?php echo base_url()?>assets/img/icons/favicons/apple-touch-icon-60x60.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="<?php echo base_url()?>assets/img/icons/favicons/apple-touch-icon-120x120.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="<?php echo base_url()?>assets/img/icons/favicons/apple-touch-icon-76x76.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="<?php echo base_url()?>assets/img/icons/favicons/apple-touch-icon-152x152.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="<?php echo base_url()?>assets/img/icons/favicons/uin.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo base_url()?>assets/img/icons/favicons/uin.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo base_url()?>assets/img/icons/favicons/uin.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo base_url()?>assets/img/icons/favicons/uin.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="<?php echo base_url()?>assets/img/icons/favicons/uin.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="<?php echo base_url()?>assets/img/icons/favicons/uin.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="<?php echo base_url()?>assets/img/icons/favicons/uin.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="<?php echo base_url()?>assets/img/icons/favicons/uin.png" />
     <link rel="icon" type="image/x-icon" href="<?php echo base_url()?>assets/img/icons/favicons/favicon.ico" />
-    <link rel="icon" type="image/png" href="<?php echo base_url()?>assets/img/icons/favicons/favicon-196x196.png" sizes="196x196" />
-    <link rel="icon" type="image/png" href="<?php echo base_url()?>assets/img/icons/favicons/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/png" href="<?php echo base_url()?>assets/img/icons/favicons/favicon-32x32.png" sizes="32x32" />
-    <link rel="icon" type="image/png" href="<?php echo base_url()?>assets/img/icons/favicons/favicon-16x16.png" sizes="16x16" />
-    <link rel="icon" type="image/png" href="<?php echo base_url()?>assets/img/icons/favicons/favicon-128.png" sizes="128x128" />
+    <link rel="icon" type="image/png" href="<?php echo base_url()?>assets/img/icons/favicons/uin.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="<?php echo base_url()?>assets/img/icons/favicons/uin.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="<?php echo base_url()?>assets/img/icons/favicons/uin.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="<?php echo base_url()?>assets/img/icons/favicons/uin.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="<?php echo base_url()?>assets/img/icons/favicons/Uin.png" sizes="128x128" />
     <meta name="application-name" content="Volkan"/>
 
     <!-- Title -->
@@ -242,19 +242,10 @@
                     </div>
                 </div><!-- Tab ends -->
                 <div id="tab-heart" class="col s12 tab-content wow fadeIn">
-                    <div class="col s12 m6 l6 center">
-                        <img src="<?php echo base_url()?>assets/img/bg-screen-1.png" alt="" class="responsive-img">
-                    </div>
-                    <div class="col s12 m6 l6">
-                        <h3>The Heart</h3>
-                        <p>Duis posuere auctor erat nec lobortis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vestibulum. Pellentesque vestibulum, sem vitae sollicitudin scelerisque, tortor urna luctus metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vestibulum, sem vitae sollicitudin scelerisque.</p>
-                        <ul>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed in voluptate velit esse cillum dolore eu fugiat nulla pariatur</li>
-                            <li>Pellentesque vestibulum. Pellentesque vestibulum, sem vitae sollicitudin scelerisque, tortor urna luctus metus. Lorem ipsum dolor sit ame</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed in voluptate velit esse cillum dolore eu fugiat nulla pariatur</li>
-                            <li>Dolor sit amet, consectetur adipiscing elit. Pellentesque vestibulum. Pellentesque vestibulum, sem vitae sollicitudin scelerisque</li>
-                        </ul>
-                    </div>
+                    
+                        <img src="<?php echo base_url()?>assets/img/prosesbeasiswa.png" alt="" class="responsive-img">
+                    
+                    
                 </div><!-- Tab ends -->
                 <div id="tab-compare" class="col s12 tab-content wow fadeIn">
                     <div class="col s12 m6 l6">
@@ -365,7 +356,7 @@
             <div class="col s12 m8 l8 offset-m2 offset-l2">
                 <div class="center-heading wow fadeIn" data-wow-delay="0.1s">
                 <!-- Replace 'src' attribute with the path to your Brand logo -->
-                <a href="index-2.html"><img src="<?php echo base_url()?>assets/img/icons/uin.png" alt=""></a>
+                <a href="index-2.html"><img src="<?php echo base_url()?>assets/img/icons/UIN512.png" alt=""></a>
                 <div class="clearfix"></div>
                 <ul class="list-inline footer-social">
                     <!-- Add links to your social profiles here -->
