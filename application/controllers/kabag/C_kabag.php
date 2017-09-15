@@ -9,7 +9,7 @@ class C_kabag extends CI_Controller
   {
     parent::__construct();
      $this->load->model("kabag/ProfileKabag",'mdl');
-     $this->load->model('kasubag/Berita');
+     // $this->load->model('kasubag/Berita');
   }
 
   public function index()

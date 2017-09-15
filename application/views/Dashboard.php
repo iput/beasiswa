@@ -103,9 +103,9 @@
     <div class="container">
         <div class="row btm-mrgn-0">
             <div class="m8 l7 hero-text">
-                <h1 class="white-text">Sistem Informasi Beasiswa Uin Maliki Malang</h1>
+                <h1 class="white-text" style="text-align: center;">Sistem Informasi Beasiswa UIN Maliki Malang</h1>
 
-                <p class="white-text">Sistem Informasi Beasiswa (SIB) merupakan sebuah aplikasi untuk melakukan manajemen pendaftaran dan pengurusan beasiswa yang ada di Universitas Islam Negeri Maulana Malik Ibrahim Malang. Silahkan masukkan username dan password anda untuk melakukan manajemen atau pengolahan data beasiswa sesuai dengan hak akses yang anda masing-masing..</p>
+                <p class="white-text" style="text-align: center;">Sistem Informasi Beasiswa (SIB) merupakan sebuah aplikasi untuk melakukan manajemen pendaftaran dan pengurusan beasiswa yang ada di Universitas Islam Negeri Maulana Malik Ibrahim Malang. Silahkan masukkan username dan password anda untuk melakukan manajemen atau pengolahan data beasiswa sesuai dengan hak akses yang anda masing-masing..</p>
                 <div class="download-button scroll-to">
                     <!-- Replace 'href' attribute with the download link  -->
 
@@ -332,12 +332,12 @@
                     <p>Mengenai info beasiswa lebih lanjut dapat ditanyakan langsung ke Kemahasiswaan UIN Maliki Malang.</p>
                 </div>
                 <ul>
-                    <li><p>1185 Park Ave #8I25 A</p>
-                        <p>Near Church Road, Upper East Side</p>
-                        <p>Syracuse, New York, NY</p>
+                    <li><p>Jl. Gajayana No.50, Malang</p>
+                        <p>Gedung Jenderal Besar H.M. Soeharto (SC Lt. 1)</p>
+                        <p>Dinoyo, Kec. Lowokwaru, Kota Malang, Jawa Timur 65144</p>
                     </li>
-                    <li><p>+123 4567890</p></li>
-                    <li><p>lol@rolf.com</p></li>
+                    <li><p>0341 569901</p></li>
+                    <li><p>kemahasiswaan@uin-malang.ac.id</p></li>
                 </ul>
                 <a class="modal-trigger waves-effect waves-light btn blue center modal-trigger teal" href"#m-contact">Contact Us</a> <a class="modal-trigger waves-effect waves-light btn red center md-trigger" data-modal="m-sub">Subscribe to our Newsletter</a>
             </div>
@@ -360,7 +360,7 @@
                 <div class="clearfix"></div>
                 <ul class="list-inline footer-social">
                     <!-- Add links to your social profiles here -->
-                    <li><a href="#"><i class="ion-social-facebook waves-effect waves-light"></i></a></li>
+                    <li><a href="https://www.facebook.com/kemahasiswaanUINMalang/"><i class="ion-social-facebook waves-effect waves-light"></i></a></li>
                     <li><a href="#"><i class="ion-social-twitter waves-effect waves-light"></i></a></li>
                     <li><a href="#"><i class="ion-social-googleplus waves-effect waves-light"></i></a></li>
                 </ul>

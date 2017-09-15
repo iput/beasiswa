@@ -64,26 +64,25 @@
     <ul class="side-nav-main">
       <li class="logo hide-on-med-and-down"><img src="<?php echo base_url();?>imgs/UIN ukuran 512.png" width="100" height="150" alt="logo" class="logo responsive-img"></li>
       <li class="side-nav-inline hide-on-med-only"><a href="<?php echo base_url();?>FunctLogin/logout" class="inline waves-effect" title="Logout"><i class="mdi-action-exit-to-app"></i></a> <a href="<?php echo base_url();?>kasubag/Kasubag/profile" class="inline waves-effect" title="Profile"><i class="mdi-action-perm-identity"></i></a> </li>
-      <li><a href="<?php echo base_url();?>kasubag/Kasubag/profile" class="waves-effect"><i class="mdi-communication-email left"></i><span>Profile</span></a></li>
+      <li><a href="<?php echo base_url();?>kasubag/Kasubag/profile" class="waves-effect"><i class="mdi-action-account-box left"></i><span>User Profile</span></a></li>
       <li>
         <ul class="collapsible" data-collapsible="accordion">
-          <li><a class="collapsible-header waves-effect"><i class="mdi-editor-format-paint left"></i><span>Pengaturan Beasiswa</span></a>
+          <li><a class="collapsible-header waves-effect"><i class="mdi-editor-format-list-numbered left"></i><span>Request Beasiswa</span></a>
             <div class="collapsible-body">
               <ul>
                 <li><a href="<?php echo base_url('kasubag/C_master_scoring');?>">Master Scoring</a></li>
                 <li class="divider"></li>
-                <li><a href="<?php echo base_url('kasubag/C_requested');?>">Pengaturan</a></li>
+                <li><a href="<?php echo base_url('kasubag/C_requested');?>">Manajemen Beasiswa</a></li>
               </ul>
             </div>
           </li>
         </ul>
       </li>
       <li><a href="<?php echo base_url('kasubag/C_seleksi');?>" class="waves-effect"><i class="mdi-action-dashboard left"></i><span>Seleksi Mahasiswa</span></a></li>
-      <li><a href="#" class="waves-effect"><i class="mdi-communication-email left"></i><span>Manajemen Beasiswa</span></a></li>
-      <li><a href="#" class="waves-effect"><i class="mdi-communication-email left"></i><span>Ubah Status Mahasiswa</span></a></li>
+      <li><a href="#" class="waves-effect"><i class="mdi-action-settings left"></i><span>Ubah Status Mahasiswa</span></a></li>
       <li>
         <ul class="collapsible" data-collapsible="accordion">
-          <li><a class="collapsible-header waves-effect"><i class="mdi-editor-format-paint left"></i><span>laporan</span></a>
+          <li><a class="collapsible-header waves-effect"><i class="mdi-maps-local-print-shop left"></i><span>laporan</span></a>
             <div class="collapsible-body">
               <ul>
                   <li><a href="<?php echo base_url('kasubag/ModulLaporan/filterLaporan');?>">Pemohon Beasiswa</a></li>

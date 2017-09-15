@@ -67,19 +67,18 @@
       <li class="logo hide-on-med-and-down"><img src="<?php echo base_url();?>imgs/UIN ukuran 512.png" width="100" height="150" alt="logo" class="logo responsive-img"></li>
       <li class="side-nav-inline hide-on-med-only"><a href="<?php echo base_url();?>FunctLogin/logout" class="inline waves-effect" title="Logout"><i class="mdi-action-exit-to-app"></i></a> <a href="<?php echo base_url();?>kabag/C_kabag/profile" class="inline waves-effect" title="Profile"><i class="mdi-action-perm-identity"></i></a> </li>
       <li><a href="#" class="waves-effect"><i class="mdi-action-dashboard left"></i><span>Beranda</span></a></li>
-      <li><a href="<?php echo base_url();?>kabag/C_kabag/profile" class="waves-effect"><i class="mdi-communication-email left"></i><span>Profile</span></a></li>
+      <li><a href="<?php echo base_url();?>kabag/C_kabag/profile" class="waves-effect"><i class="mdi-communication-email left"></i><span>User Profile</span></a></li>
       <li>
         <ul class="collapsible" data-collapsible="accordion">
-          <li><a class="collapsible-header waves-effect"><i class="mdi-action-settings left"></i><span>Beasiswa</span><span class="neutral badge">2</span></a>
+          <li><a class="collapsible-header waves-effect"><i class="mdi-action-settings left"></i><span>Kontrol Pendaftaran</span><span class="neutral badge">2</span></a>
             <div class="collapsible-body">
               <ul>
-                <li><a href="<?php echo base_url('/kabag/C_request')?>">ACC Beasiswa</a></li>
+                <li><a href="<?php echo base_url('/kabag/C_request')?>">Buka Pendaftaran</a></li>
                 <li class="divider"></li>
                 <li><a href="#">Daftar Beasiswa Aktif</a></li>
               </ul>
             </div>
           </li>
-          <li><a href="<?php echo base_url('kabag/C_kabag/Berita'); ?>" class="waves-effect"><i class="mdi-action-dashboard left"></i><span>Manajemen Berita</span></a></li>
           <li><a class="collapsible-header waves-effect"> <i class="mdi-action-work"></i><span>laporan</span></a>
             <div class="collapsible-body">
               <ul>
