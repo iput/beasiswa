@@ -20,7 +20,7 @@ class C_admin extends CI_Controller
   }
   public function mjm_user()
   {
-    
+
     $this->load->view('attribute/header_admin');
     $this->load->view('admin/mjm_user');
     $this->load->view('attribute/footer');
@@ -231,5 +231,38 @@ public function updateProfile(){
     redirect('C_admin/profile');
   }
 }
+public function simpanPassword()
+  {   
+    $this->form_validation->set_rules('pwdnow','Current Password','required|alpha_numeric|min_length[1]|max_length[20]');
+    $this->form_validation->set_rules('pwdnew','New Password','required|alpha_numeric|min_length[1]|max_length[20]');
+    $this->form_validation->set_rules('retypepwd','Re-Type Password','required|alpha_numeric|min_length[1]|max_length[20]');
+    if ($this->form_validation->run()) {
+      $currpass  = $this->input->post('pwdnow');
+      $newpass  = $this->input->post('pwdnew');
+      $retypepwd = $this->input->post('retypepwd');
+      $userid = $this->input->post('userid');
+      $passwd = $this->modl->getCurrPass($userid);
+      if ($passwd->password == $currpass) {
+        if ($newpass ==$retypepwd) {
+          if ($this->modl->updatePass($newpass,$userid)) {
+            $this->session->set_flashdata("pesan", "<div class=\"card-panel success\">Berhasil Update Password</div>");
+            redirect('C_admin/profile');
+          }else{
+            $this->session->set_flashdata("pesan", "<div class=\"card-panel alert\">Gagal Update Password</div>");
+            redirect('C_admin/profile');
+          }
+        }else{
+          $this->session->set_flashdata("pesan", "<div class=\"card-panel alert\">New Password dan Re-Type New Password yang anda masukkan tidak sama</div>");
+          redirect('C_admin/profile');
+        }
+      }else{
+        $this->session->set_flashdata("pesan", "<div class=\"card-panel alert\">Current Password tidak ada dalam database</div>");
+          redirect('C_admin/profile');
+      }
+    }else{
+      echo validation_errors();
+    }
+  }
+
 }
 ?>

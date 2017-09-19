@@ -137,7 +137,7 @@ $data_user_login = $user->row();
 							<!-- Personal tab END -->
 							<!-- Password tab START -->
 							<div id="password">
-								<form method="post" action="<?php echo base_url(); ?>mahasiswa/C_profileMhs/simpanPassword">
+								<form method="post" onsubmit="return cekform();" action="<?php echo base_url(); ?>mahasiswa/C_profileMhs/simpanPassword">
 									<div class="form-pad">
 										<div class="row">
 											<div class="col s12">
@@ -146,13 +146,23 @@ $data_user_login = $user->row();
 													<label for="current">UserId</label>
 												</div>
 												<div class="input-field">
-													<input id="new" type="password" name="password" class="validate" value="<?php echo md5($this->session->userdata('password'));?>" required>
-													<label for="new">Password</label>
+													<?php echo form_password(['name'=>'pwdnow','id'=>'pwdnow']); ?>
+													<?php echo form_error('pwdnow','<div class="text-danger">','</div>');?>
+													<label for="current">Current Password</label>
 												</div>
-												<input type="hidden" name="id" value="<?php echo $this->session->userdata('id');?>">
+												<div class="input-field">
+													<?php echo form_password(['name'=>'pwdnew','id'=>'pwdnew']); ?>
+													<?php echo form_error('pwdnew','<div class="text-danger">','</div>');?>
+													<label for="new">New Password</label>
+												</div>
+												<div class="input-field">
+													<?php echo form_password(['name'=>'retypepwd','id'=>'retypepwd']); ?>
+													<?php echo form_error('retypepwd','<div class="text-danger">','</div>');?>
+													<label for="re-type-new">Re-type New Password</label>
+												</div>
 												<div class="buttons">
-													<button class="waves-effect waves-light btn light-blue accent-4" type="submit" name="action1" onclick="sweet1()"><i class="material-icons right">done</i>Save</button>
-													<button class="waves-effect waves-light btn blue-grey lighten-2" name="action2" disabled=""><i class="material-icons right">clear</i>Cancel</button>
+													<button class="waves-effect waves-light btn" type="submit" name="action1"><i class="material-icons right">done</i>Update Password</button>
+													<button class="waves-effect waves-light btn blue-grey lighten-2" type="submit" name="action2"><i class="material-icons right">clear</i>Cancel</button>
 												</div>
 											</div>
 										</div>
@@ -176,3 +186,25 @@ $data_user_login = $user->row();
 			swal("SILAHKAN LOGIN!", "Perubahan Disimpan!", "success");
 		}
 	</script>
+	<script type="text/javascript">
+	function cekform() {
+		if(!$("#pwdnow").val())
+		{
+			alert('Curret Password tidak boleh kosong');
+			$("#pwdnow").focus()
+			return false;
+		}
+		if(!$("#pwdnew").val())
+		{
+			alert('New Password tidak boleh kosong');
+			$("#pwdnew").focus()
+			return false;
+		}
+		if(!$("#retypepwd").val())
+		{
+			alert('Re-type New Password tidak boleh kosong');
+			$("#retypepwd").focus()
+			return false;
+		}
+	}
+</script>

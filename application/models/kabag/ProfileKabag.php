@@ -51,4 +51,18 @@ class ProfileKabag extends CI_Model {
 		$this->db->where('id',$key);
 		$this->db->delete('profil_admin');
 	}
+
+	public function getCurrPass($userId){
+		$query = $this->db->where(['userId'=>$userId])
+		->get('akses');
+		if($query->num_rows() > 0){
+			return $query->row();
+		}
+	}
+	public function updatePass($newpass,$userid){
+		$data = array(
+			'password' => $newpass
+			);
+		return $this->db->where('userId',$userid)->update('akses',$data);
+	}
 }

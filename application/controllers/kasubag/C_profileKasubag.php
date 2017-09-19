@@ -75,14 +75,36 @@ class C_profileKasubag extends CI_Controller
 		}
 	}
 	public function simpanPassword()
-	{ 	
-		$key=$this->input->post('id');
-		$data['id']=$this->input->post('id');
-		$data['userId'] = $this->input->post('userid');
-		$data['password'] = md5($this->input->post('password'));
-		$this->model->getupdatePass($key,$data);
-		$this->session->set_flashdata('info','Data Sukses di Update');
-		redirect('Login');
+	{   
+		$this->form_validation->set_rules('pwdnow','Current Password','required|alpha_numeric|min_length[1]|max_length[20]');
+		$this->form_validation->set_rules('pwdnew','New Password','required|alpha_numeric|min_length[1]|max_length[20]');
+		$this->form_validation->set_rules('retypepwd','Re-Type Password','required|alpha_numeric|min_length[1]|max_length[20]');
+		if ($this->form_validation->run()) {
+			$currpass  = $this->input->post('pwdnow');
+			$newpass  = $this->input->post('pwdnew');
+			$retypepwd = $this->input->post('retypepwd');
+			$userid = $this->input->post('userid');
+			$passwd = $this->model->getCurrPass($userid);
+			if ($passwd->password == $currpass) {
+				if ($newpass ==$retypepwd) {
+					if ($this->model->updatePass($newpass,$userid)) {
+						$this->session->set_flashdata("pesan", "<div class=\"card-panel success\">Berhasil Update Password</div>");
+						redirect('kasubag/Kasubag/profile');
+					}else{
+						$this->session->set_flashdata("pesan", "<div class=\"card-panel alert\">Gagal Update Password</div>");
+						redirect('kasubag/Kasubag/profile');
+					}
+				}else{
+					$this->session->set_flashdata("pesan", "<div class=\"card-panel alert\">New Password dan Re-Type New Password yang anda masukkan tidak sama</div>");
+					redirect('kasubag/Kasubag/profile');
+				}
+			}else{
+				$this->session->set_flashdata("pesan", "<div class=\"card-panel alert\">Current Password tidak ada dalam database</div>");
+				redirect('kasubag/Kasubag/profile');
+			}
+		}else{
+			echo validation_errors();
+		}
 	}
 }
 
