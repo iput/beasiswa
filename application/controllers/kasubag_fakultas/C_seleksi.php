@@ -28,7 +28,7 @@ class C_seleksi extends CI_Controller
       $sub_array[] = $row->nimMhs;
       $sub_array[] = $row->namaLengkap;
       $sub_array[] = $row->ipk;
-      $sub_array[] = $row->skor;
+      $sub_array[] = '<a href="#" onclick="view_detail_score('.$row->idPendaftar.','.$row->idBeasiswa.')">'.$row->skor.'</a>';
       $sub_array[] = number_format($row->jumlah,2);
       $sub_array[] = $row->updated;
       if ($row->status==1) {
@@ -71,6 +71,12 @@ class C_seleksi extends CI_Controller
   public function getDiterima($idBea)
   {
     $data = $this->mdl->infoDiterima($idBea);
+    echo json_encode($data);
+  }
+
+  public function view_detail_score($idPendaftar, $idBea)
+  {
+    $data = $this->mdl->view_detail_score($idPendaftar, $idBea);
     echo json_encode($data);
   }
 

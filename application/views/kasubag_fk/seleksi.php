@@ -203,4 +203,70 @@ function datatable() {
   });
 }
 
+function view_detail_score(idPendaftar,idBea) {
+  var url = "<?php echo site_url('kasubag_fakultas/C_seleksi/view_detail_score')?>";
+  $.ajax({
+    url : url+"/"+idPendaftar+"/"+idBea,
+    type: "POST",
+    dataType: "JSON",
+    success: function(data)
+    {
+      detail = '';
+      total_skor_mhs=0;
+      for (var i = 0; i < data.length; i++) {
+        detail += `
+          <tr>
+          <td>`+data[i].kategori+`</td>
+          <td>`+data[i].pilihan+`</td>
+          <td>`+data[i].skor+`</td>
+          </tr>
+        `;
+        total_skor_mhs += parseInt(data[i].skor);
+      }
+      $('#nim_mhs').html(data[0].nim);
+      $('#detail_skor_mhs').html(detail);
+      $('#total_skor_mhs').html(total_skor_mhs);
+      $('#modal1').openModal();
+    },
+    error: function (jqXHR, textStatus, errorThrown)
+    {
+      alert('Error get data!');
+    }
+  });
+}
+
 </script>
+
+<!-- Modal Structure -->
+<div id="modal1" class="modal">
+  <div class="modal-content">
+    <h4>Detail Skor NIM : <span id="nim_mhs"></span> </h4>
+    <hr><br>
+    <div class="row">
+      <table>
+        <style media="screen">
+          .fon{
+            font-weight: bold;
+          }
+        </style>
+        <thead style="font-weight: bold;">
+          <tr>
+            <td>Kategori</td>
+            <td>Pilihan</td>
+            <td>Skor</td>
+          </tr>
+        </thead>
+        <tbody id="detail_skor_mhs">
+
+        </tbody>
+        <tfoot style="font-weight: bold;">
+          <tr>
+            <td></td>
+            <td>Total</td>
+            <td id="total_skor_mhs"></td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+</div>

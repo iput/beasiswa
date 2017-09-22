@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Seleksi extends CI_Model {
 
   var $table = "skor_mahasiswa";
-  var $select_column = array("skor_mahasiswa.nimMhs", "skor_mahasiswa.namaLengkap", "skor_mahasiswa.namaBeasiswa", "skor_mahasiswa.ipk", "skor_mahasiswa.skor", "skor_mahasiswa.jumlah", "skor_mahasiswa.idBea", "skor_mahasiswa.updated", "skor_mahasiswa.status", "skor_mahasiswa.idPendaftar");
+  var $select_column = array("skor_mahasiswa.nimMhs", "skor_mahasiswa.namaLengkap", "skor_mahasiswa.namaBeasiswa", "skor_mahasiswa.ipk", "skor_mahasiswa.skor", "skor_mahasiswa.jumlah", "skor_mahasiswa.idBeasiswa", "skor_mahasiswa.updated", "skor_mahasiswa.status", "skor_mahasiswa.idPendaftar");
   var $order_column = array(null, "skor_mahasiswa.nimMhs", "skor_mahasiswa.namaLengkap", "skor_mahasiswa.ipk", "skor_mahasiswa.skor", "skor_mahasiswa.jumlah", "skor_mahasiswa.updated", null);
   var $column_search = array("skor_mahasiswa.nimMhs", "skor_mahasiswa.namaLengkap", "skor_mahasiswa.ipk", "skor_mahasiswa.skor", "skor_mahasiswa.jumlah");
 
@@ -12,7 +12,7 @@ class Seleksi extends CI_Model {
   {
     $this->db->select($this->select_column);
     $this->db->from($this->table);
-    $this->db->where('idBea', $idBea);
+    $this->db->where('idBeasiswa', $idBea);
 
     $i = 0;
     foreach ($this->column_search as $item) // loop column
@@ -88,6 +88,17 @@ class Seleksi extends CI_Model {
     $sql = "SELECT COUNT(status) diterima FROM `pendaftar` WHERE idBea=".$idBea." && status=1";
     $query = $this->db->query($sql);
     return $query->row()->diterima;
+  }
+
+  public function view_detail_score($idPendaftar,$idBea)
+  {
+    $sql = 'SELECT pendaftar_skor.idBea, pendaftar.nim, pendaftar.id, kategori_skor.nama kategori, set_sub_kategori_skor.nama pilihan, set_sub_kategori_skor.skor FROM `pendaftar_skor`
+    LEFT JOIN pendaftar ON pendaftar.id=pendaftar_skor.idPendaftar
+    LEFT JOIN kategori_skor ON pendaftar_skor.idKategori=kategori_skor.id
+    LEFT JOIN set_sub_kategori_skor ON pendaftar_skor.idSubKategori=set_sub_kategori_skor.id
+    WHERE pendaftar_skor.idPendaftar = '.$idPendaftar.' && pendaftar_skor.idBea = '.$idBea;
+    $res = $this->db->query($sql);
+    return $res->result();
   }
 
 }
