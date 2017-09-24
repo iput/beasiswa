@@ -3,11 +3,16 @@
  class BeaAktif extends CI_Model
  {
 
-   function get_all_data()
+   function get_bea_aktif()
    {
-     $this->db->select("*");
-     $this->db->from($this->table);
-     return $this->db->count_all_results();
+     $sql = '
+     SELECT bea.*, CURRENT_DATE() tanggalSekarang, fakultas.namaFk
+     FROM `bea`
+     LEFT JOIN fakultas ON fakultas.id=bea.selektorFakultas
+     WHERE CURRENT_DATE() <= bea.periodeBerakhir
+     ';
+     $res = $this->db->query($sql);
+     return $res->result();
    }
 
  }

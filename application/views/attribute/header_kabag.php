@@ -75,7 +75,7 @@
               <ul>
                 <li><a href="<?php echo base_url('/kabag/C_request')?>">Buka Pendaftaran</a></li>
                 <li class="divider"></li>
-                <li><a href="#">Daftar Beasiswa Aktif</a></li>
+                <li><a href="<?php echo base_url('/kabag/C_beaAktif')?>">Daftar Beasiswa Aktif</a></li>
               </ul>
             </div>
           </li>
