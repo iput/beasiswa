@@ -19,6 +19,7 @@
 <link href="<?php echo base_url('assets/css/plugins/justifiedGallery.css')?>" type="text/css" rel="stylesheet" media="screen">
 <!-- Assistance.css are used only for template support. No need to use it on "production" -->
 <link href="<?php echo base_url('assets/css/assistance.css')?>" type="text/css" rel="stylesheet" media="screen">
+<script src="<?php echo base_url('assets/chartjs/Chart.min.js');?>" type="text/javascript"></script>
 </head>
 
 <body class="loading">
@@ -70,11 +71,11 @@
           <li><a class="collapsible-header waves-effect"><i class="mdi-editor-format-paint left"></i><span>laporan</span></a>
             <div class="collapsible-body">
               <ul>
-                <li><a href="#">Pemohon Beasiswa</a></li>
+                <li><a href="<?php echo base_url('staf_kemahasiswaan/C_staff/filterLaporan');?>">Pemohon Beasiswa</a></li>
                 <li class="divider"></li>
-                <li><a href="#">Penerima Beasiswa</a></li>
+                <li><a href="<?php echo base_url('staf_kemahasiswaan/C_staff/penerimaBeaSiswa');?>">Penerima Beasiswa</a></li>
                 <li class="divider"></li>
-                <li><a href="">Grafik Perbandingan Pemohon & Penerima</a></li>
+                <li><a href="<?php echo base_url('staf_kemahasiswaan/C_staff/GrafikBeasiswa');?>">Grafik Perbandingan Pemohon & Penerima</a></li>
               </ul>
             </div>
           </li>

@@ -104,6 +104,25 @@ class ReportBeasiswa extends CI_Model {
         }
         unset($detailDiri);
     }
+    public function grafikPenerima() {
+        $query = $this->db->query("select namaBeasiswa,count(status) as penerima  from pendaftar join bea on pendaftar.idBea=bea.id where status=1 group by namaBeasiswa");
+        if ($query->num_rows() > 0) {
+            foreach ($query->result() as $result) {
+                $datahasil[] = $result;
+            }
+            return $datahasil;
+        }
+    }
+
+    public function grafikPemohon() {
+        $query = $this->db->query("select namaBeasiswa,count(status) as pemohon  from pendaftar join bea on pendaftar.idBea=bea.id where status=0 group by namaBeasiswa");
+        if ($query->num_rows() > 0) {
+            foreach ($query->result() as $result) {
+                $datahasil[] = $result;
+            }
+            return $datahasil;
+        }
+    }
 
 }
 

@@ -51,5 +51,12 @@ class ModulLaporan extends CI_Controller {
         $this->load->view('kasubag/ReportBeasiswaFilter', $data);
         $this->load->view('attribute/footerKasubag');
     }
+    public function GrafikBeasiswa() {
+        $data['grafis'] = $this->ReportBeasiswa->grafikPenerima();
+        $data['pemohon'] = $this->ReportBeasiswa->grafikPemohon();
+        $this->load->view('attribute/header_kasubag');
+        $this->load->view('kasubag/Grafik', $data);
+        $this->load->view('attribute/footerKasubag');
+    }
 }
 ?>

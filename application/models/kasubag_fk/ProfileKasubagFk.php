@@ -13,6 +13,13 @@ class ProfileKasubagFk extends CI_Model {
 		$hasil = $this->db->get('profil_admin');
 		return $hasil;
 	}
+	public function getFak($id)
+	{
+		$this->db->from('fakultas');
+		$this->db->where('fakultas.id',$id);
+		$query = $this->db->get();
+		return $query->row();
+	}
 
 	var $table='akses';
 	public function getProfile($user,$pass){

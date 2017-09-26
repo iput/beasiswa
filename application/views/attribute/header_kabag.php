@@ -24,6 +24,7 @@
 <!-- sweetalert -->
 <script src="<?php echo base_url('assets/sweetalert/sweetalert.min.js');?>" charset="utf-8"></script>
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/sweetalert/sweetalert.css');?>">
+<script src="<?php echo base_url('assets/chartjs/Chart.min.js');?>" type="text/javascript"></script>
 </head>
 
 <body class="loading">
@@ -82,11 +83,11 @@
           <li><a class="collapsible-header waves-effect"> <i class="mdi-action-work"></i><span>laporan</span></a>
             <div class="collapsible-body">
               <ul>
-                <li><a href="#">Pemohon Beasiswa</a></li>
+                <li><a href="<?php echo base_url('kabag/C_kabag/filterLaporan');?>">Pemohon Beasiswa</a></li>
                 <li class="divider"></li>
-                <li><a href="#">Penerima Beasiswa</a></li>
+                <li><a href="<?php echo base_url('kabag/C_kabag/penerimaBeaSiswa');?>">Penerima Beasiswa</a></li>
                 <li class="divider"></li>
-                <li><a href="">Grafik Perbandingan Pemohon & Penerima</a></li>
+                <li><a href="<?php echo base_url('kabag/C_kabag/GrafikBeasiswa');?>">Grafik Perbandingan Pemohon & Penerima</a></li>
               </ul>
             </div>
           </li>

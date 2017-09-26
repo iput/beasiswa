@@ -3,7 +3,7 @@ $data_user_login = $user->row();
 ?>
 <main>
 	<div class="container">
-		<h3><span class="blue-text">Profile Kasubag</span></h3>
+		<h3><span class="blue-text">Profile Kasubag Kemahasiswaan</span></h3>
 		<!--  Tables Section-->
 		<div class="col s12 m4 l6">
 			<?php echo $this->session->flashdata('pesan');?></div>
