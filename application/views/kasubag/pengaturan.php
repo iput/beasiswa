@@ -51,6 +51,11 @@
                         <label for="ditutup">Beasiswa Ditutup <span>*Thn-Bln-Tgl</span></label>
                       </div>
                       <div class="input-field col m12">
+                        <i class="mdi-action-alarm-off prefix"></i>
+                        <input id="periodeBerakhir" name="periodeBerakhir" type="date" class="validate datepicker" value="<?php echo $periodeBerakhir;?>" required="required">
+                        <label for="periodeBerakhir">Periode Beasiswa Berakhir <span>*Thn-Bln-Tgl</span></label>
+                      </div>
+                      <div class="input-field col m12">
                         <i class="mdi-action-open-in-browser prefix"></i>
                         <input id="kuota" name="kuota" type="text" class="validate" value="<?php echo $kuota;?>" required="required">
                         <label for="kuota">Kuota</label>

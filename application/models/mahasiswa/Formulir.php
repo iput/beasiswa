@@ -100,7 +100,6 @@ public function get_skor_bea($id)
     </div>
     ';
   }
-
   return $combo;
 }
 

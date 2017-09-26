@@ -6,52 +6,59 @@
         <div id="responsive" class="section">
           <div class="row">
             <form action="<?php echo base_url('mahasiswa/C_mahasiswa/searchFilter'); ?>" method="post" class="col s12">
-              <div class="row">
-                <div class="input-field col s2">
-                  <select id="tahun" name="tahun">
-                    <option value="" disabled selected>Pilih Tahun</option>
-                    <?php
-                    foreach ($tahun as $row) {
-                      ;?>
-                      <option value="<?php echo $row->tahun;?>"><?php echo $row->tahun;?></option>
-                      <?php }?>
-                  </select>
-                  <label>Tahun</label>
-                </div>
 
-                <div class="input-field col s3">
-                  <select id="fakultas" name="fakultas">
-                    <option value="" disabled selected>Fakultas</option>
-                    <?php
-                    foreach ($fakultas as $row) {
-                      ;?>
-                      <option value="<?php echo $row->id;?>"><?php echo $row->namaFk;?></option>
-                      <?php }?>
-                    </select> 
-                    <label>Fakultas</label>                   
-                  </div>
-
-                  <div class="input-field col s3" id="comboJurusan">
-                    <select id="jurusan" name="jurusan">
-                      <!-- <option value="" disabled selected>Jurusan</option> -->
-                      <option value="6">Pilihlah Jurusan</option>
-                    </select>
-                    <label>Jurusan</label>
-                  </div>
-                  <div class="input-field col s3">
-                    <select id="beasiswa" name="beasiswa">
-                      <option value="" disabled selected>Beasiswa</option>
-                      <?php
-                    foreach ($beasiswa as $row) {
-                      ;?>
-                      <option value="<?php echo $row->id;?>"><?php echo $row->namaBeasiswa;?></option>
-                      <?php }?>
-                    </select>
-                    <label>Nama Beasiswa</label>
-                  </div>
-                  <div class="input-field col s1">
-                     <button class="waves-effect cyan lighten-2 btn" type="submit" name="filter" value="Filter Data">Filter
-                     </button>
+              <div class="col m12 s12">
+                <div class="row">
+                  <div class="card-panel">
+                    <div class="row">                        
+                      <div class="input-field col s2">
+                        <select id="tahun" name="tahun">
+                          <option value="" disabled selected>Pilih Tahun</option>
+                          <?php
+                          $now = date('Y');
+                          for ($i = $now; $i > 2000; $i--) {
+                            echo "<option value=" . $i . ">" . $i . "</option>";
+                          }
+                          ?>
+                        </select>
+                        <label>Tahun</label>
+                      </div>
+                      <div class="input-field col s3">
+                        <select id="fakultas" name="fakultas">
+                          <option value="" disabled selected>Fakultas</option>
+                          <?php
+                          foreach ($fakultas as $row) {
+                            ;?>
+                            <option value="<?php echo $row->id;?>"><?php echo $row->namaFk;?></option>
+                            <?php }?>
+                          </select> 
+                          <label>Fakultas</label>                   
+                        </div>
+                        <div class="input-field col s3" id="comboJurusan">
+                          <select id="jurusan" name="jurusan">
+                            <!-- <option value="" disabled selected>Jurusan</option> -->
+                            <option value="6">Pilihlah Jurusan</option>
+                          </select>
+                          <label>Jurusan</label>
+                        </div>
+                        <div class="input-field col s3">
+                          <select id="beasiswa" name="beasiswa">
+                            <option value="" disabled selected>Beasiswa</option>
+                            <?php
+                            foreach ($beasiswa as $row) {
+                              ;?>
+                              <option value="<?php echo $row->id;?>"><?php echo $row->namaBeasiswa;?></option>
+                              <?php }?>
+                            </select>
+                            <label>Nama Beasiswa</label>
+                          </div>
+                          <div class="input-field col s1">
+                           <button class="btn-floating btn-small waves-effect waves-light red" type="submit" name="action">
+                            <i class="material-icons">search</i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </form>
@@ -149,19 +156,19 @@
         data: "fakultas="+fakultas,
         dataType: 'json',
         success: function(msg){   
-                var fakultas=`<select id="jurusan" name="jurusan">
-                <option value="6">Pilihlah Jurusan</option>`;
-                for (var i = 0; i < msg.length; i++) {
-                  fakultas+='<option value="'+msg[i].id+'">'+msg[i].namaJur+'</option>';
-                }
-                fakultas+=`</select>
-                    <label>Jurusan</label>`;
-                console.log(fakultas)
-                $("#comboJurusan").html(fakultas);
-                reloadJs('materialize', 'min');
-                reloadJs('initialize', 'nomin');
-              }
-        });
+          var fakultas=`<select id="jurusan" name="jurusan">
+          <option value="6">Pilihlah Jurusan</option>`;
+          for (var i = 0; i < msg.length; i++) {
+            fakultas+='<option value="'+msg[i].id+'">'+msg[i].namaJur+'</option>';
+          }
+          fakultas+=`</select>
+          <label>Jurusan</label>`;
+          console.log(fakultas)
+          $("#comboJurusan").html(fakultas);
+          reloadJs('materialize', 'min');
+          reloadJs('initialize', 'nomin');
+        }
+      });
     });
   });
 </script>

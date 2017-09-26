@@ -71,6 +71,7 @@ class C_request extends CI_Controller
         'keterangan' => $detailBea->keterangan,
         'dibuka' => $detailBea->beasiswaDibuka,
         'ditutup' => $detailBea->beasiswaTutup,
+        'periodeBerakhir' => $detailBea->periodeBerakhir,
         'kuota' => $detailBea->kuota,
         'namaFk' => $detailBea->namaFk,
         'comboBox' => $subScoring
@@ -84,6 +85,7 @@ class C_request extends CI_Controller
         'keterangan' => "",
         'dibuka' => "",
         'ditutup' => "",
+        'periodeBerakhir' => "",
         'kuota' => "",
         'namaFk' => "",
         'comboBox' => null

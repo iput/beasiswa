@@ -28,6 +28,7 @@ class C_requested extends CI_Controller
         'keterangan' => $detailBea->keterangan,
         'dibuka' => $detailBea->beasiswaDibuka,
         'ditutup' => $detailBea->beasiswaTutup,
+        'periodeBerakhir' =>$detailBea->periodeBerakhir,
         'kuota' => $detailBea->kuota,
         'namaFk' => $detailBea->namaFk,
         'skor' => $this->mdl->get_skor_by_idBea($id),
@@ -43,6 +44,7 @@ class C_requested extends CI_Controller
         'keterangan' => "",
         'dibuka' => "",
         'ditutup' => "",
+        'periodeBerakhir'=>"",
         'kuota' => "",
         'namaFk' => "",
         'skor' => null,
@@ -118,6 +120,7 @@ class C_requested extends CI_Controller
         'penyelenggaraBea' => $this->input->post('penyelenggara'),
         'beasiswaDibuka' => $this->input->post('dibuka'),
         'beasiswaTutup' => $this->input->post('ditutup'),
+        'periodeBerakhir' => $this->input->post('periodeBerakhir'),
         'kuota' => $this->input->post('kuota'),
         'selektor' => $this->input->post('selektor'),
         'selektorFakultas' => $this->input->post('selektor_fakultas')
@@ -128,6 +131,7 @@ class C_requested extends CI_Controller
         'penyelenggaraBea' => $this->input->post('penyelenggara'),
         'beasiswaDibuka' => $this->input->post('dibuka'),
         'beasiswaTutup' => $this->input->post('ditutup'),
+        'periodeBerakhir' => $this->input->post('periodeBerakhir'),
         'kuota' => $this->input->post('kuota'),
         'selektor' => $this->input->post('selektor')
       );
@@ -161,6 +165,7 @@ class C_requested extends CI_Controller
         'penyelenggaraBea' => $this->input->post('penyelenggara'),
         'beasiswaDibuka' => $this->input->post('dibuka'),
         'beasiswaTutup' => $this->input->post('ditutup'),
+        'periodeBerakhir' => $this->input->post('periodeBerakhir'),
         'kuota' => $this->input->post('kuota'),
         'selektor' => $this->input->post('selektor'),
         'selektorFakultas' => $this->input->post('selektor_fakultas')
@@ -171,6 +176,7 @@ class C_requested extends CI_Controller
         'penyelenggaraBea' => $this->input->post('penyelenggara'),
         'beasiswaDibuka' => $this->input->post('dibuka'),
         'beasiswaTutup' => $this->input->post('ditutup'),
+        'periodeBerakhir' => $this->input->post('periodeBerakhir'),
         'kuota' => $this->input->post('kuota'),
         'selektor' => $this->input->post('selektor'),
         'selektorFakultas' => null

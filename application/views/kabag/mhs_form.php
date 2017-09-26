@@ -46,10 +46,10 @@
 												: <span class="blue-text"><?php echo $nama; ?></span>
 											</div>
 											<div class="col m2 s4">
-												Dibuka Pada
+												Ditutup Pada
 											</div>
 											<div class="col m4 s8">
-												: <span class="blue-text"><?php echo $dibuka; ?></span>
+												: <span class="blue-text"><?php echo $ditutup; ?></span>
 											</div>
 										</div>
 										<div class="row">
@@ -60,10 +60,10 @@
 												: <span class="blue-text"><?php echo $penyelenggara; ?></span>
 											</div>
 											<div class="col m2 s4">
-												Ditutup Pada
+												Periode Berakhir
 											</div>
 											<div class="col m4 s8">
-												: <span class="blue-text"><?php echo $ditutup; ?></span>
+												: <span class="blue-text"><?php echo $periodeBerakhir; ?></span>
 											</div>
 										</div>
 										<div class="row">
@@ -93,6 +93,14 @@
 											</div>
 											<div class="col m4 s8">
 												: <span class="blue-text"><?php echo $sel.$nfk; ?></span>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col m2 s4">
+												Dibuka Pada
+											</div>
+											<div class="col m4 s8">
+												: <span class="blue-text"><?php echo $dibuka; ?></span>
 											</div>
 										</div>
 									</div>

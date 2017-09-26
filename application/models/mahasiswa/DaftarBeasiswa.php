@@ -124,5 +124,12 @@ class DaftarBeasiswa extends CI_Model {
     $this->db->where('idBea', $id);
 		$this->db->delete('set_bea_kategori_skor');
   }
+  public function get_penerimaBea($nim)
+  {
+    $this->db->from('penerima_bea');
+    $this->db->where('penerima_bea.nimMhs',$nim);
+    $query = $this->db->get();
+    return $query->row();
+  }
 
 }
