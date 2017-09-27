@@ -7,11 +7,17 @@ class DaftarBeasiswa extends CI_Model {
   var $select_column = array("bea.id", "bea.namaBeasiswa", "bea.penyelenggaraBea", "bea.beasiswaDibuka","bea.beasiswaTutup", "bea.keterangan", "pendaftar.status");
   var $order_column = array("bea.id", "bea.namaBeasiswa", "bea.penyelenggaraBea", "bea.beasiswaDibuka","bea.beasiswaTutup", "bea.keterangan", null);
 
+    // SELECT pendaftar.id, bea.penyelenggaraBea, bea.namaBeasiswa, bea.beasiswaDibuka, bea.beasiswaTutup, pendaftar.status, pendaftar.status keterangan 
+    // FROM `bea`
+    // LEFT JOIN pendaftar ON bea.id=pendaftar.idBea
+    // WHERE pendaftar.nim=15
+
   function make_query()
   {
     $this->db->select($this->select_column);
     $this->db->from($this->table);
     $this->db->join('pendaftar', 'bea.id = pendaftar.idBea', 'left');
+    $this->db->where('pendaftar.id','15');
 
     if(isset($_POST["search"]["value"]))
     {
@@ -131,5 +137,25 @@ class DaftarBeasiswa extends CI_Model {
     $query = $this->db->get();
     return $query->row();
   }
-
+  public function get_pendaftar($nim)
+  {
+    $this->db->from('pendaftar');
+    $this->db->where('pendaftar.nim',$nim);
+    $query = $this->db->get();
+    return $query->row();
+  }
+  public function ceknimPendaftar($nim)
+  {
+    $this->db->select('nim');    
+    $this->db->from('pendaftar');
+    $this->db->where('pendaftar.nim',$nim);
+    return $this->db->count_all_results();
+  }
+  public function ceknimPenerimaBea($nim)
+  {
+    $this->db->select('nimMhs');    
+    $this->db->from('penerima_bea');
+    $this->db->where('penerima_bea.nimMhs',$nim);
+    return $this->db->count_all_results();
+  }
 }

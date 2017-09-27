@@ -80,7 +80,7 @@
         </ul>
       </li>
       <li><a href="<?php echo base_url('kasubag/C_seleksi');?>" class="waves-effect"><i class="mdi-action-dashboard left"></i><span>Seleksi Mahasiswa</span></a></li>
-      <li><a href="#" class="waves-effect"><i class="mdi-action-settings left"></i><span>Ubah Status Mahasiswa</span></a></li>
+      <li><a href="<?php echo base_url('kasubag/C_ubahStatus');?>" class="waves-effect"><i class="mdi-action-settings left"></i><span>Ubah Status Mahasiswa</span></a></li>
       <li>
         <ul class="collapsible" data-collapsible="accordion">
           <li><a class="collapsible-header waves-effect"><i class="mdi-maps-local-print-shop left"></i><span>laporan</span></a>

@@ -44,6 +44,7 @@ class C_mahasiswa extends CI_Controller
   public function profile()
   { 
     $key = $this->session->userdata('username');
+    
     $data['user'] = $this->mdl->getdata($key);
     $this->load->view('attribute/header_mhs');
     $this->load->view('mahasiswa/v_profile_mhs',$data);

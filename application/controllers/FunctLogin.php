@@ -57,6 +57,7 @@ public function prosesLogin()
 						'id'		=>$prosesLog->id,
 						"username"	=>$prosesLog->userId,
 						"pass" 		=>$prosesLog->password,
+						"level"		=>$prosesLog->level,
 						"status"	=>$prosesLog->status);
 					$this->session->set_userdata($data);
 					redirect('staf_kemahasiswaan/C_staff');
@@ -64,7 +65,8 @@ public function prosesLogin()
 					$data = array(
 						"id"=>$prosesLog->id,
 						"username"=>$prosesLog->userId,
-						"level"=>$prosesLog->level,
+						"pass" 	=>$prosesLog->password,
+						"level" =>$prosesLog->level,
 						"status"=>$prosesLog->status);
 					$this->session->set_userdata($data);
 					redirect('kasubag/Kasubag');
@@ -81,6 +83,7 @@ public function prosesLogin()
 					$data = array(
 						"id"=>$prosesLog->id,
 						"username"=>$prosesLog->userId,
+						"pass" 		=>$prosesLog->password,
 						"level"=>$prosesLog->level,
 						"status"=>$prosesLog->status);
 					$this->session->set_userdata($data);
@@ -90,6 +93,7 @@ public function prosesLogin()
 					$data = array(
 						"id"=>$prosesLog->id,
 						"username"=>$prosesLog->userId,
+						"pass" 		=>$prosesLog->password,
 						"level"=>$prosesLog->level,
 						"status"=>$prosesLog->status);
 					$this->session->set_userdata($data);
@@ -100,6 +104,7 @@ public function prosesLogin()
 					$data = array(
 						"id"=>$prosesLog->id,
 						"username"=>$prosesLog->userId,
+						"pass" 		=>$prosesLog->password,
 						"level"=>$prosesLog->level,
 						"status"=>$prosesLog->status);
 					$this->session->set_userdata($data);
