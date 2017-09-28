@@ -1,104 +1,157 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class UbahStatus extends CI_Model {
+class UbahStatus extends CI_Model
+{
 
   var $table = "akses";
-  var $select_column = array("akses.userId", "akses.status", "skor_mahasiswa.namaBeasiswa", "skor_mahasiswa.ipk", "skor_mahasiswa.skor", "skor_mahasiswa.jumlah", "skor_mahasiswa.idBeasiswa", "skor_mahasiswa.updated", "skor_mahasiswa.status", "skor_mahasiswa.idPendaftar");
-  var $order_column = array(null, "skor_mahasiswa.nimMhs", "skor_mahasiswa.namaLengkap", "skor_mahasiswa.ipk", "skor_mahasiswa.skor", "skor_mahasiswa.jumlah", "skor_mahasiswa.updated", null);
-  var $column_search = array("skor_mahasiswa.nimMhs", "skor_mahasiswa.namaLengkap", "skor_mahasiswa.ipk", "skor_mahasiswa.skor", "skor_mahasiswa.jumlah");
+  var $select_column = array("akses.id", "akses.userId");
+  var $order_column = array("akses.id", "akses.userId");
+    var $column_order = array('akses.id', 'akses.userId', null, 'status', null); //set column field database for datatable orderable
+    var $column_search = array('akses.userId', 'akses.idLevel'); //set column field database for datatable searchable just firstname , lastname , address are searchable
+    var $order = array('akses.id' => 'desc'); // default order
 
-  function make_query($idBea)
-  {
-    $this->db->select($this->select_column);
-    $this->db->from($this->table);
-    $this->db->where('idBeasiswa', $idBea);
-
-    $i = 0;
-    foreach ($this->column_search as $item) // loop column
+    public function __construct()
     {
-      if($_POST['search']['value']) // if datatable send POST for search
-      {
+      parent::__construct();
+      $this->load->database();
+    }
 
-        if($i===0) // first loop
-        {
-          $this->db->group_start(); // open bracket. query Where with OR clause better with bracket. because maybe can combine with other WHERE with AND.
-          $this->db->like($item, $_POST['search']['value']);
-        }
-        else
-        {
-          $this->db->or_like($item, $_POST['search']['value']);
-        }
+    function make_query()
+    {
+      $this->db->from($this->table);
+      $this->db->where('akses.idLevel=5');
 
-        if(count($this->column_search) - 1 == $i) //last loop
-        $this->db->group_end(); //close bracket
+      $i = 0;
+
+        foreach ($this->column_search as $item) // loop column
+        {
+            if ($_POST['search']['value']) // if datatable send POST for search
+            {
+
+                if ($i === 0) // first loop
+                {
+                    $this->db->group_start(); // open bracket. query Where with OR clause better with bracket. because maybe can combine with other WHERE with AND.
+                    $this->db->like($item, $_POST['search']['value']);
+                  } else {
+                    $this->db->or_like($item, $_POST['search']['value']);
+                  }
+
+                if (count($this->column_search) - 1 == $i) //last loop
+                    $this->db->group_end(); //close bracket
+                  }
+                  $i++;
+                }
+
+        if (isset($_POST['order'])) // here order processing
+        {
+          $this->db->order_by($this->column_order[$_POST['order']['0']['column']], $_POST['order']['0']['dir']);
+        } else if (isset($this->order)) {
+          $order = $this->order;
+          $this->db->order_by(key($order), $order[key($order)]);
+        }
       }
-      $i++;
-    }
 
-    if(isset($_POST["order"]))
+      function make_datatables()
+      {
+        $this->make_query();
+        if ($_POST['length'] != -1)
+          $this->db->limit($_POST['length'], $_POST['start']);
+        $query = $this->db->get();
+        return $query->result();
+
+      }
+
+      function get_filtered_data()
+      {
+        $this->make_query();
+        $query = $this->db->get();
+        return $query->num_rows();
+      }
+
+      function get_all_data()
+      {
+        $this->db->select("*");
+        $this->db->from($this->table);
+        return $this->db->count_all_results();
+      }
+
+
+      public function get_by_id($id)
+      {
+        $this->db->from($this->table);
+        $this->db->where('id', $id);
+        $query = $this->db->get();
+
+        return $query->row();
+      }
+      public function change_status($where, $data)
+      {
+        $this->db->update("akses", $data, $where);
+        return $this->db->affected_rows();
+      }
+      public function getLevel($id)
+      {
+       $query = $this->db->query('SELECT akses.idLevel as level FROM akses WHERE akses.userId = "'.$id.'"');
+       return  $query->row();
+
+     }
+     public function getStatus($id)
+     {
+       $query = $this->db->query('SELECT akses.status FROM akses WHERE akses.userId = "'.$id.'"');
+       return  $query->row();
+
+     }
+     public function update($nim, $data)
+     {
+       // query binding ditandai dengan "?" untuk security
+      $hai = null;
+      $hai2 = null;
+      $pilih_hitung = $data['idLevel'];
+      $status= $data['status'];
+      if ($pilih_hitung == "Staff kemahasiswaan"){
+        $hai = 1;
+      }
+      else if ($pilih_hitung == "Kasubag"){
+        $hai = 2;
+      }
+      else if ($pilih_hitung == "Kasubag Fakultas"){
+        $hai = 3;
+      }
+      else if ($pilih_hitung == "Kabag"){
+        $hai = 4;
+      }
+      else if ($pilih_hitung == "Mahasiswa"){
+        $hai = 5;
+      }else if ($pilih_hitung == "Admin"){
+        $hai = 6;
+      }
+
+      if ($status == "Aktif"){
+        $hai2 = "open";
+      }
+      else {
+        $hai2 = "close";
+      }
+
+      $this->db->query("UPDATE `akses` SET `userId` = ?, `password` = ?, `idLevel` = ?, `status` = ? WHERE `akses`.`id` = ? ", array($data['userId'],$data['password'],$hai,$hai2,$nim));
+
+        // menghapus variabel dari memory
+      unset($nim, $data);
+
+    }
+    public function delete_by_id($id)
     {
-      $this->db->order_by($this->order_column[$_POST['order']['0']['column']], $_POST['order']['0']['dir']);
+      $this->db->where('id', $id);
+      $this->db->delete($this->table);
     }
-    else
+
+    public function save($data)
     {
-      $this->db->order_by('skor_mahasiswa.jumlah', 'DESC');
+      $this->db->insert($this->table, $data);
+      return $this->db->insert_id();
+
     }
-  }
 
-  function make_datatables($idBea){
-    $this->make_query($idBea);
-    if($_POST["length"] != -1)
-    {
-        $this->db->limit($_POST['length'], $_POST['start']);
-    }
-    $query = $this->db->get();
-    return $query->result();
-  }
 
-  function get_filtered_data($idBea){
-    $this->make_query($idBea);
-    $query = $this->db->get();
-    return $query->num_rows();
   }
-
-  function get_all_data()
-  {
-    $this->db->select("*");
-    $this->db->from($this->table);
-    return $this->db->count_all_results();
-  }
-
-  //combobox
-  public function getComboBea()
-  {
-    $sql = "SELECT * FROM bea WHERE (selektor='1' || selektor='3') && statusBeasiswa='0'";
-    $query = $this->db->query($sql);
-    return $query->result();
-  }
-
-  public function seleksi_penerima($where, $data)
-  {
-    $this->db->update("pendaftar", $data, $where);
-		return $this->db->affected_rows();
-  }
-
-  public function infoDiterima($idBea)
-  {
-    $sql = "SELECT COUNT(status) diterima FROM `pendaftar` WHERE idBea=".$idBea." && status=1";
-    $query = $this->db->query($sql);
-    return $query->row()->diterima;
-  }
-
-  public function view_detail_score($idPendaftar,$idBea)
-  {
-    $sql = 'SELECT pendaftar_skor.idBea, pendaftar.nim, pendaftar.id, kategori_skor.nama kategori, set_sub_kategori_skor.nama pilihan, set_sub_kategori_skor.skor FROM `pendaftar_skor`
-    LEFT JOIN pendaftar ON pendaftar.id=pendaftar_skor.idPendaftar
-    LEFT JOIN kategori_skor ON pendaftar_skor.idKategori=kategori_skor.id
-    LEFT JOIN set_sub_kategori_skor ON pendaftar_skor.idSubKategori=set_sub_kategori_skor.id
-    WHERE pendaftar_skor.idPendaftar = '.$idPendaftar.' && pendaftar_skor.idBea = '.$idBea;
-    $res = $this->db->query($sql);
-    return $res->result();
-  }
-
-}

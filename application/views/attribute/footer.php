@@ -194,6 +194,29 @@
 });
 
 </script>
+  <script type="text/javascript">
+    function logout() {
+      swal({
+        title: "Logout",
+        text: "Apakah anda yakin ingin keluar dari SI Beasiswa?",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: '#26CA17',
+        confirmButtonText: 'OK',
+        cancelButtonText: "Batal",
+        closeOnConfirm: false,
+        closeOnCancel: false
+      },
+      function(isConfirm){
+        if (isConfirm) {
+      window.location="<?php echo base_url();?>FunctLogin/logout"; // if you need redirect page
+      swal("Berhasil :(", "Anda Berhasil Logout!", "success");
+    } else {
+      swal("Batal :)", "Logout dibatalkan!", "error");
+    }
+  });
+    }
+  </script>
 </body>
 
 <!-- Mirrored from mate.creatingo.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 23 Apr 2017 09:49:43 GMT -->

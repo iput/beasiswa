@@ -20,6 +20,8 @@
 <!-- Assistance.css are used only for template support. No need to use it on "production" -->
 <link href="<?php echo base_url('assets/css/assistance.css')?>" type="text/css" rel="stylesheet" media="screen">
 <script src="<?php echo base_url('assets/chartjs/Chart.min.js');?>" type="text/javascript"></script>
+<script src="<?php echo base_url('assets/sweetalert/sweetalert.min.js');?>" charset="utf-8"></script>
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/sweetalert/sweetalert.css');?>">
 </head>
 
 <body class="loading">
@@ -52,7 +54,7 @@
         <ul class="right">
           <!-- <li class="hide-on-small-only"><a href="#search-in-modal" class="modal-trigger"><i class="mdi-action-search"></i></a></li> -->
           <li class="hide-on-small-only"><a href="<?php echo base_url();?>staf_kemahasiswaan/C_staff/profile"><i class="mdi-action-perm-identity"></i></a></li>
-          <li class="hide-on-small-only"><a href="<?php echo base_url();?>FunctLogin/logout"><i class="mdi-action-exit-to-app"></i></a></li>
+          <li class="hide-on-small-only"><a href="#" onClick="logout()"><i class="mdi-action-exit-to-app"></i></a></li>
           <li class="toogle-side-nav"><a href="#" data-activates="slide-menu" class="button-collapse"><i class="mdi-navigation-menu"></i></a></li>
         </ul>
       </div>
@@ -62,13 +64,13 @@
   <div id="slide-menu" class="side-nav fixed" data-simplebar-direction="vertical">
     <ul class="side-nav-main">
       <li class="logo hide-on-med-and-down"><img src="<?php echo base_url();?>imgs/UIN ukuran 512.png" width="100" height="150" alt="logo" class="logo responsive-img"></li>
-      <li class="side-nav-inline hide-on-med-only"><a href="<?php echo base_url();?>FunctLogin/logout" class="inline waves-effect" title="Logout"><i class="mdi-action-exit-to-app"></i></a> <a href="<?php echo base_url();?>staf_kemahasiswaan/C_staff/profile" class="inline waves-effect" title="Profile"><i class="mdi-action-perm-identity"></i></a> <!-- <a href="#search-in-modal" class="inline waves-effect modal-trigger"><i class="mdi-action-search"></i></a> --></li>
-      <li><a href="#" class="waves-effect"><i class="mdi-action-dashboard left"></i><span>Beranda</span></a></li>
-      <li><a href="<?php echo base_url();?>staf_kemahasiswaan/C_staff/profile" class="waves-effect"><i class="mdi-communication-email left"></i><span>Profile</span></a></li>
-      <li><a href="<?php echo base_url();?>staf_kemahasiswaan/C_staff/daftarBerita" class="waves-effect"><i class="mdi-communication-email left"></i><span>Management Berita</span></a></li>
+      <li class="side-nav-inline hide-on-med-only"><a href="#" onClick="logout()" class="inline waves-effect" title="Logout"><i class="mdi-action-exit-to-app"></i></a> <a href="<?php echo base_url();?>staf_kemahasiswaan/C_staff/profile" class="inline waves-effect" title="Profile"><i class="mdi-action-perm-identity"></i></a> <!-- <a href="#search-in-modal" class="inline waves-effect modal-trigger"><i class="mdi-action-search"></i></a> --></li>
+      <li><a href="<?php echo base_url();?>staf_kemahasiswaan/C_staff" class="waves-effect"><i class="mdi-action-dashboard left"></i><span>Beranda</span></a></li>
+      <li><a href="<?php echo base_url();?>staf_kemahasiswaan/C_staff/profile" class="waves-effect"><i class="mdi-action-account-box left"></i><span>Profile</span></a></li>
+      <li><a href="<?php echo base_url();?>staf_kemahasiswaan/C_staff/daftarBerita" class="waves-effect"><i class="mdi-action-settings left"></i><span>Management Berita</span></a></li>
       <li>
         <ul class="collapsible" data-collapsible="accordion">
-          <li><a class="collapsible-header waves-effect"><i class="mdi-editor-format-paint left"></i><span>laporan</span></a>
+          <li><a class="collapsible-header waves-effect"><i class="mdi-maps-local-print-shop left"></i><span>laporan</span></a>
             <div class="collapsible-body">
               <ul>
                 <li><a href="<?php echo base_url('staf_kemahasiswaan/C_staff/filterLaporan');?>">Pemohon Beasiswa</a></li>
