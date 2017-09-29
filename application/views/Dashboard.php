@@ -146,21 +146,21 @@
                     $contractDateEnd  = $r->beasiswaTutup;
                     if (($paymentDate > $contractDateBegin) && ($paymentDate < $contractDateEnd))
                     {
-                    $hai ="Dibuka";
+                    $hai ="<a class='waves-effect waves-light btn blue center md-trigger' >Pendaftaran Dibuka</a>";
                     }
                     else
                     {
-                    $hai ="Ditutup";  
+                    $hai ="<a class='waves-effect waves-light btn red center md-trigger' >Pendaftaran Ditutup</a>";  
                     }
                     ?>
                     <p>
                         <table>
-                                <tr><td>Penyelenggara bea </td><td>:<?php echo $r->penyelenggaraBea?></td> </tr>
+                                <tr><td><a style="color: black;">Penyelenggara bea</a> </td><td>: <?php echo $r->penyelenggaraBea?></td> </tr>
                                 
-                                <tr><td>Kuota Penerima </td><td>: <?php echo $r->kuota?></td> </tr>
-                                <tr><td>Pendaftaran Dibuka </td><td>: <?php echo $r->beasiswaDibuka?></td> </tr>
-                                <tr><td>Pendaftaran Ditutup </td><td>: <?php echo $r->beasiswaTutup?></td> </tr>
-                                <a class='waves-effect waves-light btn red center md-trigger' >Pendaftaran <?php echo $hai?></a>
+                                <tr><td><a style="color: black;">Kuota Penerima </a></td><td>: <?php echo $r->kuota?></td> </tr>
+                                <tr><td><a style="color: black;">Pendaftaran Dibuka </a></td><td>: <?php echo $r->beasiswaDibuka?></td> </tr>
+                                <tr><td><a style="color: black;">Pendaftaran Ditutup </a></td><td>: <?php echo $r->beasiswaTutup?></td> </tr>
+                                <?php echo   $hai?>
                                 
                                  
                         </table>

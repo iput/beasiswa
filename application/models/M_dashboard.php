@@ -46,6 +46,7 @@ class M_dashboard extends CI_Model
         $this->db->limit($limit, $start);
         return $this->db->get($this->table);
     }
+    
     function total_record() {
         $this->db->from($this->table);
         return $this->db->count_all_results();

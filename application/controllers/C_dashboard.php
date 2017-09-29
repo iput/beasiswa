@@ -21,6 +21,8 @@ class C_dashboard extends CI_Controller
         $this->pagination->initialize($config); 
         $start = $this->uri->segment(3, 0);
         $rows = $this->m_dashboard->user_limit($config['per_page'],$start)->result();
+      
+        
         // $data['daftar_bea']= $this->m_dashboard->daftar_bea();
         // $data['daftar_berita']=$this->m_dashboard->daftar_berita();
         $data = array(
