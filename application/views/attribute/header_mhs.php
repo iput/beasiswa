@@ -19,6 +19,7 @@
   <!-- sweetalert -->
   <script src="<?php echo base_url('assets/sweetalert/sweetalert.min.js');?>" charset="utf-8"></script>
   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/sweetalert/sweetalert.css');?>">
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/jquery.dataTables.min.css');?>">
 </head>
 
 <body class="loading">
@@ -62,17 +63,17 @@
       <li><a href="#" class="waves-effect"><i class="mdi-action-dashboard left"></i><span>Beranda</span></a></li>
       <li><a href="<?php echo base_url();?>mahasiswa/C_daftar_bea" class="waves-effect"><i class="mdi-av-my-library-books left"></i><span>Daftar Beasiswa</span></a></li>
       <li><a href="<?php echo base_url();?>mahasiswa/C_mahasiswa/pengumuman_penerima_beasiswa" class="waves-effect"><i class="mdi-action-credit-card left"></i><span>Penerima Beasiswa</span></a></li>
-      <li><a href="#" class="waves-effect"><i class="mdi-notification-play-install left"></i><span>Status Beasiswa</span></a></li>
+      <li><a href="<?php echo base_url();?>mahasiswa/C_mahasiswa/coba" class="waves-effect"><i class="mdi-notification-play-install left"></i><span>Status Beasiswa</span></a></li>
       <li>
         <ul class="collapsible" data-collapsible="accordion">
           <li><a class="collapsible-header waves-effect"><i class="mdi-editor-format-paint left"></i><span>laporan</span></a>
             <div class="collapsible-body">
               <ul>
-                <li><a href="#">Pemohon Beasiswa</a></li>
+                <li><a href="<?php echo base_url('kasubag/ModulLaporan/filterLaporan');?>">Pemohon Beasiswa</a></li>
                 <li class="divider"></li>
-                <li><a href="#">Penerima Beasiswa</a></li>
+                <li><a href="<?php echo base_url('kasubag/ModulLaporan/penerimaBeaSiswa');?>">Penerima Beasiswa</a></li>
                 <li class="divider"></li>
-                <li><a href="">Grafik Perbandingan Pemohon & Penerima</a></li>
+                <li><a href="<?php echo base_url('kasubag/ModulLaporan/GrafikBeasiswa');?>">Grafik Perbandingan Pemohon & Penerima</a></li>
               </ul>
             </div>
           </li>
@@ -97,5 +98,4 @@
       <div class="modal-footer"> <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Search now</a> </div>
     </div>
   </header>
-
 

@@ -18,28 +18,28 @@ class C_mahasiswa extends CI_Controller
     $this->load->view('attribute/footer');
   }
   public function data_pendaftar($id)
-    {   
-        
+  {   
+
         // mengambils hanya satu baris (menggunakan fungsi row()) 
         // di model m_aplikasi function daftar_tugas dengan parameter $nim
-        $data['pendaftar'] = $this->m_aplikasi->data_pendaftar($id);
-        $data['kategori'] = $this->m_aplikasi->data_kategori($id);
+    $data['pendaftar'] = $this->m_aplikasi->data_pendaftar($id);
+    $data['kategori'] = $this->m_aplikasi->data_kategori($id);
 
-        
-        $this->load->view('mahasiswa/buktipendaftaran',$data);
-        unset($data);
-    }
+
+    $this->load->view('mahasiswa/buktipendaftaran',$data);
+    unset($data);
+  }
   function pdf($id)
-    {
+  {
 // mengambils hanya satu baris (menggunakan fungsi row())
       // di model m_aplikasi function daftar_tugas dengan parameter $nim
-      $data['pendaftar'] = $this->m_aplikasi->data_pendaftar($id);
-      $data['kategori'] = $this->m_aplikasi->data_kategori($id);
-      $date['tanggal'] = date("Y-m-d");
+    $data['pendaftar'] = $this->m_aplikasi->data_pendaftar($id);
+    $data['kategori'] = $this->m_aplikasi->data_kategori($id);
+    $date['tanggal'] = date("Y-m-d");
 
-      $this->load->view('mahasiswa/pdfreport',$data);
-      unset($data);
-    }
+    $this->load->view('mahasiswa/pdfreport',$data);
+    unset($data);
+  }
 
   public function profile()
   { 
@@ -129,4 +129,11 @@ class C_mahasiswa extends CI_Controller
 
     print_r($this->db->query($view)->result());
   }
+
+  public function coba()
+  {
+   $this->load->view('attribute/header_mhs');
+   $this->load->view('mahasiswa/coba');
+   $this->load->view('attribute/footer');
+ }
 }

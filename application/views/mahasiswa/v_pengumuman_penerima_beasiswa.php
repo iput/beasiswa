@@ -91,7 +91,6 @@
   var save_method;
   var arr = 0;
   var dataTable;
-
   document.addEventListener("DOMContentLoaded", function (event) {
     datatable();
   });
@@ -111,16 +110,14 @@
       },
       ],
       "dom": '<"row" <"col s6 m6 l3 left"l><"col s6 m6 l3 right"f>><"bersih tengah" rt><"bottom"ip>',
-
     });
-
   }
   function reload_table() {
     dataTable.ajax.reload(null, false);
   }
 </script>
 
-<script src="<?php echo base_url('assets/js/js-script.js')?>" type="text/javascript"></script>
+<!-- <script src="<?php echo base_url('assets/js/js-script.js')?>" type="text/javascript"></script> -->
 <script src="<?php echo base_url('assets/js/jquery.js')?>"  type="text/javascript"></script>
 <script type="text/javascript">
   $(document).ready(function(){
@@ -148,4 +145,3 @@
     });
   });
 </script>
-

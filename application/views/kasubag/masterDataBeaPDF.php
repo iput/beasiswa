@@ -22,7 +22,7 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <h2 class="page-header">
-                            <img width="35px" height="35px" src="<?php echo base_url('imgs/UIN ukuran 512.png'); ?>">&nbsp;Data Pemohon Beasiswa
+                            <img width="35px" height="35px" src="<?php echo base_url('assets/img/UIN ukuran 512.png'); ?>">&nbsp;Data Pemohon Beasiswa
                             <small class="pull-right">Tanggal : <?php echo date('Y-m-d'); ?></small>
                         </h2>
                     </div>
