@@ -10,8 +10,8 @@
             <div class="row">
               <div class="card-panel">
                 <div class="row">                        
-                  <div class="input-field col s2">
-                    <select id="tahun" name="tahun">
+                  <div class="input-field col s3">
+                    <select id="tahun" name="tahun" onChange="viewTabel()">
                       <option value="" disabled selected>Pilih Tahun</option>
                       <?php
                       $now = date('Y');
@@ -23,7 +23,7 @@
                     <label>Tahun</label>
                   </div>
                   <div class="input-field col s3">
-                    <select id="fakultas" name="fakultas">
+                    <select id="fakultas" name="fakultas" onChange="viewTabel()">
                       <option value="" disabled selected>Fakultas</option>
                       <?php
                       foreach ($fakultas as $row) {
@@ -34,14 +34,14 @@
                       <label>Fakultas</label>                   
                     </div>
                     <div class="input-field col s3" id="comboJurusan">
-                      <select id="jurusan" name="jurusan">
+                      <select id="jurusan" name="jurusan" onChange="viewTabel()">
                         <!-- <option value="" disabled selected>Jurusan</option> -->
-                        <option value="6">Pilihlah Jurusan</option>
+                        <option value="">Pilihlah Jurusan</option>
                       </select>
                       <label>Jurusan</label>
                     </div>
                     <div class="input-field col s3">
-                      <select id="beasiswa" name="beasiswa">
+                      <select id="beasiswa" name="beasiswa" onChange="viewTabel()">
                         <option value="" disabled selected>Beasiswa</option>
                         <?php
                         foreach ($beasiswa as $row) {
@@ -51,11 +51,6 @@
                         </select>
                         <label>Nama Beasiswa</label>
                       </div>
-                      <div class="input-field col s1">
-                       <button class="btn-floating btn-small waves-effect waves-light red" type="submit" name="action">
-                        <i class="material-icons">search</i>
-                      </button>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -73,7 +68,7 @@
                     <th data-field="fakultas">Fakultas</th>
                     <th data-field="jurusan">Jurusan</th>
                     <th data-field="beasiswa">Beasiswa</th>
-                    <th data-field="tahun">Tahun</th>
+                    <th data-field="update">Update</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -91,17 +86,41 @@
   var save_method;
   var arr = 0;
   var dataTable;
+  var tahun;
+  var fakultas;
+  var jurusan;
+  var beasiswa;
+  var myVar;
+
   document.addEventListener("DOMContentLoaded", function (event) {
-    datatable();
+    // datatable();
   });
+  function viewTabel() {
+    tahun = $("#tahun").val();
+    fakultas = $("#fakultas").val();
+    jurusan = $("#jurusan").val();
+    beasiswa = $("#beasiswa").val();
+  
+    datatable();
+
+    reloadJs('materialize', 'min');
+    reloadJs('initialize', 'nomin');
+  }
+
+  function myTimer() {
+    reload_table();
+  }
+
   function datatable() {
     dataTable = $('#tabel').DataTable({
+      "destroy":true,
       "processing": true,
       "serverSide": true,
       "order": [],
       "ajax": {
-        url:"<?php echo base_url('mahasiswa/C_mahasiswa/datatable'); ?>",
-        type: "POST"
+        url:"<?php echo base_url('mahasiswa/C_mahasiswa/datatable');?>",
+        type: "POST",
+        data:{'tahun':tahun,'fakultas':fakultas,'jurusan':jurusan,'beasiswa':beasiswa}
       },
       "columnDefs": [
       {
@@ -130,7 +149,7 @@
         dataType: 'json',
         success: function(msg){   
           var fakultas=`<select id="jurusan" name="jurusan">
-          <option value="6">Pilihlah Jurusan</option>`;
+          <option value="">Pilihlah Jurusan</option>`;
           for (var i = 0; i < msg.length; i++) {
             fakultas+='<option value="'+msg[i].id+'">'+msg[i].namaJur+'</option>';
           }

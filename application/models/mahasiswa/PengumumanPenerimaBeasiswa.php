@@ -16,81 +16,143 @@ class PengumumanPenerimaBeasiswa extends CI_Model {
 	var $table = "pendaftar";
 	var $select_column = array("pendaftar.nim", "identitas_mhs.namaLengkap", "jurusan.namaJur", "fakultas.namaFk", "bea.namaBeasiswa", "pendaftar.waktuDiubah");
 	var $order_column = array("pendaftar.nim", "identitas_mhs.namaLengkap", "jurusan.namaJur", "fakultas.namaFk", "bea.namaBeasiswa", null);
+	var $column_search = array("pendaftar.nim", "identitas_mhs.namaLengkap", "jurusan.namaJur", "fakultas.namaFk", "bea.namaBeasiswa", "pendaftar.waktuDiubah");
 
 
-	function make_query()
-	{
+	function make_query($tahun, $fakultas, $jurusan, $bea)
+	{	
 		$this->db->select($this->select_column);
 		$this->db->from($this->table);
 		$this->db->join('identitas_mhs', 'identitas_mhs.nimMhs = pendaftar.nim', 'left');
 		$this->db->join('jurusan', 'identitas_mhs.idJrs = jurusan.id', 'left');
 		$this->db->join('bea', 'bea.id = pendaftar.idBea', 'left');
 		$this->db->join('fakultas', 'fakultas.id = jurusan.idFk', 'left');
-		$where = "pendaftar.status='1'";
-		$this->db->where($where);
-		
+		$this->db->where("pendaftar.status=1");		
 
-		if(isset($_POST["search"]["value"]))
-		{
-			$this->db->like("pendaftar.nim", $_POST["search"]["value"]);
-			$this->db->or_like("identitas_mhs.namaLengkap", $_POST["search"]["value"]);
-			$this->db->or_like("jurusan.namaJur", $_POST["search"]["value"]);
-			$this->db->or_like("fakultas.namaFk", $_POST["search"]["value"]);
-			$this->db->or_like("bea.namaBeasiswa", $_POST["search"]["value"]);
-			$this->db->or_like("pendaftar.waktuDiubah", $_POST["search"]["value"]);
+		if ($tahun!=0 && $fakultas==0 && $jurusan==0 && $bea==0) {
+			$this->db->where("identitas_mhs.angkatan",$tahun);	
 		}
-		if(isset($_POST["order"]))
-		{
-			$this->db->order_by($this->order_column[$_POST['order']['0']['column']], $_POST['order']['0']['dir']);
+		elseif ($tahun == 0 && $fakultas != 0 && $jurusan == 0 && $bea == 0) {
+			$this->db->where("fakultas.id",$fakultas);	
+		}elseif ($tahun == 0 && $fakultas == 0 && $jurusan != 0 && $bea == 0) {
+			$this->db->where("jurusan.id",$jurusan);
+		}elseif ($tahun == 0 && $fakultas == 0 && $jurusan == 0 && $bea != 0) {
+			$this->db->where("bea.id",$bea);
+		}elseif ($tahun != 0 && $fakultas != 0 && $jurusan == 0 && $bea == 0) {
+			$this->db->where("identitas_mhs.angkatan",$tahun);
+			$this->db->where("fakultas.id",$fakultas);		
+		}elseif ($tahun != 0 && $fakultas == 0 && $jurusan != 0 && $bea == 0) {
+			$this->db->where("identitas_mhs.angkatan",$tahun);
+			$this->db->where("jurusan.id",$jurusan);
+		}elseif ($tahun != 0 && $fakultas == 0 && $jurusan == 0 && $bea != 0) {
+			$this->db->where("identitas_mhs.angkatan",$tahun);
+			$this->db->where("bea.id",$bea);		
+		}elseif ($tahun == 0 && $fakultas != 0 && $jurusan != 0 && $bea == 0) {
+			$this->db->where("jurusan.id",$jurusan);
+			$this->db->where("fakultas.id",$fakultas);		
+		}elseif ($tahun == 0 && $fakultas != 0 && $jurusan == 0 && $bea != 0) {
+			$this->db->where("fakultas.id",$fakultas);
+			$this->db->where("bea.id",$bea);
+		}elseif ($tahun == 0 && $fakultas == 0 && $jurusan != 0 && $bea != 0) {
+			$this->db->where("jurusan.id",$jurusan);
+			$this->db->where("bea.id",$bea);
+		}elseif ($tahun != 0 && $fakultas != 0 && $jurusan != 0 && $bea == 0) {
+			$this->db->where("identitas_mhs.angkatan",$tahun);
+			$this->db->where("fakultas.id",$fakultas);	
+			$this->db->where("jurusan.id",$jurusan);
+		}elseif ($tahun != 0 && $fakultas != 0 && $jurusan == 0 && $bea != 0) {
+			$this->db->where("identitas_mhs.angkatan",$tahun);
+			$this->db->where("bea.id",$bea);
+			$this->db->where("jurusan.id",$jurusan);
+		}elseif ($tahun != 0 && $fakultas == 0 && $jurusan != 0 && $bea != 0) {
+			$this->db->where("fakultas.id",$fakultas);	
+			$this->db->where("bea.id",$bea);
+			$this->db->where("identitas_mhs.angkatan",$tahun);
+		}elseif ($tahun == 0 && $fakultas != 0 && $jurusan != 0 && $bea != 0) {
+			$this->db->where("fakultas.id",$fakultas);	
+			$this->db->where("bea.id",$bea);
+			$this->db->where("jurusan.id",$jurusan);
+		}elseif ($tahun != 0 && $fakultas != 0 && $jurusan != 0 && $bea != 0) {
+			$this->db->where("identitas_mhs.angkatan",$tahun);
+			$this->db->where("fakultas.id",$fakultas);	
+			$this->db->where("bea.id",$bea);
+			$this->db->where("jurusan.id",$jurusan);
 		}
-		else
-		{
-			$this->db->order_by('pendaftar.nim', 'DESC');
-		}
+
+		$i = 0;
+	    foreach ($this->column_search as $item) // loop column
+	    {
+	      if($_POST['search']['value']) // if datatable send POST for search
+	      {
+
+	        if($i===0) // first loop
+	        {
+	          $this->db->group_start(); // open bracket. query Where with OR clause better with bracket. because maybe can combine with other WHERE with AND.
+	          $this->db->like($item, $_POST['search']['value']);
+	      }
+	      else
+	      {
+	      	$this->db->or_like($item, $_POST['search']['value']);
+	      }
+
+	        if(count($this->column_search) - 1 == $i) //last loop
+	        $this->db->group_end(); //close bracket
+	    }
+	    $i++;
 	}
 
-	function make_datatables(){
-		$this->make_query();
-		if($_POST["length"] != -1)
-		{
-			$this->db->limit($_POST['length'], $_POST['start']);
-		}
-		$query = $this->db->get();
-		return $query->result();
-	}
-
-	function get_filtered_data(){
-		$this->make_query();
-		$query = $this->db->get();
-		return $query->num_rows();
-	}
-
-	function get_all_data()
+	if(isset($_POST["order"]))
 	{
-		$this->db->select("*");
-		$this->db->from($this->table);
-		return $this->db->count_all_results();
+		$this->db->order_by($this->order_column[$_POST['order']['0']['column']], $_POST['order']['0']['dir']);
 	}
+	else
+	{
+		$this->db->order_by('pendaftar.nim', 'DESC');
+	}
+}
 
-	public function get_by_id_bea($id)
+function make_datatables($tahun, $fakultas, $jurusan, $bea){
+	$this->make_query($tahun, $fakultas, $jurusan, $bea);
+	if($_POST["length"] != -1)
 	{
-		$this->db->from($this->table);
-		$this->db->where('bea.id',$id);
-		$query = $this->db->get();
-		return $query->row();
+		$this->db->limit($_POST['length'], $_POST['start']);
 	}
+	$query = $this->db->get();
+	return $query->result();
+}
 
-	public function get_scoring()
-	{
-		$this->db->select('*');
-		$this->db->from('kategori_skor');
-		$query = $this->db->get();
-		return $query->result();
-	}
-	public function get_jurusan($fakultas)
-	{
-		$getjur ="select j.id,j.namaJur,f.namaFk from jurusan j,fakultas f where j.idFk=f.id and f.id='$fakultas' order by j.namaJur asc";
-		return $this->db->query($getjur)->result();
-	}
+function get_filtered_data($tahun, $fakultas, $jurusan, $bea){
+	$this->make_query($tahun, $fakultas, $jurusan, $bea);
+	$query = $this->db->get();
+	return $query->num_rows();
+}
+
+function get_all_data()
+{
+	$this->db->select("*");
+	$this->db->from($this->table);
+	return $this->db->count_all_results();
+}
+
+public function get_by_id_bea($id)
+{
+	$this->db->from($this->table);
+	$this->db->where('bea.id',$id);
+	$query = $this->db->get();
+	return $query->row();
+}
+
+public function get_scoring()
+{
+	$this->db->select('*');
+	$this->db->from('kategori_skor');
+	$query = $this->db->get();
+	return $query->result();
+}
+public function get_jurusan($fakultas)
+{
+	$getjur ="select j.id,j.namaJur,f.namaFk from jurusan j,fakultas f where j.idFk=f.id and f.id='$fakultas' order by j.namaJur asc";
+	return $this->db->query($getjur)->result();
+}
 
 }

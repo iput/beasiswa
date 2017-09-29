@@ -19,9 +19,6 @@ class C_mahasiswa extends CI_Controller
   }
   public function data_pendaftar($id)
   {   
-
-        // mengambils hanya satu baris (menggunakan fungsi row()) 
-        // di model m_aplikasi function daftar_tugas dengan parameter $nim
     $data['pendaftar'] = $this->m_aplikasi->data_pendaftar($id);
     $data['kategori'] = $this->m_aplikasi->data_kategori($id);
 
@@ -31,8 +28,6 @@ class C_mahasiswa extends CI_Controller
   }
   function pdf($id)
   {
-// mengambils hanya satu baris (menggunakan fungsi row())
-      // di model m_aplikasi function daftar_tugas dengan parameter $nim
     $data['pendaftar'] = $this->m_aplikasi->data_pendaftar($id);
     $data['kategori'] = $this->m_aplikasi->data_kategori($id);
     $date['tanggal'] = date("Y-m-d");
@@ -63,7 +58,12 @@ class C_mahasiswa extends CI_Controller
   }
 
   public function datatable(){
-    $fetch_data = $this->model->make_datatables();
+    $tahun =$this->input->post('tahun')?$this->input->post('tahun'):0;
+    $fakultas =$this->input->post('fakultas')?$this->input->post('fakultas'):0;
+    $jurusan =$this->input->post('jurusan')?$this->input->post('jurusan'):0;
+    $bea =$this->input->post('beasiswa')?$this->input->post('beasiswa'):0;
+
+    $fetch_data = $this->model->make_datatables($tahun, $fakultas, $jurusan, $bea);
     $data = array();
     $nmr = 0;
 
@@ -80,13 +80,15 @@ class C_mahasiswa extends CI_Controller
       $sub_array[] = $row->waktuDiubah;
       $data[] = $sub_array;
     }
+    
     $output = array(
       "draw"            =>  intval($_POST["draw"]),
       "recordsTotal"    =>  $this->model->get_all_data(),
-      "recordsFiltered" =>  $this->model->get_filtered_data(),
+      "recordsFiltered" =>  $this->model->get_filtered_data($tahun, $fakultas, $jurusan, $bea),
       "data"            =>  $data
       );
     echo json_encode($output);
+    // echo "<br/>".$tahun."<br/>".$fakultas."<br/>".$jurusan."<br/>".$bea;
   }
 
   public function getjurusan()
@@ -94,40 +96,6 @@ class C_mahasiswa extends CI_Controller
     $fakultas = $_GET['fakultas'];
     $getjur = $this->model->get_jurusan($fakultas);
     echo json_encode($getjur); 
-  }
-
-  public function searchFilter()
-  {
-    $id_tahun     =htmlentities($_POST['tahun']);
-    $id_fakultas  =htmlentities($_POST['fakultas']);
-    $id_jurusan   =htmlentities($_POST['jurusan']);
-    $id_beasiswa  =htmlentities($_POST['beasiswa']);
-
-    if($id_tahun!=="0"){
-      $filter_tahun="and pb.tahun='$id_tahun'";
-    }else{
-      $filter_tahun="";
-    }
-
-    if($id_fakultas!=="0"){
-      $filter_fakultas="and f.id='$id_fakultas'";
-    }else{
-      $filter_fakultas="";
-    }
-    if($id_jurusan!=="0"){
-      $filter_jurusan="and j.id='$id_jurusan'";
-    }else{
-      $filter_jurusan="";
-    }
-    if($id_beasiswa!=="0"){
-      $filter_beasiswa="and b.id='$id_beasiswa'";
-    }else{
-      $filter_beasiswa="";
-    }
-
-    $view="SELECT pb.nim,im.namaLengkap, j.namaJur,f.namaFk, b.namaBeasiswa, pb.tahun FROM penerima_bea pb,identitas_mhs im,jurusan j,bea b,fakultas f where pb.nim=im.nimMhs and im.idJrs=j.id and b.id=pb.idBea and f.id=j.idFk $filter_tahun $filter_fakultas $filter_jurusan $filter_beasiswa order by nim asc";
-
-    print_r($this->db->query($view)->result());
   }
 
   public function coba()
