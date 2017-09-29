@@ -21,21 +21,21 @@
     <script src="<?php echo base_url()?>assets/achmad/js/modernizr.custom.js"></script>
 
     <!-- Favicons -->
-    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="<?php echo base_url()?>assets/img/icons/favicons/uin.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo base_url()?>assets/img/icons/favicons/uin.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo base_url()?>assets/img/icons/favicons/uin.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo base_url()?>assets/img/icons/favicons/uin.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="<?php echo base_url()?>assets/img/icons/favicons/uin.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="<?php echo base_url()?>assets/img/icons/favicons/uin.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="<?php echo base_url()?>assets/img/icons/favicons/uin.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="<?php echo base_url()?>assets/img/icons/favicons/uin.png" />
-    <link rel="icon" type="image/x-icon" href="<?php echo base_url()?>assets/img/icons/favicons/favicon.ico" />
-    <link rel="icon" type="image/png" href="<?php echo base_url()?>assets/img/icons/favicons/uin.png" sizes="196x196" />
-    <link rel="icon" type="image/png" href="<?php echo base_url()?>assets/img/icons/favicons/uin.png" sizes="96x96" />
-    <link rel="icon" type="image/png" href="<?php echo base_url()?>assets/img/icons/favicons/uin.png" sizes="32x32" />
-    <link rel="icon" type="image/png" href="<?php echo base_url()?>assets/img/icons/favicons/uin.png" sizes="16x16" />
-    <link rel="icon" type="image/png" href="<?php echo base_url()?>assets/img/icons/favicons/Uin.png" sizes="128x128" />
-    <meta name="application-name" content="Volkan"/>
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="<?php echo base_url()?>assets/img/icons/favicons/57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo base_url()?>assets/img/icons/favicons/114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo base_url()?>assets/img/icons/favicons/72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo base_url()?>assets/img/icons/favicons/72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="<?php echo base_url()?>assets/img/icons/favicons/144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="<?php echo base_url()?>assets/img/icons/favicons/144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="<?php echo base_url()?>assets/img/icons/favicons/76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="<?php echo base_url()?>assets/img/icons/favicons/152.png" />
+    <link rel="icon" type="image/x-icon" href="<?php echo base_url()?>assets/img/icons/favicons/uin.ico" />
+    <link rel="icon" type="image/png" href="<?php echo base_url()?>assets/img/icons/favicons/512.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="<?php echo base_url()?>assets/img/icons/favicons/114.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="<?php echo base_url()?>assets/img/icons/favicons/57.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="<?php echo base_url()?>assets/img/icons/favicons/57.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="<?php echo base_url()?>assets/img/icons/favicons/144.png" sizes="128x128" />
+    <meta name="application-name" content="Sistem Informasi Beasiswa UIN Malang"/>
 
     <!-- Title -->
 
@@ -136,16 +136,31 @@
         <div class="row center">
         <?php foreach ($daftar_bea as $r): ?>
             <div class='col s12 m6 l3'>
-                <div class='card-panel overview-section-box wow fadeIn' data-wow-delay='0.1s'>
+                <div class='card-panel overview-section-box'>
 
                     <h3><?php echo $r->namaBeasiswa?></h3>
+                    <?php 
+                    $paymentDate = date('Y-m-d');
+                    $hai;
+                    $contractDateBegin = $r->beasiswaDibuka;
+                    $contractDateEnd  = $r->beasiswaTutup;
+                    if (($paymentDate > $contractDateBegin) && ($paymentDate < $contractDateEnd))
+                    {
+                    $hai ="Dibuka";
+                    }
+                    else
+                    {
+                    $hai ="Ditutup";  
+                    }
+                    ?>
                     <p>
                         <table>
                                 <tr><td>Penyelenggara bea </td><td>:<?php echo $r->penyelenggaraBea?></td> </tr>
-                                <tr><td>Periode pendaftaran </td><td>: <?php echo $r->beasiswadibuka ?> sampai dengan <?php echo $r->beasiswatutup?></td> </tr>
+                                
                                 <tr><td>Kuota Penerima </td><td>: <?php echo $r->kuota?></td> </tr>
-                                <tr><td>Status beasiswa </td><td>: Dibuka  </td> </tr>
-                                <a class='waves-effect waves-light btn red center md-trigger' >Pendaftaran Dibuka</a>
+                                <tr><td>Pendaftaran Dibuka </td><td>: <?php echo $r->beasiswaDibuka?></td> </tr>
+                                <tr><td>Pendaftaran Ditutup </td><td>: <?php echo $r->beasiswaTutup?></td> </tr>
+                                <a class='waves-effect waves-light btn red center md-trigger' >Pendaftaran <?php echo $hai?></a>
                                 
                                  
                         </table>
@@ -153,9 +168,11 @@
                 </div>
             </div>
         <?php endforeach; ?>
+        
             <!-- Col ends -->
             <!-- Col ends -->
         </div><!-- Row ends -->
+        <?php echo $pagination; ?>
     </div><!-- Container ends -->
 </section><!-- Section ends -->
 <!-- Section faq -->
@@ -174,8 +191,8 @@
                     <?php foreach ($daftar_berita as $r): ?>
                        <div class='card medium'>
                         <div class='card-image'>
-                        <img src='assets/img/news-3.jpg' alt='simple' class='responsive-img'>
-                        <span class='card-title'><?php echo $r->judulBerita?></span>
+                        <img src='<?php echo base_url()?>assets/img/fitri-01.jpg' alt='' class='responsive-img'>
+                        <span class='card-title'><a style="font-family: cambria;text-transform: capitalize;background: #42a5f5;color: white;"><?php echo $r->judulBerita?></a></span>
                         <span class='card-title blog-post-full-cat right orange'><a href='#'><?php echo $r->topikBerita?></a></span>
                         </div>
                         <div class='card-content'>
@@ -236,8 +253,7 @@
                 <div id="tab-video" class="col s12 tab-content wow fadeIn">
                     <div class="col s12 m10 offset-m1">
                         <div class="video-box">
-                            <img src="<?php echo base_url()?>assets/img/bg-screen-4.png" alt="" class="responsive-img center-block">
-                            <button class="video-trigger btn-floating btn-large waves-effect waves-light red md-trigger" data-modal="m-video"><i class="ion-ios-play"></i></button>
+                            <p style="font-style: bold;">Sambil menunggu pengumuman, siapkan berkas-berkas persyaratan beasiswa</p>
                         </div>
                     </div>
                 </div><!-- Tab ends -->
@@ -249,36 +265,13 @@
                 </div><!-- Tab ends -->
                 <div id="tab-compare" class="col s12 tab-content wow fadeIn">
                     <div class="col s12 m6 l6">
-                        <h3>Your Benefits</h3>
-                        <p>Duis posuere auctor erat nec lobortis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vestibulum. Pellentesque vestibulum, sem vitae sollicitudin scelerisque, tortor urna luctus metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vestibulum, sem vitae sollicitudin scelerisque.</p>
-                        <p>Eros luctus eu id eu metus potenti eros litora, a congue convallis iaculis sollicitudin nisi nam elementum, volutpat himenaeos egestas etiam ac eu molestie.</p>
-                        <div class="progress-box">
-                            <span>Feature 1</span>
-                            <div class="progress z-depth-1">
-                                <div class="determinate wow slideInLeft feature-1"></div>
-                            </div>
-                        </div>
-                        <div class="progress-box">
-                            <span>Feature 2</span>
-                            <div class="progress z-depth-1">
-                                <div class="determinate wow slideInLeft feature-2"></div>
-                            </div>
-                        </div>
-                        <div class="progress-box">
-                            <span>Feature 3</span>
-                            <div class="progress z-depth-1">
-                                <div class="determinate wow slideInLeft feature-3"></div>
-                            </div>
-                        </div>
-                        <div class="progress-box">
-                            <span>Feature 4</span>
-                            <div class="progress z-depth-1">
-                                <div class="determinate wow slideInLeft feature-4"></div>
-                            </div>
-                        </div>
+                        <h3>Pertanyaan Seputar Beasiswa</h3>
+                        <p>Untuk saat ini karena dalam pengembangan awal silahkan isi pertanyaan didalam link berikut</p>
+                       <a href="https://goo.gl/forms/OKptUymyNuFDuClK2">Form isi pertanyaan</a>
+                        
                     </div>
                     <div class="col s12 m6 l6 center">
-                        <img src="<?php echo base_url()?>assets/img/bg-screen-3.png" alt="" class="responsive-img">
+                        <img src="<?php echo base_url()?>assets/img/under-construction.png" alt="" class="responsive-img">
                     </div>
                 </div><!-- Tab ends -->
             </div><!-- Row ends -->
@@ -287,41 +280,6 @@
 </section><!-- Section ends -->
 
 
-<!-- Section screens -->
-<!-- Section ends -->
-
-
-
-
-<!-- Section testimonials -->
-
-
-<!-- Section count -->
-<section id="count" class="count-section z-depth-1">
-    <div class="sec-padded-3x">
-        <div class="container">
-            <div class="row center">
-                <div class="col s4 m4 l4">
-                    <i class="ion-ios-people"></i>
-                    <h2 class="counter">10,147</h2>
-                    <p>Followers</p>
-                </div>
-                <div class="col s4 m4 l4">
-                    <i class="ion-ios-cloud-download-outline"></i>
-                    <h2 class="counter">99,147</h2>
-                    <p>Downloads</p>
-                </div>
-                <div class="col s4 m4 l4">
-                    <i class="ion-ios-compose-outline"></i>
-                    <h2 class="counter">6,147</h2>
-                    <p>Reviews</p>
-                </div>
-            </div>
-        </div><!-- Container ends -->
-    </div><!-- Sec-padded ends -->
-</section><!-- Section ends -->
-
-<!-- Section location -->
 <section id="location" class="location-section">
     <div class="container-fluid">
         <div class="row btm-mrgn-0">
@@ -339,7 +297,7 @@
                     <li><p>0341 569901</p></li>
                     <li><p>kemahasiswaan@uin-malang.ac.id</p></li>
                 </ul>
-                <a class="modal-trigger waves-effect waves-light btn blue center modal-trigger teal" href"#m-contact">Contact Us</a> <a class="modal-trigger waves-effect waves-light btn red center md-trigger" data-modal="m-sub">Subscribe to our Newsletter</a>
+               
             </div>
 
         </div><!-- Row ends -->
@@ -353,7 +311,7 @@
 <footer id="footer" class="footer-main">
     <div class="container">
         <div class="row">
-            <div class="col s12 m8 l8 offset-m2 offset-l2">
+            <div class="col s12 m8 l8 offset-m2">
                 <div class="center-heading wow fadeIn" data-wow-delay="0.1s">
                 <!-- Replace 'src' attribute with the path to your Brand logo -->
                 <a href="index-2.html"><img src="<?php echo base_url()?>assets/img/icons/UIN512.png" alt=""></a>
