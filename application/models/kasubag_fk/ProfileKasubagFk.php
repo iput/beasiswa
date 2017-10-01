@@ -12,7 +12,7 @@ class ProfileKasubagFk extends CI_Model {
 		$this->db->from('profil_admin');
 		$this->db->where('profil_admin.idAkses',$key);
 		$query = $this->db->get();
-		return $query;
+		return $query->row();
 	}
 	public function getIdentitasAdmin($id)
 	{
