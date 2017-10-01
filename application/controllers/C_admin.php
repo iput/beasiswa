@@ -169,8 +169,27 @@ public function ajax_delete($id)
 }
 public function profile()
 { 
-  $user = $this->session->userdata('id');
-  $data['user'] = $this->modl->getdata($user);
+    $user = $this->session->userdata('id');
+    $cek = $this->modl->getdata($user);
+    if($this->modl->getIdentitasAdmin($user) != 0){
+      $data =array(
+        'foto'    => $cek->foto,
+        'id'      => $cek->id,
+        'nama'    => $cek->nama,
+        'alamat'  => $cek->alamat,
+        'noTelp'  => $cek->noTelp,
+        'email'   => $cek->email
+        );
+    }else{
+      $data=array(
+      'foto'    => "",
+      'id'      => "",
+      'nama'    => "",
+      'alamat'  => "",
+      'noTelp'  => "",
+      'email'   => ""
+      );
+    }
   $this->load->view('attribute/header_admin');
   $this->load->view('admin/profileAdmin',$data);
   $this->load->view('attribute/footer');

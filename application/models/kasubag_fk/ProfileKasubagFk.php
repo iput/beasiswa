@@ -9,9 +9,17 @@ class ProfileKasubagFk extends CI_Model {
 
 	public function getdata($key)
 	{
-		$this->db->where('idAkses',$key);
-		$hasil = $this->db->get('profil_admin');
-		return $hasil;
+		$this->db->from('profil_admin');
+		$this->db->where('profil_admin.idAkses',$key);
+		$query = $this->db->get();
+		return $query;
+	}
+	public function getIdentitasAdmin($id)
+	{
+		$this->db->select('idAkses');    
+		$this->db->from('profil_admin');
+		$this->db->where('profil_admin.idAkses',$id);
+		return $this->db->count_all_results();
 	}
 	public function getFak($id)
 	{
