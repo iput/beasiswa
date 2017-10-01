@@ -81,7 +81,7 @@ class Seleksi extends CI_Model {
     WHERE akses.userId='".$username."' && akses.password='".$password."'";
     $que = $this->db->query($sq)->row();
 
-    $sql = "SELECT * FROM bea WHERE (selektor='2' || selektor='3') && statusBeasiswa='0' && statusSeleksi='1' && selektorFakultas='".$que->idFakultas."'";
+    $sql = "SELECT * FROM bea WHERE (selektor='2' && selektorFakultas='".$que->idFakultas."' || selektor='3') && statusBeasiswa='0' && statusSeleksi='1'";
     $query = $this->db->query($sql);
     return $query->result();
   }

@@ -114,7 +114,7 @@ class C_requested extends CI_Controller
   public function add_data()
   {
     $slktr = $this->input->post('selektor');
-    if($slktr == "2" || $slktr == "3"){
+    if($slktr == "2"){
       $data_bea = array(
         'namaBeasiswa' => $this->input->post('nama'),
         'penyelenggaraBea' => $this->input->post('penyelenggara'),
@@ -159,7 +159,7 @@ class C_requested extends CI_Controller
   public function update_data()
   {
     $slktr = $this->input->post('selektor');
-    if($slktr == "2" || $slktr == "3"){
+    if($slktr == "2"){
       $data_bea = array(
         'namaBeasiswa' => $this->input->post('nama'),
         'penyelenggaraBea' => $this->input->post('penyelenggara'),

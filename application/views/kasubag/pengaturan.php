@@ -57,7 +57,7 @@
                       </div>
                       <div class="input-field col m12">
                         <i class="mdi-action-open-in-browser prefix"></i>
-                        <input id="kuota" name="kuota" type="text" class="validate" value="<?php echo $kuota;?>" required="required">
+                        <input id="kuota" name="kuota" type="number" class="validate" value="<?php echo $kuota;?>" required="required">
                         <label for="kuota">Kuota</label>
                       </div>
                       <div class="input-field col m12">
@@ -87,16 +87,15 @@
                         <label for="kemahasiswaan">Kasubag Kemahasiswaan</label>
                         <div class="input-field col m12"></div>
                         <br>
-                        <input class="with-gap" name="selektor" onchange="view_fakultas(1)" type="radio" value="2" id="fakultas" <?php echo $fks; ?> required="required">
+                        <input class="with-gap" name="selektor" onchange="view_fakultas()" type="radio" value="2" id="fakultas" <?php echo $fks; ?> required="required">
                         <label for="fakultas">Kasubag Fakultas <?php echo $nmFk; ?></label>
                         <div class="input-field col m12" id="combo_fakultas"></div>
                         <br>
-                        <input class="with-gap" name="selektor" onchange="view_fakultas(2)" type="radio" value="3" id="keduanya" <?php echo $dua; ?> required="required">
-                        <label for="keduanya">Keduanya <?php echo $nmFk2; ?></label>
-                        <div class="input-field col m12" id="combo_fakultas2"></div>
+                        <input class="with-gap" name="selektor" onchange="hide_fakultas()" type="radio" value="3" id="keduanya" <?php echo $dua; ?> required="required">
+                        <label for="keduanya">Keduanya</label>
                         <script type="text/javascript">
                           var data = <?php echo $combo_fkltas ?>;
-                          function view_fakultas(ind) {
+                          function view_fakultas() {
                             jml_data = data.length;
                             cf = `
                             <select name="selektor_fakultas">
@@ -107,21 +106,13 @@
                             }
                             cf +='</select>';
 
-                            if (ind==1) {
-                              $('#combo_fakultas').html(cf);
-                              $('#combo_fakultas2').html("");
-                            }else {
-                              $('#combo_fakultas').html("");
-                              $('#combo_fakultas2').html(cf);
-                            }
-
+                            $('#combo_fakultas').html(cf);
                             reloadJs('materialize', 'min');
                             reloadJs('initialize', 'nomin');
                           }
 
                           function hide_fakultas() {
                             $('#combo_fakultas').html("");
-                            $('#combo_fakultas2').html("");
                           }
                         </script>
                       </div>
@@ -131,7 +122,7 @@
                 <div class="row">
                   <div class="col m10">
                     <a href="<?php echo base_url('kasubag/C_requested')?>" class="waves-effect waves-light btn"><i class="mdi-image-navigate-before left"></i>Kembali</a>
-                    <button class="waves-effect waves-light btn blue" onclick="save('<?php echo $nama?>')" type="button">Simpan<i class="mdi-image-navigate-next right"></i></button>
+                    <button class="waves-effect waves-light btn blue" onclick="save()" type="button">Simpan<i class="mdi-image-navigate-next right"></i></button>
                   </div>
                   <div class="col m2">
                     <?php
@@ -206,7 +197,7 @@
     // combo_fakultas = '<?php echo json_encode($combo_fkltas) ?>';
   });
 
-  function save(nama)
+  function save()
   {
     var url;
     if(save_method == 'add')
