@@ -11,7 +11,9 @@ class M_dashboard extends CI_Model
 
 
     private $table = 'bea';
+    private $table2 = 'berita';
     private $pk = 'id';
+    private $pk2 = 'idBerita';
 
     function daftar_bea()
     {	$query = $this->db->query("SELECT namaBeasiswa,penyelenggaraBea,beasiswadibuka,beasiswatutup,statusbeasiswa,kuota FROM bea LIMIT 4");
@@ -46,9 +48,17 @@ class M_dashboard extends CI_Model
         $this->db->limit($limit, $start);
         return $this->db->get($this->table);
     }
-    
+    function user_limit2($limit, $start = 0) {
+        $this->db->order_by($this->pk2, 'DESC');
+        $this->db->limit($limit, $start);
+        return $this->db->get($this->table2);
+    }
     function total_record() {
         $this->db->from($this->table);
+        return $this->db->count_all_results();
+    }
+    function total_record2() {
+        $this->db->from($this->table2);
         return $this->db->count_all_results();
     }
 

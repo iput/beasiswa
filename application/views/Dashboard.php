@@ -172,7 +172,7 @@
             <!-- Col ends -->
             <!-- Col ends -->
         </div><!-- Row ends -->
-        <?php echo $pagination; ?>
+        <?php echo $pagination1; ?>
     </div><!-- Container ends -->
 </section><!-- Section ends -->
 <!-- Section faq -->
@@ -207,17 +207,9 @@
                     </div>
                     <?php endforeach; ?>
                 </div>
+                <?php echo $pagination1; ?>
 
-
-                <ul class="col s4 offset-s5 pagination">
-                            <li class="disabled"><a href="#!"><i class="ion-chevron-left"></i></a></li>
-                            <li class="active"><a href="#!">1</a></li>
-                            <li class="waves-effect"><a href="#!">2</a></li>
-                            <li class="waves-effect"><a href="#!">3</a></li>
-                            <li class="waves-effect"><a href="#!">4</a></li>
-                            <li class="waves-effect"><a href="#!">5</a></li>
-                            <li class="waves-effect"><a href="#!"><i class="ion-chevron-right"></i></a></li>
-                </ul>
+               
 
 
             </div><!-- Col ends -->
@@ -253,7 +245,12 @@
                 <div id="tab-video" class="col s12 tab-content wow fadeIn">
                     <div class="col s12 m10 offset-m1">
                         <div class="video-box">
-                            <p style="font-style: bold;">Sambil menunggu pengumuman, siapkan berkas-berkas persyaratan beasiswa</p>
+                            
+                            <ol>
+                <li><p style="font-weight:bold ;">Sambil menunggu pengumuman, siapkan berkas-berkas persyaratan beasiswa</p></li>
+                <li><p style="font-weight:bold ;">Sangat dianjurkan untuk menggunakan browser Google Chrome untuk menghindari error pada sistem</p></li>
+                            </ol>
+                            
                         </div>
                     </div>
                 </div><!-- Tab ends -->
