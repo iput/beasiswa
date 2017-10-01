@@ -37,7 +37,7 @@
               </div>
             </div>
           </div>
-          <?php foreach ($ as $row): ?>
+          
           <div class="col m6 s12">
             <h5 class="blue-text" style="text-align: center;">Anda terdaftar sebagai penerima <b>Beasiswa <?php echo $bea;?></b></h5>
             <?php 
@@ -46,7 +46,7 @@
             ;?>
             <h6 class="blue-text" style="text-align: center;">Periode tahun <?php echo date('Y', $buka);?> - <?php echo date('Y',$akhirPeriode) ;?></h6>
           </div>
-          <?php endforeach ?>
+          
         </div>
       </div>
     </div>

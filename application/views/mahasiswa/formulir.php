@@ -1,15 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- -------------------------------------------------+
-Title: MateriAll - Admin Template
-Framework: Materialize
-Version: 1.0 stable
-Author: Jozef Dvorský, http://www.creatingo.com
-+-------------------------------------------------- -->
-
-
-<!-- Mirrored from mate.creatingo.com/register.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 24 Apr 2017 12:22:32 GMT -->
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
@@ -17,10 +8,8 @@ Author: Jozef Dvorský, http://www.creatingo.com
   <meta name="msapplication-tap-highlight" content="no">
   <meta name="description" content="MateRio is a responsive Admin Template based on Material Design by Google.">
   <meta name="keywords" content="materialize, admin template, dashboard template, responsive admin template,">
-  <title>MateriAll - Material Design Admin Template</title>
-  <!-- -------------------------------------------------+
-  Template Styles
-  +-------------------------------------------------- -->
+  <title>Formulir</title>
+
   <link href="<?php echo base_url('assets/css/materialize.css')?>" type="text/css" rel="stylesheet" media="screen">
   <link rel="stylesheet" href="http://fonts.googleapis.com/icon?family=Material+Icons">
   <!-- Additional plugins styles -->
@@ -60,11 +49,11 @@ Author: Jozef Dvorský, http://www.creatingo.com
         <div class="col s12 m12 l12 card-panel">
           <form class="login-form" method="post" action="<?php echo base_url(); ?>mahasiswa/C_formulir/simpan">
             <div class="row primary-color form-header">
-              <div class="col s4">
+              <div class="col s2">
                 <img src="<?php echo base_url('assets/img/favicon 64 uin.png')?>" alt="logo" class="logo responsive-img-height">
               </div>
-              <div class="col s8 right-align">
-                <h4 class="light white-text">Formulir Pendaftaran Beasiswa <span class="blue-text"> <?php echo $namaBea->namaBeasiswa; ?></span></h4>
+              <div class="col s10 right-align">
+                <h5 class="light white-text">Formulir Pendaftaran Beasiswa <span class="blue-text"> <?php echo $namaBea->namaBeasiswa; ?></span></h5>
               </div>
             </div>
             <div class="row">
