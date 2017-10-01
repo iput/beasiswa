@@ -48,12 +48,12 @@
                       <div class="input-field col m12">
                         <i class="mdi-action-alarm-add prefix"></i>
                         <input id="dibuka" name="dibuka" type="date" class="validate datepicker" value="<?php echo $dibuka;?>" required="required">
-                        <label for="dibuka">Pendaftaran Dibuka <small>*Thn-Bln-Tgl</small></label>
+                        <label for="dibuka">Pendaftaran Dibuka</label>
                       </div>
                       <div class="input-field col m12">
                         <i class="mdi-action-alarm-off prefix"></i>
                         <input id="ditutup" name="ditutup" type="date" class="validate datepicker" value="<?php echo $ditutup;?>" required="required">
-                        <label for="ditutup">Pendaftaran Ditutup <small>*Thn-Bln-Tgl</small></label>
+                        <label for="ditutup">Pendaftaran Ditutup</label>
                       </div>
                       <div class="input-field col m12">
                         <i class="mdi-action-account-circle" style="font-size: 2rem; margin-right: 10px;"></i>
@@ -115,13 +115,13 @@
                       </div>
                       <div class="input-field col m12">
                         <i class="mdi-image-timelapse prefix"></i>
-                        <input id="penyeleksianDitutup" name="penyeleksianDitutup" type="date" class="validate datepicker" value="<?php echo $periodeBerakhir;?>" required="required">
-                        <label for="penyeleksianDitutup">Penyeleksian Ditutup <span>*Thn-Bln-Tgl</span></label>
+                        <input id="penyeleksianDitutup" name="penyeleksianDitutup" type="date" class="validate datepicker" value="<?php echo $seleksiTutup;?>" required="required">
+                        <label for="penyeleksianDitutup">Penyeleksian Ditutup</label>
                       </div>
                       <div class="input-field col m12">
                         <i class="mdi-av-timer prefix"></i>
                         <input id="periodeBerakhir" name="periodeBerakhir" type="date" class="validate datepicker" value="<?php echo $periodeBerakhir;?>" required="required">
-                        <label for="periodeBerakhir">Periode Beasiswa Berakhir <span>*Thn-Bln-Tgl</span></label>
+                        <label for="periodeBerakhir">Periode Beasiswa Berakhir</label>
                       </div>
                     </div>
                   </div>

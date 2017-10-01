@@ -72,7 +72,7 @@ class Seleksi extends CI_Model {
   //combobox
   public function getComboBea()
   {
-    $sql = "SELECT * FROM bea WHERE (selektor='1' || selektor='3') && statusBeasiswa='0' && statusSeleksi='1'";
+    $sql = 'SELECT * FROM bea WHERE (selektor="1" || selektor="3") && (CURRENT_DATE>bea.beasiswaTutup && CURRENT_DATE<=bea.seleksiTutup) && bea.statusBeasiswa="3"';
     $query = $this->db->query($sql);
     return $query->result();
   }
