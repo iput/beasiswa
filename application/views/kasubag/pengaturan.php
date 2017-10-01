@@ -41,24 +41,19 @@
                         <label for="penyelenggara">Penyelenggra</label>
                       </div>
                       <div class="input-field col m12">
+                        <i class="mdi-action-open-in-browser prefix"></i>
+                        <input id="kuota" name="kuota" type="number" class="validate" value="<?php echo $kuota;?>" required="required">
+                        <label for="kuota">Kuota</label>
+                      </div>
+                      <div class="input-field col m12">
                         <i class="mdi-action-alarm-add prefix"></i>
                         <input id="dibuka" name="dibuka" type="date" class="validate datepicker" value="<?php echo $dibuka;?>" required="required">
-                        <label for="dibuka">Beasiswa Dibuka <span>*Thn-Bln-Tgl</span></label>
+                        <label for="dibuka">Pendaftaran Dibuka <small>*Thn-Bln-Tgl</small></label>
                       </div>
                       <div class="input-field col m12">
                         <i class="mdi-action-alarm-off prefix"></i>
                         <input id="ditutup" name="ditutup" type="date" class="validate datepicker" value="<?php echo $ditutup;?>" required="required">
-                        <label for="ditutup">Beasiswa Ditutup <span>*Thn-Bln-Tgl</span></label>
-                      </div>
-                      <div class="input-field col m12">
-                        <i class="mdi-action-alarm-off prefix"></i>
-                        <input id="periodeBerakhir" name="periodeBerakhir" type="date" class="validate datepicker" value="<?php echo $periodeBerakhir;?>" required="required">
-                        <label for="periodeBerakhir">Periode Beasiswa Berakhir <span>*Thn-Bln-Tgl</span></label>
-                      </div>
-                      <div class="input-field col m12">
-                        <i class="mdi-action-open-in-browser prefix"></i>
-                        <input id="kuota" name="kuota" type="number" class="validate" value="<?php echo $kuota;?>" required="required">
-                        <label for="kuota">Kuota</label>
+                        <label for="ditutup">Pendaftaran Ditutup <small>*Thn-Bln-Tgl</small></label>
                       </div>
                       <div class="input-field col m12">
                         <i class="mdi-action-account-circle" style="font-size: 2rem; margin-right: 10px;"></i>
@@ -83,16 +78,18 @@
                               $dua = "checked";
                             }
                          ?>
+                        <input class="with-gap" name="selektor" onchange="hide_fakultas()" type="radio" value="3" id="keduanya" <?php echo $dua; ?> required="required">
+                        <label for="keduanya">K. Kemahasiswaan & Fakultas</label>
+                        <div class="input-field col m12"></div>
+                        <br>
                         <input class="with-gap" name="selektor" onchange="hide_fakultas()" type="radio" value="1" id="kemahasiswaan" <?php echo $kms; ?> required="required">
-                        <label for="kemahasiswaan">Kasubag Kemahasiswaan</label>
+                        <label for="kemahasiswaan">K. Kemahasiswaan</label>
                         <div class="input-field col m12"></div>
                         <br>
                         <input class="with-gap" name="selektor" onchange="view_fakultas()" type="radio" value="2" id="fakultas" <?php echo $fks; ?> required="required">
-                        <label for="fakultas">Kasubag Fakultas <?php echo $nmFk; ?></label>
+                        <label for="fakultas">K. Fakultas <?php echo $nmFk; ?></label>
                         <div class="input-field col m12" id="combo_fakultas"></div>
-                        <br>
-                        <input class="with-gap" name="selektor" onchange="hide_fakultas()" type="radio" value="3" id="keduanya" <?php echo $dua; ?> required="required">
-                        <label for="keduanya">Keduanya</label>
+
                         <script type="text/javascript">
                           var data = <?php echo $combo_fkltas ?>;
                           function view_fakultas() {
@@ -116,24 +113,20 @@
                           }
                         </script>
                       </div>
+                      <div class="input-field col m12">
+                        <i class="mdi-image-timelapse prefix"></i>
+                        <input id="penyeleksianDitutup" name="penyeleksianDitutup" type="date" class="validate datepicker" value="<?php echo $periodeBerakhir;?>" required="required">
+                        <label for="penyeleksianDitutup">Penyeleksian Ditutup <span>*Thn-Bln-Tgl</span></label>
+                      </div>
+                      <div class="input-field col m12">
+                        <i class="mdi-av-timer prefix"></i>
+                        <input id="periodeBerakhir" name="periodeBerakhir" type="date" class="validate datepicker" value="<?php echo $periodeBerakhir;?>" required="required">
+                        <label for="periodeBerakhir">Periode Beasiswa Berakhir <span>*Thn-Bln-Tgl</span></label>
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div class="row">
-                  <div class="col m10">
-                    <a href="<?php echo base_url('kasubag/C_requested')?>" class="waves-effect waves-light btn"><i class="mdi-image-navigate-before left"></i>Kembali</a>
-                    <button class="waves-effect waves-light btn blue" onclick="save()" type="button">Simpan<i class="mdi-image-navigate-next right"></i></button>
-                  </div>
-                  <div class="col m2">
-                    <?php
-                      if ($idSetBea != "") {
-                    ?>
-                        <button type="button" onclick="remove_data('<?php echo $idSetBea ?>', '<?php echo $nama ?>')" class="btn-floating waves-effect waves-light red" title="Hapus Pengaturan Beasiswa"><i class="mdi-action-delete"></i></button>
-                    <?php
-                      }
-                     ?>
-                  </div>
-                </div>
+                <!-- tombol awal -->
               </div>
             </div>
             <div class="col m6">
@@ -176,6 +169,22 @@
                     <hr>
                     <button class="btn-floating waves-effect waves-light" title="Tambah Scoring" onclick="add_score()" type="button"><i class="mdi-content-add"></i></button>
                     Tambahkan untuk scoring beasiswa. <br><br><small class="blue-text">**Pilihan "HAPUS" untuk menghapus scoring.</small>
+                    <br><br>
+                    <div class="row">
+                      <div class="col m10">
+                        <a href="<?php echo base_url('kasubag/C_requested')?>" class="waves-effect waves-light btn"><i class="mdi-image-navigate-before left"></i>Kembali</a>
+                        <button class="waves-effect waves-light btn blue" onclick="save()" type="button">Simpan<i class="mdi-image-navigate-next right"></i></button>
+                      </div>
+                      <div class="col m2">
+                        <?php
+                          if ($idSetBea != "") {
+                        ?>
+                            <button type="button" onclick="remove_data('<?php echo $idSetBea ?>', '<?php echo $nama ?>')" class="btn-floating waves-effect waves-light red" title="Hapus Pengaturan Beasiswa"><i class="mdi-action-delete"></i></button>
+                        <?php
+                          }
+                         ?>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
