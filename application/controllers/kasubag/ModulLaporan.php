@@ -58,5 +58,23 @@ class ModulLaporan extends CI_Controller {
         $this->load->view('kasubag/Grafik', $data);
         $this->load->view('attribute/footerKasubag');
     }
+
+    public function viewGrafik($th=null)
+    {
+      if ($th==null) {
+        date_default_timezone_set('Asia/Jakarta');
+        $tahun = date('Y');
+      }else {
+        $tahun = $th;
+      }
+      $this->load->model('grafik/grafik');
+      $data['tahun'] = $this->grafik->get_tahun();
+      $data['selected_tahun'] = $tahun;
+      $data['view_grafik'] = $this->grafik->get_data_grafik($tahun);
+      
+      $this->load->view('attribute/header_kasubag');
+      $this->load->view('grafik/grafik', $data);
+      $this->load->view('attribute/footerKasubag');
+    }
 }
 ?>

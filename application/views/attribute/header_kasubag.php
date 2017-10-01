@@ -78,7 +78,7 @@
                 <li class="divider"></li>
                 <li><a href="<?php echo base_url('kasubag/ModulLaporan/penerimaBeaSiswa');?>">Penerima Beasiswa</a></li>
                 <li class="divider"></li>
-                <li><a href="<?php echo base_url('kasubag/ModulLaporan/GrafikBeasiswa');?>">Grafik Perbandingan Pemohon & Penerima</a></li>
+                <li><a href="<?php echo base_url('kasubag/ModulLaporan/viewGrafik');?>">Grafik Perbandingan Pemohon & Penerima</a></li>
               </ul>
             </div>
           </li>
