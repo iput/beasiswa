@@ -10,6 +10,8 @@ class M_dashboard extends CI_Model
 }
 
 
+    private $table = 'bea';
+    private $pk = 'id';
 
     function daftar_bea()
     {	$query = $this->db->query("SELECT namaBeasiswa,penyelenggaraBea,beasiswadibuka,beasiswatutup,statusbeasiswa,kuota FROM bea LIMIT 4");
@@ -39,8 +41,16 @@ class M_dashboard extends CI_Model
         }
         unset($data);
     }
-
-
+    function user_limit($limit, $start = 0) {
+        $this->db->order_by($this->pk, 'DESC');
+        $this->db->limit($limit, $start);
+        return $this->db->get($this->table);
+    }
+    
+    function total_record() {
+        $this->db->from($this->table);
+        return $this->db->count_all_results();
+    }
 
 
 }
