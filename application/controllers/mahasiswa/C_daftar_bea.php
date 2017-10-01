@@ -13,19 +13,26 @@ class C_daftar_bea extends CI_Controller
   {
     $nim  = $this->session->userdata('username');
 
-    //mengecek apakah mhs dg nim ada di database
+    //mengecek apakah mhs dg nim ada di database(count)
     $pendaftar    = $this->mdl->ceknimPendaftar($nim);
     $penerima_bea = $this->mdl->ceknimPenerimaBea($nim);
 
+    //ambil value dari database
     $pendaftarr   = $this->mdl->get_pendaftar($nim);
     $penerima     = $this->mdl->get_penerimaBea($nim);
 
     if ($pendaftar != 0){
-      $status = $pendaftarr->status;
-      $nimPendaf = $pendaftarr->nim;
+      $status     = $pendaftarr->status;
+      $nimPendaf  = $pendaftarr->nim;
       if ($status == "1" && $nim==$nimPendaf) {
         if ($penerima_bea != 0) {
-          $this->statusDiterimaBea();
+          $cekPeriode = $penerima->berakhirPeriode;
+          if ($cekPeriode <=0) {
+            
+           $this->statusDiterimaBea(); 
+          }else{
+            $this->pendafBea();
+          }
         }else{
           $this->pendafBea();
         }  
@@ -107,7 +114,13 @@ public function statusDiterimaBea(){
         'dibuka' => "",
         'ditutup' => "",
         'kuota' => "",
-        'skor' => null
+        'skor' => null,
+        'nim' => "",
+        'nama' => "",
+        'tempatLahir' => "",
+        'tglLahir' => "",
+        'asalKota' => "",
+        'noTelp' => ""
         );
     }
     $this->load->view('mahasiswa/formulir', $data);

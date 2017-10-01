@@ -61,7 +61,7 @@ Author: Jozef Dvorský, http://www.creatingo.com
           <form class="login-form" method="post" action="<?php echo base_url(); ?>mahasiswa/C_formulir/simpan">
             <div class="row primary-color form-header">
               <div class="col s4">
-                <img src="<?php echo base_url('imgs/admin-logo-full.svg')?>" alt="logo" class="logo responsive-img-height">
+                <img src="<?php echo base_url('assets/img/favicon 64 uin.png')?>" alt="logo" class="logo responsive-img-height">
               </div>
               <div class="col s8 right-align">
                 <h4 class="light white-text">Formulir Pendaftaran Beasiswa <span class="blue-text"> <?php echo $namaBea->namaBeasiswa; ?></span></h4>

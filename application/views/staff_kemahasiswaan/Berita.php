@@ -18,7 +18,7 @@
               <td>Aksi</td>
             </tr>
           </thead>
-          <tbody id="dataBerita">
+          <tbody id="daftarBerita">
             <?php foreach ($berita as $rows): ?>
               <tr>
                 <td><?php echo $rows['idBerita'] ?></td>
@@ -28,7 +28,7 @@
                 <td><?php echo $rows['tglInBerita'] ?></td>
                 <td><?php echo $rows['kontenBerita'] ?></td>
                 <td>
-                  <a href="javascript:;" data="<?php echo $rows['idBerita'] ?>" class="btn-floating z-depth-0 btn green btnEditBerita" ><i class="material-icons">mode_edit</i></a>
+                  <a href="javascript:;" data="<?php echo $rows['idBerita'] ?>" class="btn-floating z-depth-0 btn green" id="btnEditBerita" ><i class="material-icons">mode_edit</i></a>
                   <a href="<?php echo base_url('staf_kemahasiswaan/ModulBerita/hapusBerita/'.$rows['idBerita']) ?>" class="btn btn-floating red  z-depth-0" onclick="return alertConfirm()"><i class="material-icons">delete</i></a>
                 </td>
               </tr>
@@ -117,8 +117,7 @@
     </div>
   </div>
   <script type="text/javascript">
-  	$(function() {
-  		$('#dataBerita').on('click','.btnEditBerita', function() {
+  		$('#daftarBerita').on('click','#btnEditBerita', function() {
   			var id = $(this).attr('data');
   			$('#editBerita').openModal('show');
         $.ajax({
@@ -140,7 +139,6 @@
           }
         });
   		});
-  	});
   </script>
 <script type="text/javascript">
   $('#tabelBerita').dataTable();
