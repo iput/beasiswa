@@ -33,7 +33,7 @@
                     </select>
                   </div>
                   <div class="col m12">
-                    <canvas id="grafik" width="1000" height="280"></canvas>
+                    <canvas id="grafik" style="overflow-x: scroll;"></canvas>
                   </div>
             </div>
         </div>
@@ -74,5 +74,12 @@ function refresh_chart() {
             }
         ]
     }
-    var myLine = new Chart(document.getElementById("grafik").getContext("2d")).Bar(linechartData);
+
+    var options = {
+      responsive: true,
+      pointDotRadius: 10,
+      bezierCurve: false,
+      scaleShowVerticalLines: false,
+    };
+    var myLine = new Chart(document.getElementById("grafik").getContext("2d")).Bar(linechartData, options);
 </script>
