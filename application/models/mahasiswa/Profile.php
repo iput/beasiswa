@@ -9,9 +9,10 @@ class Profile extends CI_Model {
 
 	public function getdata($key)
 	{
-		$this->db->where('nimMhs',$key);
-		$hasil = $this->db->get('identitas_mhs');
-		return $hasil;
+		$this->db->from('identitas_mhs');
+		$this->db->where('identitas_mhs.nimMhs',$key);
+		$query = $this->db->get();
+		return $query->row();
 	}
 
 	public function getupdate($key,$data)
@@ -62,5 +63,12 @@ class Profile extends CI_Model {
 			'password' => $newpass
 			);
 		return $this->db->where('userId',$userid)->update('akses',$data);
+	}
+	public function getIdentitasMhs($nim)
+	{
+		$this->db->select('nimMhs');    
+		$this->db->from('identitas_mhs');
+		$this->db->where('identitas_mhs.nimMhs',$nim);
+		return $this->db->count_all_results();
 	}
 }
