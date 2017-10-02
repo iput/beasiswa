@@ -28,6 +28,15 @@ class C_mahasiswa extends CI_Controller
   $this->load->view('mahasiswa/buktipendaftaran',$data);
   unset($data);
 }
+public function dataDaerah($id)
+    {
+        $data['pendaftar'] = $this->m_aplikasi->data_pendaftar($id);
+
+
+
+        $this->load->view('mahasiswa/buktiDaerah',$data);
+        unset($data);
+    }
 function pdf($id)
 {
   $data['pendaftar'] = $this->m_aplikasi->data_pendaftar($id);

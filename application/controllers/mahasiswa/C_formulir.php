@@ -66,4 +66,26 @@ class C_formulir extends CI_Controller
     redirect('mahasiswa/C_daftar_bea');
 
   }
+  public function simpan2()
+    {
+        $nim  = $this->input->post('nim');
+        $data =array(
+            'idBea'     => $this->input->post('idBea'),
+            'nim'       => $this->input->post('nim'),
+            'semester'  => $this->input->post('semester'),
+            'sks'       => $this->input->post('sks'),
+            'ipk'       => $this->input->post('ipk'),
+            'alamatMalang' => $this->input->post('alamatMalang'),
+            'tanggal'   => $this->input->post('tanggal')
+        );
+
+        $this->mdl->getInsert($data);
+
+        // echo(json_encode($this->input->post('idKategoriSkor')));
+        // echo(json_encode($this->input->post('score')));
+
+        // echo json_encode(array("score" => TRUE));
+        redirect('mahasiswa/C_daftar_bea');
+
+    }
 }

@@ -87,24 +87,19 @@ $pdf->setTextShadow(array('enabled' => true, 'depth_w' => 0.2, 'depth_h' => 0.2,
 // Set some content to print
 
 
-$html = '<h2 align="center">Bukti Formulir Pendaftaran beasiswa '.$pendaftar->namabea.' </h2>
+$html = '<h3 align="center">PERMOHONAN <br> SURAT KETERANGAN '.$pendaftar->namabea.' '.date("Y").'</h3>
 <table>
 	
 		<tr><td>NIM </td><td>: '.$pendaftar->pendaftarnim.' </td> </tr>
 		<tr><td>NAMA </td><td>: '.$pendaftar->namalengkap.'</td> </tr>
 		<tr><td>JURUSAN </td><td>: '.$pendaftar->jurusan.'</td> </tr>
 		<tr><td>SEMESTER </td><td>: '.$pendaftar->semester.'</td> </tr>
-		<tr><td>SKS </td><td>: '.$pendaftar->sks.'</td> </tr>
-		<tr><td>IPK </td><td>: '.$pendaftar->ipk.'</td> </tr>
 		<tr><td>TTL </td><td>: '.$pendaftar->tempatLahir.', '.$pendaftar->tgl.'</td> </tr>
-		<tr><td>ALAMAT ASAL</td><td>: '.$pendaftar->alamatlengkap.'</td> </tr>
+		<tr><td>ALAMAT ASAL (sesuai KK)</td><td>: '.$pendaftar->alamatlengkap.'</td> </tr>
 		<tr><td>ALAMAT MALANG</td><td>: '.$pendaftar->alamatmalang.'</td> </tr>
-		<tr><td>TELP</td><td>: '.$pendaftar->telp.'</td></tr>';
+		<tr><td>TELP</td><td>: '.$pendaftar->telp.'</td></tr><ol><li>Saya terdaftar sebagai mahasiswa semester ganjil/genap tahun akademik ..../....</li><li>Saya Memiliki Indek Prestasi Akademik   '.$pendaftar->ipk.'  dengan SKS yang terambil sebanyak '.$pendaftar->sks.'</li></ol><br>Surat keterangan ini saya ajukan untuk dipergunakan sebagai persyaratan mengajukan<br>..........................................................................<br>Demikian surat permohonan ini dibuat untuk dipergunakan sebagaimana mestinya.
+';
 
-        foreach ($kategori as $r){
-
-        $html .='<tr><td>'.$r->skor.'</td><td>: '.$r->nama.'</td> </tr>';
-        }
 
 
 $html .='</table>';
