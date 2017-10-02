@@ -9,7 +9,9 @@ class C_staff extends CI_Controller
     $this->load->model('staff_kemahasiswaan/Berita');
     $this->load->model("staff_kemahasiswaan/Profile",'mdl');
     $this->load->model('kasubag/Beasiswa');
-        $this->load->model('kasubag/ReportBeasiswa');
+    $this->load->model('kasubag/ReportBeasiswa');
+    $this->load->library('Loginauth');
+    $this->loginauth->view_page();
   }
   public function index()
   {
