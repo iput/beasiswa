@@ -20,6 +20,7 @@ class Kasubag extends CI_Controller
 
   public function profile()
   {
+    
     $user = $this->session->userdata('id');
     $cek = $this->mdl->getdata($user);
     if($this->mdl->getIdentitasAdmin($user) != 0){

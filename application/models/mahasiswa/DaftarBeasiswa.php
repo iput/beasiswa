@@ -2,29 +2,32 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class DaftarBeasiswa extends CI_Model {
-
   var $table = "bea";
-  var $select_column = array("bea.id", "bea.namaBeasiswa", "bea.penyelenggaraBea", "bea.beasiswaDibuka","bea.beasiswaTutup","(SELECT pendaftar.nim FROM pendaftar where pendaftar.nim=15650025 && pendaftar.idBea=bea.id) nim");
+  var $select_column;
   var $order_column = array("bea.id", "bea.namaBeasiswa", "bea.penyelenggaraBea", "bea.beasiswaDibuka","bea.beasiswaTutup", null);
+
+  function __construct()
+  {
+    parent::__construct();
+    $nim = $this->session->userdata('username');
+    $this->select_column = array("bea.id", "bea.namaBeasiswa", "bea.penyelenggaraBea", "bea.beasiswaDibuka","bea.beasiswaTutup","(SELECT pendaftar.nim FROM pendaftar where pendaftar.nim=".$nim." && pendaftar.idBea=bea.id) nim");
+  }
 
   function make_query()
   { 
     $this->db->select($this->select_column);
     $this->db->from($this->table);
-    $date = date('y-m-d');
-    /*$this->db->where('CURRENT_DATE',">=", 'bea.beasiswaDibuka');
-    $this->db->where('CURRENT_DATE',"<=", 'bea.beasiswaTutup');*/
     $this->db->where("(select CURRENT_DATE) >= bea.beasiswaDibuka and (select CURRENT_DATE) <= bea.beasiswaTutup");
     
 
 
     if(isset($_POST["search"]["value"]))
     {
-      /*$this->db->like("bea.namaBeasiswa", $_POST["search"]["value"]);
+      $this->db->like("bea.namaBeasiswa", $_POST["search"]["value"]);
       $this->db->or_like("bea.penyelenggaraBea", $_POST["search"]["value"]);
       $this->db->or_like("bea.beasiswaDibuka", $_POST["search"]["value"]);
       $this->db->or_like("bea.beasiswaTutup", $_POST["search"]["value"]);
-      */
+      
     }
     if(isset($_POST["order"]))
     {

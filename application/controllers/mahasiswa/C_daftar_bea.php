@@ -78,35 +78,6 @@ public function pendafBea()
   $this->load->view('attribute/footer');
 }
 
-/*public function statusDiterimaBea(){
-  $nim = $this->session->userdata('username');
-  $penerima_bea = $this->mdl->get_penerimaBea($nim);
-  if ($penerima_bea != null) {
-    if ($penerima_bea->berakhirPeriode<=0) {
-      $data = array(
-        'nim'   => $nim,
-        'nama'  => $penerima_bea->namaLengkap,
-        'bea'   => $penerima_bea->namaBeasiswa,
-        'tglBuka' => $penerima_bea->beasiswaDibuka,
-        'periodeBerakhir' => $penerima_bea->periodeBerakhir
-        );
-    }else{
-      $data = array(
-        'bea'     => "",
-        'nama'    => "",
-        'tglBuka' => "",
-        'periodeBerakhir' => ""
-        );
-    }  
-  }else{
-    $berakhirPeriode = "";
-  }
-  
-  $this->load->view('attribute/header_mhs');
-  $this->load->view('mahasiswa/statusDiterimaBea',$data);
-  $this->load->view('attribute/footer');
-}*/
-
 public function statusDiterimaBea(){
   $pendaftar = $this->mdl->ceknimPendaftarBea2();
   $date = date("Y-m-d");
@@ -154,7 +125,7 @@ public function statusDiterimaBea(){
   $this->load->view('attribute/footer');
 }
 
-public function pengaturan()
+/*public function pengaturan()
 {
   $nim = $this->session->userdata('username');
   $id = $this->input->post('idPengaturan');
@@ -192,8 +163,8 @@ public function pengaturan()
       );
   }
   $this->load->view('mahasiswa/formulir', $data);
-  $this->load->view('attribute/footer');
-}
+  
+}*/
 
 public function datatable(){
   $fetch_data = $this->mdl->make_datatables();
@@ -209,28 +180,9 @@ public function datatable(){
     $sub_array[] = $row->beasiswaDibuka;
     $sub_array[] = $row->beasiswaTutup;
 
-   /* $status = $row->status;
-
-    if ($status=="1") {
-        # aktif/confirmed
-      $sub_array[] = '<span class="success-text">Anda Sudah Terdaftar</span>';
-      $sub_array[] = '
-      <a class="btn-floating waves-effect waves-light primary-color z-depth-0" title="Daftar"><i class="mdi-action-done"></i></a>
-      ';
-    }else{
-        # ditolak
-      $sub_array[] = '<span class="alert-text">'.$row->keterangan.'</span>';
-      $alamat = base_url('mahasiswa/C_daftar_bea/pengaturan');
-      $sub_array[] = '
-      <form action="'.$alamat.'" method="post">
-        <button class="btn-floating waves-effect waves-light red" title="Daftar" type="submit" name="idPengaturan" value="'.$row->id.'"><i class="mdi-action-account-balance-wallet"></i></button>
-      </form>
-      ';
-    }*/
-
     $ceknim = $row->nim;
     if ($ceknim == null) {
-      $alamat = base_url('mahasiswa/C_daftar_bea/pengaturan');
+      $alamat = base_url('mahasiswa/C_formulir');
       $sub_array[] = '
       <form action="'.$alamat.'" method="post">
         <button class="btn-floating waves-effect waves-light red" title="Daftar" type="submit" name="idPengaturan" value="'.$row->id.'"><i class="mdi-action-account-balance-wallet"></i></button>
