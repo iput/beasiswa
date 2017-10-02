@@ -7,6 +7,8 @@ class C_profileMhs extends CI_Controller
 	var $offset=10;
 	function __construct(){
 		parent::__construct();
+		$this->load->library('Loginauth');
+		$this->loginauth->view_page();
 		$this->load->model("mahasiswa/Profile",'model');
 		$this->load->library('upload');
 		$this->load->helper(array('url'));

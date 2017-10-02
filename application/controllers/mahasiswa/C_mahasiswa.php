@@ -6,6 +6,8 @@ class C_mahasiswa extends CI_Controller
   function __construct()
   {
     parent::__construct();
+    $this->load->library('Loginauth');
+    $this->loginauth->view_page();
     $this->load->model("mahasiswa/PengumumanPenerimaBeasiswa",'model');
     $this->load->model("mahasiswa/StatusBea",'mod');
     $this->load->model("mahasiswa/Profile",'mdl');

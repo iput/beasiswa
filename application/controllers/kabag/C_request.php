@@ -5,6 +5,8 @@ class C_request extends CI_Controller
   function __construct()
   {
     parent::__construct();
+    $this->load->library('Loginauth');
+    $this->loginauth->view_page();
     $this->load->model("kasubag/Requested",'mdl');
     $this->load->model("kabag/Request",'mdk');
   }
