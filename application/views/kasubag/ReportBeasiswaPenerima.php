@@ -7,7 +7,7 @@
                     <div class="row">
                         <div class="col s2">
                             <label>tahun</label>
-                            
+
                             <select name="filTahun">
                                 <option>Semua</option>
                                 <?php
@@ -51,7 +51,7 @@
                     </div>
                 <?php echo form_close();?>
                 <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
-                    <a class="btn-floating btn-large red" href="<?php echo base_url('kasubag/ModulLaporan/semuaDataPenerima') ?>">
+                    <a class="btn-floating btn-large red" onclick="print_laporan()">
                         <i class="large material-icons">print</i>
                     </a>
                 </div>
@@ -84,3 +84,11 @@
     </div>
 
 </main>
+
+<script type="text/javascript">
+  function print_laporan() {
+    thn = 2017;
+    bln = 2;
+    window.open("<?=site_url()?>/kasubag/ModulLaporan/semuaDataPenerima?tahun="+thn+"&bulan="+bln,"Cetak Laporan", "width=900,height=1200");
+  }
+</script>

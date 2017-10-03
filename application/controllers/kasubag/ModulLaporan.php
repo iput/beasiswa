@@ -71,10 +71,16 @@ class ModulLaporan extends CI_Controller {
       $data['tahun'] = $this->grafik->get_tahun();
       $data['selected_tahun'] = $tahun;
       $data['view_grafik'] = $this->grafik->get_data_grafik($tahun);
-      
+
       $this->load->view('attribute/header_kasubag');
       $this->load->view('grafik/grafik', $data);
       $this->load->view('attribute/footerKasubag');
+    }
+
+    public function get_data_print($tahun, $bulan)
+    {
+      // $res = $this->medil_opo->fungsine($tahun, $bulan);
+      // echo json_encode($res);
     }
 }
 ?>
