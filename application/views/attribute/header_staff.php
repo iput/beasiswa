@@ -7,7 +7,7 @@
 <meta name="msapplication-tap-highlight" content="no">
 <meta name="description" content="Mate Rio is a responsive Admin Template based on Material Design by Google.">
 <meta name="keywords" content="materialize, admin template, google material, dashboard template, responsive admin template,">
-<title>Beasiswa | Kasubag Fakultas</title>
+<title>Beasiswa | Staff Kemahasiswaan</title>
 
 <!-- Preloader stage (extracted for first show) -->
 <link href="<?php echo base_url('assets/css/preloader-stage.css')?>" type="text/css" rel="stylesheet" media="screen">
@@ -19,10 +19,32 @@
 <link href="<?php echo base_url('assets/css/plugins/justifiedGallery.css')?>" type="text/css" rel="stylesheet" media="screen">
 <!-- Assistance.css are used only for template support. No need to use it on "production" -->
 <link href="<?php echo base_url('assets/css/assistance.css')?>" type="text/css" rel="stylesheet" media="screen">
+<style type="text/css"> 
+  title {
+    visibility: hidden;
+  }
+  @media print {
+  @page { size: landscape; 
+  }
+    
+  body * {
+    visibility: hidden;
+  }
+  #diprint, #diprint * {
+    visibility: visible;
+  }
+  #diprint {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+}
+</style>
+<script src="<?php echo base_url('assets/js/bin/jquery-2.1.4.min.js')?>"></script>
 <script src="<?php echo base_url('assets/chartjs/Chart.min.js');?>" type="text/javascript"></script>
-<script type="text/javascript" src="<?php echo base_url('assets/js/bin/jquery-2.1.4.min.js')?>"></script>
 <script src="<?php echo base_url('assets/sweetalert/sweetalert.min.js');?>" charset="utf-8"></script>
   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/sweetalert/sweetalert.css');?>">
+  <script src="https://cdn.ckeditor.com/4.5.7/standard/ckeditor.js"></script>  
 </head>
 
 <body class="loading">
@@ -70,19 +92,9 @@
       <li><a href="<?php echo base_url();?>staf_kemahasiswaan/C_staff/profile" class="waves-effect"><i class="mdi-action-account-box left"></i><span>Profile</span></a></li>
       <li><a href="<?php echo base_url();?>staf_kemahasiswaan/C_staff/daftarBerita" class="waves-effect"><i class="mdi-action-settings left"></i><span>Management Berita</span></a></li>
       <li>
-        <ul class="collapsible" data-collapsible="accordion">
-          <li><a class="collapsible-header waves-effect"><i class="mdi-maps-local-print-shop left"></i><span>laporan</span></a>
-            <div class="collapsible-body">
-              <ul>
-                <li><a href="<?php echo base_url('staf_kemahasiswaan/C_staff/filterLaporan');?>">Pemohon Beasiswa</a></li>
-                <li class="divider"></li>
-                <li><a href="<?php echo base_url('staf_kemahasiswaan/C_staff/penerimaBeaSiswa');?>">Penerima Beasiswa</a></li>
-                <li class="divider"></li>
-                <li><a href="<?php echo base_url('staf_kemahasiswaan/C_staff/GrafikBeasiswa');?>">Grafik Perbandingan Pemohon & Penerima</a></li>
-              </ul>
-            </div>
-          </li>
-        </ul>
+        <li><a href="<?php echo base_url('staf_kemahasiswaan/C_staff/Pemohon');?>" class="waves-effect"><i class="mdi-maps-local-print-shop left"></i><span>Lap.Pemohon Beasiswa</span></a></li>
+      <li><a href="<?php echo base_url('staf_kemahasiswaan/C_staff/Penerima');?>" class="waves-effect"><i class="mdi-maps-local-print-shop left"></i><span>Lap.Penerima Beasiswa</span></a></li>
+      <li><a href="<?php echo base_url('staf_kemahasiswaan/C_staff/viewGrafik');?>" class="waves-effect"><i class="mdi-maps-local-print-shop left"></i><span>Lap.Grafik</span></a></li>
       </li>
     </ul>
   </div>

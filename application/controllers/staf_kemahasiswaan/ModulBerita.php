@@ -28,10 +28,12 @@
 
  	}
 
- 	public function editBerita()
+ 	public function editBerita($id)
  	{
- 		$berita = $this->Berita->editBerita();
- 		echo json_encode($berita);
+ 		$data['berita'] = $this->Berita->editBerita($id)->row();
+ 		$this->load->view('attribute/header_staff');
+        $this->load->view('staff_kemahasiswaan/editBerita',$data);
+        $this->load->view('attribute/footer');
  	}
 
  	public function updateBerita()

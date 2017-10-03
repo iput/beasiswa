@@ -3,11 +3,12 @@
         <h1 class="thin">Laporan Pemohon Beasiswa</h1>
         <div id="dashboard">
             <div class="section">
-                <?php echo form_open('kasubag/ModulLaporan/filterLaporan');?>
+                <form action="" method="post" class="col s12 m12">
                     <div class="row">
-                        <div class="input-field col s2">
-                            <select name="filTahun">
-                                <option>Semua</option>
+                        <div class="col s3">
+                            <label>tahun</label>
+                            <select name="tahun" id="tahun" onChange="viewTabel()">
+                                <option value="" disabled selected>Pilih Tahun</option>
                                 <?php
                                 $now = date('Y');
                                 for ($i = $now; $i > 1990; $i--) {
@@ -15,71 +16,150 @@
                                 }
                                 ?>
                             </select>
-                            <label>tahun</label>
                         </div>
-                        <div class="input-field col s2">
-                            <select name="filFakultas">
-                                <option>Semua</option>
+                        <div class="col s3">
+                            <label>Fakultas</label>
+                            <select name="fakultas" id="fakultas" onChange="viewTabel()">
+                                <option value="" disabled selected>Pilih Fakultas</option>
                                 <?php foreach ($fakultas as $rowFK): ?>
                                     <option value="<?php echo $rowFK['id'] ?>"><?php echo $rowFK['namaFk'] ?></option>
                                 <?php endforeach ?>
                             </select>
-                            <label>Fakultas</label>
                         </div>
-                        <div class="input-field col s3">
-                            <select name="filJurusan">
-                                <option>Semua</option>
-                                <?php foreach ($jurusan as $rowsJR): ?>
-                                    <option value="<?php echo $rowsJR['id'] ?>"><?php echo $rowsJR['namaJur'] ?></option>
-                                <?php endforeach ?>
-                            </select>
+                        <div class="col s3">
                             <label>jurusan</label>
+                            <select name="jurusan" id="jurusan" onChange="viewTabel()">
+                                <option value="" disabled selected>Pilih Jurusan</option>
+                            </select>
                         </div>
-                        <div class="input-field col s3">
-                            <select name="filBea">
-                                <option>Semua</option>
+                        <div class="col s3">
+                            <label>Jenis Beasiswa</label>
+                            <select name="beasiswa" id="beasiswa" onChange="viewTabel()">
+                                <option value="" disabled selected>Pilih beasiswa</option>
                                 <?php foreach ($beasiswa as $rowsBea): ?>
                                     <option value="<?php echo $rowsBea['id'] ?>"><?php echo $rowsBea['namaBeasiswa'] ?></option>
                                 <?php endforeach ?>
                             </select>
-                            <label>Jenis Beasiswa</label>
-                        </div>
-                        <div class="input-field col s2">
-                            <button type="submit" class="btn blue"><i class="material-icons left">search</i>Cari</button>
                         </div>
                     </div>
-                <?php echo form_close();?>
+		</form>
                 <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
-                    <a class="btn-floating btn-large red" href="<?php echo base_url('kasubag/ModulLaporan/semuaDataPemohon') ?>">
+                    <a class="btn-floating btn-large red" id="tombolPrint" href="javascript:;">
                         <i class="large material-icons">print</i>
                     </a>
                 </div>
-                <table class="striped highlight bordered">
+                <table class="striped table-responsive highlight bordered" id="tabelBeasiswa">
                     <thead>
                         <tr>
-                            <td>NIM</td>
-                            <td>NAMA</td>
-                            <td>Fakultas</td>
-                            <td>Jurusan</td>
-                            <td>Jenis Beasiswa</td>
-                            <td>Tahun</td>
+                            <td data-field="nim">NIM</td>
+                            <td data-field="nama">NAMA</td>
+                            <td data-field="fakultas">Fakultas</td>
+                            <td data-field="jurusan">Jurusan</td>
+                            <td data-field="beasiswa">Jenis Beasiswa</td>
+                            <td data-field="angkatan">Tahun</td>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($datafill as $rows): ?>
-                            <tr>
-                                <td><?php echo $rows['nim'] ?></td>
-                                <td><?php echo $rows['namaLengkap'] ?></td>
-                                <td><?php echo $rows['namaFk'] ?></td>
-                                <td><?php echo $rows['namaJur'] ?></td>
-                                <td><?php echo $rows['namaBeasiswa'] ?></td>
-                                <td><?php echo $rows['angkatan'] ?></td>
-                            </tr>
-                        <?php endforeach ?>
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
-
 </main>
+
+<script type="text/javascript">
+var dataTable;
+var tahun;
+var fakultas;
+var jurusan;
+var beasiswa;
+document.addEventListener("DOMContentLoaded", function (event) {
+    // datatable();
+});
+
+function viewTabel() {
+	tahun = $("#tahun").val();
+	fakultas = $("#fakultas").val();
+	jurusan = $("#jurusan").val();
+	beasiswa= $("#beasiswa").val();
+
+	datatable();
+
+	reloadJs('materialize','min');
+	reloadJs('initialize','nomin');
+}
+
+function myTimer() {
+	reload_table();
+}
+
+function datatable() {
+	dataTable = $('#tabelBeasiswa').DataTable({
+		"destroy": true,
+		"processing": true,
+		"serverSide": true,
+		"order": [],
+		"ajax":{
+			url: "<?php echo base_url('kasubag/ModulLaporan/datatablePemohon'); ?>",
+			type: "POST",
+			data:{'tahun':tahun,'fakultas':fakultas,'jurusan':jurusan,'beasiswa':beasiswa}
+		},
+		"columnDefs": [
+			{
+				"targets": [2,-1],
+				"orderable":false,
+			},
+		],
+		"dom": '<"row" <"col s6 m6 l3 left"l><"col s6 m6 l3 right"f>><"bersih tengah" rt><"bottom"ip>',
+	});
+}
+function reload_table() {
+	dataTable.ajax.reload(null, false);
+}
+</script>
+<script>
+$(document).ready(function(){
+   $('#fakultas').change(function(){
+      var fakultas =  $('#fakultas').val();
+      $.ajax({
+          url: '<?php echo base_url('kasubag/ModulLaporan/getJurusan'); ?>',
+          type: 'GET',
+          data: "fakultas="+fakultas,
+          dataType: 'json',
+          success: function(data){
+           var fakultas=`<select id="jurusan" name="jurusan">
+          <option value="">Pilihlah Jurusan</option>`;
+          for (var i = 0; i < data.length; i++) {
+            fakultas+='<option value="'+data[i].id+'">'+data[i].namaJur+'</option>';
+          }
+          fakultas+=`</select>
+          <label>Jurusan</label>`;
+          $('#jurusan').html(fakultas);
+          reloadJs('materialize','min');
+          reloadJs('initialize','nomin');
+          }
+      });
+   });
+   
+   $('#tombolPrint').on('click', function(){
+   var tahun;
+   var fakultas;
+   var jurusan;
+   var beasiswa;
+   tahun = $('#tahun').val();
+   fakultas = $('#fakultas').val();
+   jurusan = $('#jurusan').val();
+   beasiswa = $('#beasiswa').val();
+   });
+});
+</script>
+<script type="text/javascript">
+    	$(document).ready(function() {
+    $('#tabelBeasiswa').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'print'
+        ]
+    } );
+} );
+    </script>

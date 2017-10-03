@@ -78,6 +78,7 @@
                   </div>
                   
                     
+                    
                   
                     <!-- /.col -->      
                 </div>
@@ -90,7 +91,7 @@
 <script type="text/javascript">
 function refresh_chart() {
   id_data = $('#pilih_tahun').val();
-  url = "<?php echo site_url('kasubag/ModulLaporan/viewGrafik')?>";
+  url = "<?php echo site_url('staf_kemahasiswaan/C_staff/viewGrafik')?>";
   window.location.href=url+'/'+id_data;
 }
 </script>

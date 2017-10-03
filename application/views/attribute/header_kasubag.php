@@ -20,10 +20,11 @@
 <!-- data table -->
 <link href="<?php echo base_url('assets/datatable_material/dataTables.material.min.css')?>" type="text/css" rel="stylesheet" media="screen">
 <!-- sweetalert -->
+<script>if (!window.jQuery) { document.write('<script src="<?php echo base_url('assets/js/bin/jquery-2.1.4.min.js')?>"><\/script>'); }</script>
 <script src="<?php echo base_url('assets/sweetalert/sweetalert.min.js');?>" charset="utf-8"></script>
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/sweetalert/sweetalert.css');?>">
 <script src="<?php echo base_url('assets/chartjs/Chart.min.js');?>" type="text/javascript"></script>
-<style type="text/css">
+<style type="text/css"> 
   @media print {
   @page { size: landscape; 
   }
@@ -87,21 +88,9 @@
       <li><a href="<?php echo base_url('kasubag/C_requested');?>" class="waves-effect"><i class="mdi-editor-border-color left"></i><span>Pengaturan Beasiswa</span></a></li>
       <li><a href="<?php echo base_url('kasubag/C_seleksi');?>" class="waves-effect"><i class="mdi-action-dashboard left"></i><span>Seleksi Mahasiswa</span></a></li>
       <li><a href="<?php echo base_url('kasubag/C_ubahStatus');?>" class="waves-effect"><i class="mdi-action-settings left"></i><span>Ubah Status Mahasiswa</span></a></li>
-      <li>
-        <ul class="collapsible" data-collapsible="accordion">
-          <li><a class="collapsible-header waves-effect"><i class="mdi-maps-local-print-shop left"></i><span>laporan</span></a>
-            <div class="collapsible-body">
-              <ul>
-                  <li><a href="<?php echo base_url('kasubag/ModulLaporan/filterLaporan');?>">Pemohon Beasiswa</a></li>
-                <li class="divider"></li>
-                <li><a href="<?php echo base_url('kasubag/ModulLaporan/penerimaBeaSiswa');?>">Penerima Beasiswa</a></li>
-                <li class="divider"></li>
-                <li><a href="<?php echo base_url('kasubag/ModulLaporan/viewGrafik');?>">Grafik Perbandingan Pemohon & Penerima</a></li>
-              </ul>
-            </div>
-          </li>
-        </ul>
-      </li>
+      <li><a href="<?php echo base_url('kasubag/ModulLaporan/filterLaporan');?>" class="waves-effect"><i class="mdi-maps-local-print-shop left"></i><span>Lap.Pemohon Beasiswa</span></a></li>
+      <li><a href="<?php echo base_url('kasubag/ModulLaporan/penerimaBeaSiswa');?>" class="waves-effect"><i class="mdi-maps-local-print-shop left"></i><span>Lap.Penerima Beasiswa</span></a></li>
+      <li><a href="<?php echo base_url('kasubag/ModulLaporan/viewGrafik');?>" class="waves-effect"><i class="mdi-maps-local-print-shop left"></i><span>Lap.Grafik</span></a></li>
     </ul>
   </div>
     <!-- Search in Modal START -->

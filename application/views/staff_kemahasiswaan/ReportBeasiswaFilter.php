@@ -1,9 +1,9 @@
-<main id="main">
+<main>
     <div class="container">
-        <h1 class="thin">Laporan Penerima Beasiswa</h1>
+        <h1 class="thin">Laporan Pemohon Beasiswa</h1>
         <div id="dashboard">
             <div class="section">
-                <form action="<?php echo base_url('kasubag/ModulLaporan/searchFilter'); ?>" method="post" class="col s12 m12">
+                <form action="" method="post" class="col s12 m12">
                     <div class="row">
                         <div class="col s3">
                             <label>tahun</label>
@@ -44,9 +44,9 @@
                     </div>
 		</form>
                 <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
-                    <a class="btn-floating btn-large red" onclick="window.print();">
+                    <a class="btn-floating btn-large red" onclick="window.print()">
                         <i class="large material-icons">print</i>
-                    </a>`
+                    </a>
                 </div>
                 <table class="striped table-responsive highlight bordered" id="tabelBeasiswa">
                     <thead>
@@ -65,6 +65,60 @@
             </div>
         </div>
     </div>
+    <div class="wrapper" id="diprint" style="visibility: hidden;">
+            <!-- Main content -->
+            <section class="invoice">
+                <!-- title row -->
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h2 class="page-header">
+                            <img width="35px" height="35px" src="<?php echo base_url('assets/img/UIN ukuran 512.png'); ?>">&nbsp;Grafik perbandingan Pendaftar dan Penerima Beasiswa  <small class="pull-right">Tahun  <?php echo date('Y'); ?></small>
+                            
+                        </h2>
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- info row -->
+                <div class="row invoice-info">
+                    <div class="col-sm-4 invoice-col">
+    
+                        <address>
+                            <strong>Kemahasiswan UIN Maulana Malik Ibrahim Malang</strong><br>
+                            Jalan  Gajayana Nomor 50 Kecamatan Lowokwaru Malang<br>
+
+                        </address>
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+               
+                <!-- Table row -->
+                <div class="row"">
+                    <table class="striped table-responsive highlight bordered" id="tabelBeasiswa2">
+                    <thead>
+                        <tr>
+                            <td data-field="nim">NIM</td>
+                            <td data-field="nama">NAMA</td>
+                            <td data-field="fakultas">Fakultas</td>
+                            <td data-field="jurusan">Jurusan</td>
+                            <td data-field="beasiswa">Jenis Beasiswa</td>
+                            <td data-field="angkatan">Tahun</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+
+                  </div>
+                  
+                    
+                  
+                    <!-- /.col -->      
+                </div>
+                <!-- /.row -->
+            </section>
+            <!-- /.content -->
+        </div>
 </main>
 
 <script type="text/javascript">
@@ -100,7 +154,7 @@ function datatable() {
 		"serverSide": true,
 		"order": [],
 		"ajax":{
-			url: "<?php echo base_url('kasubag/ModulLaporan/datatable'); ?>",
+			url: "<?php echo base_url('staf_kemahasiswaan/C_staff/datatablePemohon'); ?>",
 			type: "POST",
 			data:{'tahun':tahun,'fakultas':fakultas,'jurusan':jurusan,'beasiswa':beasiswa}
 		},
@@ -110,19 +164,38 @@ function datatable() {
 				"orderable":false,
 			},
 		],
-		"dom": '<"row" <"col s6 m6 l3 left"l><"col s6 m6 l3 right"f>><"bersih tengah" rt><"bottom"ip>'
+		"dom": '<"row" <"col s6 m6 l3 left"l><"col s6 m6 l3 right"f>><"bersih tengah" rt><"bottom"ip>',
 	});
+  dataTable = $('#tabelBeasiswa2').DataTable({
+    "destroy": true,
+    "processing": true,
+    "serverSide": true,
+    "order": [],
+    "ajax":{
+      url: "<?php echo base_url('staf_kemahasiswaan/C_staff/datatablePemohon'); ?>",
+      type: "POST",
+      data:{'tahun':tahun,'fakultas':fakultas,'jurusan':jurusan,'beasiswa':beasiswa}
+    },
+    "columnDefs": [
+      {
+        "targets": [2,-1],
+        "orderable":false,
+      },
+    ],
+    "dom": '<"row" <"col s6 m6 l3 left"l><"col s6 m6 l3 right"f>><"bersih tengah" rt><"bottom"ip>',
+  });
 }
 function reload_table() {
 	dataTable.ajax.reload(null, false);
 }
 </script>
+
 <script>
 $(document).ready(function(){
    $('#fakultas').change(function(){
       var fakultas =  $('#fakultas').val();
       $.ajax({
-          url: '<?php echo base_url('kasubag/ModulLaporan/getJurusan'); ?>',
+          url: '<?php echo base_url('staf_kemahasiswaan/C_staff/getJurusan'); ?>',
           type: 'GET',
           data: "fakultas="+fakultas,
           dataType: 'json',
@@ -150,21 +223,16 @@ $(document).ready(function(){
    fakultas = $('#fakultas').val();
    jurusan = $('#jurusan').val();
    beasiswa = $('#beasiswa').val();
-    $.ajax({
-        type: 'ajax',
-        method: 'GET',
-        url : '<?php echo base_url('kasubag/ModulLaporan/DataPenerima'); ?>',
-        data: {'thn':tahun,'fk':fakultas,'jrs':jurusan,'bea':beasiswa},
-        async: false,
-        dataType: 'json',
-        success: function(data){
-            
-        },
-        error: function(e){
-            alert('error'+e);
-        }
-    });
-
    });
 });
 </script>
+<script type="text/javascript">
+    	$(document).ready(function() {
+    $('#tabelBeasiswa').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'print'
+        ]
+    } );
+} );
+    </script>

@@ -27,16 +27,14 @@
  		unset($data);
  	}
 
- 	public function editBerita()
+ 	 	public function editBerita($id)
  	{
- 		$idBerita = $this->input->get('id');
- 		$this->db->where('idBerita', $idBerita);
- 		$berita =$this->db->get('berita');
- 		if ($berita->num_rows()>0) {
- 			return $berita->row();
- 		}else{
- 			return false;
- 		}
+		$query = $this->db->query("SELECT * from berita where idBerita=?", array($id));
+		if ($query->num_rows()>0) {
+			return $query;
+		}else{
+			return false;
+		}
  	}
 
  	public function updateBerita($idberita, $data)

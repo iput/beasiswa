@@ -16,6 +16,14 @@ class ModulLaporan extends CI_Controller {
         $this->load->model('kasubag/ReportBeasiswa');
     }
 
+    public function index() {
+        $data['fakultas'] = $this->ReportBeasiswa->dataFakultas();
+        $data['beasiswa'] = $this->Beasiswa->daftarBeasiswa();
+        $this->load->view('attribute/header_kasubag');
+        $this->load->view('kasubag/ReportBeasiswaPenerima', $data);
+        $this->load->view('attribute/footerKasubag');
+    }
+
     public function penerimaBeaSiswa() {
         $tahun = $this->input->post('filTahun');
         $jurusan = $this->input->post('filJurusan');
@@ -40,20 +48,14 @@ class ModulLaporan extends CI_Controller {
         $this->load->view('kasubag/masterDataPenerima', $data);
     }
 
-    public function filterLaporan() {
-        $tahun = $this->input->post('filTahun');
-        $jurusan = $this->input->post('filJurusan');
-        $fakultas = $this->input->post('filFakultas');
-        $beasiswa = $this->input->post('filBea');
+       public function filterLaporan() {
         $data['fakultas'] = $this->ReportBeasiswa->dataFakultas();
-        $data['jurusan'] = $this->ReportBeasiswa->dataJurusan();
         $data['beasiswa'] = $this->Beasiswa->daftarBeasiswa();
-        $data['datafill'] = $this->ReportBeasiswa->filterPemohon($tahun, $jurusan, $fakultas, $beasiswa);
-
         $this->load->view('attribute/header_kasubag');
         $this->load->view('kasubag/ReportBeasiswaFilter', $data);
         $this->load->view('attribute/footerKasubag');
     }
+
     public function GrafikBeasiswa() {
         $data['grafis'] = $this->ReportBeasiswa->grafikPenerima();
         $data['pemohon'] = $this->ReportBeasiswa->grafikPemohon();
@@ -86,5 +88,69 @@ class ModulLaporan extends CI_Controller {
       // echo json_encode($res);
         echo json_encode(array('coba'=>true));
     }
+
+    public function datatable() {
+        $tahun = $this->input->post('tahun')?$this->input->post('tahun'):0;
+        $fakultas = $this->input->post('fakultas')?$this->input->post('fakultas'):0;
+        $jurusan = $this->input->post('jurusan')?$this->input->post('jurusan'):0;
+        $bea = $this->input->post('beasiswa')?$this->input->post('beasiswa'):0;
+
+        $fetch_data = $this->ReportBeasiswa->make_datatables($tahun, $fakultas, $jurusan, $bea);
+        $data = array();
+        foreach ($fetch_data as $row) {
+            $sub_array = array();
+            $sub_array[] = $row->nim;
+            $sub_array[] = $row->namaLengkap;
+            $sub_array[] = $row->namaFk;
+            $sub_array[] = $row->namaJur;
+            $sub_array[] = $row->namaBeasiswa;
+            $sub_array[] = $row->angkatan;
+            $data[] = $sub_array;
+        }
+
+        $output = array(
+            "draw" => intval($_POST["draw"]),
+            "recordsTotal" => $this->ReportBeasiswa->get_all_data(),
+            "recordsFiltered" => $this->ReportBeasiswa->get_filtered_data($tahun, $fakultas, $jurusan, $bea),
+            "data" => $data
+        );
+        echo json_encode($output);
+    }
+    
+    public function datatablePemohon() {
+        $tahun = $this->input->post('tahun')?$this->input->post('tahun'):0;
+        $fakultas = $this->input->post('fakultas')?$this->input->post('fakultas'):0;
+        $jurusan = $this->input->post('jurusan')?$this->input->post('jurusan'):0;
+        $bea = $this->input->post('beasiswa')?$this->input->post('beasiswa'):0;
+
+        $fetch_data = $this->ReportBeasiswa->make_datatablesPemohon($tahun, $fakultas, $jurusan, $bea);
+        $data = array();
+        foreach ($fetch_data as $row) {
+            $sub_array = array();
+            $sub_array[] = $row->nim;
+            $sub_array[] = $row->namaLengkap;
+            $sub_array[] = $row->namaFk;
+            $sub_array[] = $row->namaJur;
+            $sub_array[] = $row->namaBeasiswa;
+            $sub_array[] = $row->angkatan;
+            $data[] = $sub_array;
+        }
+
+        $output = array(
+            "draw" => intval($_POST["draw"]),
+            "recordsTotal" => $this->ReportBeasiswa->get_all_data(),
+            "recordsFiltered" => $this->ReportBeasiswa->get_filtered_dataPemohon($tahun, $fakultas, $jurusan, $bea),
+            "data" => $data
+        );
+        echo json_encode($output);
+    }
+
+    public function getJurusan() {
+        $fakultas = $_GET['fakultas'];
+        $getjur = $this->ReportBeasiswa->get_jurusan($fakultas);
+        echo json_encode($getjur); 
+    }
+    
+
 }
 ?>
