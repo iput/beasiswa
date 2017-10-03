@@ -14,6 +14,7 @@ class C_mahasiswa extends CI_Controller
     $this->load->model("mahasiswa/Formulir", 'm_aplikasi');
     $this->load->model('kasubag/Beasiswa');
     $this->load->model('kasubag/ReportBeasiswa');
+    $this->load->model("grafik/Grafik",'grf');
   }
 
   public function index(){
@@ -210,23 +211,22 @@ public function Penerima() {
   $this->load->view('mahasiswa/ReportBeasiswaPenerima', $data);
   $this->load->view('attribute/footer');
 }
-  public function viewGrafik($th=null)
-    {
-      if ($th==null) {
-        date_default_timezone_set('Asia/Jakarta');
-        $tahun = date('Y');
-      }else {
-        $tahun = $th;
-      }
-      $this->load->model('grafik/grafik');
-      $data['tahun'] = $this->grafik->get_tahun();
-      $data['selected_tahun'] = $tahun;
-      $data['view_grafik'] = $this->grafik->get_data_grafik($tahun);
+public function viewGrafik($th=null)
+{
+  if ($th==null) {
+    date_default_timezone_set('Asia/Jakarta');
+    $tahun = date('Y');
+  }else {
+    $tahun = $th;
+  }
+  $data['tahun'] = $this->grf->get_tahun();
+  $data['selected_tahun'] = $tahun;
+  $data['view_grafik'] = $this->grf->get_data_grafik($tahun);
 
-      $this->load->view('attribute/header_mhs');
-      $this->load->view('grafik/grafikMhs', $data);
-      $this->load->view('attribute/footer');
-    }
+  $this->load->view('attribute/header_mhs');
+  $this->load->view('grafik/grafikMhs', $data);
+  $this->load->view('attribute/footerKasubag');
+}
 
 public function datatablePenerima() {
   $tahun = $this->input->post('tahun')?$this->input->post('tahun'):0;

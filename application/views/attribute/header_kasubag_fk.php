@@ -9,7 +9,6 @@
   <meta name="keywords" content="materialize, admin template, google material, dashboard template, responsive admin template,">
   <link rel="icon" type="image/x-icon" href="<?php echo base_url()?>assets/img/icons/favicons/uin.ico" />
   <title>Beasiswa | Kasubag Fakultas</title>
-
   <!-- Preloader stage (extracted for first show) -->
   <link href="<?php echo base_url('assets/css/preloader-stage.css')?>" type="text/css" rel="stylesheet" media="screen">
   <link href="<?php echo base_url('assets/css/materialize.css')?>" type="text/css" rel="stylesheet" media="screen">
@@ -20,33 +19,31 @@
   <link href="<?php echo base_url('assets/css/plugins/justifiedGallery.css')?>" type="text/css" rel="stylesheet" media="screen">
   <!-- Assistance.css are used only for template support. No need to use it on "production" -->
   <link href="<?php echo base_url('assets/css/assistance.css')?>" type="text/css" rel="stylesheet" media="screen">
-
   <!-- data table -->
   <link href="<?php echo base_url('assets/datatable_material/dataTables.material.min.css')?>" type="text/css" rel="stylesheet" media="screen">
   <!-- sweetalert -->
   <script type="text/javascript" src="<?php echo base_url('assets/js/bin/jquery-2.1.4.min.js')?>">
-</script>
+  </script>
   <script src="<?php echo base_url('assets/sweetalert/sweetalert.min.js');?>" charset="utf-8"></script>
   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/sweetalert/sweetalert.css');?>">
   <script src="<?php echo base_url('assets/chartjs/Chart.min.js');?>" type="text/javascript"></script>
   <style type="text/css"> 
-  @media print {
-  @page { size: landscape; 
-  }
-    
-  body * {
-    visibility: hidden;
-  }
-  #diprint, #diprint * {
-    visibility: visible;
-  }
-  #diprint {
-    position: absolute;
-    left: 0;
-    top: 0;
-  }
-}
-</style>
+    @media print {
+      @page { size: landscape; 
+      }
+      body * {
+        visibility: hidden;
+      }
+      #diprint, #diprint * {
+        visibility: visible;
+      }
+      #diprint {
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+    }
+  </style>
 </head>
 
 <body class="loading">

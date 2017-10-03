@@ -20,6 +20,7 @@
   <!-- sweetalert -->
   <script src="<?php echo base_url('assets/js/bin/jquery-2.1.4.min.js')?>"></script>
   <script src="<?php echo base_url('assets/sweetalert/sweetalert.min.js');?>" charset="utf-8"></script>
+    <script src="<?php echo base_url('assets/chartjs/Chart.min.js');?>" type="text/javascript"></script>
   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/sweetalert/sweetalert.css');?>">
   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/jquery.dataTables.min.css');?>">
   <style type="text/css"> 

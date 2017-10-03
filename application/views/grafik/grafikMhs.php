@@ -50,7 +50,7 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <h2 class="page-header">
-                            <img width="35px" height="35px" src="<?php echo base_url('assets/img/UIN ukuran 512.png'); ?>">&nbsp;Grafik perbandingan Pendaftar dan Penerima Beasiswa  <small class="pull-right">Tahun  <?php echo date('Y'); ?></small>
+                            <img width="35px" height="35px" src="<?php echo base_url('assets/img/UIN ukuran 512.png'); ?>">&nbsp;Grafik perbandingan Pendaftar dan Penerima Beasiswa <small class="pull-right">Tahun  <?php echo date('Y'); ?></small>
                             
                         </h2>
                     </div>
