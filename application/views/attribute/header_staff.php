@@ -93,11 +93,9 @@
       <li><a href="<?php echo base_url();?>staf_kemahasiswaan/C_staff" class="waves-effect"><i class="mdi-action-dashboard left"></i><span>Beranda</span></a></li>
       <li><a href="<?php echo base_url();?>staf_kemahasiswaan/C_staff/profile" class="waves-effect"><i class="mdi-action-account-box left"></i><span>Profile</span></a></li>
       <li><a href="<?php echo base_url();?>staf_kemahasiswaan/C_staff/daftarBerita" class="waves-effect"><i class="mdi-action-settings left"></i><span>Management Berita</span></a></li>
-      <li>
-        <li><a href="<?php echo base_url('staf_kemahasiswaan/C_staff/Pemohon');?>" class="waves-effect"><i class="mdi-maps-local-print-shop left"></i><span>Lap.Pemohon Beasiswa</span></a></li>
-        <li><a href="<?php echo base_url('staf_kemahasiswaan/C_staff/Penerima');?>" class="waves-effect"><i class="mdi-maps-local-print-shop left"></i><span>Lap.Penerima Beasiswa</span></a></li>
-        <li><a href="<?php echo base_url('staf_kemahasiswaan/C_staff/viewGrafik');?>" class="waves-effect"><i class="mdi-maps-local-print-shop left"></i><span>Lap.Grafik</span></a></li>
-      </li>
+      <li><a href="<?php echo base_url('staf_kemahasiswaan/C_staff/Pemohon');?>" class="waves-effect"><i class="mdi-maps-local-print-shop left"></i><span>Lap.Pemohon Beasiswa</span></a></li>
+      <li><a href="<?php echo base_url('staf_kemahasiswaan/C_staff/Penerima');?>" class="waves-effect"><i class="mdi-maps-local-print-shop left"></i><span>Lap.Penerima Beasiswa</span></a></li>
+      <li><a href="<?php echo base_url('staf_kemahasiswaan/C_staff/viewGrafik');?>" class="waves-effect"><i class="mdi-maps-local-print-shop left"></i><span>Lap.Grafik</span></a></li>
     </ul>
   </div>
   <!-- Search in Modal START -->

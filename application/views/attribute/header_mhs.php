@@ -22,6 +22,24 @@
   <script src="<?php echo base_url('assets/sweetalert/sweetalert.min.js');?>" charset="utf-8"></script>
   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/sweetalert/sweetalert.css');?>">
   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/jquery.dataTables.min.css');?>">
+  <style type="text/css"> 
+    @media print {
+      @page { size: landscape; 
+      }
+
+      body * {
+        visibility: hidden;
+      }
+      #diprint, #diprint * {
+        visibility: visible;
+      }
+      #diprint {
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+    }
+  </style>
 </head>
 
 <body class="loading">
@@ -66,21 +84,9 @@
       <li><a href="<?php echo base_url();?>mahasiswa/C_daftar_bea" class="waves-effect"><i class="mdi-av-my-library-books left"></i><span>Daftar Beasiswa</span></a></li>
       <li><a href="<?php echo base_url();?>mahasiswa/C_mahasiswa/pengumuman_penerima_beasiswa" class="waves-effect"><i class="mdi-action-credit-card left"></i><span>Penerima Beasiswa</span></a></li>
       <li><a href="<?php echo base_url();?>mahasiswa/C_mahasiswa/status_beasiswa" class="waves-effect"><i class="mdi-notification-play-install left"></i><span>Status Beasiswa</span></a></li>
-      <li>
-        <ul class="collapsible" data-collapsible="accordion">
-          <li><a class="collapsible-header waves-effect"><i class="mdi-editor-format-paint left"></i><span>laporan</span></a>
-            <div class="collapsible-body">
-              <ul>
-                <li><a href="<?php echo base_url('kasubag/ModulLaporan/filterLaporan');?>">Pemohon Beasiswa</a></li>
-                <li class="divider"></li>
-                <li><a href="<?php echo base_url('kasubag/ModulLaporan/penerimaBeaSiswa');?>">Penerima Beasiswa</a></li>
-                <li class="divider"></li>
-                <li><a href="<?php echo base_url('kasubag/ModulLaporan/GrafikBeasiswa');?>">Grafik Perbandingan Pemohon & Penerima</a></li>
-              </ul>
-            </div>
-          </li>
-        </ul>
-      </li>
+      <li><a href="<?php echo base_url('mahasiswa/C_mahasiswa/Pemohon');?>" class="waves-effect"><i class="mdi-maps-local-print-shop left"></i><span>Lap.Pemohon Beasiswa</span></a></li>
+      <li><a href="<?php echo base_url('mahasiswa/C_mahasiswa/Penerima');?>" class="waves-effect"><i class="mdi-maps-local-print-shop left"></i><span>Lap.Penerima Beasiswa</span></a></li>
+      <li><a href="<?php echo base_url('mahasiswa/C_mahasiswa/viewGrafik');?>" class="waves-effect"><i class="mdi-maps-local-print-shop left"></i><span>Lap.Grafik</span></a></li>
     </ul>
   </div>
   <!-- Search in Modal START -->

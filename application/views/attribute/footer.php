@@ -7,7 +7,8 @@
 	}
 </style>
 <!-- jQuery Plugins -->
-<script type="text/javascript" src="<?php echo base_url('assets/js/bin/jquery-2.1.4.min.js')?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/js/bin/jquery-2.1.4.min.js')?>">
+</script>
 <script>if (!window.jQuery) { document.write('<script src="<?php echo base_url('assets/js/bin/jquery-2.1.4.min.js')?>"><\/script>'); }</script>
 <script type="text/javascript" src="<?php echo base_url('assets/js/bin/plugins/prism.js')?>"></script>
 <script type="text/javascript" src="<?php echo base_url('assets/js/bin/plugins/simplebar.min.js')?>"></script>

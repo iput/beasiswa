@@ -154,7 +154,7 @@ function datatable() {
 		"serverSide": true,
 		"order": [],
 		"ajax":{
-			url: "<?php echo base_url('kabag/C_kabag/datatablePemohon'); ?>",
+			url: "<?php echo base_url('kasubag_fakultas/C_kasubagfk/datatablePemohon'); ?>",
 			type: "POST",
 			data:{'tahun':tahun,'fakultas':fakultas,'jurusan':jurusan,'beasiswa':beasiswa}
 		},
@@ -172,7 +172,7 @@ function datatable() {
     "serverSide": true,
     "order": [],
     "ajax":{
-      url: "<?php echo base_url('kabag/C_kabag/datatablePemohon'); ?>",
+      url: "<?php echo base_url('kasubag_fakultas/C_kasubagfk/datatablePemohon'); ?>",
       type: "POST",
       data:{'tahun':tahun,'fakultas':fakultas,'jurusan':jurusan,'beasiswa':beasiswa}
     },
@@ -195,7 +195,7 @@ $(document).ready(function(){
    $('#fakultas').change(function(){
       var fakultas =  $('#fakultas').val();
       $.ajax({
-          url: '<?php echo base_url('kabag/C_kabag/getJurusan'); ?>',
+          url: '<?php echo base_url('kasubag_fakultas/C_kasubagfk/getJurusan'); ?>',
           type: 'GET',
           data: "fakultas="+fakultas,
           dataType: 'json',

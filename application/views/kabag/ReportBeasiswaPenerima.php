@@ -1,6 +1,6 @@
 <main id="main">
     <div class="container">
-        <h1 class="thin">Laporan Penerima Beasiswa</h1>
+        <h3><span class="blue-text">Laporan Penerima Beasiswa</span></h3>
         <div id="dashboard">
             <div class="section">
                 <form action="<?php echo base_url('kasubag/ModulLaporan/searchFilter'); ?>" method="post" class="col s12 m12">
@@ -42,7 +42,7 @@
                             </select>
                         </div>
                     </div>
-		</form>
+    </form>
                 <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
                     <a class="btn-floating btn-large red" onclick="window.print();">
                         <i class="large material-icons">print</i>
@@ -78,43 +78,43 @@ document.addEventListener("DOMContentLoaded", function (event) {
 });
 
 function viewTabel() {
-	tahun = $("#tahun").val();
-	fakultas = $("#fakultas").val();
-	jurusan = $("#jurusan").val();
-	beasiswa= $("#beasiswa").val();
+  tahun = $("#tahun").val();
+  fakultas = $("#fakultas").val();
+  jurusan = $("#jurusan").val();
+  beasiswa= $("#beasiswa").val();
 
-	datatable();
+  datatable();
 
-	reloadJs('materialize','min');
-	reloadJs('initialize','nomin');
+  reloadJs('materialize','min');
+  reloadJs('initialize','nomin');
 }
 
 function myTimer() {
-	reload_table();
+  reload_table();
 }
 
 function datatable() {
-	dataTable = $('#tabelBeasiswa').DataTable({
-		"destroy": true,
-		"processing": true,
-		"serverSide": true,
-		"order": [],
-		"ajax":{
-			url: "<?php echo base_url('staf_kemahasiswaan/C_staff/datatable'); ?>",
-			type: "POST",
-			data:{'tahun':tahun,'fakultas':fakultas,'jurusan':jurusan,'beasiswa':beasiswa}
-		},
-		"columnDefs": [
-			{
-				"targets": [2,-1],
-				"orderable":false,
-			},
-		],
-		"dom": '<"row" <"col s6 m6 l3 left"l><"col s6 m6 l3 right"f>><"bersih tengah" rt><"bottom"ip>'
-	});
+  dataTable = $('#tabelBeasiswa').DataTable({
+    "destroy": true,
+    "processing": true,
+    "serverSide": true,
+    "order": [],
+    "ajax":{
+      url: "<?php echo base_url('kabag/C_kabag/datatable'); ?>",
+      type: "POST",
+      data:{'tahun':tahun,'fakultas':fakultas,'jurusan':jurusan,'beasiswa':beasiswa}
+    },
+    "columnDefs": [
+      {
+        "targets": [2,-1],
+        "orderable":false,
+      },
+    ],
+    "dom": '<"row" <"col s6 m6 l3 left"l><"col s6 m6 l3 right"f>><"bersih tengah" rt><"bottom"ip>'
+  });
 }
 function reload_table() {
-	dataTable.ajax.reload(null, false);
+  dataTable.ajax.reload(null, false);
 }
 </script>
 <script>
@@ -122,7 +122,7 @@ $(document).ready(function(){
    $('#fakultas').change(function(){
       var fakultas =  $('#fakultas').val();
       $.ajax({
-          url: '<?php echo base_url('staf_kemahasiswaan/C_staff/getJurusan'); ?>',
+          url: '<?php echo base_url('kabag/C_kabag/getJurusan'); ?>',
           type: 'GET',
           data: "fakultas="+fakultas,
           dataType: 'json',
@@ -153,7 +153,7 @@ $(document).ready(function(){
     $.ajax({
         type: 'ajax',
         method: 'GET',
-        url : '<?php echo base_url('kasubag/ModulLaporan/DataPenerima'); ?>',
+        url : '<?php echo base_url('kabag/C_kabag/DataPenerima'); ?>',
         data: {'thn':tahun,'fk':fakultas,'jrs':jurusan,'bea':beasiswa},
         async: false,
         dataType: 'json',
