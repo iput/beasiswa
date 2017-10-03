@@ -4,7 +4,6 @@
     <!--  Tables Section-->
     <div id="dashboard">
       <div class="section">
-
         <form action="<?php echo base_url('mahasiswa/C_mahasiswa/searchFilter'); ?>" method="post" class="col s12">
           <div class="col m12 s12">
             <div class="row">
@@ -136,7 +135,6 @@
   }
 </script>
 
-<script src="<?php echo base_url('assets/js/jquery.js')?>"  type="text/javascript"></script>
 <script type="text/javascript">
   $(document).ready(function(){
     $("#fakultas").change(function(){

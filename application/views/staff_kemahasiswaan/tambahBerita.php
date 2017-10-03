@@ -1,10 +1,9 @@
 <!-- Main START -->
 <main>
   <div class="container">
-    <h1 class="thin">Tambah berita</h1>
+    <h3><span class="blue-text">Tambah Berita</span></h3>
     <div id="dashboard">
       <div class="section">
-      <h4>Tambah Berita</h4>
       <form action="<?php echo base_url('staf_kemahasiswaan/ModulBerita/tambahBerita') ?>" method="POST" >
       	<div class="row">
       		<div class="input-field">

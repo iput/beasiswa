@@ -5,7 +5,7 @@
       <div class="section">
       <div id="responsive" class="section">
         <div class="card-panel success" style="display: none;"></div>
-      <h4>List Berita <a class="btn-floating modal-trigger waves-effect waves-light primary-color z-depth-0" href="<?php echo base_url('staf_kemahasiswaan/C_Staff/tambahBerita'); ?>"><i class="material-icons" title="Tambah Berita Baru">add</i></a></h4>
+      <h4>List Berita <a class="btn-floating modal-trigger waves-effect waves-light primary-color z-depth-0" href="<?php echo base_url('staf_kemahasiswaan/C_staff/tambahBerita'); ?>"><i class="material-icons" title="Tambah Berita Baru">add</i></a></h4>
         <table class="bordered striped" id="tabelBerita">
           <thead>
             <tr>

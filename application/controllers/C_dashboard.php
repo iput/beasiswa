@@ -8,8 +8,6 @@ class C_dashboard extends CI_Controller
     function __construct()
     {
         parent::__construct();
-        $this->load->library('Loginauth');
-        $this->loginauth->view_page();
         
         $this->load->model('m_dashboard');
     }

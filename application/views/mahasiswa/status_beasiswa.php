@@ -136,9 +136,6 @@
     dataTable.ajax.reload(null, false);
   }
 </script>
-
-<!-- <script src="<?php echo base_url('assets/js/js-script.js')?>" type="text/javascript"></script> -->
-<script src="<?php echo base_url('assets/js/jquery.js')?>"  type="text/javascript"></script>
 <script type="text/javascript">
   $(document).ready(function(){
     $("#fakultas").change(function(){

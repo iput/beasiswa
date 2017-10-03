@@ -7,6 +7,7 @@
 <meta name="msapplication-tap-highlight" content="no">
 <meta name="description" content="Mate Rio is a responsive Admin Template based on Material Design by Google.">
 <meta name="keywords" content="materialize, admin template, google material, dashboard template, responsive admin template,">
+<link rel="icon" type="image/x-icon" href="<?php echo base_url()?>assets/img/icons/favicons/uin.ico" />
 <title>Beasiswa | Admin</title>
 
 <!-- Preloader stage (extracted for first show) -->
@@ -22,6 +23,7 @@
 <!-- data table -->
 <link href="<?php echo base_url('assets/datatable_material/dataTables.material.min.css')?>" type="text/css" rel="stylesheet" media="screen">
 <!-- sweetalert -->
+<script src="<?php echo base_url('assets/js/bin/jquery-2.1.4.min.js')?>"></script>
 <script src="<?php echo base_url('assets/sweetalert/sweetalert.min.js');?>" charset="utf-8"></script>
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/sweetalert/sweetalert.css');?>">
 </head>

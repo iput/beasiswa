@@ -8,6 +8,7 @@ class C_kabag extends CI_Controller
     parent::__construct();
     $this->load->library('Loginauth');
     $this->loginauth->view_page();
+    
     $this->load->model("kabag/ProfileKabag",'mdl');
     $this->load->model('kasubag/Beasiswa');
     $this->load->model('kasubag/ReportBeasiswa');

@@ -1,6 +1,6 @@
 <main xmlns="http://www.w3.org/1999/html">
     <div class="container">
-        <h1 class="thin">Manajemen User System</h1>
+        <h3 style="text-align: center;"><span class="blue-text">Manajemen User System</span></h3>
 
         <?=form_open('C_admin/ajax_update')?>
             <input type="hidden" value="<?=$mhs->id ?>" name="lo"/>
@@ -87,7 +87,6 @@
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 alert('Error adding/update data');
-                
             }
         });
     }

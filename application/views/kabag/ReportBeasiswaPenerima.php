@@ -1,6 +1,6 @@
 <main id="main">
     <div class="container">
-        <h3><span class="blue-text">Laporan Penerima Beasiswa</span></h3>
+        <h1 class="thin">Laporan Penerima Beasiswa</h1>
         <div id="dashboard">
             <div class="section">
                 <form action="<?php echo base_url('kasubag/ModulLaporan/searchFilter'); ?>" method="post" class="col s12 m12">
@@ -100,7 +100,7 @@ function datatable() {
 		"serverSide": true,
 		"order": [],
 		"ajax":{
-			url: "<?php echo base_url('kasubag/ModulLaporan/datatable'); ?>",
+			url: "<?php echo base_url('staf_kemahasiswaan/C_staff/datatable'); ?>",
 			type: "POST",
 			data:{'tahun':tahun,'fakultas':fakultas,'jurusan':jurusan,'beasiswa':beasiswa}
 		},
@@ -122,7 +122,7 @@ $(document).ready(function(){
    $('#fakultas').change(function(){
       var fakultas =  $('#fakultas').val();
       $.ajax({
-          url: '<?php echo base_url('kasubag/ModulLaporan/getJurusan'); ?>',
+          url: '<?php echo base_url('staf_kemahasiswaan/C_staff/getJurusan'); ?>',
           type: 'GET',
           data: "fakultas="+fakultas,
           dataType: 'json',

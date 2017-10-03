@@ -1,7 +1,7 @@
 <!-- Main START -->
 <main>
     <div class="container">
-        <h1 class="thin">Grafik perbandingan Pendaftar dan Penerima Beasiswa</h1>
+        <h3 style="text-align: center;"><span class="blue-text">Grafik perbandingan Pendaftar dan Penerima Beasiswa</span></h3>
         <div id="dashboard">
             <div class="section">
 

@@ -1,10 +1,9 @@
 <!-- Main START -->
 <main>
   <div class="container">
-    <h1 class="thin">Tambah berita</h1>
+    <h3><span class="blue-text">Edit Berita</span></h3>
     <div id="dashboard">
       <div class="section">
-      <h4>Edit Berita</h4>
       <form action="<?php echo base_url('staf_kemahasiswaan/modulBerita/updateBerita') ?>" method="POST" >
         <div class="row">
           <div class="input-field">
@@ -32,7 +31,7 @@
         </div>
         <div class="row">
           <div class="input-field">
-            <a href="<?php echo base_url('staf_kemahasiswaan/C_Staff/daftarBerita') ?>" class="modal-action modal-close waves-effect red btn"><i class="mdi-navigation-cancel left"></i>Tutup</a>
+            <a href="<?php echo base_url('staf_kemahasiswaan/C_staff/daftarBerita') ?>" class="modal-action modal-close waves-effect red btn"><i class="mdi-navigation-cancel left"></i>Tutup</a>
             <button type="submit" class="btn green"><i class="mdi-navigation-refresh left"></i>Update</button>
           </div>
         </div>

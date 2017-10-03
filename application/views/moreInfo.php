@@ -98,7 +98,7 @@
                             <div class="card-header">
                                 <div class="card-title">
                                     <?php echo $berita->penulisBerita?>
-                                    <small><?php echo $berita->tglInBerita?></small>
+                                    <small><?php echo $berita->tglInBerita->format('Y:m:d')?></small>
                                 </div>
                                 <div class="card-content">
                                     <p><?php echo $berita->kontenBerita?></p>

@@ -1,6 +1,6 @@
 <main id="main">
     <div class="container">
-        <h1 class="thin">Laporan Penerima Beasiswa</h1>
+        <h3><span class="blue-text">Laporan Penerima Beasiswa</span></h3>
         <div id="dashboard">
             <div class="section">
                 <form action="<?php echo base_url('kasubag/ModulLaporan/searchFilter'); ?>" method="post" class="col s12 m12">

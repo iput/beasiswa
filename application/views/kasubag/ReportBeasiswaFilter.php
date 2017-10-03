@@ -1,6 +1,6 @@
 <main>
     <div class="container">
-        <h1 class="thin">Laporan Pemohon Beasiswa</h1>
+        <h3><span class="blue-text">Laporan Pemohon Beasiswa</span></h3>
         <div id="dashboard">
             <div class="section">
                 <form action="" method="post" class="col s12 m12">
