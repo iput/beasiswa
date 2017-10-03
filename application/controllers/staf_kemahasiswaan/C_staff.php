@@ -208,6 +208,18 @@ class C_staff extends CI_Controller
     $data['databea'] = $this->ReportBeasiswa->make_query1($tahun, $fakultas, $jurusan, $bea);
     $this->load->view('kasubag/masterDataPenerima', $data);
 }
+public function get_data_print1($tahun, $fakultas,$jurusan,$bea)
+{
+
+  // $fetch_data = $this->ReportBeasiswa->make_query1($tahun, $fakultas, $jurusan, $bea);
+  //
+  //
+  //
+  // echo json_encode($fetch_data);
+  // echo json_encode($fetch_data);
+  $data['databea'] = $this->ReportBeasiswa->make_queryPemohon1($tahun, $fakultas, $jurusan, $bea);
+  $this->load->view('kasubag/masterDataPemohon', $data);
+}
 
   }
 

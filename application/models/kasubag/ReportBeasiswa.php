@@ -269,7 +269,69 @@ class ReportBeasiswa extends CI_Model {
             $this->db->order_by('pendaftar.nim', 'DESC');
         }
     }
+    public function make_queryPemohon1($tahun, $fakultas, $jurusan, $bea) {
+        $this->db->select($this->select_column);
+        $this->db->from($this->table);
+        $this->db->join('identitas_mhs', 'identitas_mhs.nimMhs = pendaftar.nim', 'left');
+        $this->db->join('jurusan', 'identitas_mhs.idJrs = jurusan.id', 'left');
+        $this->db->join('bea', 'bea.id = pendaftar.idBea', 'left');
+        $this->db->join('fakultas', 'fakultas.id = jurusan.idFk', 'left');
+        $this->db->where("pendaftar.status=0");
 
+        if ($tahun != 0 && $fakultas == 0 && $jurusan == 0 && $bea == 0) {
+            $this->db->where("identitas_mhs.angkatan", $tahun);
+        } elseif ($tahun == 0 && $fakultas != 0 && $jurusan == 0 && $bea == 0) {
+            $this->db->where("fakultas.id", $fakultas);
+        } elseif ($tahun == 0 && $fakultas == 0 && $jurusan != 0 && $bea == 0) {
+            $this->db->where("jurusan.id", $jurusan);
+        } elseif ($tahun == 0 && $fakultas == 0 && $jurusan == 0 && $bea != 0) {
+            $this->db->where("bea.id", $bea);
+        } elseif ($tahun != 0 && $fakultas != 0 && $jurusan == 0 && $bea == 0) {
+            $this->db->where("identitas_mhs.angkatan", $tahun);
+            $this->db->where("fakultas.id", $fakultas);
+        } elseif ($tahun != 0 && $fakultas == 0 && $jurusan != 0 && $bea == 0) {
+            $this->db->where("identitas_mhs.angkatan", $tahun);
+            $this->db->where("jurusan.id", $jurusan);
+        } elseif ($tahun != 0 && $fakultas == 0 && $jurusan == 0 && $bea != 0) {
+            $this->db->where("identitas_mhs.angkatan", $tahun);
+            $this->db->where("bea.id", $bea);
+        } elseif ($tahun == 0 && $fakultas != 0 && $jurusan != 0 && $bea == 0) {
+            $this->db->where("jurusan.id", $jurusan);
+            $this->db->where("fakultas.id", $fakultas);
+        } elseif ($tahun == 0 && $fakultas != 0 && $jurusan == 0 && $bea != 0) {
+            $this->db->where("fakultas.id", $fakultas);
+            $this->db->where("bea.id", $bea);
+        } elseif ($tahun == 0 && $fakultas == 0 && $jurusan != 0 && $bea != 0) {
+            $this->db->where("jurusan.id", $jurusan);
+            $this->db->where("bea.id", $bea);
+        } elseif ($tahun != 0 && $fakultas != 0 && $jurusan != 0 && $bea == 0) {
+            $this->db->where("identitas_mhs.angkatan", $tahun);
+            $this->db->where("fakultas.id", $fakultas);
+            $this->db->where("jurusan.id", $jurusan);
+        } elseif ($tahun != 0 && $fakultas != 0 && $jurusan == 0 && $bea != 0) {
+            $this->db->where("identitas_mhs.angkatan", $tahun);
+            $this->db->where("bea.id", $bea);
+            $this->db->where("jurusan.id", $jurusan);
+        } elseif ($tahun != 0 && $fakultas == 0 && $jurusan != 0 && $bea != 0) {
+            $this->db->where("fakultas.id", $fakultas);
+            $this->db->where("bea.id", $bea);
+            $this->db->where("identitas_mhs.angkatan", $tahun);
+        } elseif ($tahun == 0 && $fakultas != 0 && $jurusan != 0 && $bea != 0) {
+            $this->db->where("fakultas.id", $fakultas);
+            $this->db->where("bea.id", $bea);
+            $this->db->where("jurusan.id", $jurusan);
+        } elseif ($tahun != 0 && $fakultas != 0 && $jurusan != 0 && $bea != 0) {
+            $this->db->where("identitas_mhs.angkatan", $tahun);
+            $this->db->where("fakultas.id", $fakultas);
+            $this->db->where("bea.id", $bea);
+            $this->db->where("jurusan.id", $jurusan);
+        }
+        $query = $this->db->get();
+        return $query->result();
+
+
+
+    }
     public function make_queryPemohon($tahun, $fakultas, $jurusan, $bea) {
         $this->db->select($this->select_column);
         $this->db->from($this->table);

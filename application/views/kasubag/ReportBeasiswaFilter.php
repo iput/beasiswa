@@ -43,11 +43,11 @@
                         </div>
                     </div>
 		</form>
-                <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
-                    <a class="btn-floating btn-large red" id="tombolPrint" href="javascript:;">
-                        <i class="large material-icons">print</i>
-                    </a>
-                </div>
+    <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+        <a class="btn-floating btn-large red" title="cetak semua data" href="<?php echo base_url('kasubag/ModulLaporan/semuaDataPemohon') ?>">
+            <i class="large material-icons">print</i>
+        </a>
+    </div>
                 <table class="striped table-responsive highlight bordered" id="tabelBeasiswa">
                     <thead>
                         <tr>
@@ -140,7 +140,7 @@ $(document).ready(function(){
           }
       });
    });
-   
+
    $('#tombolPrint').on('click', function(){
    var tahun;
    var fakultas;

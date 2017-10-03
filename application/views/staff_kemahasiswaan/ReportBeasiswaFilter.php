@@ -43,11 +43,10 @@
                         </div>
                     </div>
 		</form>
-                <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
-                    <a class="btn-floating btn-large red" onclick="window.print()">
-                        <i class="large material-icons">print</i>
-                    </a>
-                </div>
+    <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+      <a class="btn-floating btn-large red" onclick="print_laporan();">
+           <i class="large material-icons">print</i></a>
+    </div>
                 <table class="striped table-responsive highlight bordered" id="tabelBeasiswa">
                     <thead>
                         <tr>
@@ -73,7 +72,7 @@
                     <div class="col-xs-12">
                         <h2 class="page-header">
                             <img width="35px" height="35px" src="<?php echo base_url('assets/img/UIN ukuran 512.png'); ?>">&nbsp;Grafik perbandingan Pendaftar dan Penerima Beasiswa  <small class="pull-right">Tahun  <?php echo date('Y'); ?></small>
-                            
+
                         </h2>
                     </div>
                     <!-- /.col -->
@@ -81,7 +80,7 @@
                 <!-- info row -->
                 <div class="row invoice-info">
                     <div class="col-sm-4 invoice-col">
-    
+
                         <address>
                             <strong>Kemahasiswan UIN Maulana Malik Ibrahim Malang</strong><br>
                             Jalan  Gajayana Nomor 50 Kecamatan Lowokwaru Malang<br>
@@ -91,7 +90,7 @@
                     <!-- /.col -->
                 </div>
                 <!-- /.row -->
-               
+
                 <!-- Table row -->
                 <div class="row"">
                     <table class="striped table-responsive highlight bordered" id="tabelBeasiswa2">
@@ -110,10 +109,10 @@
                 </table>
 
                   </div>
-                  
-                    
-                  
-                    <!-- /.col -->      
+
+
+
+                    <!-- /.col -->
                 </div>
                 <!-- /.row -->
             </section>
@@ -191,6 +190,20 @@ function reload_table() {
 </script>
 
 <script>
+  function print_laporan() {
+
+    var tahun;
+    var fakultas;
+    var jurusan;
+    var beasiswa;
+    tahun = $('#tahun').val();
+    fakultas = $('#fakultas').val();
+    jurusan = $('#jurusan').val();
+    beasiswa = $('#beasiswa').val();
+
+      window.open("<?=site_url()?>staf_kemahasiswaan/C_staff/get_data_print1/"+tahun+"/"+fakultas+"/"+jurusan+"/"+beasiswa);
+
+    }
 $(document).ready(function(){
    $('#fakultas').change(function(){
       var fakultas =  $('#fakultas').val();
@@ -213,7 +226,7 @@ $(document).ready(function(){
           }
       });
    });
-   
+
    $('#tombolPrint').on('click', function(){
    var tahun;
    var fakultas;
