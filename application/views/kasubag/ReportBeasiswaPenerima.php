@@ -89,6 +89,6 @@
   function print_laporan() {
     thn = 2017;
     bln = 2;
-    window.open("<?=site_url()?>/kasubag/ModulLaporan/semuaDataPenerima?tahun="+thn+"&bulan="+bln,"Cetak Laporan", "width=900,height=1200");
+    window.open("<?=site_url()?>kasubag/ModulLaporan/semuaDataPenerima?tahun="+thn+"&bulan="+bln,"Cetak Laporan", "width=900,height=1200");
   }
 </script>

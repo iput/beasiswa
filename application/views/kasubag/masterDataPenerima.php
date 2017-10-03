@@ -96,14 +96,14 @@
     var bulan = getParameterByName('bulan');
 
     $.ajax({
-      url : "<?php echo site_url()?>/kasubag/ModulLaporan/get_data_print/"+tahun+"/"+bulan,
+      url : "<?php echo site_url()?>kasubag/ModulLaporan/get_data_print/"+tahun+"/"+bulan,
       type: "GET",
       dataType: "JSON",
       success: function(data)
       {
-        $(data).each(function( id ) {
-          $('#table tbody').append('<tr><td>'+(id+1)+'</td><td>'+data[id]['nip']+'</td><td style="text-align: justify; padding-left: 10px;">'+data[id]['namaGuru']+'</td><td>'+data[id]['hadir']+'</td><td>'+data[id]['sakit']+'</td><td>'+data[id]['izin']+'</td><td>'+data[id]['alpha']+'</td><td>'+data[id]['jumlah']+'</td></tr>')
-        });
+        // $(data).each(function( id ) {
+        //   $('#table tbody').append('<tr><td>'+(id+1)+'</td><td>'+data[id]['nip']+'</td><td style="text-align: justify; padding-left: 10px;">'+data[id]['namaGuru']+'</td><td>'+data[id]['hadir']+'</td><td>'+data[id]['sakit']+'</td><td>'+data[id]['izin']+'</td><td>'+data[id]['alpha']+'</td><td>'+data[id]['jumlah']+'</td></tr>')
+        // });
 
         // $('#bulan').text(data[0]['minggu']+' - '+data[0]['sabtu'])
         // $('#title').append(' '+data[0]['minggu']+' - '+data[0]['sabtu']);

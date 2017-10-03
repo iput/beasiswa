@@ -84,6 +84,7 @@ class ModulLaporan extends CI_Controller {
     {
       // $res = $this->medil_opo->fungsine($tahun, $bulan);
       // echo json_encode($res);
+        echo json_encode(array('coba'=>true));
     }
 }
 ?>

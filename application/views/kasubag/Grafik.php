@@ -18,8 +18,14 @@ foreach ($pemohon as $rows2) {
                 <p>Persentase penerima dan pemohon beasiswa.</p>
                 <canvas id="grafik" width="1000" height="280"></canvas>
             </div>
+              <a class="btn-floating btn-large red" href="<?php echo base_url('kasubag/ModulLaporan/semuaDataPemohon') ?>">
+                        <i class="large material-icons">print</i>
+                    </a>
+    
         </div>
     </div>
+    
+                  
     <!-- container END -->
 </main>
 <script>

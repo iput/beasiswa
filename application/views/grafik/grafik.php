@@ -32,12 +32,63 @@
                       ?>
                     </select>
                   </div>
-                  <div class="col m12">
+                  <div class="col m12" id="graf" style="visibility: visible;">
                     <canvas id="grafik" style="overflow-x: scroll;"></canvas>
                   </div>
+                  <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+                    <a class="btn-floating btn-large red" onclick="window.print()">
+                        <i class="large material-icons">print</i>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
+    <div class="wrapper" id="diprint" style="visibility: hidden;">
+            <!-- Main content -->
+            <section class="invoice">
+                <!-- title row -->
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h2 class="page-header">
+                            <img width="35px" height="35px" src="<?php echo base_url('assets/img/UIN ukuran 512.png'); ?>">&nbsp;Grafik perbandingan Pendaftar dan Penerima Beasiswa  <small class="pull-right">Tahun  <?php echo date('Y'); ?></small>
+                            
+                        </h2>
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- info row -->
+                <div class="row invoice-info">
+                    <div class="col-sm-4 invoice-col">
+    
+                        <address>
+                            <strong>Kemahasiswan UIN Maulana Malik Ibrahim Malang</strong><br>
+                            Jalan  Gajayana Nomor 50 Kecamatan Lowokwaru Malang<br>
+
+                        </address>
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+               
+                <!-- Table row -->
+                <div class="row"">
+                    <div class="col m12">
+                    <canvas id="grafik2" style="overflow-x: scroll;"></canvas>
+
+                  </div>
+                  
+                    Keterangan :
+                    
+                      <p style="background: yellow;"> asdasasddas</p>   
+                      <p style="background:  rgba(40,200,10,0.9);""> </p>   
+                    
+                  
+                    <!-- /.col -->      
+                </div>
+                <!-- /.row -->
+            </section>
+            <!-- /.content -->
+        </div>
     <!-- container END -->
 </main>
 <script type="text/javascript">
@@ -82,4 +133,5 @@ function refresh_chart() {
       scaleShowVerticalLines: false,
     };
     var myLine = new Chart(document.getElementById("grafik").getContext("2d")).Bar(linechartData, options);
+    var myLine = new Chart(document.getElementById("grafik2").getContext("2d")).Bar(linechartData, options);
 </script>

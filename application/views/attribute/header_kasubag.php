@@ -23,6 +23,24 @@
 <script src="<?php echo base_url('assets/sweetalert/sweetalert.min.js');?>" charset="utf-8"></script>
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/sweetalert/sweetalert.css');?>">
 <script src="<?php echo base_url('assets/chartjs/Chart.min.js');?>" type="text/javascript"></script>
+<style type="text/css">
+  @media print {
+  @page { size: landscape; 
+  }
+    
+  body * {
+    visibility: hidden;
+  }
+  #diprint, #diprint * {
+    visibility: visible;
+  }
+  #diprint {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+}
+</style>
 </head>
 
 <body class="loading">
