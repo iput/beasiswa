@@ -49,6 +49,16 @@ class DaftarBeasiswa extends CI_Model {
     $query = $this->db->get();
     return $query->result();
   }
+  public function get_id($nim,$idBea){
+      $query = $this->db->query('SELECT id FROM pendaftar WHERE nim="'.$nim.'" AND idBea="'.$idBea.'"');
+
+      
+      return $query->row();
+
+      $query = null;
+
+      unset($idBea,$nim);
+  }
 
   function get_filtered_data(){
     $this->make_query();

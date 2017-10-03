@@ -6,12 +6,13 @@ class C_staff extends CI_Controller
   function __construct()
   {
     parent::__construct();
+    $this->load->library('Loginauth');
+    $this->loginauth->view_page();
+    
     $this->load->model('staff_kemahasiswaan/Berita');
     $this->load->model("staff_kemahasiswaan/Profile",'mdl');
     $this->load->model('kasubag/Beasiswa');
     $this->load->model('kasubag/ReportBeasiswa');
-    $this->load->library('Loginauth');
-    $this->loginauth->view_page();
   }
   public function index()
   {

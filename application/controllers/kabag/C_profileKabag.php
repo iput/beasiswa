@@ -7,6 +7,8 @@ class C_profileKabag extends CI_Controller
 	var $offset=10;
 	function __construct(){
 		parent::__construct();
+		$this->load->library('Loginauth');
+		$this->loginauth->view_page();
 		$this->load->model("kabag/ProfileKabag",'model');
 		$this->load->library('upload');
 		$this->load->helper(array('url'));
@@ -98,7 +100,7 @@ class C_profileKabag extends CI_Controller
 				}
 			}else{
 				$this->session->set_flashdata("pesan", "<div class=\"card-panel alert\">Current Password tidak ada dalam database</div>");
-					redirect('kabag/C_kabag/profile');
+				redirect('kabag/C_kabag/profile');
 			}
 		}else{
 			echo validation_errors();

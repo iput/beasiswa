@@ -8,6 +8,9 @@ class C_admin extends CI_Controller
   function __construct()
   {
     parent::__construct();
+    $this->load->library('Loginauth');
+    $this->loginauth->view_page();
+    
     $this->load->model("admin/M_admin",'mdl');
     $this->load->model("admin/ProfileAdmin",'modl');
   }

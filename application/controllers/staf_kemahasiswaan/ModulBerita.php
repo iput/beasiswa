@@ -8,6 +8,9 @@
  	function __construct()
  	{
  		parent::__construct();
+ 		$this->load->library('Loginauth');
+		$this->loginauth->view_page();
+		
  		$this->load->model('staff_kemahasiswaan/Berita','Berita');
  	}
 

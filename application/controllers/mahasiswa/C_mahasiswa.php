@@ -6,6 +6,8 @@ class C_mahasiswa extends CI_Controller
   function __construct()
   {
     parent::__construct();
+    $this->load->library('Loginauth');
+    $this->loginauth->view_page();
     $this->load->model("mahasiswa/PengumumanPenerimaBeasiswa",'model');
     $this->load->model("mahasiswa/StatusBea",'mod');
     $this->load->model("mahasiswa/Profile",'mdl');
@@ -26,6 +28,15 @@ class C_mahasiswa extends CI_Controller
   $this->load->view('mahasiswa/buktipendaftaran',$data);
   unset($data);
 }
+public function dataDaerah($id)
+    {
+        $data['pendaftar'] = $this->m_aplikasi->data_pendaftar($id);
+
+
+
+        $this->load->view('mahasiswa/buktiDaerah',$data);
+        unset($data);
+    }
 function pdf($id)
 {
   $data['pendaftar'] = $this->m_aplikasi->data_pendaftar($id);
