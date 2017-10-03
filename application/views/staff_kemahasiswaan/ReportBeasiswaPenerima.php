@@ -44,9 +44,8 @@
                     </div>
 		</form>
                 <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
-                    <a class="btn-floating btn-large red" onclick="window.print();">
-                        <i class="large material-icons">print</i>
-                    </a>`
+                  <a class="btn-floating btn-large red" onclick="print_laporan();">
+                       <i class="large material-icons">print</i></a>
                 </div>
                 <table class="striped table-responsive highlight bordered" id="tabelBeasiswa">
                     <thead>
@@ -118,7 +117,23 @@ function reload_table() {
 }
 </script>
 <script>
+
+function print_laporan() {
+
+  var tahun;
+  var fakultas;
+  var jurusan;
+  var beasiswa;
+  tahun = $('#tahun').val();
+  fakultas = $('#fakultas').val();
+  jurusan = $('#jurusan').val();
+  beasiswa = $('#beasiswa').val();
+
+    window.open("<?=site_url()?>staf_kemahasiswaan/C_staff/get_data_print/"+tahun+"/"+fakultas+"/"+jurusan+"/"+beasiswa);
+
+  }
 $(document).ready(function(){
+
    $('#fakultas').change(function(){
       var fakultas =  $('#fakultas').val();
       $.ajax({
@@ -140,7 +155,7 @@ $(document).ready(function(){
           }
       });
    });
-   
+
    $('#tombolPrint').on('click', function(){
    var tahun;
    var fakultas;
@@ -158,7 +173,7 @@ $(document).ready(function(){
         async: false,
         dataType: 'json',
         success: function(data){
-            
+
         },
         error: function(e){
             alert('error'+e);

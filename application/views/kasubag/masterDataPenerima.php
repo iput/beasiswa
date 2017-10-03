@@ -16,7 +16,7 @@
   <script type="text/javascript" src="<?php echo base_url('assets/js/bin/jquery-2.1.4.min.js')?>"></script>
   <!-- Theme style -->
 </head>
-<body>
+<body onload="window.print();setTimeout(window.close, 0);">
   <div class="wrapper">
     <!-- Main content -->
     <section class="invoice">
@@ -46,33 +46,29 @@
       <!-- Table row -->
       <div class="row">
         <div class="col-xs-12 table-responsive">
-          <table id="table" class="table table-striped table-bordered">
+          <table id="table1" class="table table-striped table-bordered">
             <thead>
               <tr>
                 <th>NIM</th>
-                <th>Nama Mahasiswa</th>
+                <th>NAMA</th>
                 <th>Fakultas</th>
                 <th>Jurusan</th>
-                <th>Angkatan</th>
+                <th>Jenis Beasiswa</th>
+                <th>Tahun</th>
               </tr>
             </thead>
             <tbody>
               <?php foreach ($databea as $data): ?>
-                <?php
-                $id = $data['nim'];
-                $namauser = $data['namaLengkap'];
-                $fakultas = $data['namaFk'];
-                $jurusan = $data['namaJur'];
-                $angkatan = $data['angkatan'];
 
-                ?>
-                <tr style="text-align: center;">
-                  <td><?php echo $id; ?></td>
-                  <td><?php echo $namauser; ?></td>
-                  <td><?php echo $fakultas; ?></td>
-                  <td><?php echo $jurusan; ?></td>
-                  <td><?php echo $angkatan; ?></td>
-                </tr>
+              <tr style="text-align: left;">
+
+              <td><?php echo $data->nim?></td>
+              <td><?php echo $data->namaLengkap?></td>
+              <td><?php echo $data->namaFk?></td>
+              <td><?php echo $data->namaJur?></td>
+              <td><?php echo $data->namaBeasiswa?></td>
+              <td><?php echo $data->angkatan?></td>
+              </tr>
               <?php endforeach; ?>
             </tbody>
           </table>
@@ -93,21 +89,22 @@
     }
 
     var tahun = getParameterByName('tahun');
-    var bulan = getParameterByName('bulan');
+    var fakultas = getParameterByName('fakultas');
+    var jurusan = getParameterByName('jurusan');
+    var beasiswa = getParameterByName('beasiswa');
 
     $.ajax({
-      url : "<?php echo site_url()?>kasubag/ModulLaporan/get_data_print/"+tahun+"/"+bulan,
+      url : "<?php echo site_url()?>kasubag/ModulLaporan/get_data_print/"+tahun+"/"+fakultas+"/"+jurusan+"/"+beasiswa,
       type: "GET",
       dataType: "JSON",
       success: function(data)
       {
-        // $(data).each(function( id ) {
-        //   $('#table tbody').append('<tr><td>'+(id+1)+'</td><td>'+data[id]['nip']+'</td><td style="text-align: justify; padding-left: 10px;">'+data[id]['namaGuru']+'</td><td>'+data[id]['hadir']+'</td><td>'+data[id]['sakit']+'</td><td>'+data[id]['izin']+'</td><td>'+data[id]['alpha']+'</td><td>'+data[id]['jumlah']+'</td></tr>')
-        // });
+        $(data).each(function() {
+          $('#table1 tbody').append('<tr><td>'++'</td><td>'+data['nim']+'</td><td style="text-align: justify; padding-left: 10px;">'+data['namaLengkap']+'</td><td>'+data['namaFk']+'</td><td>'+data['namaJur']+'</td><td>'+data['namaBeasiswa']+'</td><td>'+data['angkatan']+'</td></tr>')
+        });
 
-        // $('#bulan').text(data[0]['minggu']+' - '+data[0]['sabtu'])
-        // $('#title').append(' '+data[0]['minggu']+' - '+data[0]['sabtu']);
         window.print();
+
         setTimeout(window.close, 0);
       }
     });

@@ -66,7 +66,7 @@
                             </ul>
                         </div>
                         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="ion-android-menu"></i></a>
-                        
+
 
                         <!-- Mobile sidebar navigation -->
                         <ul class="side-nav" id="mobile-demo">
@@ -98,7 +98,7 @@
                             <div class="card-header">
                                 <div class="card-title">
                                     <?php echo $berita->penulisBerita?>
-                                    <small><?php echo $berita->tglInBerita->format('Y:m:d')?></small>
+                                    <small><?php echo $berita->tglInBerita?></small>
                                 </div>
                                 <div class="card-content">
                                     <p><?php echo $berita->kontenBerita?></p>
@@ -113,7 +113,7 @@
                 </div><!-- Row ends -->
             </div><!-- Container ends -->
         </section><!-- Section ends -->
-        
+
         <footer id="footer" class="footer-main">
             <div class="container">
                 <div class="row">
@@ -233,4 +233,3 @@
 
 
 </html>
-

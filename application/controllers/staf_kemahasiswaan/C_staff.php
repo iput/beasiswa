@@ -8,7 +8,7 @@ class C_staff extends CI_Controller
     parent::__construct();
     $this->load->library('Loginauth');
     $this->loginauth->view_page();
-    
+
     $this->load->model('staff_kemahasiswaan/Berita');
     $this->load->model("staff_kemahasiswaan/Profile",'mdl');
     $this->load->model('kasubag/Beasiswa');
@@ -20,7 +20,7 @@ class C_staff extends CI_Controller
     $this->load->view('staff_kemahasiswaan/dashboard');
     $this->load->view('attribute/footer');
   }
-  
+
   public function tambahBerita()
   {
     $this->load->view('attribute/header_staff');
@@ -29,7 +29,7 @@ class C_staff extends CI_Controller
   }
 
   public function profile()
-  { 
+  {
     $user = $this->session->userdata('id');
     $cek = $this->mdl->getdata($user);
     if($this->mdl->getIdentitasAdmin($user) != 0){
@@ -117,7 +117,7 @@ class C_staff extends CI_Controller
   public function getJurusan() {
     $fakultas = $_GET['fakultas'];
     $getjur = $this->ReportBeasiswa->get_jurusan($fakultas);
-    echo json_encode($getjur); 
+    echo json_encode($getjur);
   }
 
   public function datatable() {
@@ -192,5 +192,23 @@ class C_staff extends CI_Controller
     $this->load->view('grafik/grafikStaf', $data);
     $this->load->view('attribute/footer');
   }
+  public function semuaDataPenerima() {
+      $data['databea'] = $this->ReportBeasiswa->semuaPenerimaBeasiswa();
+      $this->load->view('kasubag/masterDataPenerima', $data);
+  }
+  public function get_data_print($tahun, $fakultas,$jurusan,$bea)
+  {
+
+    // $fetch_data = $this->ReportBeasiswa->make_query1($tahun, $fakultas, $jurusan, $bea);
+    //
+    //
+    //
+    // echo json_encode($fetch_data);
+    // echo json_encode($fetch_data);
+    $data['databea'] = $this->ReportBeasiswa->make_query1($tahun, $fakultas, $jurusan, $bea);
+    $this->load->view('kasubag/masterDataPenerima', $data);
 }
+
+  }
+
 ?>

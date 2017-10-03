@@ -11,7 +11,6 @@ class ModulLaporan extends CI_Controller {
         parent::__construct();
         $this->load->library('Loginauth');
         $this->loginauth->view_page();
-        
         $this->load->model('kasubag/Beasiswa');
         $this->load->model('kasubag/ReportBeasiswa');
     }
@@ -82,11 +81,17 @@ class ModulLaporan extends CI_Controller {
       $this->load->view('attribute/footerKasubag');
     }
 
-    public function get_data_print($tahun, $bulan)
+    public function get_data_print($tahun, $fakultas,$jurusan,$bea)
     {
-      // $res = $this->medil_opo->fungsine($tahun, $bulan);
-      // echo json_encode($res);
-        echo json_encode(array('coba'=>true));
+
+      $fetch_data = $this->ReportBeasiswa->make_query1($tahun, $fakultas, $jurusan, $bea);
+
+
+
+      echo json_encode($fetch_data);
+      // echo json_encode($fetch_data);
+
+
     }
 
     public function datatable() {
@@ -116,7 +121,7 @@ class ModulLaporan extends CI_Controller {
         );
         echo json_encode($output);
     }
-    
+
     public function datatablePemohon() {
         $tahun = $this->input->post('tahun')?$this->input->post('tahun'):0;
         $fakultas = $this->input->post('fakultas')?$this->input->post('fakultas'):0;
@@ -148,9 +153,9 @@ class ModulLaporan extends CI_Controller {
     public function getJurusan() {
         $fakultas = $_GET['fakultas'];
         $getjur = $this->ReportBeasiswa->get_jurusan($fakultas);
-        echo json_encode($getjur); 
+        echo json_encode($getjur);
     }
-    
+
 
 }
 ?>
