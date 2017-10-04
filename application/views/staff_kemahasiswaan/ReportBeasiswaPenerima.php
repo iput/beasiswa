@@ -143,7 +143,7 @@ $(document).ready(function(){
           dataType: 'json',
           success: function(data){
            var fakultas=`<select id="jurusan" name="jurusan">
-          <option value="">Pilihlah Jurusan</option>`;
+          <option value="null">Pilihlah Jurusan</option>`;
           for (var i = 0; i < data.length; i++) {
             fakultas+='<option value="'+data[i].id+'">'+data[i].namaJur+'</option>';
           }

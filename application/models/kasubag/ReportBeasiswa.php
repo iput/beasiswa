@@ -169,7 +169,7 @@ class ReportBeasiswa extends CI_Model {
         } elseif ($tahun != 0 && $fakultas != 0 && $jurusan == 0 && $bea != 0) {
             $this->db->where("identitas_mhs.angkatan", $tahun);
             $this->db->where("bea.id", $bea);
-            $this->db->where("jurusan.id", $jurusan);
+            $this->db->where("fakultas.id", $fakultas);
         } elseif ($tahun != 0 && $fakultas == 0 && $jurusan != 0 && $bea != 0) {
             $this->db->where("fakultas.id", $fakultas);
             $this->db->where("bea.id", $bea);
@@ -231,7 +231,7 @@ class ReportBeasiswa extends CI_Model {
         } elseif ($tahun != 0 && $fakultas != 0 && $jurusan == 0 && $bea != 0) {
             $this->db->where("identitas_mhs.angkatan", $tahun);
             $this->db->where("bea.id", $bea);
-            $this->db->where("jurusan.id", $jurusan);
+            $this->db->where("fakultas.id", $fakultas);
         } elseif ($tahun != 0 && $fakultas == 0 && $jurusan != 0 && $bea != 0) {
             $this->db->where("fakultas.id", $fakultas);
             $this->db->where("bea.id", $bea);
@@ -311,7 +311,7 @@ class ReportBeasiswa extends CI_Model {
         } elseif ($tahun != 0 && $fakultas != 0 && $jurusan == 0 && $bea != 0) {
             $this->db->where("identitas_mhs.angkatan", $tahun);
             $this->db->where("bea.id", $bea);
-            $this->db->where("jurusan.id", $jurusan);
+            $this->db->where("fakultas.id", $fakultas);
         } elseif ($tahun != 0 && $fakultas == 0 && $jurusan != 0 && $bea != 0) {
             $this->db->where("fakultas.id", $fakultas);
             $this->db->where("bea.id", $bea);
@@ -374,7 +374,7 @@ class ReportBeasiswa extends CI_Model {
         } elseif ($tahun != 0 && $fakultas != 0 && $jurusan == 0 && $bea != 0) {
             $this->db->where("identitas_mhs.angkatan", $tahun);
             $this->db->where("bea.id", $bea);
-            $this->db->where("jurusan.id", $jurusan);
+            $this->db->where("fakultas.id", $fakultas);
         } elseif ($tahun != 0 && $fakultas == 0 && $jurusan != 0 && $bea != 0) {
             $this->db->where("fakultas.id", $fakultas);
             $this->db->where("bea.id", $bea);
