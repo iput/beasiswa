@@ -10,7 +10,7 @@ class C_kasubagfk extends CI_Controller
     parent::__construct();
     $this->load->library('Loginauth');
     $this->loginauth->view_page();
-    
+
     $this->load->model("kasubag_fk/ProfileKasubagFk",'mdl');
     $this->load->model('kasubag/Beasiswa');
     $this->load->model('kasubag/ReportBeasiswa');
@@ -23,7 +23,7 @@ class C_kasubagfk extends CI_Controller
     $this->load->view('attribute/footer');
   }
   public function profile()
-  { 
+  {
     $user = $this->session->userdata('id');
     $cek = $this->mdl->getdata($user);
     if($this->mdl->getIdentitasAdmin($user) != 0){
@@ -38,7 +38,7 @@ class C_kasubagfk extends CI_Controller
           'alamat'  => $cek->alamat,
           'noTelp'  => $cek->noTelp,
           'email'   => $cek->email
-          );  
+          );
       }else{
         $data=array(
           'id'   => "",
@@ -49,7 +49,7 @@ class C_kasubagfk extends CI_Controller
           'alamat'  => "",
           'noTelp'  => "",
           'email'   => ""
-          ); 
+          );
       }
     }
     else{
@@ -62,7 +62,7 @@ class C_kasubagfk extends CI_Controller
         'alamat'  => "",
         'noTelp'  => "",
         'email'   => ""
-        ); 
+        );
     }
 
     $this->load->view('attribute/header_kasubag_fk');
@@ -140,7 +140,7 @@ class C_kasubagfk extends CI_Controller
   public function getJurusan() {
     $fakultas = $_GET['fakultas'];
     $getjur = $this->ReportBeasiswa->get_jurusan($fakultas);
-    echo json_encode($getjur); 
+    echo json_encode($getjur);
   }
 
   public function datatable() {
@@ -198,5 +198,29 @@ class C_kasubagfk extends CI_Controller
       );
     echo json_encode($output);
   }
+  public function get_data_print($tahun, $fakultas,$jurusan,$bea)
+  {
+
+    // $fetch_data = $this->ReportBeasiswa->make_query1($tahun, $fakultas, $jurusan, $bea);
+    //
+    //
+    //
+    // echo json_encode($fetch_data);
+    // echo json_encode($fetch_data);
+    $data['databea'] = $this->ReportBeasiswa->make_query1($tahun, $fakultas, $jurusan, $bea);
+    $this->load->view('kasubag/masterDataPenerima', $data);
+}
+public function get_data_print1($tahun, $fakultas,$jurusan,$bea)
+{
+
+  // $fetch_data = $this->ReportBeasiswa->make_query1($tahun, $fakultas, $jurusan, $bea);
+  //
+  //
+  //
+  // echo json_encode($fetch_data);
+  // echo json_encode($fetch_data);
+  $data['databea'] = $this->ReportBeasiswa->make_queryPemohon1($tahun, $fakultas, $jurusan, $bea);
+  $this->load->view('kasubag/masterDataPemohon', $data);
+}
 }
 ?>

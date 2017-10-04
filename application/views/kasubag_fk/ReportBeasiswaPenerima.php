@@ -43,11 +43,10 @@
                         </div>
                     </div>
     </form>
-                <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
-                    <a class="btn-floating btn-large red" onclick="window.print();">
-                        <i class="large material-icons">print</i>
-                    </a>`
-                </div>
+    <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+      <a class="btn-floating btn-large red" onclick="print_laporan();">
+           <i class="large material-icons">print</i></a>
+    </div>
                 <table class="striped table-responsive highlight bordered" id="tabelBeasiswa">
                     <thead>
                         <tr>
@@ -118,6 +117,20 @@ function reload_table() {
 }
 </script>
 <script>
+function print_laporan() {
+
+  var tahun;
+  var fakultas;
+  var jurusan;
+  var beasiswa;
+  tahun = $('#tahun').val();
+  fakultas = $('#fakultas').val();
+  jurusan = $('#jurusan').val();
+  beasiswa = $('#beasiswa').val();
+
+    window.open("<?=site_url()?>kasubag_fakultas/C_kasubagfk/get_data_print/"+tahun+"/"+fakultas+"/"+jurusan+"/"+beasiswa);
+
+  }
 $(document).ready(function(){
    $('#fakultas').change(function(){
       var fakultas =  $('#fakultas').val();
@@ -128,7 +141,7 @@ $(document).ready(function(){
           dataType: 'json',
           success: function(data){
            var fakultas=`<select id="jurusan" name="jurusan">
-          <option value="">Pilihlah Jurusan</option>`;
+          <option value="null">Pilihlah Jurusan</option>`;
           for (var i = 0; i < data.length; i++) {
             fakultas+='<option value="'+data[i].id+'">'+data[i].namaJur+'</option>';
           }
@@ -140,7 +153,7 @@ $(document).ready(function(){
           }
       });
    });
-   
+
    $('#tombolPrint').on('click', function(){
    var tahun;
    var fakultas;
@@ -158,7 +171,7 @@ $(document).ready(function(){
         async: false,
         dataType: 'json',
         success: function(data){
-            
+
         },
         error: function(e){
             alert('error'+e);
