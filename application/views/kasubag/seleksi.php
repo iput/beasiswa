@@ -131,18 +131,22 @@ function viewDetailBea(indexArr) {
   getDiterima();
 }
 
-function seleksi(idPendaftar, status)
+function seleksi(idPendaftar, status, nim)
 {
   var url = "<?php echo site_url('kasubag/C_seleksi/seleksi')?>";
   $.ajax({
-    url : url+"/"+idPendaftar+"/"+status,
+    url : url+"/"+idPendaftar+"/"+status+"/"+nim,
     type: "POST",
     data: $('#formInput').serialize(),
     dataType: "JSON",
     success: function(data)
     {
-      getDiterima();
-      reload_table();
+      if (data.status==false) {
+        alert("NIM: "+data.nim+", masih diterima di beasiswa '"+data.bea+"' yang periode berakirnya adalah "+data.periode_berakhir);
+      }else {
+        getDiterima();
+        reload_table();
+      }
     },
     error: function (jqXHR, textStatus, errorThrown)
     {
@@ -202,7 +206,6 @@ function datatable() {
     }
   });
 }
-
 
 function view_detail_score(idPendaftar,idBea) {
   var url = "<?php echo site_url('kasubag/C_seleksi/view_detail_score')?>";

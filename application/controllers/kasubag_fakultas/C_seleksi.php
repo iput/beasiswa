@@ -7,7 +7,7 @@ class C_seleksi extends CI_Controller
     parent::__construct();
     $this->load->library('Loginauth');
     $this->loginauth->view_page();
-    
+
     $this->load->model("kasubag_fk/Seleksi",'mdl');
   }
 
@@ -36,11 +36,11 @@ class C_seleksi extends CI_Controller
       $sub_array[] = $row->updated;
       if ($row->status==1) {
         $sub_array[] = '
-          <button class="btn-floating waves-effect waves-light primary-color" title="Confirmed" type="submit" name="idPengaturan" onclick="seleksi('."'".$row->idPendaftar."'".','."'".$row->status."'".');"><i class="mdi-action-done"></i></button>
+          <button class="btn-floating waves-effect waves-light primary-color" title="Confirmed" type="submit" name="idPengaturan" onclick="seleksi('."'".$row->idPendaftar."'".','."'".$row->status."','".$row->nimMhs."'".');"><i class="mdi-action-done"></i></button>
         ';
       }elseif ($row->status==0) {
         $sub_array[] = '
-          <button class="btn-floating waves-effect waves-light red" title="Not Confirmed" type="submit" name="idPengaturan" onclick="seleksi('."'".$row->idPendaftar."'".','."'".$row->status."'".');"><i class="mdi-content-clear"></i></button>
+          <button class="btn-floating waves-effect waves-light red" title="Not Confirmed" type="submit" name="idPengaturan" onclick="seleksi('."'".$row->idPendaftar."'".','."'".$row->status."','".$row->nimMhs."'".');"><i class="mdi-content-clear"></i></button>
         ';
       }
 
@@ -56,25 +56,43 @@ class C_seleksi extends CI_Controller
     echo json_encode($output);
   }
 
-  public function seleksi($idPendaftar, $status)
-  {
-    $change_status;
-    if ($status=="1") {
-      $change_status = "0";
-    }elseif ($status=="0") {
-      $change_status = "1";
-    }
-    $data = array(
-      'status' => $change_status
-    );
-    $this->mdl->seleksi_penerima(array('id' => $idPendaftar), $data);
-    echo json_encode(array("status" => TRUE));
-  }
-
   public function getDiterima($idBea)
   {
     $data = $this->mdl->infoDiterima($idBea);
     echo json_encode($data);
+  }
+
+  public function seleksi($idPendaftar, $status, $nim)
+  {
+    $change_status;
+    if ($status=="1") {
+      $change_status = "0";
+      $data = array(
+        'status' => $change_status
+      );
+      $this->mdl->seleksi_penerima(array('id' => $idPendaftar), $data);
+      echo json_encode(array("status" => TRUE));
+    }elseif ($status=="0") {
+      $check = $this->mdl->check_status_penerima($nim);
+      if ($check==null) {
+        $change_status = "1";
+        $data = array(
+          'status' => $change_status
+        );
+        $this->mdl->seleksi_penerima(array('id' => $idPendaftar), $data);
+        echo json_encode(array("status" => TRUE));
+        // echo "belum diterima di beasiswa";
+      }else{
+        $detail_diterima = array(
+          'status' => FALSE,
+          'nim' => $check->nim,
+          'bea' => $check->namaBeasiswa,
+          'periode_berakhir' => $check->periodeBerakhir
+        );
+        echo json_encode($detail_diterima);
+        // echo "telah di terima di beasiswa";
+      }
+    }
   }
 
   public function view_detail_score($idPendaftar, $idBea)
