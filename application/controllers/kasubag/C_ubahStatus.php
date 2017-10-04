@@ -23,41 +23,47 @@ class C_ubahStatus extends CI_Controller
 
   public function datatable(){
     $fetch_data = $this->mdl->make_datatables();
+    
+
     $data = array();
     $nmr = 0;
     $hai = null;
     $hai2 = null;
     foreach($fetch_data as $row)
     {
+      $namaBea = $this->mdl->namaBea($row->idBea);
       $nmr+=1;
       $status=   $row->status;
 
-      if ($status == "open"){
+      if ($status == 1){
         $hai2 = "<div class='chip blue accent-1 white-text'>
-        Aktif
+        Diterima
       </div>";
     }
     else {
-      $hai2 = "<div class='chip red accent-1 white-text'>Tidak&nbsp;Aktif</div>";
+      $hai2 = "<div class='chip red accent-1 white-text'>Ditolak</div>";
     }
 
     $sub_array = array();
     $sub_array[] = $nmr;
-    $sub_array[] = $row->userId;
-    $sub_array[] = $row->password;
+    $sub_array[] = $row->nim;
+    $sub_array[] = $namaBea;
     $sub_array[] = $hai2;
+
+    $sub_array[] = $row->waktuDiubah;
     /*$sub_array[] = '
     <button type="button" name="remove" id="'.$row->id.'" onclick="remove('."'".$row->id."','".$row->userId."'".')" class="btn-floating waves-effect waves-light red" title="Hapus"><i class="mdi-action-delete">delete</i></button>
     ';*/
-    if ($row->status=='open') {
+    if ($row->status== 1) {
       $sub_array[] = '
-      <button class="btn-floating waves-effect waves-light primary-color" title="Change Status" type="submit" name="idPengaturan" onclick="seleksi('."'".$row->userId."'".','."'".$row->status."'".');"><i class="mdi-action-done"></i></button>
+      <button class="btn-floating waves-effect waves-light primary-color" title="Change Status" type="submit" name="idPengaturan" onclick="seleksi('."'".$row->id."'".','."'".$row->status."'".');"><i class="mdi-action-done"></i></button>
       ';
-    }elseif ($row->status=='close') {
+    }elseif ($row->status== 0) {
       $sub_array[] = '
-      <button class="btn-floating waves-effect waves-light red" title="Change Status" type="submit" name="idPengaturan" onclick="seleksi('."'".$row->userId."'".','."'".$row->status."'".');"><i class="mdi-content-clear"></i></button>
+      <button class="btn-floating waves-effect waves-light red" title="Change Status" type="submit" name="idPengaturan" onclick="seleksi('."'".$row->id."'".','."'".$row->status."'".');"><i class="mdi-content-clear"></i></button>
       ';
     }
+
 
     $data[] = $sub_array;
 
@@ -71,18 +77,18 @@ class C_ubahStatus extends CI_Controller
     );
   echo json_encode($output);
 }
-public function seleksi($userId, $status)
+public function seleksi($id, $status)
 {
   $change_status;
-  if ($status=="open") {
-    $change_status = "close";
-  }else if ($status=="close") {
-    $change_status = "open";
+  if ($status==1) {
+    $change_status = 0;
+  }else if ($status==0) {
+    $change_status = 1;
   }
   $data = array(
     'status' => $change_status
     );
-  $this->mdl->change_status(array('userId' => $userId), $data);
+  $this->mdl->change_status(array('id' => $id), $data);
   echo json_encode(array("status" => TRUE));
 }
 public function ajax_add()

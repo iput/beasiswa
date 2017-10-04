@@ -4,12 +4,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class UbahStatus extends CI_Model
 {
 
-  var $table = "akses";
-  var $select_column = array("akses.id", "akses.userId");
-  var $order_column = array("akses.id", "akses.userId");
-    var $column_order = array('akses.id', 'akses.userId', null, 'status', null); //set column field database for datatable orderable
-    var $column_search = array('akses.userId', 'akses.idLevel'); //set column field database for datatable searchable just firstname , lastname , address are searchable
-    var $order = array('akses.id' => 'desc'); // default order
+  var $table = "pendaftar";
+  var $select_column = array("pendaftar.id","pendaftar.nim", "pendaftar.idBea","pendaftar.status","YEAR(pendaftar.waktuDiubah) tahun", "pendaftar.waktuDiubah");
+  var $order_column = array("pendaftar.id","pendaftar.nim", "pendaftar.idBea","pendaftar.status","YEAR(pendaftar.waktuDiubah) tahun");
+    var $column_order = array("pendaftar.id","pendaftar.nim", "pendaftar.idBea","pendaftar.status","YEAR(pendaftar.waktuDiubah) tahun",null); //set column field database for datatable orderable
+    var $column_search = array("pendaftar.nim", "pendaftar.idBea","pendaftar.status","YEAR(pendaftar.waktuDiubah) tahun"); //set column field database for datatable searchable just firstname , lastname , address are searchable
+    var $order = array('pendaftar.idBea' => 'desc'); // default order
 
     public function __construct()
     {
@@ -19,8 +19,8 @@ class UbahStatus extends CI_Model
 
     function make_query()
     {
+      $this->db->select($this->select_column);
       $this->db->from($this->table);
-      $this->db->where('akses.idLevel=5');
 
       $i = 0;
 
@@ -87,7 +87,7 @@ class UbahStatus extends CI_Model
       }
       public function change_status($where, $data)
       {
-        $this->db->update("akses", $data, $where);
+        $this->db->update("pendaftar", $data, $where);
         return $this->db->affected_rows();
       }
       public function getLevel($id)
@@ -151,6 +151,21 @@ class UbahStatus extends CI_Model
       $this->db->insert($this->table, $data);
       return $this->db->insert_id();
 
+    }
+    public function namaBea($key)
+    {
+      $this->db->where('id',$key);
+      $query= $this->db->get('bea');
+      if($query->num_rows()>0)
+      {
+        foreach ($query->result() as $row) {
+          $hasil=$row->namaBeasiswa;
+        }
+      }
+      else{
+        $hasil='';
+      }
+      return $hasil;
     }
 
 

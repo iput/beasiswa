@@ -11,9 +11,10 @@
                             <thead>
                                 <tr>
                                     <th data-field="id" style="width: 3%;">#</th>
-                                    <th data-field="jenis_scoring">User Id</th>
-                                    <th data-field="opsi_scoring">Password</th>
-                                    <th data-field="opsi_scoring">Status user</th>
+                                    <th data-field="jenis_scoring">NIM</th>
+                                    <th data-field="opsi_scoring">Beasiswa</th>
+                                    <th data-field="opsi_scoring">Status</th>
+                                    <th data-field="opsi_scoring">Waktu Pendaftaran</th>
                                     <th data-field="aksi">Aksi</th>
                                 </tr>
                             </thead>
@@ -22,9 +23,10 @@
                             <tfoot>
                                 <tr>
                                     <th>#</th>
-                                    <th>User Id</th>
-                                    <th>Password</th>
-                                    <th>Status user</th>
+                                    <th>NIM</th>
+                                    <th>Beasiswa</th>
+                                    <th>Status</th>
+                                    <th>Waktu Pendaftaran</th>
                                     <th>Aksi</th>
                                 </tr>
                             </tfoot>
