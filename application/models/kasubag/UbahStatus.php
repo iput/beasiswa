@@ -8,7 +8,7 @@ class UbahStatus extends CI_Model
   var $select_column = array("pendaftar.id","pendaftar.nim", "pendaftar.idBea","pendaftar.status","YEAR(pendaftar.waktuDiubah) tahun", "pendaftar.waktuDiubah");
   var $order_column = array("pendaftar.id","pendaftar.nim", "pendaftar.idBea","pendaftar.status","YEAR(pendaftar.waktuDiubah) tahun");
     var $column_order = array("pendaftar.id","pendaftar.nim", "pendaftar.idBea","pendaftar.status","YEAR(pendaftar.waktuDiubah) tahun",null); //set column field database for datatable orderable
-    var $column_search = array("pendaftar.nim", "pendaftar.idBea","pendaftar.status","YEAR(pendaftar.waktuDiubah) tahun"); //set column field database for datatable searchable just firstname , lastname , address are searchable
+    var $column_search = array("pendaftar.nim", "pendaftar.idBea","pendaftar.status","pendaftar.waktuDiubah"); //set column field database for datatable searchable just firstname , lastname , address are searchable
     var $order = array('pendaftar.idBea' => 'desc'); // default order
 
     public function __construct()
