@@ -97,9 +97,9 @@ public function profile()
 public function pengumuman_penerima_beasiswa()
 {
   $isi['fakultas']  =$this->db->get('fakultas')->result();
-  $isi['tahun']     =$this->db->get('pendaftar')->result();
+  $isi['tahun']     = $this->grf->get_tahun();
   $isi['beasiswa']  =$this->db->get('bea')->result();
-  $isi['data']      =$this->model->getdata()->result();
+  
   $this->load->view('attribute/header_mhs');
   $this->load->view('mahasiswa/v_pengumuman_penerima_beasiswa',$isi);
   $this->load->view('attribute/footer');
@@ -107,9 +107,9 @@ public function pengumuman_penerima_beasiswa()
 public function status_beasiswa()
 {
   $isi['fakultas']  = $this->db->get('fakultas')->result();
-  $isi['tahun']     = $this->db->get('pendaftar')->result();
+  $isi['tahun']     = $this->grf->get_tahun();
   $isi['beasiswa']  = $this->db->get('bea')->result();
-  $isi['data']      = $this->mod->getdata()->result();
+  
   $this->load->view('attribute/header_mhs');
   $this->load->view('mahasiswa/status_beasiswa',$isi);
   $this->load->view('attribute/footer');

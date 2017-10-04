@@ -7,7 +7,7 @@ class Grafik extends CI_Model
   public function get_tahun()
   {
     // SELECT YEAR(bea.beasiswaDibuka) tahun FROM `bea` GROUP BY tahun
-    $sql = 'SELECT YEAR(bea.beasiswaDibuka) tahun FROM `bea` GROUP BY tahun';
+    $sql = 'SELECT YEAR(bea.beasiswaDibuka) tahun FROM `bea` GROUP BY tahun ORDER BY tahun DESC';
     $res = $this->db->query($sql);
     return $res->result();
   }
