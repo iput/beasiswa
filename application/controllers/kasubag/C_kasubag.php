@@ -15,7 +15,7 @@ class C_kasubag extends CI_Controller
   public function index()
   {
     $this->load->view('attribute/header_kasubag');
-    $this->load->view('kasubag/dashboard');
+    $this->load->view('kasubag/Dashboard');
     $this->load->view('attribute/footer');
   }
 }
