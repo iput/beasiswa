@@ -13,151 +13,150 @@
                     <select id="tahun" name="tahun" onChange="viewTabel()">
                       <option value="" disabled selected>Pilih Tahun</option>
                       <?php
-                      $now = date('Y');
-                      for ($i = $now; $i > 2000; $i--) {
-                        echo "<option value=" . $i . ">" . $i . "</option>";
-                      }
-                      ?>
-                    </select>
-                    <label>Tahun</label>
-                  </div>
-                  <div class="input-field col s3">
-                    <select id="fakultas" name="fakultas" onChange="viewTabel()">
-                      <option value="" disabled selected>Fakultas</option>
-                      <?php
-                      foreach ($fakultas as $row) {
+                      foreach ($tahun as $row) {
                         ;?>
-                        <option value="<?php echo $row->id;?>"><?php echo $row->namaFk;?></option>
+                        <option value="<?php echo $row->tahun;?>"><?php echo $row->tahun;?></option>
                         <?php }?>
-                      </select> 
-                      <label>Fakultas</label>                   
-                    </div>
-                    <div class="input-field col s3" id="comboJurusan">
-                      <select id="jurusan" name="jurusan" onChange="viewTabel()">
-                        <!-- <option value="" disabled selected>Jurusan</option> -->
-                        <option value="">Pilihlah Jurusan</option>
                       </select>
-                      <label>Jurusan</label>
+                      <label>Tahun</label>
                     </div>
                     <div class="input-field col s3">
-                      <select id="beasiswa" name="beasiswa" onChange="viewTabel()">
-                        <option value="" disabled selected>Beasiswa</option>
+                      <select id="fakultas" name="fakultas" onChange="viewTabel()">
+                        <option value="" disabled selected>Fakultas</option>
                         <?php
-                        foreach ($beasiswa as $row) {
+                        foreach ($fakultas as $row) {
                           ;?>
-                          <option value="<?php echo $row->id;?>"><?php echo $row->namaBeasiswa;?></option>
+                          <option value="<?php echo $row->id;?>"><?php echo $row->namaFk;?></option>
                           <?php }?>
-                        </select>
-                        <label>Nama Beasiswa</label>
+                        </select> 
+                        <label>Fakultas</label>                   
                       </div>
+                      <div class="input-field col s3" id="comboJurusan">
+                        <select id="jurusan" name="jurusan" onChange="viewTabel()">
+                          <!-- <option value="" disabled selected>Jurusan</option> -->
+                          <option value="">Pilihlah Jurusan</option>
+                        </select>
+                        <label>Jurusan</label>
+                      </div>
+                      <div class="input-field col s3">
+                        <select id="beasiswa" name="beasiswa" onChange="viewTabel()">
+                          <option value="" disabled selected>Beasiswa</option>
+                          <?php
+                          foreach ($beasiswa as $row) {
+                            ;?>
+                            <option value="<?php echo $row->id;?>"><?php echo $row->namaBeasiswa;?></option>
+                            <?php }?>
+                          </select>
+                          <label>Nama Beasiswa</label>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          </form>
+              </form>
 
-          <div class="row">
-            <div class="col s12">
-              <table class="striped" id="tabel">
-                <thead>
-                  <tr>
-                    <th data-field="id" style="width: 3%;">#</th>
-                    <th data-field="nim">Nim</th>
-                    <th data-field="nama">Nama</th>
-                    <th data-field="fakultas">Fakultas</th>
-                    <th data-field="jurusan">Jurusan</th>
-                    <th data-field="beasiswa">Beasiswa</th>
-                    <th data-field="update">Update</th>
-                  </tr>
-                </thead>
-                <tbody>
-                </tbody>
-              </table>
+              <div class="row">
+                <div class="col s12">
+                  <table class="striped" id="tabel">
+                    <thead>
+                      <tr>
+                        <th data-field="id" style="width: 3%;">#</th>
+                        <th data-field="nim">Nim</th>
+                        <th data-field="nama">Nama</th>
+                        <th data-field="fakultas">Fakultas</th>
+                        <th data-field="jurusan">Jurusan</th>
+                        <th data-field="beasiswa">Beasiswa</th>
+                        <th data-field="update">Update</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-  <!-- container END -->
-</main>
-<script type="text/javascript">
-  var save_method;
-  var arr = 0;
-  var dataTable;
-  var tahun;
-  var fakultas;
-  var jurusan;
-  var beasiswa;
-  var myVar;
+      <!-- container END -->
+    </main>
+    <script type="text/javascript">
+      var save_method;
+      var arr = 0;
+      var dataTable;
+      var tahun;
+      var fakultas;
+      var jurusan;
+      var beasiswa;
+      var myVar;
 
-  document.addEventListener("DOMContentLoaded", function (event) {
+      document.addEventListener("DOMContentLoaded", function (event) {
     // datatable();
   });
-  function viewTabel() {
-    tahun = $("#tahun").val();
-    fakultas = $("#fakultas").val();
-    jurusan = $("#jurusan").val();
-    beasiswa = $("#beasiswa").val();
-  
-    datatable();
+      function viewTabel() {
+        tahun = $("#tahun").val();
+        fakultas = $("#fakultas").val();
+        jurusan = $("#jurusan").val();
+        beasiswa = $("#beasiswa").val();
 
-    reloadJs('materialize', 'min');
-    reloadJs('initialize', 'nomin');
-  }
+        datatable();
 
-  function myTimer() {
-    reload_table();
-  }
+        reloadJs('materialize', 'min');
+        reloadJs('initialize', 'nomin');
+      }
 
-  function datatable() {
-    dataTable = $('#tabel').DataTable({
-      "destroy":true,
-      "processing": true,
-      "serverSide": true,
-      "order": [],
-      "ajax": {
-        url:"<?php echo base_url('mahasiswa/C_mahasiswa/datatable');?>",
-        type: "POST",
-        data:{'tahun':tahun,'fakultas':fakultas,'jurusan':jurusan,'beasiswa':beasiswa}
-      },
-      "columnDefs": [
-      {
-        "targets": [2, -1],
-        "orderable": false,
-      },
-      ],
-      "dom": '<"row" <"col s6 m6 l3 left"l><"col s6 m6 l3 right"f>><"bersih tengah" rt><"bottom"ip>',
-    });
-  }
-  function reload_table() {
-    dataTable.ajax.reload(null, false);
-  }
-</script>
+      function myTimer() {
+        reload_table();
+      }
 
-<script type="text/javascript">
-  $(document).ready(function(){
-    $("#fakultas").change(function(){
-      var fakultas = $("#fakultas").val();
-      $.ajax({
-        url: "<?php echo base_url('mahasiswa/C_mahasiswa/getjurusan'); ?>",
-        type: "get",
-        data: "fakultas="+fakultas,
-        dataType: 'json',
-        success: function(msg){   
-          var fakultas=`<select id="jurusan" name="jurusan">
-          <option value="">Pilihlah Jurusan</option>`;
-          for (var i = 0; i < msg.length; i++) {
-            fakultas+='<option value="'+msg[i].id+'">'+msg[i].namaJur+'</option>';
-          }
-          fakultas+=`</select>
-          <label>Jurusan</label>`;
-          console.log(fakultas)
-          $("#comboJurusan").html(fakultas);
-          reloadJs('materialize', 'min');
-          reloadJs('initialize', 'nomin');
-        }
+      function datatable() {
+        dataTable = $('#tabel').DataTable({
+          "destroy":true,
+          "processing": true,
+          "serverSide": true,
+          "order": [],
+          "ajax": {
+            url:"<?php echo base_url('mahasiswa/C_mahasiswa/datatable');?>",
+            type: "POST",
+            data:{'tahun':tahun,'fakultas':fakultas,'jurusan':jurusan,'beasiswa':beasiswa}
+          },
+          "columnDefs": [
+          {
+            "targets": [2, -1],
+            "orderable": false,
+          },
+          ],
+          "dom": '<"row" <"col s6 m6 l3 left"l><"col s6 m6 l3 right"f>><"bersih tengah" rt><"bottom"ip>',
+        });
+      }
+      function reload_table() {
+        dataTable.ajax.reload(null, false);
+      }
+    </script>
+
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $("#fakultas").change(function(){
+          var fakultas = $("#fakultas").val();
+          $.ajax({
+            url: "<?php echo base_url('mahasiswa/C_mahasiswa/getjurusan'); ?>",
+            type: "get",
+            data: "fakultas="+fakultas,
+            dataType: 'json',
+            success: function(msg){   
+              var fakultas=`<select id="jurusan" name="jurusan">
+              <option value="">Pilihlah Jurusan</option>`;
+              for (var i = 0; i < msg.length; i++) {
+                fakultas+='<option value="'+msg[i].id+'">'+msg[i].namaJur+'</option>';
+              }
+              fakultas+=`</select>
+              <label>Jurusan</label>`;
+              console.log(fakultas)
+              $("#comboJurusan").html(fakultas);
+              reloadJs('materialize', 'min');
+              reloadJs('initialize', 'nomin');
+            }
+          });
+        });
       });
-    });
-  });
-</script>
+    </script>

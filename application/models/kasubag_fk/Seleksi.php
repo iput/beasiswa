@@ -110,4 +110,13 @@ class Seleksi extends CI_Model {
     return $res->result();
   }
 
+  public function check_status_penerima($nim)
+  {
+    $sql = 'SELECT pendaftar.nim, bea.namaBeasiswa, pendaftar.status, bea.periodeBerakhir FROM `pendaftar`
+    LEFT JOIN bea ON bea.id=pendaftar.idBea
+    WHERE CURRENT_DATE<=bea.periodeBerakhir && pendaftar.status=1 && pendaftar.nim="'.$nim.'"';
+    $res = $this->db->query($sql);
+    return $res->row();
+  }
+
 }

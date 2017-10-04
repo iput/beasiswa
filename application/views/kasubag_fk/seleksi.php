@@ -131,18 +131,22 @@ function viewDetailBea(indexArr) {
   getDiterima();
 }
 
-function seleksi(idPendaftar, status)
+function seleksi(idPendaftar, status, nim)
 {
-  var url = "<?php echo site_url('kasubag/C_seleksi/seleksi')?>";
+  var url = "<?php echo site_url('kasubag_fakultas/C_seleksi/seleksi')?>";
   $.ajax({
-    url : url+"/"+idPendaftar+"/"+status,
+    url : url+"/"+idPendaftar+"/"+status+"/"+nim,
     type: "POST",
     data: $('#formInput').serialize(),
     dataType: "JSON",
     success: function(data)
     {
-      getDiterima();
-      reload_table();
+      if (data.status==false) {
+        alert("NIM: "+data.nim+", masih diterima di beasiswa '"+data.bea+"' yang periode berakirnya adalah "+data.periode_berakhir);
+      }else {
+        getDiterima();
+        reload_table();
+      }
     },
     error: function (jqXHR, textStatus, errorThrown)
     {
@@ -160,7 +164,7 @@ function getDiterima()
   if($("#filterBea").val()!="kosong"){
     dataArr = $("#filterBea").val().split("-");
     id_bea = dataArr[1];
-    var url = "<?php echo site_url('kasubag/C_seleksi/getDiterima')?>";
+    var url = "<?php echo site_url('kasubag_fakultas/C_seleksi/getDiterima')?>";
     $.ajax({
       url : url+"/"+id_bea,
       type: "POST",
@@ -186,7 +190,7 @@ function datatable() {
     "serverSide":true,
     "order":[],
     "ajax":{
-      url:"<?php echo base_url('kasubag/C_seleksi/datatable'); ?>/"+this.idBea,
+      url:"<?php echo base_url('kasubag_fakultas/C_seleksi/datatable'); ?>/"+this.idBea,
       type:"POST"
     },
     "columnDefs":[

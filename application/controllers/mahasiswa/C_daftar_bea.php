@@ -57,7 +57,7 @@ public function index()
     $this->pendafBea();
   }elseif($pendaftar){
     $nimDiterima=0;
-    $date = date("Y-m-d");
+    
     foreach ($pendaftar as $row) {
       if ($row->status == 1) {
         $nimDiterima=1;

@@ -5,6 +5,7 @@ class DaftarBeasiswa extends CI_Model {
   var $table = "bea";
   var $select_column;
   var $order_column = array("bea.id", "bea.namaBeasiswa", "bea.penyelenggaraBea", "bea.beasiswaDibuka","bea.beasiswaTutup", null);
+  var $column_search = array("bea.namaBeasiswa", "bea.penyelenggaraBea", "bea.beasiswaDibuka","bea.beasiswaTutup");
 
   function __construct()
   {
@@ -18,17 +19,29 @@ class DaftarBeasiswa extends CI_Model {
     $this->db->select($this->select_column);
     $this->db->from($this->table);
     $this->db->where("(select CURRENT_DATE) >= bea.beasiswaDibuka and (select CURRENT_DATE) <= bea.beasiswaTutup");
-    
+    $this->db->where('bea.statusBeasiswa','3');
 
-
-    if(isset($_POST["search"]["value"]))
+    $i = 0;
+    foreach ($this->column_search as $item) // loop column
     {
-      $this->db->like("bea.namaBeasiswa", $_POST["search"]["value"]);
-      $this->db->or_like("bea.penyelenggaraBea", $_POST["search"]["value"]);
-      $this->db->or_like("bea.beasiswaDibuka", $_POST["search"]["value"]);
-      $this->db->or_like("bea.beasiswaTutup", $_POST["search"]["value"]);
-      
-    }
+      if($_POST['search']['value']) // if datatable send POST for search
+      {
+
+        if($i===0) // first loop
+        {
+          $this->db->group_start(); // open bracket. query Where with OR clause better with bracket. because maybe can combine with other WHERE with AND.
+          $this->db->like($item, $_POST['search']['value']);
+        }
+        else
+        {
+          $this->db->or_like($item, $_POST['search']['value']);
+        }
+
+        if(count($this->column_search) - 1 == $i) //last loop
+        $this->db->group_end(); //close bracket
+      }
+      $i++;
+    }    
     if(isset($_POST["order"]))
     {
       $this->db->order_by($this->order_column[$_POST['order']['0']['column']], $_POST['order']['0']['dir']);
@@ -50,14 +63,14 @@ class DaftarBeasiswa extends CI_Model {
     return $query->result();
   }
   public function get_id($nim,$idBea){
-      $query = $this->db->query('SELECT id FROM pendaftar WHERE nim="'.$nim.'" AND idBea="'.$idBea.'"');
+    $query = $this->db->query('SELECT id FROM pendaftar WHERE nim="'.$nim.'" AND idBea="'.$idBea.'"');
 
-      
-      return $query->row();
 
-      $query = null;
+    return $query->row();
 
-      unset($idBea,$nim);
+    $query = null;
+
+    unset($idBea,$nim);
   }
 
   function get_filtered_data(){
@@ -185,30 +198,30 @@ class DaftarBeasiswa extends CI_Model {
   public function ceknimPendaftarBea()
   { $nim  = $this->session->userdata('username');
 
-    $data = "SELECT pendaftar.*, bea.periodeBerakhir FROM `pendaftar`
-    LEFT JOIN bea ON pendaftar.idBea=bea.id
-    WHERE pendaftar.nim='".$nim."' && bea.periodeBerakhir>=CURRENT_DATE && pendaftar.status=1";
+  $data = "SELECT pendaftar.*, bea.periodeBerakhir FROM `pendaftar`
+  LEFT JOIN bea ON pendaftar.idBea=bea.id
+  WHERE pendaftar.nim='".$nim."' && bea.periodeBerakhir>=CURRENT_DATE && pendaftar.status=1";
 
-    $query = $this->db->query($data);
-    if ($query) {
-      return $query->result();
-    }else{
-      return false;
-    }
+  $query = $this->db->query($data);
+  if ($query) {
+    return $query->result();
+  }else{
+    return false;
   }
-  public function ceknimPendaftarBea2()
-  { $nim  = $this->session->userdata('username');
+}
+public function ceknimPendaftarBea2()
+{ $nim  = $this->session->userdata('username');
 
-    $data = "SELECT pendaftar.*, bea.periodeBerakhir,bea.namaBeasiswa,bea.beasiswaDibuka,bea.periodeBerakhir ,identitas_mhs.namaLengkap FROM `pendaftar`
-    LEFT JOIN bea ON pendaftar.idBea=bea.id
-    LEFT JOIN identitas_mhs ON identitas_mhs.nimMhs=pendaftar.nim
-    WHERE pendaftar.nim='".$nim."' && bea.periodeBerakhir>=CURRENT_DATE && pendaftar.status=1";
-    
-    $query = $this->db->query($data);
-    if ($query) {
-      return $query->row();
-    }else{
-      return false;
-    }
-  }
+$data = "SELECT pendaftar.*, bea.periodeBerakhir,bea.namaBeasiswa,bea.beasiswaDibuka,bea.periodeBerakhir ,identitas_mhs.namaLengkap FROM `pendaftar`
+LEFT JOIN bea ON pendaftar.idBea=bea.id
+LEFT JOIN identitas_mhs ON identitas_mhs.nimMhs=pendaftar.nim
+WHERE pendaftar.nim='".$nim."' && bea.periodeBerakhir>=CURRENT_DATE && pendaftar.status=1";
+
+$query = $this->db->query($data);
+if ($query) {
+  return $query->row();
+}else{
+  return false;
+}
+}
 }
