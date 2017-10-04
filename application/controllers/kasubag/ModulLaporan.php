@@ -81,18 +81,7 @@ class ModulLaporan extends CI_Controller {
       $this->load->view('attribute/footerKasubag');
     }
 
-    public function get_data_print($tahun, $fakultas,$jurusan,$bea)
-    {
 
-      $fetch_data = $this->ReportBeasiswa->make_query1($tahun, $fakultas, $jurusan, $bea);
-
-
-
-      echo json_encode($fetch_data);
-      // echo json_encode($fetch_data);
-
-
-    }
 
     public function datatable() {
         $tahun = $this->input->post('tahun')?$this->input->post('tahun'):0;
@@ -155,6 +144,30 @@ class ModulLaporan extends CI_Controller {
         $getjur = $this->ReportBeasiswa->get_jurusan($fakultas);
         echo json_encode($getjur);
     }
+    public function get_data_print($tahun, $fakultas,$jurusan,$bea)
+    {
+
+      // $fetch_data = $this->ReportBeasiswa->make_query1($tahun, $fakultas, $jurusan, $bea);
+      //
+      //
+      //
+      // echo json_encode($fetch_data);
+      // echo json_encode($fetch_data);
+      $data['databea'] = $this->ReportBeasiswa->make_query1($tahun, $fakultas, $jurusan, $bea);
+      $this->load->view('kasubag/masterDataPenerima', $data);
+  }
+  public function get_data_print1($tahun, $fakultas,$jurusan,$bea)
+  {
+
+    // $fetch_data = $this->ReportBeasiswa->make_query1($tahun, $fakultas, $jurusan, $bea);
+    //
+    //
+    //
+    // echo json_encode($fetch_data);
+    // echo json_encode($fetch_data);
+    $data['databea'] = $this->ReportBeasiswa->make_queryPemohon1($tahun, $fakultas, $jurusan, $bea);
+    $this->load->view('kasubag/masterDataPemohon', $data);
+  }
 
 
 }
