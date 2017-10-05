@@ -123,9 +123,9 @@
 										</div>
 										<!-- Save Cancel -->
 										<div class="row">
-											<div class="col s12 m8 push-m4 buttons">
-												<button class="waves-effect waves-light btn light-blue accent-4" type="submit" name="action1" value="Update"><i class="material-icons right">done</i>Save</button>
-												<button class="waves-effect waves-light btn blue-grey lighten-2" type="submit" name="action2" disabled=""><i class="material-icons right">clear</i>Cancel</button>
+											<div class="col s12 m8 push-m4">
+												<a href="<?php echo base_url('mahasiswa/C_mahasiswa/profile') ?>" class="modal-action modal-close waves-effect red btn"><i class="mdi-navigation-cancel left"></i>Cancel</a>
+												<button type="submit" class="btn green"><i class="mdi-navigation-refresh left"></i>Save</button>
 											</div>
 										</div>
 									</div>
@@ -157,9 +157,9 @@
 													<?php echo form_error('retypepwd','<div class="text-danger">','</div>');?>
 													<label for="re-type-new">Re-type New Password</label>
 												</div>
-												<div class="buttons">
-													<button class="waves-effect waves-light btn" type="submit" name="action1"><i class="material-icons right">done</i>Update Password</button>
-													<button class="waves-effect waves-light btn blue-grey lighten-2" type="submit" name="action2"><i class="material-icons right">clear</i>Cancel</button>
+												<div class="input-field">
+													<a href="<?php echo base_url('mahasiswa/C_mahasiswa/profile') ?>" class="modal-action modal-close waves-effect red btn"><i class="mdi-navigation-cancel left"></i>Cancel</a>
+													<button type="submit" class="btn green"><i class="mdi-navigation-refresh left"></i>Update Password</button>
 												</div>
 											</div>
 										</div>

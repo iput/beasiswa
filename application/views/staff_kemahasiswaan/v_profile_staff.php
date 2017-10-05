@@ -74,9 +74,9 @@
 										</div>
 										<!-- Save Cancel -->
 										<div class="row">
-											<div class="col s12 m8 push-m4 buttons">
-												<button class="waves-effect waves-light btn" type="submit" name="action1"><i class="material-icons right">done</i>Save</button>
-												<button class="waves-effect waves-light btn blue-grey lighten-2" type="submit" name="action2" disabled=""><i class="material-icons right">clear</i>Cancel</button>
+											<div class="col s12 m8 push-m4">
+												<a href="<?php echo base_url('staf_kemahasiswaan/C_staff/profile') ?>" class="modal-action modal-close waves-effect red btn"><i class="mdi-navigation-cancel left"></i>Cancel</a>
+												<button type="submit" class="btn green"><i class="mdi-navigation-refresh left"></i>Save</button>
 											</div>
 										</div>
 									</div>
@@ -108,9 +108,9 @@
 													<?php echo form_error('retypepwd','<div class="text-danger">','</div>');?>
 													<label for="re-type-new">Re-type New Password</label>
 												</div>
-												<div class="buttons">
-													<button class="waves-effect waves-light btn" type="submit" name="action1"><i class="material-icons right">done</i>Update Password</button>
-													<button class="waves-effect waves-light btn blue-grey lighten-2" type="submit" name="action2"><i class="material-icons right">clear</i>Cancel</button>
+												<div class="input-field">
+													<a href="<?php echo base_url('staf_kemahasiswaan/C_staff/profile') ?>" class="modal-action modal-close waves-effect red btn"><i class="mdi-navigation-cancel left"></i>Cancel</a>
+													<button type="submit" class="btn green"><i class="mdi-navigation-refresh left"></i>Update Password</button>
 												</div>
 											</div>
 										</div>
@@ -127,24 +127,24 @@
 	</main>
 
 	<script type="text/javascript">
-	function cekform() {
-		if(!$("#pwdnow").val())
-		{
-			alert('Curret Password tidak boleh kosong');
-			$("#pwdnow").focus()
-			return false;
+		function cekform() {
+			if(!$("#pwdnow").val())
+			{
+				swal ( "Curret Password" ,  "Tidak Boleh Kosong!" ,  "error" );
+				$("#pwdnow").focus()
+				return false;
+			}
+			if(!$("#pwdnew").val())
+			{
+				swal ( "New Password" ,  "Tidak Boleh Kosong!" ,  "error" );
+				$("#pwdnew").focus()
+				return false;
+			}
+			if(!$("#retypepwd").val())
+			{
+				swal ( "Re-type Password" ,  "Tidak Boleh Kosong!" ,  "error" );
+				$("#retypepwd").focus()
+				return false;
+			}
 		}
-		if(!$("#pwdnew").val())
-		{
-			alert('New Password tidak boleh kosong');
-			$("#pwdnew").focus()
-			return false;
-		}
-		if(!$("#retypepwd").val())
-		{
-			alert('Re-type New Password tidak boleh kosong');
-			$("#retypepwd").focus()
-			return false;
-		}
-	}
-</script>
+	</script>

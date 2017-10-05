@@ -65,7 +65,7 @@
                     <ul>
                         <!-- Add links to your social profiles here -->
                         <li><a class="icon icon-google btn-floating waves-effect" href="#"><i class="ion-social-googleplus"></i></a></li>
-                        <li><a class="icon icon-facebook btn-floating waves-effect" href="#"><i class="ion-social-facebook"></i></a></li>
+                        <li><a class="icon icon-facebook btn-floating waves-effect" href="https://www.facebook.com/kemahasiswaanUINMalang/"><i class="ion-social-facebook"></i></a></li>
                         <li><a class="icon icon-twitter btn-floating waves-effect" href="#"><i class="ion-social-twitter"></i></a></li>
                     </ul>
                 </div>
@@ -191,7 +191,7 @@
                     <?php foreach ($daftar_berita as $r): ?>
                        <div class='card medium'>
                         <div class='card-image'>
-                        <img src='<?php echo base_url()?>assets/img/fitri-01.jpg' alt='' class='responsive-img'>
+                        <img src='<?php echo base_url()?>assets/img/fitri-01.jpg' alt='' class='responsive-img' height=10%> 
                         <span class='card-title'><a style="font-family: cambria;text-transform: capitalize;background: #42a5f5;color: white;"><?php echo $r->judulBerita?></a></span>
                         <span class='card-title blog-post-full-cat right orange'><a href='#'><?php echo $r->topikBerita?></a></span>
                         </div>
@@ -284,7 +284,7 @@
                 <div class="center-heading left-align">
                     <h3>Hubungi kami</h3>
                     <span class="center-line red"></span>
-                    <p>Mengenai info beasiswa lebih lanjut dapat ditanyakan langsung ke Kemahasiswaan UIN Maliki Malang.</p>
+                    <p>KANTOR PUSAT Kemahasiswaan dan Alumni UIN Maulana Malik Ibrahim Malang</p>
                 </div>
                 <ul>
                     <li><p>Jl. Gajayana No.50, Malang</p>
@@ -319,7 +319,7 @@
                     <li><a href="#"><i class="ion-social-twitter waves-effect waves-light"></i></a></li>
                     <li><a href="#"><i class="ion-social-googleplus waves-effect waves-light"></i></a></li>
                 </ul>
-                <span class="copyrights">&copy; 2017. Made with <i class="ion-android-favorite"></i> by Developer GENBI UIN Maliki Malang</span>
+                <span class="copyrights">&copy; 2017. Made with <i class="ion-android-favorite"></i> Allright Reserved By Developer GENBI UIN Maliki Malang</span>
                 </div>
             </div>
         </div>

@@ -7,6 +7,7 @@
   <meta name="msapplication-tap-highlight" content="no">
   <meta name="description" content="MateRio is a responsive Admin Template based on Material Design by Google.">
   <meta name="keywords" content="materialize, admin template, dashboard template, responsive admin template,">
+  <link rel="icon" type="image/x-icon" href="<?php echo base_url()?>assets/img/icons/favicons/uin.ico" />
   <title>Sistem Informasi Beasiswa - Login</title>
 
   <link href="<?php echo base_url()?>assets/css/materialize.css" type="text/css" rel="stylesheet" media="screen">
