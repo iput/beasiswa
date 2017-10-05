@@ -33,7 +33,6 @@
                       </div>
                       <div class="input-field col s3" id="comboJurusan">
                         <select id="jurusan" name="jurusan" onChange="viewTabel()">
-                          <!-- <option value="" disabled selected>Jurusan</option> -->
                           <option value="">Pilihlah Jurusan</option>
                         </select>
                         <label>Jurusan</label>
@@ -66,7 +65,7 @@
                         <th data-field="fakultas">Fakultas</th>
                         <th data-field="jurusan">Jurusan</th>
                         <th data-field="beasiswa">Beasiswa</th>
-                        <th data-field="update">Update</th>
+                        <th data-field="update">Tahun</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -136,27 +135,26 @@
 
     <script type="text/javascript">
       $(document).ready(function(){
-        $("#fakultas").change(function(){
-          var fakultas = $("#fakultas").val();
-          $.ajax({
-            url: "<?php echo base_url('mahasiswa/C_mahasiswa/getjurusan'); ?>",
-            type: "get",
-            data: "fakultas="+fakultas,
-            dataType: 'json',
-            success: function(msg){   
-              var fakultas=`<select id="jurusan" name="jurusan">
-              <option value="">Pilihlah Jurusan</option>`;
-              for (var i = 0; i < msg.length; i++) {
-                fakultas+='<option value="'+msg[i].id+'">'+msg[i].namaJur+'</option>';
-              }
-              fakultas+=`</select>
-              <label>Jurusan</label>`;
-              console.log(fakultas)
-              $("#comboJurusan").html(fakultas);
-              reloadJs('materialize', 'min');
-              reloadJs('initialize', 'nomin');
-            }
-          });
-        });
+       $('#fakultas').change(function(){
+        var fakultas =  $('#fakultas').val();
+        $.ajax({
+          url: '<?php echo base_url('mahasiswa/C_mahasiswa/getjurusan'); ?>',
+          type: 'GET',
+          data: "fakultas="+fakultas,
+          dataType: 'json',
+          success: function(data){
+           var fakultas=`<select id="jurusan" name="jurusan">
+           <option value="null">Pilihlah Jurusan</option>`;
+           for (var i = 0; i < data.length; i++) {
+            fakultas+='<option value="'+data[i].id+'">'+data[i].namaJur+'</option>';
+          }
+          fakultas+=`</select>
+          <label>Jurusan</label>`;
+          $('#jurusan').html(fakultas);
+          reloadJs('materialize','min');
+          reloadJs('initialize','nomin');
+        }
       });
-    </script>
+      });
+     });
+   </script>

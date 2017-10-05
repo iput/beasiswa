@@ -12,6 +12,7 @@ class C_kabag extends CI_Controller
     $this->load->model("kabag/ProfileKabag",'mdl');
     $this->load->model('kasubag/Beasiswa');
     $this->load->model('kasubag/ReportBeasiswa');
+    $this->load->model("grafik/Grafik",'grf');
   }
 
   public function index()
@@ -101,6 +102,7 @@ class C_kabag extends CI_Controller
   public function Pemohon() {
     $data['fakultas'] = $this->ReportBeasiswa->dataFakultas();
     $data['beasiswa'] = $this->Beasiswa->daftarBeasiswa();
+    $data['tahun']     = $this->grf->get_tahun();
     $this->load->view('attribute/header_kabag');
     $this->load->view('kabag/ReportBeasiswaFilter', $data);
     $this->load->view('attribute/footer');
@@ -109,6 +111,7 @@ class C_kabag extends CI_Controller
   public function Penerima() {
     $data['fakultas'] = $this->ReportBeasiswa->dataFakultas();
     $data['beasiswa'] = $this->Beasiswa->daftarBeasiswa();
+    $data['tahun']     = $this->grf->get_tahun();
     $this->load->view('attribute/header_kabag');
     $this->load->view('kabag/ReportBeasiswaPenerima', $data);
     $this->load->view('attribute/footer');
@@ -152,7 +155,7 @@ class C_kabag extends CI_Controller
       $sub_array[] = $row->namaFk;
       $sub_array[] = $row->namaJur;
       $sub_array[] = $row->namaBeasiswa;
-      $sub_array[] = $row->angkatan;
+      $sub_array[] = $row->tahun;
       $data[] = $sub_array;
     }
 
@@ -180,7 +183,7 @@ class C_kabag extends CI_Controller
       $sub_array[] = $row->namaFk;
       $sub_array[] = $row->namaJur;
       $sub_array[] = $row->namaBeasiswa;
-      $sub_array[] = $row->angkatan;
+      $sub_array[] = $row->tahun;
       $data[] = $sub_array;
     }
 

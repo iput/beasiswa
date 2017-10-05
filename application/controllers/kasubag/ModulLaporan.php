@@ -13,6 +13,7 @@ class ModulLaporan extends CI_Controller {
         $this->loginauth->view_page();
         $this->load->model('kasubag/Beasiswa');
         $this->load->model('kasubag/ReportBeasiswa');
+        $this->load->model("grafik/Grafik",'grf');
     }
 
     public function index() {
@@ -24,14 +25,11 @@ class ModulLaporan extends CI_Controller {
     }
 
     public function penerimaBeaSiswa() {
-        $tahun = $this->input->post('filTahun');
-        $jurusan = $this->input->post('filJurusan');
-        $fakultas = $this->input->post('filFakultas');
-        $beasiswa = $this->input->post('filBeasiswa');
         $data['fakultas'] = $this->ReportBeasiswa->dataFakultas();
         $data['jurusan'] = $this->ReportBeasiswa->dataJurusan();
         $data['beasiswa'] = $this->Beasiswa->daftarBeasiswa();
-        $data['detail'] = $this->ReportBeasiswa->dataPenerimaBeasiswa($tahun, $jurusan, $fakultas, $beasiswa);
+        $data['tahun']     = $this->grf->get_tahun();
+
         $this->load->view('attribute/header_kasubag');
         $this->load->view('kasubag/ReportBeasiswaPenerima', $data);
         $this->load->view('attribute/footerKasubag');
@@ -47,12 +45,14 @@ class ModulLaporan extends CI_Controller {
         $this->load->view('kasubag/masterDataPenerima', $data);
     }
 
-       public function filterLaporan() {
-        $data['fakultas'] = $this->ReportBeasiswa->dataFakultas();
-        $data['beasiswa'] = $this->Beasiswa->daftarBeasiswa();
-        $this->load->view('attribute/header_kasubag');
-        $this->load->view('kasubag/ReportBeasiswaFilter', $data);
-        $this->load->view('attribute/footerKasubag');
+   public function filterLaporan() {
+    $data['fakultas'] = $this->ReportBeasiswa->dataFakultas();
+    $data['beasiswa'] = $this->Beasiswa->daftarBeasiswa();
+    $data['tahun']     = $this->grf->get_tahun();
+
+    $this->load->view('attribute/header_kasubag');
+    $this->load->view('kasubag/ReportBeasiswaFilter', $data);
+    $this->load->view('attribute/footerKasubag');
     }
 
     public function GrafikBeasiswa() {
@@ -98,7 +98,7 @@ class ModulLaporan extends CI_Controller {
             $sub_array[] = $row->namaFk;
             $sub_array[] = $row->namaJur;
             $sub_array[] = $row->namaBeasiswa;
-            $sub_array[] = $row->angkatan;
+            $sub_array[] = $row->tahun;
             $data[] = $sub_array;
         }
 
@@ -126,7 +126,7 @@ class ModulLaporan extends CI_Controller {
             $sub_array[] = $row->namaFk;
             $sub_array[] = $row->namaJur;
             $sub_array[] = $row->namaBeasiswa;
-            $sub_array[] = $row->angkatan;
+            $sub_array[] = $row->tahun;
             $data[] = $sub_array;
         }
 

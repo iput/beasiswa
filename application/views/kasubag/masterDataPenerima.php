@@ -67,7 +67,7 @@
               <td><?php echo $data->namaFk?></td>
               <td><?php echo $data->namaJur?></td>
               <td><?php echo $data->namaBeasiswa?></td>
-              <td><?php echo $data->angkatan?></td>
+              <td><?php echo $data->tahun?></td>
               </tr>
               <?php endforeach; ?>
             </tbody>

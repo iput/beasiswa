@@ -9,9 +9,9 @@ class PengumumanPenerimaBeasiswa extends CI_Model {
 	
 
 	var $table = "pendaftar";
-	var $select_column = array("pendaftar.nim", "identitas_mhs.namaLengkap", "jurusan.namaJur", "fakultas.namaFk", "bea.namaBeasiswa", "pendaftar.waktuDiubah");
+	var $select_column = array("pendaftar.nim", "identitas_mhs.namaLengkap", "jurusan.namaJur", "fakultas.namaFk", "bea.namaBeasiswa", "YEAR(bea.beasiswaDibuka) tahun");
 	var $order_column = array("pendaftar.nim", "identitas_mhs.namaLengkap", "jurusan.namaJur", "fakultas.namaFk", "bea.namaBeasiswa", null);
-	var $column_search = array("pendaftar.nim", "identitas_mhs.namaLengkap", "jurusan.namaJur", "fakultas.namaFk", "bea.namaBeasiswa", "pendaftar.waktuDiubah");
+	var $column_search = array("pendaftar.nim", "identitas_mhs.namaLengkap", "jurusan.namaJur", "fakultas.namaFk", "bea.namaBeasiswa");
 
 
 	function make_query($tahun, $fakultas, $jurusan, $bea)
@@ -56,21 +56,21 @@ class PengumumanPenerimaBeasiswa extends CI_Model {
 				$this->db->where("jurusan.id", $jurusan);
 		} elseif ($tahun != 0 && $fakultas != 0 && $jurusan == 0 && $bea != 0) {
 				$this->db->where("YEAR(bea.beasiswaDibuka)", $tahun);
-				$this->db->where("bea.id", $bea);
 				$this->db->where("fakultas.id", $fakultas);
+				$this->db->where("bea.id", $bea);
 		} elseif ($tahun != 0 && $fakultas == 0 && $jurusan != 0 && $bea != 0) {
+				$this->db->where("YEAR(bea.beasiswaDibuka)", $tahun);
 				$this->db->where("jurusan.id", $jurusan);
 				$this->db->where("bea.id", $bea);
-				$this->db->where("YEAR(bea.beasiswaDibuka)", $tahun);
 		} elseif ($tahun == 0 && $fakultas != 0 && $jurusan != 0 && $bea != 0) {
 				$this->db->where("fakultas.id", $fakultas);
-				$this->db->where("bea.id", $bea);
 				$this->db->where("jurusan.id", $jurusan);
+				$this->db->where("bea.id", $bea);
 		} elseif ($tahun != 0 && $fakultas != 0 && $jurusan != 0 && $bea != 0) {
 				$this->db->where("YEAR(bea.beasiswaDibuka)", $tahun);
 				$this->db->where("fakultas.id", $fakultas);
-				$this->db->where("bea.id", $bea);
 				$this->db->where("jurusan.id", $jurusan);
+				$this->db->where("bea.id", $bea);
 		}
 
 		$i = 0;

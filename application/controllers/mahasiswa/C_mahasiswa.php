@@ -135,7 +135,7 @@ public function datatable(){
     $sub_array[] = $row->namaFk;
     $sub_array[] = $row->namaJur;
     $sub_array[] = $row->namaBeasiswa;
-    $sub_array[] = $row->waktuDiubah;
+    $sub_array[] = $row->tahun;
     $data[] = $sub_array;
   }
 

@@ -13,6 +13,7 @@ class C_staff extends CI_Controller
     $this->load->model("staff_kemahasiswaan/Profile",'mdl');
     $this->load->model('kasubag/Beasiswa');
     $this->load->model('kasubag/ReportBeasiswa');
+    $this->load->model("grafik/Grafik",'grf');
   }
   public function index()
   {
@@ -101,6 +102,8 @@ class C_staff extends CI_Controller
   public function Penerima() {
     $data['fakultas'] = $this->ReportBeasiswa->dataFakultas();
     $data['beasiswa'] = $this->Beasiswa->daftarBeasiswa();
+    $data['tahun']     = $this->grf->get_tahun();
+
     $this->load->view('attribute/header_staff');
     $this->load->view('staff_kemahasiswaan/ReportBeasiswaPenerima', $data);
     $this->load->view('attribute/footer');
@@ -109,6 +112,8 @@ class C_staff extends CI_Controller
   public function Pemohon() {
     $data['fakultas'] = $this->ReportBeasiswa->dataFakultas();
     $data['beasiswa'] = $this->Beasiswa->daftarBeasiswa();
+    $data['tahun']     = $this->grf->get_tahun();
+
     $this->load->view('attribute/header_staff');
     $this->load->view('staff_kemahasiswaan/ReportBeasiswaFilter', $data);
     $this->load->view('attribute/footer');
@@ -135,7 +140,7 @@ class C_staff extends CI_Controller
       $sub_array[] = $row->namaFk;
       $sub_array[] = $row->namaJur;
       $sub_array[] = $row->namaBeasiswa;
-      $sub_array[] = $row->angkatan;
+      $sub_array[] = $row->tahun;
       $data[] = $sub_array;
     }
 
@@ -163,7 +168,7 @@ class C_staff extends CI_Controller
       $sub_array[] = $row->namaFk;
       $sub_array[] = $row->namaJur;
       $sub_array[] = $row->namaBeasiswa;
-      $sub_array[] = $row->angkatan;
+      $sub_array[] = $row->tahun;
       $data[] = $sub_array;
     }
 
