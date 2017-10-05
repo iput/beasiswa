@@ -18,7 +18,7 @@ class C_kabag extends CI_Controller
   public function index()
   {
     $this->load->view('attribute/header_kabag');
-    $this->load->view('kabag/kabag');
+    $this->load->view('kabag/dashboard');
     $this->load->view('attribute/footer');
 
   }
