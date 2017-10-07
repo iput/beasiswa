@@ -44,11 +44,6 @@
 </head>
 
 <body>
-
-<!-- Preloader -->
-
-<!-- Preloader ends -->
-
 <!-- Scroll-to-top Button -->
 <div class="scroll-to-top waves-effect waves-light trans-effect">
     <a href="#"><i class="ion-chevron-up"></i></a>
@@ -60,13 +55,12 @@
         <div class="container">
             <div class="nav-wrapper">
                 <!-- Replace 'src' attribute with the path to your Brand logo -->
-                <a href="#" class="brand-logo"><img src="<?php echo base_url()?>assets/img/icons/uin.png" alt=""></a>
+                <a href="#" class="brand-logo"><img src="<?php echo base_url()?>assets/img/icons/64.png" alt=""></a>
                 <div class="social-icons">
                     <ul>
                         <!-- Add links to your social profiles here -->
-                        <li><a class="icon icon-google btn-floating waves-effect" href="#"><i class="ion-social-googleplus"></i></a></li>
-                        <li><a class="icon icon-facebook btn-floating waves-effect" href="https://www.facebook.com/kemahasiswaanUINMalang/"><i class="ion-social-facebook"></i></a></li>
-                        <li><a class="icon icon-twitter btn-floating waves-effect" href="#"><i class="ion-social-twitter"></i></a></li>
+                        <li><a class="icon icon-facebook btn-floating waves-effect" href="https://www.facebook.com/kemahasiswaanUINMalang/" target="_blank"><i class="ion-social-facebook"></i></a></li>
+                        <li><a class="icon icon-twitter btn-floating waves-effect" href="https://twitter.com/uinmalikimalang" target="_blank"><i class="ion-social-twitter"></i></a></li>
                     </ul>
                 </div>
                 <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="ion-android-menu"></i></a>
@@ -78,7 +72,7 @@
 
                     <li><a class="waves-effect waves-light" href="#location">Contact</a></li>
 
-                    <li><a href="<?php echo base_url('Login');?>" class="nav-btn-download waves-effect waves-light btn red white-text"><i class="ion-android-send left"></i>&nbspLogin sekarang</a></li>
+                    <li><a href="<?php echo base_url('Login');?>" target="_blank" class="nav-btn-download waves-effect waves-light btn red white-text"><i class="ion-android-send left"></i>&nbspLogin sekarang</a></li>
                 </ul>
 
                 <!-- Mobile sidebar navigation -->
@@ -311,15 +305,15 @@
             <div class="col s12 m8 l8 offset-m2">
                 <div class="center-heading wow fadeIn" data-wow-delay="0.1s">
                 <!-- Replace 'src' attribute with the path to your Brand logo -->
-                <a href="index-2.html"><img src="<?php echo base_url()?>assets/img/icons/UIN512.png" alt=""></a>
+                <a href="#"><img src="<?php echo base_url()?>assets/img/icons/UIN512.png" alt=""></a>
                 <div class="clearfix"></div>
                 <ul class="list-inline footer-social">
                     <!-- Add links to your social profiles here -->
-                    <li><a href="https://www.facebook.com/kemahasiswaanUINMalang/"><i class="ion-social-facebook waves-effect waves-light"></i></a></li>
-                    <li><a href="#"><i class="ion-social-twitter waves-effect waves-light"></i></a></li>
+                    <li><a href="https://www.facebook.com/kemahasiswaanUINMalang/" title="Facebook" target="_blank"><i class="ion-social-facebook waves-effect waves-light"></i></a></li>
+                    <li><a href="https://twitter.com/uinmalikimalang" title="Twitter" target="_blank"><i class="ion-social-twitter waves-effect waves-light"></i></a></li>
                     <li><a href="#"><i class="ion-social-googleplus waves-effect waves-light"></i></a></li>
                 </ul>
-                <span class="copyrights">&copy; 2017. Made with <i class="ion-android-favorite"></i> Allright Reserved By Developer GENBI UIN Maliki Malang</span>
+                <span class="copyrights">&copy; 2017. Made with <i class="ion-android-favorite"></i> Allright Reserved By GENBI UIN Maliki Malang Developer</span>
                 </div>
             </div>
         </div>

@@ -25,7 +25,7 @@
   <script src="<?php echo base_url('assets/js/bin/jquery-2.1.4.min.js')?>"></script>
   <script src="<?php echo base_url('assets/chartjs/Chart.min.js');?>" type="text/javascript"></script>
   <script src="<?php echo base_url('assets/sweetalert/sweetalert.min.js');?>" charset="utf-8"></script>
-  <script src="https://cdn.ckeditor.com/4.5.7/standard/ckeditor.js"></script>  
+  <script src="https://cdn.ckeditor.com/4.5.7/full/ckeditor.js"></script>  
   <style type="text/css"> 
     title {
       visibility: hidden;

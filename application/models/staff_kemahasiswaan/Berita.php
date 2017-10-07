@@ -53,4 +53,9 @@
  			return falses;
  		}
  	}
+ 		public function delete_by_id($id)
+	{
+		$this->db->where('idBerita', $id);
+		$this->db->delete('berita');
+	}
  } ?>

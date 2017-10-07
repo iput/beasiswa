@@ -49,13 +49,11 @@
  		redirect('staf_kemahasiswaan/C_staff/daftarBerita');
  	}
 
- 	public function hapusBerita($idBerita)
- 	{
-		$datahapus = $this->Berita->hapusBerita($idBerita);
-		if ($datahapus) {
-			$this->session->set_flashdata('sukses','data berita berhasil dihapus');
-			redirect('staf_kemahasiswaan/C_staff/daftarBerita');
-		}
- 	}
+	public function hapusBerita()
+	{
+		$id = $this->input->post('hapusBerita');
+		$this->Berita->delete_by_id($id);
+		echo json_encode(array("status" => TRUE));
+	}
 
  } ?>
