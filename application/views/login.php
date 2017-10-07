@@ -49,7 +49,7 @@
         <form class="login-form" action="<?php echo base_url('functLogin/prosesLogin') ?>" method="post">
           <div class="row primary-color form-header">
             <div class="col s4">
-              <img src="<?php echo base_url();?>assets/img/favicon 64 uin.png" alt="logo" class="logo responsive-img-height">
+              <a href="<?php echo base_url();?>"><img src="<?php echo base_url();?>assets/img/favicon 64 uin.png" alt="logo" class="logo responsive-img-height"></a>
             </div>
             <div class="col s8 right-align">
               <h4 class="light white-text">Login</h4>
@@ -94,10 +94,10 @@
             </div>
             <div class="row">
               <div class="col s6">
-                <p class="margin medium-small"><a href="register.html">Register Now!</a></p>
+                <p class="margin medium-small"><a href="#">Register Now!</a></p>
               </div>
               <div class="col s6">
-                <p class="margin right-align medium-small"><a href="reset-password.html">Forgot password?</a></p>
+                <p class="margin right-align medium-small"><a href="#">Forgot password?</a></p>
               </div>
             </div>
           </div>
