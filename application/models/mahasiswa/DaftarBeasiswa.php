@@ -195,6 +195,13 @@ class DaftarBeasiswa extends CI_Model {
     $this->db->where('penerima_bea.nimMhs',$nim);
     return $this->db->count_all_results();
   }
+  public function cekNimMhs($nim)
+  {
+    $this->db->select('nimMhs');    
+    $this->db->from('identitas_mhs');
+    $this->db->where('identitas_mhs.nimMhs',$nim);
+    return $this->db->count_all_results();
+  }
   public function ceknimPendaftarBea()
   { $nim  = $this->session->userdata('username');
 

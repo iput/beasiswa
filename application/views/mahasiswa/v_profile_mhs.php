@@ -57,23 +57,23 @@
 													</div>
 													<div class="input-field">
 														<i class="mdi-action-account-box prefix"></i>
-														<input name="namaMhs" id="namaMhs" type="tel" class="validate" placeholder="Nama Mahasiswa" value="<?php echo $namaLengkap;?>" >
+														<input name="namaMhs" id="namaMhs" type="tel" class="validate" placeholder="Nama Mahasiswa" value="<?php echo $namaLengkap;?>" required>
 														<label for="phone">Nama Mahasiswa</label>
 													</div>
 
 													<div class="input-field">
 														<i class="mdi-social-location-city prefix"></i>
-														<input name="tempatLahir" id="tempatLahir" type="text" class="validate" placeholder="Tempat Lahir" value="<?php echo $tempatLahir;?>" >
+														<input name="tempatLahir" id="tempatLahir" type="text" class="validate" placeholder="Tempat Lahir" value="<?php echo $tempatLahir;?>" required>
 														<label for="last_name">Tempat Lahir</label>
 													</div>
 													<div class="input-field">
 														<i class="mdi-action-alarm-add prefix"></i>
-														<input name="tglLahir" id="tglLahir" type="date" class="validate datepicker" placeholder="Tanggal Lahir" value="<?php echo $tglLahir;?>" >
+														<input name="tglLahir" id="tglLahir" type="date" class="validate datepicker" placeholder="Tanggal Lahir" value="<?php echo $tglLahir;?>" required>
 														<label for="last_name">Tanggal Lahir  <span>*Thn-Bln-Tgl</span></label>
 													</div>
 													<div class="input-field">
 														<i class="mdi-communication-location-on prefix"></i>
-														<input id="asalKota" name="asalKota" type="text" class="validate" placeholder="Asal Kota" value="<?php echo $asalKota;?>" >
+														<input id="asalKota" name="asalKota" type="text" class="validate" placeholder="Asal Kota" value="<?php echo $asalKota;?>" required>
 														<label for="last_name">Asal Kota</label>
 													</div>
 												</div>
@@ -82,39 +82,39 @@
 											<div class="col s12 m6 l6">
 												<div class="input-field">
 													<i class="mdi-social-group prefix"></i>
-													<input id="namaOrtu" name="namaOrtu" type="text" class="validate" placeholder="Nama Orang Tua" value="<?php echo $namaOrtu;?>">
+													<input id="namaOrtu" name="namaOrtu" type="text" class="validate" placeholder="Nama Orang Tua" value="<?php echo $namaOrtu;?>" required>
 													<label for="first_name">Nama Orang Tua</label>
 												</div>
 												<div class="input-field">
 													<i class="mdi-action-home prefix"></i>
-													<input id="alamatOrtu" name="alamatOrtu" type="text" class="validate" placeholder="Alamat Orang Tua" value="<?php echo $alamatOrtu;?>" >
+													<input id="alamatOrtu" name="alamatOrtu" type="text" class="validate" placeholder="Alamat Orang Tua" value="<?php echo $alamatOrtu;?>" required>
 													<label for="last_name">Alamat Orang Tua</label>
 												</div>
 												<div class="input-field">
 													<i class="mdi-communication-location-on prefix"></i>
-													<input id="kotaOrtu" name="kotaOrtu" type="tel" class="validate" placeholder="Kota Orang Tua" value="<?php echo $kotaOrtu;?>" >
+													<input id="kotaOrtu" name="kotaOrtu" type="tel" class="validate" placeholder="Kota Orang Tua" value="<?php echo $kotaOrtu;?>" required>
 													<label for="phone">Kota Orang Tua</label>
 												</div>
 												<div class="input-field">
 													<i class="mdi-communication-location-off prefix"></i>
-													<input id="provinsiOrtu" name="provinsiOrtu" type="text" class="validate" placeholder="Provinsi Orang Tua" value="<?php echo $propinsiOrtu;?>" >
+													<input id="provinsiOrtu" name="provinsiOrtu" type="text" class="validate" placeholder="Provinsi Orang Tua" value="<?php echo $propinsiOrtu;?>" required>
 													<label for="last_name">Provinsi Orang Tua</label>
 												</div>
 												<div class="input-field">
 													<i class="mdi-action-home prefix"></i>
-													<input id="alamat" name="alamat" type="text" class="validate" placeholder="Alamat Lengkap" value="<?php echo $alamatLengkap;?>" >
+													<input id="alamat" name="alamat" type="text" class="validate" placeholder="Alamat Lengkap" value="<?php echo $alamatLengkap;?>" required>
 													<label for="last_name">Alamat Lengkap</label>
 												</div>
 
 												<div class="input-field with-note">
 													<i class="mdi-communication-call prefix"></i>
-													<input id="noTelp" name="noTelp" type="tel" class="validate" placeholder="Nomor Telephon" value="<?php echo $noTelp;?>" onkeyup="validAngka(this)" maxlength="12">
+													<input id="noTelp" name="noTelp" type="tel" class="validate" placeholder="Nomor Telephon" value="<?php echo $noTelp;?>" onkeyup="validAngka(this)" maxlength="12" required>
 													<label for="skills">Nomor Telephon</label>
 													<small class="blue-text">** Isi hanya dengan Angka</small>
 												</div>
 												<div class="input-field with-note">
 													<i class="mdi-communication-email prefix"></i>
-													<input id="email" name="email" type="text" class="validate" value="<?php echo $emailAktif;?>">
+													<input id="email" name="email" type="text" class="validate" value="<?php echo $emailAktif;?>" required>
 													<label for="skills">Email</label>
 													<small class="blue-text">** Example : name@gmail.com</small>
 												</div>
@@ -128,6 +128,7 @@
 												<button type="submit" class="btn green"><i class="mdi-navigation-refresh left"></i>Save</button>
 											</div>
 										</div>
+										<input type="hidden" name="idAksesMhs" value="<?php echo $this->session->userdata('id');?>">
 									</div>
 								</form>
 							</div>
@@ -186,20 +187,20 @@
 	<script type="text/javascript">
 	function cekform() {
 		if(!$("#pwdnow").val())
-		{
-			alert('Curret Password tidak boleh kosong');
+		{	
+			swal("Curret Password!", "Curret Password tidak boleh kosong!", "success");
 			$("#pwdnow").focus()
 			return false;
 		}
 		if(!$("#pwdnew").val())
-		{
-			alert('New Password tidak boleh kosong');
+		{	
+			swal("New Password!", "New Password tidak boleh kosong!", "success");
 			$("#pwdnew").focus()
 			return false;
 		}
 		if(!$("#retypepwd").val())
-		{
-			alert('Re-type New Password tidak boleh kosong');
+		{	
+			swal("Re-type New Password!", "Re-type New Password tidak boleh kosong!", "success");
 			$("#retypepwd").focus()
 			return false;
 		}

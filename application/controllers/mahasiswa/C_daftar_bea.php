@@ -132,9 +132,8 @@ public function pengaturan()
 {
   $nim = $this->session->userdata('username');
   $id = $this->input->post('idPengaturan');
-  $dataMhs = $this->mod->getdataMhs_byId($nim);
-  $nama = $dataMhs->namaLengkap;
-  if ($nama != null) {
+  $dataMhs = $this->mdl->cekNimMhs($nim);
+  if ($dataMhs != 0) {
     $dataMhs = $this->mod->getdataMhs_byId($nim);
     $data = array(
       'idBea' => $id,
