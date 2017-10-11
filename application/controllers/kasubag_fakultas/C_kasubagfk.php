@@ -27,14 +27,14 @@ class C_kasubagfk extends CI_Controller
   {
     $user = $this->session->userdata('id');
     $cek = $this->mdl->getdata($user);
-    if($this->mdl->getIdentitasAdmin($user) != 0){
+    $ck = $this->mdl->getIdentitasAdmin($user); 
+    if($ck != 0){
       $fk = $this->mdl->getdata($user)->idFakultas;
       if ($fk != null) {
         $data=array(
           'id'   => $this->mdl->getFak($fk)->namaFk,
-          // 'user' => $this->mdl->getdata($user)
           'foto'    => $cek->foto,
-          'idpr'      => $cek->id,
+          'idpr'    => $cek->id,
           'nama'    => $cek->nama,
           'alamat'  => $cek->alamat,
           'noTelp'  => $cek->noTelp,
@@ -43,7 +43,6 @@ class C_kasubagfk extends CI_Controller
       }else{
         $data=array(
           'id'   => "",
-          // 'user' => $this->mdl->getdata($user)
           'foto'    => "",
           'idpr'      => "",
           'nama'    => "",

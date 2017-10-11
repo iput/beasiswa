@@ -20,61 +20,114 @@ class C_profileKasubag extends CI_Controller
 	}
 	public function simpan()
 	{ 	
-		$nmfile = "file_".time();
-		$path   = './assets/img/profile/';
-		$config['upload_path'] = $path;
-		$config['allowed_types'] = 'jpg|png|jpeg|bmp|gif';
-		/*$config['allowed_types'] = 'gif|jpg|jpeg|png|iso|dmg|zip|rar|doc|docx|xls|xlsx|ppt|pptx|csv|ods|odt|odp|pdf|rtf|sxc|sxi|txt|exe|avi|mpeg|mp3|mp4|3gp';*/
-		$config['max_size'] = '100';
-		$config['max_width']  = '900';
-		$config['max_height']  = '900';
-		$config['file_name'] = $nmfile;
+		$id = $this->session->userdata('id');
+		$cek = $this->model->getIdentitasAdmin($id);
+		if ($cek != 0) {
 
-		$this->upload->initialize($config);
-		$key		= $this->input->post('id');
-		$exp   		= $this->input->post('filelama');
+			$nmfile = "file_".time();
+			$path   = './assets/img/profile/';
+			$config['upload_path'] = $path;
+			$config['allowed_types'] = 'jpg|png|jpeg|bmp|gif';
+			/*$config['allowed_types'] = 'gif|jpg|jpeg|png|iso|dmg|zip|rar|doc|docx|xls|xlsx|ppt|pptx|csv|ods|odt|odp|pdf|rtf|sxc|sxi|txt|exe|avi|mpeg|mp3|mp4|3gp';*/
+			$config['max_size'] = '100';
+			$config['max_width']  = '900';
+			$config['max_height']  = '900';
+			$config['file_name'] = $nmfile;
 
-		if($_FILES['filefoto']['name'])
-		{
-			if ($this->upload->do_upload('filefoto'))
-			{	
-				$gbr = $this->upload->data();
-				$data = array(
-					'foto' 		=> $gbr['file_name'],
-					'id'		=> $this->input->post('id'),
+			$this->upload->initialize($config);
+			$key		= $this->input->post('id');
+			$exp   		= $this->input->post('filelama');
+
+			if($_FILES['filefoto']['name'])
+			{
+				if ($this->upload->do_upload('filefoto'))
+				{	
+					$gbr = $this->upload->data();
+					$data = array(
+						'foto' 		=> $gbr['file_name'],
+						'id'		=> $this->input->post('id'),
 					// 'idAkses' 	=> $this->input->post('idAkses'),
-					'nama' 		=> $this->input->post('nama'),
-					'alamat' 	=> $this->input->post('alamat'),
-					'noTelp' 	=> $this->input->post('noTelp'),
-					'email' 	=> $this->input->post('email')
+						'nama' 		=> $this->input->post('nama'),
+						'alamat' 	=> $this->input->post('alamat'),
+						'noTelp' 	=> $this->input->post('noTelp'),
+						'email' 	=> $this->input->post('email')
+						);
+
+					$row = $this->db->where('id',$key)->get('profil_admin')->row();
+					unlink('assets/img/profile/'.$row->foto);
+
+					$where =array('id'=>$key);
+					$this->model->get_update($data,$where);
+
+					$this->session->set_flashdata("pesan", "<div class=\"card-panel success\">Data Berhasil Disimpan</div>");
+					redirect('kasubag/Kasubag/profile');
+				}else{
+					$this->session->set_flashdata("pesan", "<div class=\"card-panel alert\">Gagal Upload Foto [Max.Size 100Kb] [Types : jpg, png, jpeg, bmp, gif ]</div>");
+					redirect('kasubag/Kasubag/profile');
+				}
+			}else if(empty($_FILES['filefoto']['name']))
+			{
+				$data = array(
+					'id'			=> $this->input->post('id'),
+				// 'idAkses' 		=> $this->input->post('idAkses'),
+					'nama' 			=> $this->input->post('nama'),
+					'alamat' 		=> $this->input->post('alamat'),
+					'noTelp' 		=> $this->input->post('noTelp'),
+					'email' 		=> $this->input->post('email')
 					);
 
-				$row = $this->db->where('id',$key)->get('profil_admin')->row();
-				unlink('assets/img/profile/'.$row->foto);
-
-				$where =array('id'=>$key);
-				$this->model->get_update($data,$where);
-
-				$this->session->set_flashdata("pesan", "<div class=\"card-panel success\">Data Berhasil Disimpan</div>");
-				redirect('kasubag/Kasubag/profile');
-			}else{
-				$this->session->set_flashdata("pesan", "<div class=\"card-panel alert\">Gagal Upload Foto [Max.Size 100Kb] [Types : jpg, png, jpeg, bmp, gif ]</div>");
+				$this->model->getupdate($key,$data);
+				$this->session->set_flashdata("pesan", "<div class=\"card-panel success col s12 m4 l6\">Data Berhasil Disimpan</div>");
 				redirect('kasubag/Kasubag/profile');
 			}
-		}else if(empty($_FILES['filefoto']['name']))
-		{
-			$data = array(
-				'id'			=> $this->input->post('id'),
-				// 'idAkses' 		=> $this->input->post('idAkses'),
-				'nama' 			=> $this->input->post('nama'),
-				'alamat' 		=> $this->input->post('alamat'),
-				'noTelp' 		=> $this->input->post('noTelp'),
-				'email' 		=> $this->input->post('email')
-				);
+		}else{
 
-			$this->model->getupdate($key,$data);
-			$this->session->set_flashdata("pesan", "<div class=\"card-panel success col s12 m4 l6\">Data Berhasil Disimpan</div>");
-			redirect('kasubag/Kasubag/profile');
+			$nmfile = "file_".time(); 
+			$config['upload_path'] = './assets/img/profile/';
+			$config['allowed_types'] = 'jpg|png|jpeg|bmp|gif';
+			$config['max_size'] = '100'; 
+			$config['max_width']  = '900';
+			$config['max_height']  = '900';
+			$config['file_name'] = $nmfile;
+
+			$this->upload->initialize($config);
+
+			if($_FILES['filefoto']['name'])
+			{
+				if ($this->upload->do_upload('filefoto'))
+				{
+					$gbr = $this->upload->data();
+					$data = array(
+						'foto' 		=> $gbr['file_name'],
+						'id'		=> $this->input->post('id'),
+						'nama' 		=> $this->input->post('nama'),
+						'alamat' 	=> $this->input->post('alamat'),
+						'noTelp' 	=> $this->input->post('noTelp'),
+						'email' 	=> $this->input->post('email'),
+						'idAkses' 	=> $this->input->post('idAksesAdmin')
+						);
+
+					$this->model->getInsert($data); 
+					$this->session->set_flashdata("pesan", "<div class=\"card-panel success\">Data Berhasil Disimpan Database</div>");
+					redirect('kasubag/Kasubag/profile');
+				}else{
+
+					$this->session->set_flashdata("pesan", "<div class=\"card-panel alert\">Gagal Upload Gambar [Max.Size 100Kb] [Types : jpg, png, jpeg, bmp, gif ]</div>");
+					redirect('kasubag/Kasubag/profile');
+				}
+			}else if(empty($_FILES['filefoto']['name'])){
+				$data = array(
+					'id'			=> $this->input->post('id'),
+					'nama' 			=> $this->input->post('nama'),
+					'alamat' 		=> $this->input->post('alamat'),
+					'noTelp' 		=> $this->input->post('noTelp'),
+					'email' 		=> $this->input->post('email'),
+					'idAkses' 		=> $this->input->post('idAksesAdmin')
+					);
+				$this->model->getInsert($data); 
+				$this->session->set_flashdata("pesan", "<div class=\"card-panel success col s12 m4 l6\">Data Berhasil Disimpan Database</div>");
+				redirect('kasubag/Kasubag/profile');
+			}
 		}
 	}
 	public function simpanPassword()

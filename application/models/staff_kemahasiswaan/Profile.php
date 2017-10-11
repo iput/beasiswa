@@ -53,6 +53,7 @@ class Profile extends CI_Model {
 	public function getInsert($data)
 	{
 		$this->db->insert('profil_admin',$data);
+		return TRUE;
 	}
 	public function getdelete($key)
 	{

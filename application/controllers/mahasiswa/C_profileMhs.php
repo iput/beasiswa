@@ -131,7 +131,7 @@ class C_profileMhs extends CI_Controller
 					redirect('mahasiswa/C_mahasiswa/profile');
 				}else{
 
-					$this->session->set_flashdata("pesan", "<div class=\"card-panel success col s12 m4 l6\">GAGAL </div>");
+					$this->session->set_flashdata("pesan", "<div class=\"card-panel alert\">Gagal Upload Gambar [Max.Size 100Kb] [Types : jpg, png, jpeg, bmp, gif ]</div>");
 					redirect('mahasiswa/C_mahasiswa/profile');
 				}
 			}else if(empty($_FILES['filefoto']['name'])){

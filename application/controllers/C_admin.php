@@ -172,19 +172,19 @@ public function ajax_delete($id)
 }
 public function profile()
 { 
-    $user = $this->session->userdata('id');
-    $cek = $this->modl->getdata($user);
-    if($this->modl->getIdentitasAdmin($user) != 0){
-      $data =array(
-        'foto'    => $cek->foto,
-        'id'      => $cek->id,
-        'nama'    => $cek->nama,
-        'alamat'  => $cek->alamat,
-        'noTelp'  => $cek->noTelp,
-        'email'   => $cek->email
-        );
-    }else{
-      $data=array(
+  $user = $this->session->userdata('id');
+  $cek = $this->modl->getdata($user);
+  if($this->modl->getIdentitasAdmin($user) != 0){
+    $data =array(
+      'foto'    => $cek->foto,
+      'id'      => $cek->id,
+      'nama'    => $cek->nama,
+      'alamat'  => $cek->alamat,
+      'noTelp'  => $cek->noTelp,
+      'email'   => $cek->email
+      );
+  }else{
+    $data=array(
       'foto'    => "",
       'id'      => "",
       'nama'    => "",
@@ -192,99 +192,152 @@ public function profile()
       'noTelp'  => "",
       'email'   => ""
       );
-    }
+  }
   $this->load->view('attribute/header_admin');
   $this->load->view('admin/profileAdmin',$data);
   $this->load->view('attribute/footer');
 }
 public function updateProfile(){
-  $nmfile = "file_".time();
-  $path   = './assets/img/profile/';
-  $config['upload_path'] = $path;
-  $config['allowed_types'] = 'jpg|png|jpeg|bmp|gif';
-  /*$config['allowed_types'] = 'gif|jpg|jpeg|png|iso|dmg|zip|rar|doc|docx|xls|xlsx|ppt|pptx|csv|ods|odt|odp|pdf|rtf|sxc|sxi|txt|exe|avi|mpeg|mp3|mp4|3gp';*/
-  $config['max_size'] = '100';
-  $config['max_width']  = '900';
-  $config['max_height']  = '900';
-  $config['file_name'] = $nmfile;
+  $id = $this->session->userdata('id');
+  $cek = $this->modl->getIdentitasAdmin($id);
+  if ($cek != 0) {
 
-  $this->upload->initialize($config);
-  $key    = $this->input->post('id');
-  $exp      = $this->input->post('filelama');
+    $nmfile = "file_".time();
+    $path   = './assets/img/profile/';
+    $config['upload_path'] = $path;
+    $config['allowed_types'] = 'jpg|png|jpeg|bmp|gif';
+    /*$config['allowed_types'] = 'gif|jpg|jpeg|png|iso|dmg|zip|rar|doc|docx|xls|xlsx|ppt|pptx|csv|ods|odt|odp|pdf|rtf|sxc|sxi|txt|exe|avi|mpeg|mp3|mp4|3gp';*/
+    $config['max_size'] = '100';
+    $config['max_width']  = '900';
+    $config['max_height']  = '900';
+    $config['file_name'] = $nmfile;
 
-  if($_FILES['filefoto']['name'])
-  {
-    if ($this->upload->do_upload('filefoto'))
-    { 
-      $gbr = $this->upload->data();
+    $this->upload->initialize($config);
+    $key    = $this->input->post('id');
+    $exp      = $this->input->post('filelama');
+
+    if($_FILES['filefoto']['name'])
+    {
+      if ($this->upload->do_upload('filefoto'))
+      { 
+        $gbr = $this->upload->data();
+        $data = array(
+          'foto'    => $gbr['file_name'],
+          'id'    => $this->input->post('id'),
+          'nama'    => $this->input->post('nama'),
+          'alamat'  => $this->input->post('alamat'),
+          'noTelp'  => $this->input->post('noTelp'),
+          'email'   => $this->input->post('email')
+          );
+
+        $row = $this->db->where('id',$key)->get('profil_admin')->row();
+        unlink('assets/img/profile/'.$row->foto);
+
+        $where =array('id'=>$key);
+        $this->modl->get_update($data,$where);
+
+        $this->session->set_flashdata("pesan", "<div class=\"card-panel success\">Data Berhasil Disimpan</div>");
+        redirect('C_admin/profile');
+      }else{
+        $this->session->set_flashdata("pesan", "<div class=\"card-panel alert\">Gagal Upload Foto [Max.Size 100Kb] [Types : jpg, png, jpeg, bmp, gif ]</div>");
+        redirect('C_admin/profile');
+      }
+    }else if(empty($_FILES['filefoto']['name']))
+    {
       $data = array(
-        'foto'    => $gbr['file_name'],
-        'id'    => $this->input->post('id'),
-        'nama'    => $this->input->post('nama'),
-        'alamat'  => $this->input->post('alamat'),
-        'noTelp'  => $this->input->post('noTelp'),
-        'email'   => $this->input->post('email')
+        'id'      => $this->input->post('id'),
+        'nama'      => $this->input->post('nama'),
+        'alamat'    => $this->input->post('alamat'),
+        'noTelp'    => $this->input->post('noTelp'),
+        'email'     => $this->input->post('email')
         );
 
-      $row = $this->db->where('id',$key)->get('profil_admin')->row();
-      unlink('assets/img/profile/'.$row->foto);
-
-      $where =array('id'=>$key);
-      $this->modl->get_update($data,$where);
-
-      $this->session->set_flashdata("pesan", "<div class=\"card-panel success\">Data Berhasil Disimpan</div>");
-      redirect('C_admin/profile');
-    }else{
-      $this->session->set_flashdata("pesan", "<div class=\"card-panel alert\">Gagal Upload Foto [Max.Size 100Kb] [Types : jpg, png, jpeg, bmp, gif ]</div>");
+      $this->modl->getupdate($key,$data);
+      $this->session->set_flashdata("pesan", "<div class=\"card-panel success col s12 m4 l6\">Data Berhasil Disimpan</div>");
       redirect('C_admin/profile');
     }
-  }else if(empty($_FILES['filefoto']['name']))
-  {
-    $data = array(
-      'id'      => $this->input->post('id'),
-      'nama'      => $this->input->post('nama'),
-      'alamat'    => $this->input->post('alamat'),
-      'noTelp'    => $this->input->post('noTelp'),
-      'email'     => $this->input->post('email')
-      );
+  }else{
 
-    $this->modl->getupdate($key,$data);
-    $this->session->set_flashdata("pesan", "<div class=\"card-panel success col s12 m4 l6\">Data Berhasil Disimpan</div>");
-    redirect('C_admin/profile');
+    $nmfile = "file_".time(); 
+    $config['upload_path'] = './assets/img/profile/';
+    $config['allowed_types'] = 'jpg|png|jpeg|bmp|gif';
+    $config['max_size'] = '100'; 
+    $config['max_width']  = '900';
+    $config['max_height']  = '900';
+    $config['file_name'] = $nmfile;
+
+    $this->upload->initialize($config);
+
+    if($_FILES['filefoto']['name'])
+    {
+      if ($this->upload->do_upload('filefoto'))
+      {
+        $gbr = $this->upload->data();
+        $data = array(
+          'foto'    => $gbr['file_name'],
+          'id'    => $this->input->post('id'),
+          'nama'    => $this->input->post('nama'),
+          'alamat'  => $this->input->post('alamat'),
+          'noTelp'  => $this->input->post('noTelp'),
+          'email'   => $this->input->post('email'),
+          'idAkses'   => $this->input->post('idAksesAdmin')
+          );
+
+        $this->modl->getInsert($data); 
+        $this->session->set_flashdata("pesan", "<div class=\"card-panel success\">Data Berhasil Disimpan Database</div>");
+        redirect('C_admin/profile');
+      }else{
+
+        $this->session->set_flashdata("pesan", "<div class=\"card-panel alert\">Gagal Upload Gambar [Max.Size 100Kb] [Types : jpg, png, jpeg, bmp, gif ]</div>");
+        redirect('C_admin/profile');
+      }
+    }else if(empty($_FILES['filefoto']['name'])){
+      $data = array(
+        'id'      => $this->input->post('id'),
+        'nama'      => $this->input->post('nama'),
+        'alamat'    => $this->input->post('alamat'),
+        'noTelp'    => $this->input->post('noTelp'),
+        'email'     => $this->input->post('email'),
+        'idAkses'     => $this->input->post('idAksesAdmin')
+        );
+      $this->modl->getInsert($data); 
+      $this->session->set_flashdata("pesan", "<div class=\"card-panel success col s12 m4 l6\">Data Berhasil Disimpan Database</div>");
+      redirect('C_admin/profile');
+    }
   }
 }
 public function simpanPassword()
-  {   
-    $this->form_validation->set_rules('pwdnow','Current Password','required|alpha_numeric|min_length[1]|max_length[20]');
-    $this->form_validation->set_rules('pwdnew','New Password','required|alpha_numeric|min_length[1]|max_length[20]');
-    $this->form_validation->set_rules('retypepwd','Re-Type Password','required|alpha_numeric|min_length[1]|max_length[20]');
-    if ($this->form_validation->run()) {
-      $currpass  = $this->input->post('pwdnow');
-      $newpass  = $this->input->post('pwdnew');
-      $retypepwd = $this->input->post('retypepwd');
-      $userid = $this->input->post('userid');
-      $passwd = $this->modl->getCurrPass($userid);
-      if ($passwd->password == $currpass) {
-        if ($newpass ==$retypepwd) {
-          if ($this->modl->updatePass($newpass,$userid)) {
-            $this->session->set_flashdata("pesan", "<div class=\"card-panel success\">Berhasil Update Password</div>");
-            redirect('C_admin/profile');
-          }else{
-            $this->session->set_flashdata("pesan", "<div class=\"card-panel alert\">Gagal Update Password</div>");
-            redirect('C_admin/profile');
-          }
+{   
+  $this->form_validation->set_rules('pwdnow','Current Password','required|alpha_numeric|min_length[1]|max_length[20]');
+  $this->form_validation->set_rules('pwdnew','New Password','required|alpha_numeric|min_length[1]|max_length[20]');
+  $this->form_validation->set_rules('retypepwd','Re-Type Password','required|alpha_numeric|min_length[1]|max_length[20]');
+  if ($this->form_validation->run()) {
+    $currpass  = $this->input->post('pwdnow');
+    $newpass  = $this->input->post('pwdnew');
+    $retypepwd = $this->input->post('retypepwd');
+    $userid = $this->input->post('userid');
+    $passwd = $this->modl->getCurrPass($userid);
+    if ($passwd->password == $currpass) {
+      if ($newpass ==$retypepwd) {
+        if ($this->modl->updatePass($newpass,$userid)) {
+          $this->session->set_flashdata("pesan", "<div class=\"card-panel success\">Berhasil Update Password</div>");
+          redirect('C_admin/profile');
         }else{
-          $this->session->set_flashdata("pesan", "<div class=\"card-panel alert\">New Password dan Re-Type New Password yang anda masukkan tidak sama</div>");
+          $this->session->set_flashdata("pesan", "<div class=\"card-panel alert\">Gagal Update Password</div>");
           redirect('C_admin/profile');
         }
       }else{
-        $this->session->set_flashdata("pesan", "<div class=\"card-panel alert\">Current Password tidak ada dalam database</div>");
-          redirect('C_admin/profile');
+        $this->session->set_flashdata("pesan", "<div class=\"card-panel alert\">New Password dan Re-Type New Password yang anda masukkan tidak sama</div>");
+        redirect('C_admin/profile');
       }
     }else{
-      echo validation_errors();
+      $this->session->set_flashdata("pesan", "<div class=\"card-panel alert\">Current Password tidak ada dalam database</div>");
+      redirect('C_admin/profile');
     }
+  }else{
+    echo validation_errors();
   }
+}
 
 }
 ?>

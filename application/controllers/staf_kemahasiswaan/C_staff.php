@@ -32,8 +32,9 @@ class C_staff extends CI_Controller
   public function profile()
   {
     $user = $this->session->userdata('id');
-    $cek = $this->mdl->getdata($user);
-    if($this->mdl->getIdentitasAdmin($user) != 0){
+    $cek  = $this->mdl->getdata($user);
+    $ckid = $this->mdl->getIdentitasAdmin($user);
+    if($ckid != 0){
       $data =array(
         'foto'    => $cek->foto,
         'id'      => $cek->id,

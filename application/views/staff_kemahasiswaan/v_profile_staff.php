@@ -45,7 +45,7 @@
 												<div class="col s12">
 													<div class="input-field">
 														<i class="mdi-action-account-box prefix"></i>
-														<input name="nama" id="nama" type="tel" class="validate" placeholder="Nama" value="<?php echo $nama;?>" >
+														<input name="nama" id="nama" type="tel" class="validate" placeholder="Nama" value="<?php echo $nama;?>" required>
 														<label for="phone">Nama</label>
 													</div>
 												</div>
@@ -53,19 +53,19 @@
 											<div class="col s12 m6 l6">
 												<div class="input-field">
 													<i class="mdi-action-home prefix"></i>
-													<input id="alamat" name="alamat" type="text" class="validate" placeholder="Alamat Lengkap" value="<?php echo $alamat;?>" >
+													<input id="alamat" name="alamat" type="text" class="validate" placeholder="Alamat Lengkap" value="<?php echo $alamat;?>" required>
 													<label for="last_name">Alamat Lengkap</label>
 												</div>
 
 												<div class="input-field with-note">
 													<i class="mdi-communication-call prefix"></i>
-													<input id="noTelp" name="noTelp" type="tel" class="validate" placeholder="Nomor Telephon" value="<?php echo $noTelp;?>" onkeyup="validAngka(this)" maxlength="12">
+													<input id="noTelp" name="noTelp" type="tel" class="validate" placeholder="Nomor Telephon" value="<?php echo $noTelp;?>" onkeyup="validAngka(this)" maxlength="12" required>
 													<label for="skills">Nomor Telephon</label>
 													<small class="blue-text">** Isi hanya dengan Angka</small>
 												</div>
 												<div class="input-field with-note">
 													<i class="mdi-communication-email prefix"></i>
-													<input id="email" name="email" type="text" class="validate" value="<?php echo $email;?>">
+													<input id="email" name="email" type="text" class="validate" value="<?php echo $email;?>" required>
 													<label for="skills">Email</label>
 													<small class="blue-text">** Example : name@gmail.com</small>
 												</div>
@@ -79,6 +79,7 @@
 												<button type="submit" class="btn green"><i class="mdi-navigation-refresh left"></i>Save</button>
 											</div>
 										</div>
+										<input type="hidden" name="idAksesAdmin" value="<?php echo $this->session->userdata('id');?>">
 									</div>
 								</form>
 							</div>

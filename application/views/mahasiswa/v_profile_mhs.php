@@ -188,19 +188,19 @@
 	function cekform() {
 		if(!$("#pwdnow").val())
 		{	
-			swal("Curret Password!", "Curret Password tidak boleh kosong!", "success");
+			swal ( "Curret Password" ,  "Tidak Boleh Kosong!" ,  "error" );
 			$("#pwdnow").focus()
 			return false;
 		}
 		if(!$("#pwdnew").val())
 		{	
-			swal("New Password!", "New Password tidak boleh kosong!", "success");
+			swal ( "New Password" ,  "Tidak Boleh Kosong!" ,  "error" );
 			$("#pwdnew").focus()
 			return false;
 		}
 		if(!$("#retypepwd").val())
 		{	
-			swal("Re-type New Password!", "Re-type New Password tidak boleh kosong!", "success");
+			swal ( "Re-type Password" ,  "Tidak Boleh Kosong!" ,  "error" );
 			$("#retypepwd").focus()
 			return false;
 		}
