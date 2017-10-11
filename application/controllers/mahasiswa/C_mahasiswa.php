@@ -72,9 +72,13 @@ public function profile()
       'emailAktif'      => $cek->emailAktif
       ); 
   }else{
+    
+    $sub_kalimat = substr($key,0,2);
+    $s = 2000;
+    $tahun = $s+$sub_kalimat;
     $data =array(
-      'angkatan'    => "",
-      'nimMhs'      => "",
+      'angkatan'    => $tahun,
+      'nimMhs'      => $key,
       'fotoMhs'     => "",
       'namaLengkap' => "",
       'tempatLahir' => "",

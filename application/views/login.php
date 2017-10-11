@@ -92,14 +92,6 @@
                 <!-- <input type="hidden" name="status" value="<?php echo $stat?>"> -->
               </div>
             </div>
-            <div class="row">
-              <div class="col s6">
-                <p class="margin medium-small"><a href="#">Register Now!</a></p>
-              </div>
-              <div class="col s6">
-                <p class="margin right-align medium-small"><a href="#">Forgot password?</a></p>
-              </div>
-            </div>
           </div>
         </form>
       </div>

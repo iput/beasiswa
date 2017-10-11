@@ -132,7 +132,9 @@ public function pengaturan()
 {
   $nim = $this->session->userdata('username');
   $id = $this->input->post('idPengaturan');
-  if ($id != null) {
+  $dataMhs = $this->mod->getdataMhs_byId($nim);
+  $nama = $dataMhs->namaLengkap;
+  if ($nama != null) {
     $dataMhs = $this->mod->getdataMhs_byId($nim);
     $data = array(
       'idBea' => $id,
@@ -147,23 +149,7 @@ public function pengaturan()
       'noTelp' => $dataMhs->noTelp
       );
   }else {
-    $data = array(
-      'idSetBea' => "",
-      'nama' => "",
-      'penyelenggara' => "",
-      'selektor' => "",
-      'keterangan' => "",
-      'dibuka' => "",
-      'ditutup' => "",
-      'kuota' => "",
-      'skor' => null,
-      'nim' => "",
-      'nama' => "",
-      'tempatLahir' => "",
-      'tglLahir' => "",
-      'asalKota' => "",
-      'noTelp' => ""
-      );
+    redirect('mahasiswa/C_mahasiswa/profile');
   }
   $this->load->view('mahasiswa/formulir', $data);
   
@@ -187,23 +173,7 @@ public function pengaturanDaerah()
                 'noTelp' => $dataMhs->noTelp
             );
         }else {
-            $data = array(
-                'idSetBea' => "",
-                'nama' => "",
-                'penyelenggara' => "",
-                'selektor' => "",
-                'keterangan' => "",
-                'dibuka' => "",
-                'ditutup' => "",
-                'kuota' => "",
-                'skor' => null,
-                'nim' => "",
-                'nama' => "",
-                'tempatLahir' => "",
-                'tglLahir' => "",
-                'asalKota' => "",
-                'noTelp' => ""
-            );
+            redirect('mahasiswa/C_mahasiswa/profile');
         }
 
         $this->load->view('mahasiswa/formulirDaerah', $data);

@@ -117,6 +117,9 @@
                       <i class="mdi-action-book prefix"></i>
                       <input name="ipk" id="username" type="text" class="validate" required>
                       <label for="username" class="center-align">IPK</label>
+                      <small class="blue-text"><p>** Diharapkan menggunakan tanda . (Titik) bukan koma (,)</p>
+                                        <p>* Contoh IPK : 3.75</p>
+                                        </small>
                     </div>
                   </div>
                   <div class="row">
