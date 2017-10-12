@@ -43,7 +43,7 @@
 													</div>						
 												</div>
 												<div class="col s12">
-													<div class="input-field">
+													<div class="input-field with-note">
 														<!-- <select class="form-control" name="idLevel" id="levelPengguna">
 															<option <?=($dataLevel=='1')?'selected="selected"':''?>>Staff Kemahasiswaan</option>
 															<option <?=($dataLevel=='2')?'selected="selected"':''?>>Kasubag</option>
@@ -58,7 +58,9 @@
 																<option value="<?php echo $row->id ?>"><?php echo $row->namaFk; ?></option>
 															<?php endforeach ?>
 														</select>
+														
 														<label for="levelPengguna">Mengampu Fakultas</label>
+														<small class="red-text"><b>** <?php echo $id;?> **</b></small>
 													</div>
 												</div>
 												<div class="col s12">
