@@ -50,7 +50,8 @@ class C_profileKasubagFk extends CI_Controller
 						'nama' 		=> $this->input->post('nama'),
 						'alamat' 	=> $this->input->post('alamat'),
 						'noTelp' 	=> $this->input->post('noTelp'),
-						'email' 	=> $this->input->post('email')
+						'email' 	=> $this->input->post('email'),
+						'idFakultas'=> $this->input->post('fakAmpu')
 						);
 
 					$row = $this->db->where('id',$key)->get('profil_admin')->row();
@@ -72,11 +73,12 @@ class C_profileKasubagFk extends CI_Controller
 					'nama' 			=> $this->input->post('nama'),
 					'alamat' 		=> $this->input->post('alamat'),
 					'noTelp' 		=> $this->input->post('noTelp'),
-					'email' 		=> $this->input->post('email')
+					'email' 		=> $this->input->post('email'),
+					'idFakultas' 	=> $this->input->post('fakAmpu')
 					);
 
 				$this->model->getupdate($key,$data);
-				$this->session->set_flashdata("pesan", "<div class=\"card-panel success col s12 m4 l6\">Data Berhasil Disimpan OK2</div>");
+				$this->session->set_flashdata("pesan", "<div class=\"card-panel success col s12 m4 l6\">Data Berhasil Disimpan</div>");
 				redirect('kasubag_fakultas/C_kasubagfk/profile');
 			}
 		}else{
@@ -103,7 +105,8 @@ class C_profileKasubagFk extends CI_Controller
 						'alamat' 	=> $this->input->post('alamat'),
 						'noTelp' 	=> $this->input->post('noTelp'),
 						'email' 	=> $this->input->post('email'),
-						'idAkses' 	=> $this->input->post('idAksesAdmin')
+						'idAkses' 	=> $this->input->post('idAksesAdmin'),
+						'idFakultas' 	=> $this->input->post('fakAmpu')
 						);
 
 					$this->model->getInsert($data); 
@@ -121,7 +124,8 @@ class C_profileKasubagFk extends CI_Controller
 					'alamat' 		=> $this->input->post('alamat'),
 					'noTelp' 		=> $this->input->post('noTelp'),
 					'email' 		=> $this->input->post('email'),
-					'idAkses' 		=> $this->input->post('idAksesAdmin')
+					'idAkses' 		=> $this->input->post('idAksesAdmin'),
+					'idFakultas' 	=> $this->input->post('fakAmpu')
 					);
 				$this->model->getInsert($data); 
 				$this->session->set_flashdata("pesan", "<div class=\"card-panel success col s12 m4 l6\">Data Berhasil Disimpan Database</div>");

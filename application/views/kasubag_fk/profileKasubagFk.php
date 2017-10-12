@@ -44,6 +44,25 @@
 												</div>
 												<div class="col s12">
 													<div class="input-field">
+														<!-- <select class="form-control" name="idLevel" id="levelPengguna">
+															<option <?=($dataLevel=='1')?'selected="selected"':''?>>Staff Kemahasiswaan</option>
+															<option <?=($dataLevel=='2')?'selected="selected"':''?>>Kasubag</option>
+															<option <?=($dataLevel=='3')?'selected="selected"':''?>>Kasubag Fakultas</option>
+															<option <?=($dataLevel=='4')?'selected="selected"':''?>>Kabag</option>
+															<option <?=($dataLevel=='5')?'selected="selected"':''?>>Mahasiswa</option>
+															<option <?=($dataLevel=='6')?'selected="selected"':''?>>Admin</option>
+														</select> -->
+														<select name="fakAmpu" id="fakAmpu">
+															<option value="" disabled selected>Fakultas</option>
+															<?php foreach ($dataFak as $row): ?>
+																<option value="<?php echo $row->id ?>"><?php echo $row->namaFk; ?></option>
+															<?php endforeach ?>
+														</select>
+														<label for="levelPengguna">Mengampu Fakultas</label>
+													</div>
+												</div>
+												<div class="col s12">
+													<div class="input-field">
 														<i class="mdi-action-account-box prefix"></i>
 														<input name="nama" id="nama" type="tel" class="validate" placeholder="Nama" value="<?php echo $nama;?>" required>
 														<label for="phone">Nama</label>

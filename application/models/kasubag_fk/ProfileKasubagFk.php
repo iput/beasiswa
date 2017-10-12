@@ -28,6 +28,23 @@ class ProfileKasubagFk extends CI_Model {
 		$query = $this->db->get();
 		return $query->row();
 	}
+	public function getFakultas()
+	{
+		$data = $this->db->query("SELECT * from fakultas order by id asc");
+		if ($data) {
+			return $data->result();
+		}else{
+			return false;
+		}
+	}
+	public function get_by_id($id)
+	{
+		$this->db->from('akses');
+		$this->db->where('id', $id);
+		$query = $this->db->get();
+
+		return $query->row();
+	}
 
 	var $table='akses';
 	public function getProfile($user,$pass){

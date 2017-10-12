@@ -32,13 +32,16 @@ class C_kasubagfk extends CI_Controller
       $fk = $this->mdl->getdata($user)->idFakultas;
       if ($fk != null) {
         $data=array(
-          'id'   => $this->mdl->getFak($fk)->namaFk,
-          'foto'    => $cek->foto,
-          'idpr'    => $cek->id,
-          'nama'    => $cek->nama,
-          'alamat'  => $cek->alamat,
-          'noTelp'  => $cek->noTelp,
-          'email'   => $cek->email
+          'id'        => $this->mdl->getFak($fk)->namaFk,
+          'foto'      => $cek->foto,
+          'idpr'      => $cek->id,
+          'nama'      => $cek->nama,
+          'alamat'    => $cek->alamat,
+          'noTelp'    => $cek->noTelp,
+          'email'     => $cek->email,
+          'dataLevel' => $this->mdl->get_by_id($user)->idLevel,
+          'Fkk'       => $user,
+          'dataFak'   => $this->mdl->getFakultas()
           );
       }else{
         $data=array(
@@ -48,7 +51,10 @@ class C_kasubagfk extends CI_Controller
           'nama'    => "",
           'alamat'  => "",
           'noTelp'  => "",
-          'email'   => ""
+          'email'   => "",
+          'dataLevel' =>"",
+          'Fkk'       => "",
+          'dataFak'   => $this->mdl->getFakultas()
           );
       }
     }
@@ -61,7 +67,10 @@ class C_kasubagfk extends CI_Controller
         'nama'    => "",
         'alamat'  => "",
         'noTelp'  => "",
-        'email'   => ""
+        'email'   => "",
+        'dataLevel' =>"",
+        'Fkk'       => "",
+        'dataFak'   => $this->mdl->getFakultas()
         );
     }
 
