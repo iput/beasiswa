@@ -60,6 +60,27 @@
 														<input name="namaMhs" id="namaMhs" type="tel" class="validate" placeholder="Nama Mahasiswa" value="<?php echo $namaLengkap;?>" required>
 														<label for="phone">Nama Mahasiswa</label>
 													</div>
+													<div class="row">
+														<div class="col m1">
+															<i class="mdi-maps-local-library prefix" style="font-size: 2em;"></i>
+														</div>
+														<div class="col m11">
+															<select name="jurusan" id="jurusan" required>
+																<option value="" disabled selected>-Pilihan Jurusan</option>
+																<?php
+																foreach ($comboJurusan as $jur) {
+																	if ($idJrs==$jur->id) {
+																		$selek = 'selected';
+																	}else{
+																		$selek = '';
+																	}
+																	echo '<option value="'.$jur->id.'" '.$selek.'>'.$jur->namaJur.'</option>';
+																}
+																?>
+															</select>
+															<label>Jurusan</label>
+														</div>
+													</div>
 
 													<div class="input-field">
 														<i class="mdi-social-location-city prefix"></i>
@@ -185,24 +206,24 @@
 		}
 	</script>
 	<script type="text/javascript">
-	function cekform() {
-		if(!$("#pwdnow").val())
-		{	
-			swal ( "Curret Password" ,  "Tidak Boleh Kosong!" ,  "error" );
-			$("#pwdnow").focus()
-			return false;
+		function cekform() {
+			if(!$("#pwdnow").val())
+			{	
+				swal ( "Curret Password" ,  "Tidak Boleh Kosong!" ,  "error" );
+				$("#pwdnow").focus()
+				return false;
+			}
+			if(!$("#pwdnew").val())
+			{	
+				swal ( "New Password" ,  "Tidak Boleh Kosong!" ,  "error" );
+				$("#pwdnew").focus()
+				return false;
+			}
+			if(!$("#retypepwd").val())
+			{	
+				swal ( "Re-type Password" ,  "Tidak Boleh Kosong!" ,  "error" );
+				$("#retypepwd").focus()
+				return false;
+			}
 		}
-		if(!$("#pwdnew").val())
-		{	
-			swal ( "New Password" ,  "Tidak Boleh Kosong!" ,  "error" );
-			$("#pwdnew").focus()
-			return false;
-		}
-		if(!$("#retypepwd").val())
-		{	
-			swal ( "Re-type Password" ,  "Tidak Boleh Kosong!" ,  "error" );
-			$("#retypepwd").focus()
-			return false;
-		}
-	}
-</script>
+	</script>

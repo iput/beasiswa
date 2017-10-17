@@ -5,16 +5,25 @@ class Formulir extends CI_Model {
 
   function data_pendaftar($id)
   { // query binding ditandai dengan "?" untuk security
-  $query = $this->db->query('SELECT pendaftar.idBea as idbea,jurusan.namaJur as jurusan,pendaftar.nim as pendaftarnim,identitas_mhs.namaLengkap as namalengkap,bea.namaBeasiswa as namabea,pendaftar.semester as semester,pendaftar.sks as sks,pendaftar.ipk as ipk,pendaftar.alamatMalang as alamatmalang,identitas_mhs.alamatLengkap as alamatlengkap,identitas_mhs.noTelp as telp,identitas_mhs.tempatLahir as tempatLahir,identitas_mhs.tglLahir as tgl FROM pendaftar,bea,identitas_mhs,jurusan WHERE bea.id = pendaftar.idBea AND pendaftar.id = "'.$id.'" AND pendaftar.nim=identitas_mhs.nimMhs AND jurusan.id = identitas_mhs.idJrs');
+  
 
+  $sql = '
+  SELECT pendaftar.id, pendaftar.idBea as idbea,jurusan.namaJur as jurusan,pendaftar.nim as pendaftarnim,identitas_mhs.namaLengkap as namalengkap,bea.namaBeasiswa as namabea,pendaftar.semester as semester,pendaftar.sks as sks,pendaftar.ipk as ipk,pendaftar.alamatMalang as alamatmalang,identitas_mhs.alamatLengkap as alamatlengkap,identitas_mhs.noTelp as telp,identitas_mhs.tempatLahir as tempatLahir,identitas_mhs.tglLahir as tgl FROM pendaftar
+  LEFT JOIN bea ON pendaftar.idBea=bea.id
+  LEFT JOIN identitas_mhs ON pendaftar.nim=identitas_mhs.nimMhs
+  LEFT JOIN jurusan ON identitas_mhs.idJrs=jurusan.id
+  WHERE pendaftar.id = "'.$id.'"
+  ';
+
+  $res = $this->db->query($sql);
     // $this->db->select('pendaftar.idBea as idbea,jurusan.namaJur as jurusan,pendaftar.nim as pendaftarnim,identitas_mhs.namaLengkap as namalengkap,bea.namaBeasiswa as namabea,pendaftar.semester as semester,pendaftar.sks as sks,pendaftar.ipk as ipk,pendaftar.alamatMalang as alamatmalang,identitas_mhs.alamatLengkap as alamatlengkap,identitas_mhs.noTelp as telp,identitas_mhs.tempatLahir as tempatLahir,identitas_mhs.tglLahir as tgl');
     // $this->db->from('pendaftar,bea,identitas_mhs,jurusan');
     // $this->db->where('bea.id = pendaftar.idBea')AND('pendaftar.id = "0"')AND('pendaftar.nim=identitas_mhs.nimMhs AND jurusan.id = identitas_mhs.idJrs');
     // $query = $this->db->get();
     // mengembalikan hasil query
-  return $query->row();
+  return $res->row();
 
-  $query = null;
+  // $query = null;
 
   unset($id);
 

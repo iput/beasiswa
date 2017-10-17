@@ -10,6 +10,7 @@ class C_profileMhs extends CI_Controller
 		$this->load->library('Loginauth');
 		$this->loginauth->view_page();
 		$this->load->model("mahasiswa/Profile",'model');
+		
 		$this->load->library('upload');
 		$this->load->helper(array('url'));
 	}
@@ -56,7 +57,8 @@ class C_profileMhs extends CI_Controller
 						'propinsiOrtu' 	=> $this->input->post('provinsiOrtu'),
 						'alamatLengkap'	=> $this->input->post('alamat'),
 						'emailAktif' 	=> $this->input->post('email'),
-						'noTelp'		=> $this->input->post('noTelp')
+						'noTelp'		=> $this->input->post('noTelp'),
+						'idJrs'		=> $this->input->post('jurusan')
 						);
 
 					$row = $this->db->where('nimMhs',$key)->get('identitas_mhs')->row();
@@ -86,6 +88,7 @@ class C_profileMhs extends CI_Controller
 				$data['alamatLengkap'] = $this->input->post('alamat');
 				$data['emailAktif'] = $this->input->post('email');
 				$data['noTelp'] = $this->input->post('noTelp');
+				$data['idJrs'] = $this->input->post('jurusan');
 
 				$this->model->getupdate($key,$data);
 				$this->session->set_flashdata("pesan", "<div class=\"card-panel success col s12 m4 l6\">Data Berhasil Disimpan</div>");
@@ -97,7 +100,7 @@ class C_profileMhs extends CI_Controller
 			$config['upload_path'] = './assets/img/profile/';
 			$config['allowed_types'] = 'jpg|png|jpeg|bmp|gif';
 			$config['max_size'] = '100'; 
-			$config['max_width']  = '900';
+			$config['max_wi th']  = '900';
 			$config['max_height']  = '900';
 			$config['file_name'] = $nmfile;
 
@@ -123,7 +126,8 @@ class C_profileMhs extends CI_Controller
 						'alamatLengkap'	=> $this->input->post('alamat'),
 						'emailAktif' 	=> $this->input->post('email'),
 						'noTelp'		=> $this->input->post('noTelp'),
-						'idAkses'		=> $this->input->post('idAksesMhs')
+						'idAkses'		=> $this->input->post('idAksesMhs'),
+						'idJrs'		=> $this->input->post('jurusan')
 						);
 
 					$this->model->getInsert($data); 
@@ -149,7 +153,8 @@ class C_profileMhs extends CI_Controller
 					'alamatLengkap'	=> $this->input->post('alamat'),
 					'emailAktif' 	=> $this->input->post('email'),
 					'noTelp'		=> $this->input->post('noTelp'),
-					'idAkses'		=> $this->input->post('idAksesMhs')
+					'idAkses'		=> $this->input->post('idAksesMhs'),
+					'idJrs'		=> $this->input->post('jurusan')
 					);
 				$this->model->getInsert($data); 
 				$this->session->set_flashdata("pesan", "<div class=\"card-panel success col s12 m4 l6\">Data Berhasil Disimpan Database</div>");

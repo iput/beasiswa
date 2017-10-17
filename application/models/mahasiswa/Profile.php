@@ -15,6 +15,13 @@ class Profile extends CI_Model {
 		return $query->row();
 	}
 
+	public function get_jurusan()
+	{
+		$sql = 'SELECT * FROM `jurusan`';
+		$res = $this->db->query($sql);
+		return $res->result();
+	}
+
 	public function getupdate($key,$data)
 	{
 		$this->db->where('nimMhs',$key);

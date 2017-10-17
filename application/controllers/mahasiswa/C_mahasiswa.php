@@ -28,6 +28,9 @@ class C_mahasiswa extends CI_Controller
   $data['kategori'] = $this->m_aplikasi->data_kategori($id);
 
 
+  // echo json_encode($data['pendaftar']);
+
+
   $this->load->view('mahasiswa/buktipendaftaran',$data);
   unset($data);
 }
@@ -69,7 +72,9 @@ public function profile()
       'propinsiOrtu'    => $cek->propinsiOrtu,
       'alamatLengkap'   => $cek->alamatLengkap,
       'noTelp'          => $cek->noTelp,
-      'emailAktif'      => $cek->emailAktif
+      'emailAktif'      => $cek->emailAktif,
+      'idJrs'      => $cek->idJrs,
+      'comboJurusan' => $this->mdl->get_jurusan()
       ); 
   }else{
     
@@ -90,9 +95,12 @@ public function profile()
       'propinsiOrtu'    => "",
       'alamatLengkap'   => "",
       'noTelp'          => "",
-      'emailAktif'      => ""
+      'emailAktif'      => "",
+      'idJrs'      => "",
+      'comboJurusan' => $this->mdl->get_jurusan()
       ); 
   }
+
   $this->load->view('attribute/header_mhs');
   $this->load->view('mahasiswa/v_profile_mhs',$data);
   $this->load->view('attribute/footer');
