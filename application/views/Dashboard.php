@@ -138,7 +138,7 @@
                     $hai;
                     $contractDateBegin = $r->beasiswaDibuka;
                     $contractDateEnd  = $r->beasiswaTutup;
-                    if (($paymentDate > $contractDateBegin) && ($paymentDate < $contractDateEnd))
+                    if (($paymentDate >= $contractDateBegin) && ($paymentDate <= $contractDateEnd))
                     {
                     $hai ="<a class='waves-effect waves-light btn blue center md-trigger' >Pendaftaran Dibuka</a>";
                     }

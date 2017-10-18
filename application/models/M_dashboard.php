@@ -6,8 +6,8 @@ class M_dashboard extends CI_Model
 
 
 
-{	parent::__construct();
-}
+    {	parent::__construct();
+    }
 
 
     private $table = 'bea';
@@ -19,48 +19,60 @@ class M_dashboard extends CI_Model
     {	$query = $this->db->query("SELECT namaBeasiswa,penyelenggaraBea,beasiswadibuka,beasiswatutup,statusbeasiswa,kuota FROM bea LIMIT 4");
 
         // mengembalikan hasil query
-        return $query->result();
+    return $query->result();
 
         // menghapus query dari memory
-        $query = null;
-    }
-    function daftar_berita()
-    {	$query = $this->db->query("SELECT idBerita, judulBerita,topikBerita,penulisBerita,kontenBerita,tglInBerita FROM berita");
+    $query = null;
+}
+function daftar_berita()
+{	$query = $this->db->query("SELECT idBerita, judulBerita,topikBerita,penulisBerita,kontenBerita,tglInBerita FROM berita");
 
         // mengembalikan hasil query
-        return $query->result();
+return $query->result();
 
         // menghapus query dari memory
-        $query = null;
-    }
+$query = null;
+}
 
-    public function detailBerita($id) {
-        $data = $this->db->query("select * from berita where idBerita=?", array($id));
-        if ($data) {
-            return $data;
-        } else {
-            return false;
-        }
-        unset($data);
+public function detailBerita($id) {
+    $data = $this->db->query("select * from berita where idBerita=?", array($id));
+    if ($data) {
+        return $data;
+    } else {
+        return false;
     }
-    function user_limit($limit, $start = 0) {
-        $this->db->order_by($this->pk, 'DESC');
-        $this->db->limit($limit, $start);
-        return $this->db->get($this->table);
-    }
-    function user_limit2($limit, $start = 0) {
-        $this->db->order_by($this->pk2, 'DESC');
-        $this->db->limit($limit, $start);
-        return $this->db->get($this->table2);
-    }
-    function total_record() {
-        $this->db->from($this->table);
-        return $this->db->count_all_results();
-    }
-    function total_record2() {
-        $this->db->from($this->table2);
-        return $this->db->count_all_results();
-    }
+    unset($data);
+}
+function get_bea_aktif()
+{
+   $sql = '
+   SELECT bea.*, CURRENT_DATE() tanggalSekarang
+   FROM `bea`
+   WHERE CURRENT_DATE() <= bea.periodeBerakhir
+   ';
+   $res = $this->db->query($sql);
+   return $res->result();
+}
+function user_limit($limit, $start = 0) {
+    $this->db->order_by($this->pk, 'DESC');
+    $this->db->limit($limit, $start);
+    return $this->db->get($this->table);
+}
+function user_limit2($limit, $start = 0) {
+    $this->db->order_by($this->pk2, 'DESC');
+    $this->db->limit($limit, $start);
+    return $this->db->get($this->table2);
+}
+function total_record() {
+
+    $this->db->from($this->table);
+    $this->db->where('CURRENT_DATE() <= bea.beasiswaTutup');
+    return $this->db->count_all_results();
+}
+function total_record2() {
+    $this->db->from($this->table2);
+    return $this->db->count_all_results();
+}
 
 
 }
