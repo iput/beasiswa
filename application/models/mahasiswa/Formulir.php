@@ -29,6 +29,7 @@ class Formulir extends CI_Model {
 
 
 }
+
 public function data_kategori($id)
 {
       $query = $this->db->query('SELECT kategori_skor.nama as skor,set_sub_kategori_skor.nama as nama FROM pendaftar_skor,kategori_skor,set_sub_kategori_skor WHERE pendaftar_skor.idPendaftar = "'.$id.'" AND pendaftar_skor.idKategori=kategori_skor.id AND set_sub_kategori_skor.id = pendaftar_skor.idSubKategori');
@@ -36,6 +37,13 @@ public function data_kategori($id)
      $query = null;
       unset($id);
 }
+    public function data_penyelenggara($id)
+    {
+        $query = $this->db->query('SELECT bea.penyelenggaraBea as penyelenggara FROM bea,pendaftar WHERE bea.id = pendaftar.idBea AND pendaftar.id = "'.$id.'"');
+        return $query->row();
+        $query = null;
+        unset($id);
+    }
 public function get_nama_bea($idBea)
 {
   $this->db->select('bea.id, bea.namaBeasiswa');

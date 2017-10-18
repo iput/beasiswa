@@ -109,12 +109,12 @@ define ('PDF_AUTHOR', 'TCPDF');
 /**
  * Header title.
  */
-define ('PDF_HEADER_TITLE', "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tUNIVERSITAS ISLAM NEGERI MAULANA MALIK IBRAHIM MALANG");
+define ('PDF_HEADER_TITLE', "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tKEMENTERIAN AGAMA");
 
 /**
  * Header description string.
  */
-define ('PDF_HEADER_STRING', "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tBAGIAN KEMAHASISWAAN UNIVERSITAS\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tJl. Gajayana 50, Malang 65144 Telepon 0341 569901, Faksimile 0341 569901");
+define ('PDF_HEADER_STRING', "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tUNIVERSITAS ISLAM NEGERI MAULANA MALIK IBRAHIM MALANG\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tBAGIAN KEMAHASISWAAN UNIVERSITAS\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tJl. Gajayana 50, Malang 65144 Telepon 0341 569901, Faksimile 0341 569901\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tWebsite: www.uin-malang.ac.id  Email :info@uin-malang.ac.id");
 
 /**
  * Document unit of measure [pt=point, mm=millimeter, cm=centimeter, in=inch].
@@ -124,7 +124,7 @@ define ('PDF_UNIT', 'mm');
 /**
  * Header margin.
  */
-define ('PDF_MARGIN_HEADER', 5);
+define ('PDF_MARGIN_HEADER', 3);
 
 /**
  * Footer margin.

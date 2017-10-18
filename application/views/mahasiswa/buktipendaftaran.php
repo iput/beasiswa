@@ -1,5 +1,18 @@
 <?php
-
+$bulan = array(
+    '01'=>'Januari',
+    '02'=>'Februari',
+    '03'=>'Maret',
+    '04'=>'April',
+    '05'=>'Mei',
+    '06'=>'Juni',
+    '07'=>'Juli',
+    '08'=>'Agustus',
+    '09'=>'September',
+    '10'=>'Oktober',
+    '11'=>'November',
+    '12'=>'Desember',
+);
 //============================================================+
 // File name   : example_001.php
 // Begin       : 2008-03-04
@@ -35,7 +48,7 @@ $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8',
 $pdf->SetCreator(PDF_CREATOR);
 $pdf->SetAuthor("$pendaftar->namalengkap");
 $pdf->SetTitle("$pendaftar->pendaftarnim\t$pendaftar->namabea");
-$pdf->SetSubject('TCPDF Tutorial');
+$pdf->SetSubject('Bukti Pendaftaran');
 $pdf->SetKeywords('TCPDF, PDF, example, test, guide');
 
 // set default header data
@@ -87,7 +100,7 @@ $pdf->setTextShadow(array('enabled' => true, 'depth_w' => 0.2, 'depth_h' => 0.2,
 // Set some content to print
 
 
-$html = '<h2 align="center">Bukti Formulir Pendaftaran beasiswa '.$pendaftar->namabea.' </h2>
+$html = '<h2 align="center">Bukti Formulir Pendaftaran Beasiswa '.$pendaftar->namabea.' </h2>
 <table>
 	
 		<tr><td>NIM </td><td>: '.$pendaftar->pendaftarnim.' </td> </tr>
@@ -119,7 +132,7 @@ $html2 =
 		<td></td>
 		<td></td>
 		<td></td>
-		<td>Malang, '.date("d-m-Y").'<br>Pendaftar</td>
+		<td>Malang, '.date("d").'-'.$bulan[date("m")].'-'.date("Y").'<br>Pemohon,</td>
 	</tr>
 	<tr>
 		<td></td>
@@ -134,7 +147,7 @@ $html2 =
 		<td></td>
 		<td></td>
 		<td></td>
-		<td>.................................<br>NIM. .......................</td>
+		<td>'.$pendaftar->namalengkap.'<br>NIM. '.$pendaftar->pendaftarnim.'</td>
 	</tr>
 </table>';
 $pdf->writeHTML($html2, true, false, true, false, '');

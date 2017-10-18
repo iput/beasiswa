@@ -37,7 +37,7 @@ class C_mahasiswa extends CI_Controller
 public function dataDaerah($id)
 {
   $data['pendaftar'] = $this->m_aplikasi->data_pendaftar($id);
-
+  $data['bead'] = $this->m_aplikasi->data_penyelenggara($id);
 
 
   $this->load->view('mahasiswa/buktiDaerah',$data);
