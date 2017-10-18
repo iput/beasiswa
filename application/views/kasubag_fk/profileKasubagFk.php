@@ -43,24 +43,26 @@
 													</div>						
 												</div>
 												<div class="col s12">
-													<div class="input-field with-note">
-														<!-- <select class="form-control" name="idLevel" id="levelPengguna">
-															<option <?=($dataLevel=='1')?'selected="selected"':''?>>Staff Kemahasiswaan</option>
-															<option <?=($dataLevel=='2')?'selected="selected"':''?>>Kasubag</option>
-															<option <?=($dataLevel=='3')?'selected="selected"':''?>>Kasubag Fakultas</option>
-															<option <?=($dataLevel=='4')?'selected="selected"':''?>>Kabag</option>
-															<option <?=($dataLevel=='5')?'selected="selected"':''?>>Mahasiswa</option>
-															<option <?=($dataLevel=='6')?'selected="selected"':''?>>Admin</option>
-														</select> -->
-														<select name="fakAmpu" id="fakAmpu">
-															<option value="" disabled selected>Fakultas</option>
-															<?php foreach ($dataFak as $row): ?>
-																<option value="<?php echo $row->id ?>"><?php echo $row->namaFk; ?></option>
-															<?php endforeach ?>
-														</select>
-														
-														<label for="levelPengguna">Mengampu Fakultas</label>
-														<small class="red-text"><b>** <?php echo $id;?> **</b></small>
+													<div class="row">
+														<div class="col m1">
+															<i class="mdi-maps-local-library prefix" style="font-size: 2em;"></i>
+														</div>
+														<div class="col m11">
+															<select name="fakAmpu" id="fakAmpu" required>
+																<option value="" disabled selected>-Pilihan Fakultas</option>
+																<?php
+																foreach ($dataFak as $fk) {
+																	if ($Fkk==$fk->id) {
+																		$select = 'selected';
+																	}else{
+																		$select = '';
+																	}
+																	echo '<option value="'.$fk->id.'" '.$select.'>'.$fk->namaFk.'</option>';
+																}
+																?>
+															</select>
+															<label for="levelPengguna">Mengampu Fakultas</label>
+														</div>
 													</div>
 												</div>
 												<div class="col s12">

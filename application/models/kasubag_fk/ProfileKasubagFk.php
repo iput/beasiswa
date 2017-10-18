@@ -30,12 +30,9 @@ class ProfileKasubagFk extends CI_Model {
 	}
 	public function getFakultas()
 	{
-		$data = $this->db->query("SELECT * from fakultas order by id asc");
-		if ($data) {
-			return $data->result();
-		}else{
-			return false;
-		}
+		$sql = 'SELECT * FROM `fakultas`';
+		$res = $this->db->query($sql);
+		return $res->result();
 	}
 	public function get_by_id($id)
 	{

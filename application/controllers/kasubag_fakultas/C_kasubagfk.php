@@ -40,7 +40,7 @@ class C_kasubagfk extends CI_Controller
           'noTelp'    => $cek->noTelp,
           'email'     => $cek->email,
           'dataLevel' => $this->mdl->get_by_id($user)->idLevel,
-          'Fkk'       => $user,
+          'Fkk'       => $fk,
           'dataFak'   => $this->mdl->getFakultas()
           );
       }else{
