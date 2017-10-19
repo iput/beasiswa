@@ -46,7 +46,7 @@
 												: <span class="blue-text"><?php echo $nama; ?></span>
 											</div>
 											<div class="col m2 s4">
-												Ditutup Pada
+												Pendaftaran tutup
 											</div>
 											<div class="col m4 s8">
 												: <span class="blue-text"><?php echo $ditutup; ?></span>
@@ -73,6 +73,20 @@
 											<div class="col m4 s8">
 												: <span class="blue-text"><?php echo $kuota; ?></span>
 											</div>
+											<div class="col m2 s4">
+												Seleksi ditutup
+											</div>
+											<div class="col m4 s8">
+												: <span class="blue-text"><?php echo $seleksi_tutup; ?></span>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col m2 s4">
+												Pendaftaran buka
+											</div>
+											<div class="col m4 s8">
+												: <span class="blue-text"><?php echo $dibuka; ?></span>
+											</div>
 											<?php
 											$sel = "";
 											if ($selektor==1) {
@@ -93,14 +107,6 @@
 											</div>
 											<div class="col m4 s8">
 												: <span class="blue-text"><?php echo $sel.$nfk; ?></span>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col m2 s4">
-												Dibuka Pada
-											</div>
-											<div class="col m4 s8">
-												: <span class="blue-text"><?php echo $dibuka; ?></span>
 											</div>
 										</div>
 									</div>

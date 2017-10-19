@@ -46,6 +46,9 @@
                           Pendaftaran ditutup: <b>'.$b->beasiswaTutup.'</b> <hr>
                         </div>
                         <div class="">
+                          Seleksi ditutup: <b>'.$b->seleksiTutup.'</b> <hr>
+                        </div>
+                        <div class="">
                           Periode berakhir: <b>'.$b->periodeBerakhir.'</b> <hr>
                         </div>
                         <div class="">

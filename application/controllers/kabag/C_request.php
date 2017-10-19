@@ -73,6 +73,7 @@ class C_request extends CI_Controller
         'keterangan' => $detailBea->keterangan,
         'dibuka' => $detailBea->beasiswaDibuka,
         'ditutup' => $detailBea->beasiswaTutup,
+        'seleksi_tutup' => $detailBea->seleksiTutup,
         'periodeBerakhir' => $detailBea->periodeBerakhir,
         'kuota' => $detailBea->kuota,
         'namaFk' => $detailBea->namaFk,
