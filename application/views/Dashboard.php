@@ -313,7 +313,7 @@
                     <li><a href="https://twitter.com/uinmalikimalang" title="Twitter" target="_blank"><i class="ion-social-twitter waves-effect waves-light"></i></a></li>
                     <li><a href="#"><i class="ion-social-googleplus waves-effect waves-light"></i></a></li>
                 </ul>
-                <span class="copyrights">&copy; 2017. Made with <i class="ion-android-favorite"></i> Allright Reserved By GENBI UIN Maliki Malang Developer</span>
+                <span class="copyrights">&copy; 2017. Made with <i class="ion-android-favorite"></i> Allright Reserved By <a href="https://santridev.github.io" target="_blank">GENBI UIN Maliki Malang Developer</a></span>
                 </div>
             </div>
         </div>

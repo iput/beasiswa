@@ -23,6 +23,12 @@ $bulan = array(
     '11'=>'November',
     '12'=>'Desember',
 );
+$timestamp = $pendaftar->tgl;
+$arr = explode('-', $timestamp);
+$newDate = $arr[2].' '.$bulan[$arr[1]].' '.$arr[0];
+// $now = date('d m Y', $timestamp);
+
+
 //============================================================+
 // File name   : example_001.php
 // Begin       : 2008-03-04
@@ -110,19 +116,21 @@ $pdf->setTextShadow(array('enabled' => true, 'depth_w' => 0.2, 'depth_h' => 0.2,
 // Set some content to print
 
 
-$html = '<h3 align="center">PERMOHONAN<p style="text-transform: uppercase;">SURAT KETERANGAN '.$pendaftar->namabea.' '.date("Y").'</p></h3>
+$html = '<h3 style="text-align:center; text-transform:uppercase;">PERMOHONAN<br>SURAT KETERANGAN '.$pendaftar->namabea.' '.date("Y").'</h3>
 <table>
+        <tr><td></td><td></td></tr>
         <tr><td>Kepada Yth. Kabag.Kemahasiswaan dan Alumni </td><td> </td></tr>
-        <tr><td>Yang bertanda tangan dibawah ini </td><td>: </td> </tr>
+        <tr><td></td><td></td></tr>
+        <tr><td>Yang bertanda tangan dibawah ini:</td><td></td></tr>
         <tr><td></td><td></td></tr>
         <tr><td>NIM </td><td>: '.$pendaftar->pendaftarnim.' </td> </tr>
 		<tr><td>NAMA </td><td>: '.$pendaftar->namalengkap.'</td> </tr>
 		<tr><td>JURUSAN </td><td>: '.$pendaftar->jurusan.'</td> </tr>
 		<tr><td>SEMESTER </td><td>: '.$pendaftar->semester.'</td> </tr>
-		<tr><td>TTL </td><td>: '.$pendaftar->tempatLahir.', '.$pendaftar->tgl.'</td> </tr>
+		<tr><td>TTL </td><td>: '.$pendaftar->tempatLahir.', '.$newDate.'</td> </tr>
 		<tr><td>ALAMAT ASAL (sesuai KK)</td><td>: '.$pendaftar->alamatlengkap.'</td> </tr>
 		<tr><td>ALAMAT MALANG</td><td>: '.$pendaftar->alamatmalang.'</td> </tr>
-		<tr><td>TELP</td><td>: '.$pendaftar->telp.'</td></tr><ol><li>Saya terdaftar sebagai mahasiswa semester '.$angka.' tahun akademik '.date("Y").'/'.$nextyear.'</li><li>Saya memiliki Indek Prestasi Akademik <b>'.$pendaftar->ipk.'</b> dengan SKS yang terambil sebanyak <b>'.$pendaftar->sks.'</b></li><li>Saya belum pernah menerima beasiswa di tahun '.date("Y").' dari instansi manapun. </li></ol><br>Surat keterangan ini saya ajukan untuk dipergunakan sebagai persyaratan mengajukan :<br>Beasiswa <b>'.$bead->penyelenggara.'</b>.<br>Demikian surat permohonan ini dibuat untuk dipergunakan sebagaimana mestinya.
+		<tr><td>TELP</td><td>: '.$pendaftar->telp.'</td></tr><ol><li>Saya terdaftar sebagai mahasiswa semester '.$angka.' tahun akademik '.date("Y").'/'.$nextyear.'</li><li>Saya memiliki Indek Prestasi Akademik <b>'.$pendaftar->ipk.'</b> dengan SKS yang terambil sebanyak <b>'.$pendaftar->sks.'</b></li><li>Saya belum pernah menerima beasiswa di tahun '.date("Y").' dari instansi manapun. </li></ol><br><p align="justify">Surat keterangan ini saya ajukan untuk dipergunakan sebagai persyaratan mengajukan :<br>Beasiswa <b>'.$bead->penyelenggara.'</b><br>Demikian surat permohonan ini dibuat untuk dipergunakan sebagaimana mestinya.</p>
 ';
 
 
@@ -133,13 +141,12 @@ $html .='</table>';
 // output the HTML content
 $pdf->writeHTML($html, true, false, true, false, '');
 $html2 =
-    '<br><br><br><br><br><br><br><br><br><br><br>
+    '<br><br><br><br><br><br><br><br>
 <table cellspacing="3" cellpadding="4">
 	<tr>
 		<td></td>
 		<td></td>
-		<td></td>
-		<td>Malang, '.date("d").'-'.$bulan[date("m")].'-'.date("Y").'<br>Pemohon,</td>
+		<td>Malang, '.date("d").' '.$bulan[date("m")].' '.date("Y").'<br>Pemohon,</td>
 	</tr>
 	<tr>
 		<td></td>
@@ -148,10 +155,9 @@ $html2 =
 	</tr>
 	<tr>
 		<td></td>
-		
+
 	</tr>
 	<tr>
-		<td></td>
 		<td></td>
 		<td></td>
 		<td>'.$pendaftar->namalengkap.'<br>NIM. '.$pendaftar->pendaftarnim.'</td>
