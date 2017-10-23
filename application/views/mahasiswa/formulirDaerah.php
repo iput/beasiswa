@@ -39,148 +39,155 @@
 
 <body>
 
-<!-- Main Start -->
-<main class="valign-wrapper">
-    <div class="container valign">
+    <!-- Main Start -->
+    <main class="valign-wrapper">
+        <div class="container valign">
 
-        <!--  Tables Section-->
-        <div id="login" class="row">
-            <!-- <h1 class="thin">Login</h1> -->
-            <div class="col s12 m12 l12 card-panel">
-                <form class="login-form" method="post" action="<?php echo base_url(); ?>mahasiswa/C_formulir/simpan2">
-                    <div class="row primary-color form-header">
-                        <div class="col s2">
-                            <img src="<?php echo base_url('assets/img/favicon 64 uin.png')?>" alt="logo" class="logo responsive-img-height">
-                        </div>
-                        <div class="col s10 right-align">
-                            <h5 class="light white-text">Formulir Pendaftaran Beasiswa <span class="blue-text"> <?php echo $namaBea->namaBeasiswa; ?></span></h5>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col m6 s12">
-                            <div class="form-body">
-                                <div class="row">
-                                    <div class="input-field col s12">
-                                        <i class="mdi-action-lock-open prefix"></i>
-                                        <input name="nim" id="username" type="text" class="validate" value="<?php echo $nim;?>"readonly  required>
-                                        <label for="username" class="center-align">NIM</label>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="input-field col s12">
-                                        <i class="mdi-action-perm-identity prefix"></i>
-                                        <input id="email" name="nama" type="text" class="validate" value="<?php echo $nama;?>" required>
-                                        <label for="email" class="center-align">Nama Lengkap</label>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="input-field col s2 m2 l1">
-                                        <i class="mdi-action-label-outline prefix"></i>
-                                    </div>
-                                    <div class="input-field col s10 m10 l11">
-                                        <select name="jurusan" id="jurusan" required>
-                                            <option value="" disabled selected>-Pilihan Jurusan</option>
-                                            <?php
-                                            foreach ($jurusan as $jur) {
-                                                echo '<option value="'.$jur->id.'">'.$jur->namaJur.'</option>';
-                                            }
-                                            ?>
-                                        </select>
-                                        <label>Jurusan</label>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="input-field col s2 m2 l1">
-                                        <i class="mdi-action-turned-in-not prefix"></i>
-                                    </div>
-                                    <div class="input-field col s10 m10 l11">
-                                        <select name="semester" id="semester" required>
-                                            <option value="" disabled selected>-Pilihan Semester</option>
-                                            <?php
-                                            for ($i=1; $i < 15; $i++) {
-                                                echo '<option value="'.$i.'">'.$i.'</option>';
-                                            }
-                                            ?>
-                                        </select>
-                                        <label>Semester</label>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="input-field col s12">
-                                        <i class="mdi-action-assignment prefix"></i>
-                                        <input name="sks" id="sks" type="text" class="validate" required>
-                                        <label for="username" class="center-align">SKS</label>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="input-field col s12">
-                                        <i class="mdi-action-book prefix"></i>
-                                        <input name="ipk" id="username" type="text" class="validate" required>
-                                        <label for="username" class="center-align">IPK</label>
-                                        <small class="blue-text"><p>** Diharapkan menggunakan tanda . (Titik) bukan koma (,)</p>
-                                        <p>* Contoh IPK : 3.75</p>
-                                        </small>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="input-field col s12">
-                                        <i class="mdi-action-face-unlock prefix"></i>
-                                        <input name="tempatLahir" id="username" type="text" class="validate" value="<?php echo $tempatLahir;?>" required>
-                                        <label for="username" class="center-align">Tempat Lahir</label>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="input-field col s12">
-                                        <i class="mdi-action-event prefix"></i>
-                                        <input name="tglLahir" id="username" type="text" class="validate" value="<?php echo $tglLahir;?>" required>
-                                        <label for="username" class="center-align">Tanggal Lahir</label>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="input-field col s12">
-                                        <i class="mdi-action-home prefix"></i>
-                                        <input name="alamatAsal" id="username" type="text" class="validate" value="<?php echo $asalKota;?>" required>
-                                        <label for="username" class="center-align">Alamat Asal</label>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="input-field col s12">
-                                        <i class="mdi-action-markunread-mailbox prefix"></i>
-                                        <input name="alamatMalang" id="username" type="text" class="validate" required>
-                                        <label for="username" class="center-align">Alamat Malang</label>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="input-field col s12">
-                                        <i class="mdi-action-settings-cell prefix"></i>
-                                        <input name="noTelp" id="username" type="text" class="validate" value="<?php echo $noTelp;?>" required>
-                                        <label for="username" class="center-align">Nomor Telepon</label>
-                                    </div>
-                                </div>
+            <!--  Tables Section-->
+            <div id="login" class="row">
+                <!-- <h1 class="thin">Login</h1> -->
+                <div class="col s12 m12 l12 card-panel">
+                    <form class="login-form" method="post" action="<?php echo base_url(); ?>mahasiswa/C_formulir/simpan2">
+                        <div class="row primary-color form-header">
+                            <div class="col s2">
+                                <img src="<?php echo base_url('assets/img/favicon 64 uin.png')?>" alt="logo" class="logo responsive-img-height">
+                            </div>
+                            <div class="col s10 right-align">
+                                <h5 class="light white-text">Formulir Pendaftaran Beasiswa <span class="blue-text"> <?php echo $namaBea->namaBeasiswa; ?></span></h5>
                             </div>
                         </div>
-                        <div class="col m6 s12">
-                            <div class="form-body">
-
-
-                                <div class="row">
-                                    <small class="blue-text">
-                                        **Pastikan semua data yang anda masukkan adalah benar. <br>
-                                        **Dengan meng-klik "Daftar Sekarang", berarti anda telah menyetuji prasyarat dan ketentuan yang telah ditetapkan oleh Kemahasiswaan.
-                                    </small>
-                                    <div class="input-field col s12 right">
-                                        <button class="btn-large waves-effect waves-light col s12 blue" type="submit" name="action1" value="Update">Daftar Sekarang</button>
+                        <div class="row">
+                            <div class="col m6 s12">
+                                <div class="form-body">
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <i class="mdi-action-lock-open prefix"></i>
+                                            <input name="nim" id="username" type="text" class="validate" value="<?php echo $nim;?>"readonly  required>
+                                            <label for="username" class="center-align">NIM</label>
+                                        </div>
                                     </div>
-                                    <input name="idBea" id="idBea" type="hidden" class="validate" value="<?php echo $idBea?>">
-                                    <input name="tanggal" id="tanggal" type="hidden" value="<?php echo date("Y-m-d");?>">
-                                </div>
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <i class="mdi-action-perm-identity prefix"></i>
+                                            <input id="email" name="nama" type="text" class="validate" value="<?php echo $nama;?>" required>
+                                            <label for="email" class="center-align">Nama Lengkap</label>
+                                        </div>
+                                    </div>
+                                    <div class="col s12">
+                                        <div class="row">
+                                          <div class="col m1">
+                                            <i class="mdi-action-label-outline prefix" style="font-size: 2em;"></i>
+                                        </div>
+                                        <div class="col m11">
+                                            <select name="fakAmpu" id="fakAmpu" required>
+                                              <option value="" disabled selected>-Pilihan Jurusan</option>
+                                              <?php
+                                              foreach ($dataJur as $jr) {
+                                                if ($idJurus==$jr->id) {
+                                                  $select = 'selected';
+                                              }else{
+                                                  $select = '';
+                                              }
+                                              echo '<option value="'.$jr->id.'" '.$select.'>'.$jr->namaJur.'</option>';
+                                          }
+                                          ?>
+                                      </select>
+                                      <label for="levelPengguna">Mengampu Fakultas</label>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="row">
+                            <div class="input-field col s2 m2 l1">
+                                <i class="mdi-action-turned-in-not prefix"></i>
+                            </div>
+                            <div class="input-field col s10 m10 l11">
+                                <select name="semester" id="semester" required>
+                                    <option value="" disabled selected>-Pilihan Semester</option>
+                                    <?php
+                                    for ($i=1; $i < 15; $i++) {
+                                        echo '<option value="'.$i.'">'.$i.'</option>';
+                                    }
+                                    ?>
+                                </select>
+                                <label>Semester</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <i class="mdi-action-assignment prefix"></i>
+                                <input name="sks" id="sks" type="text" class="validate" required>
+                                <label for="username" class="center-align">SKS</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <i class="mdi-action-book prefix"></i>
+                                <input name="ipk" id="username" type="text" class="validate" required>
+                                <label for="username" class="center-align">IPK</label>
+                                <small class="blue-text"><p>** Diharapkan menggunakan tanda . (Titik) bukan koma (,)</p>
+                                    <p>* Contoh IPK : 3.75</p>
+                                </small>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <i class="mdi-action-face-unlock prefix"></i>
+                                <input name="tempatLahir" id="username" type="text" class="validate" value="<?php echo $tempatLahir;?>" required>
+                                <label for="username" class="center-align">Tempat Lahir</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <i class="mdi-action-event prefix"></i>
+                                <input name="tglLahir" id="username" type="text" class="validate" value="<?php echo $tglLahir;?>" required>
+                                <label for="username" class="center-align">Tanggal Lahir</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <i class="mdi-action-home prefix"></i>
+                                <input name="alamatAsal" id="username" type="text" class="validate" value="<?php echo $asalKota;?>" required>
+                                <label for="username" class="center-align">Alamat Asal</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <i class="mdi-action-markunread-mailbox prefix"></i>
+                                <input name="alamatMalang" id="username" type="text" class="validate" required>
+                                <label for="username" class="center-align">Alamat Malang</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <i class="mdi-action-settings-cell prefix"></i>
+                                <input name="noTelp" id="username" type="text" class="validate" value="<?php echo $noTelp;?>" required>
+                                <label for="username" class="center-align">Nomor Telepon</label>
                             </div>
                         </div>
                     </div>
-                </form>
+                </div>
+                <div class="col m6 s12">
+                    <div class="form-body">
+
+
+                        <div class="row">
+                            <small class="blue-text">
+                                **Pastikan semua data yang anda masukkan adalah benar. <br>
+                                **Dengan meng-klik "Daftar Sekarang", berarti anda telah menyetuji prasyarat dan ketentuan yang telah ditetapkan oleh Kemahasiswaan.
+                            </small>
+                            <div class="input-field col s12 right">
+                                <button class="btn-large waves-effect waves-light col s12 blue" type="submit" name="action1" value="Update">Daftar Sekarang</button>
+                            </div>
+                            <input name="idBea" id="idBea" type="hidden" class="validate" value="<?php echo $idBea?>">
+                            <input name="tanggal" id="tanggal" type="hidden" value="<?php echo date("Y-m-d");?>">
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div><!-- container end -->
+        </form>
+    </div>
+</div>
+</div><!-- container end -->
 
 </main>
 <!-- Main End -->

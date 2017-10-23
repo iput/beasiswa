@@ -145,7 +145,9 @@ public function pengaturan()
       'tempatLahir' => $dataMhs->tempatLahir,
       'tglLahir' => $dataMhs->tglLahir,
       'asalKota' => $dataMhs->asalKota,
-      'noTelp' => $dataMhs->noTelp
+      'noTelp' => $dataMhs->noTelp,
+      'idJurus' => $dataMhs->idJrs,
+      'dataJur'   => $this->mdl->getJurusan()
       );
   }else {
     redirect('mahasiswa/C_mahasiswa/profile');
@@ -154,30 +156,32 @@ public function pengaturan()
   
 }
 public function pengaturanDaerah()
-    {
-        $nim = $this->session->userdata('username');
-        $id = $this->input->post('idPengaturan');
-        if ($id != null) {
-            $dataMhs = $this->mod->getdataMhs_byId($nim);
-            $data = array(
-                'idBea' => $id,
-                'namaBea' => $this->mod->get_nama_bea($id),
-                'combo' => $this->mod->get_skor_bea($id),
-                'jurusan' => $this->mod->get_jurusan(),
-                'nim' => $dataMhs->nimMhs,
-                'nama' => $dataMhs->namaLengkap,
-                'tempatLahir' => $dataMhs->tempatLahir,
-                'tglLahir' => $dataMhs->tglLahir,
-                'asalKota' => $dataMhs->asalKota,
-                'noTelp' => $dataMhs->noTelp
-            );
-        }else {
-            redirect('mahasiswa/C_mahasiswa/profile');
-        }
+{
+  $nim = $this->session->userdata('username');
+  $id = $this->input->post('idPengaturan');
+  if ($id != null) {
+    $dataMhs = $this->mod->getdataMhs_byId($nim);
+    $data = array(
+      'idBea' => $id,
+      'namaBea' => $this->mod->get_nama_bea($id),
+      'combo' => $this->mod->get_skor_bea($id),
+      'jurusan' => $this->mod->get_jurusan(),
+      'nim' => $dataMhs->nimMhs,
+      'nama' => $dataMhs->namaLengkap,
+      'tempatLahir' => $dataMhs->tempatLahir,
+      'tglLahir' => $dataMhs->tglLahir,
+      'asalKota' => $dataMhs->asalKota,
+      'noTelp' => $dataMhs->noTelp,
+      'idJurus' => $dataMhs->idJrs,
+      'dataJur'   => $this->mdl->getJurusan()
+      );
+  }else {
+    redirect('mahasiswa/C_mahasiswa/profile');
+  }
 
-        $this->load->view('mahasiswa/formulirDaerah', $data);
+  $this->load->view('mahasiswa/formulirDaerah', $data);
 //        $this->load->view('attribute/footer');
-    }
+}
 public function datatable(){
   $fetch_data = $this->mdl->make_datatables();
   $data = array();
@@ -199,13 +203,13 @@ public function datatable(){
     $alamat2 = null;
     if ($ceknim == null) {
 
-        if ($row->namaBeasiswa == "Beasiswa Putra Daerah"){
-            $alamat = base_url('mahasiswa/C_daftar_bea/pengaturanDaerah');
+      if ($row->namaBeasiswa == "Beasiswa Putra Daerah"){
+        $alamat = base_url('mahasiswa/C_daftar_bea/pengaturanDaerah');
 
-        }else{
-            $alamat = base_url('mahasiswa/C_daftar_bea/pengaturan');
+      }else{
+        $alamat = base_url('mahasiswa/C_daftar_bea/pengaturan');
 
-        }
+      }
 
       $sub_array[] = '
       <form action="'.$alamat.'" method="post">
@@ -213,13 +217,13 @@ public function datatable(){
       </form>
       ';
     }else{
-        if ($row->namaBeasiswa == "Beasiswa Putra Daerah"){
+      if ($row->namaBeasiswa == "Beasiswa Putra Daerah"){
 
-            $alamat2 = base_url('mahasiswa/C_mahasiswa/dataDaerah/'.$getId->id);
-        }else{
+        $alamat2 = base_url('mahasiswa/C_mahasiswa/dataDaerah/'.$getId->id);
+      }else{
 
-            $alamat2 = base_url('mahasiswa/C_mahasiswa/data_pendaftar/'.$getId->id);
-        }
+        $alamat2 = base_url('mahasiswa/C_mahasiswa/data_pendaftar/'.$getId->id);
+      }
       $sub_array[] = '
       <a href="'.$alamat2.'" class="btn-floating waves-effect waves-light primary-color z-depth-0" title="Daftar"><i class="mdi-action-print"></i></a>
       

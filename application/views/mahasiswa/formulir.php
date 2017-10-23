@@ -19,22 +19,22 @@
   <!-- Assistance.css are used only for template support. No need to use it on "production" -->
   <link href="<?php echo base_url('assets/css/assistance.css')?>" type="text/css" rel="stylesheet" media="screen">
   <style type="text/css">
-  html,
-  body{
-    height: 100%;
-  }
-  main {
-    padding: 0 !important;
-  }
-  .form-header {
-    padding: 12px 24px 12px 12px;
-  }
-  .form-header .col{
-    height:64px;
-  }
-  .form-body {
-    padding: 12px 24px;
-  }
+    html,
+    body{
+      height: 100%;
+    }
+    main {
+      padding: 0 !important;
+    }
+    .form-header {
+      padding: 12px 24px 12px 12px;
+    }
+    .form-header .col{
+      height:64px;
+    }
+    .form-body {
+      padding: 12px 24px;
+    }
   </style>
 </head>
 
@@ -74,20 +74,27 @@
                       <label for="email" class="center-align">Nama Lengkap</label>
                     </div>
                   </div>
-                  <div class="row">
-                    <div class="input-field col s2 m2 l1">
-                      <i class="mdi-action-label-outline prefix"></i>
-                    </div>
-                    <div class="input-field col s10 m10 l11">
-                      <select name="jurusan" id="jurusan" required>
-                        <option value="" disabled selected>-Pilihan Jurusan</option>
-                        <?php
-                          foreach ($jurusan as $jur) {
-                            echo '<option value="'.$jur->id.'">'.$jur->namaJur.'</option>';
+                  <div class="col s12">
+                    <div class="row">
+                      <div class="col m1">
+                        <i class="mdi-action-label-outline prefix" style="font-size: 2em;"></i>
+                      </div>
+                      <div class="col m11">
+                        <select name="fakAmpu" id="fakAmpu" required>
+                          <option value="" disabled selected>-Pilihan Jurusan</option>
+                          <?php
+                          foreach ($dataJur as $jr) {
+                            if ($idJurus==$jr->id) {
+                              $select = 'selected';
+                            }else{
+                              $select = '';
+                            }
+                            echo '<option value="'.$jr->id.'" '.$select.'>'.$jr->namaJur.'</option>';
                           }
-                         ?>
-                      </select>
-                      <label>Jurusan</label>
+                          ?>
+                        </select>
+                        <label for="levelPengguna">Mengampu Fakultas</label>
+                      </div>
                     </div>
                   </div>
                   <div class="row">
@@ -119,8 +126,8 @@
                       <input name="ipk" id="username" type="text" class="validate" required>
                       <label for="username" class="center-align">IPK</label>
                       <small class="blue-text"><p>** Diharapkan menggunakan tanda . (Titik) bukan koma (,)</p>
-                                        <p>* Contoh IPK : 3.75</p>
-                                        </small>
+                        <p>* Contoh IPK : 3.75</p>
+                      </small>
                     </div>
                   </div>
                   <div class="row">
@@ -164,30 +171,30 @@
                 <div class="form-body">
 
                  <?php
-                    echo $combo;
-                   ?> 
+                 echo $combo;
+                 ?> 
 
-                  <div class="row">
-                    <small class="blue-text">
-                      **Pastikan semua data yang anda masukkan adalah benar. <br>
-                      **Dengan meng-klik "Daftar Sekarang", berarti anda telah menyetuji prasyarat dan ketentuan yang telah ditetapkan oleh Kemahasiswaan.
-                    </small>
-                    <div class="input-field col s12 right">
-                      <button class="btn-large waves-effect waves-light col s12 blue" type="submit" name="action1" value="Update">Daftar Sekarang</button>
-                    </div>
-                    <input name="idBea" id="idBea" type="hidden" class="validate" value="<?php echo $idBea?>">
-                    <input name="tanggal" id="tanggal" type="hidden" value="<?php echo date("Y-m-d");?>">
+                 <div class="row">
+                  <small class="blue-text">
+                    **Pastikan semua data yang anda masukkan adalah benar. <br>
+                    **Dengan meng-klik "Daftar Sekarang", berarti anda telah menyetuji prasyarat dan ketentuan yang telah ditetapkan oleh Kemahasiswaan.
+                  </small>
+                  <div class="input-field col s12 right">
+                    <button class="btn-large waves-effect waves-light col s12 blue" type="submit" name="action1" value="Update">Daftar Sekarang</button>
                   </div>
+                  <input name="idBea" id="idBea" type="hidden" class="validate" value="<?php echo $idBea?>">
+                  <input name="tanggal" id="tanggal" type="hidden" value="<?php echo date("Y-m-d");?>">
                 </div>
               </div>
             </div>
-          </form>
-        </div>
+          </div>
+        </form>
       </div>
-    </div><!-- container end -->
+    </div>
+  </div><!-- container end -->
 
-  </main>
-  <!-- Main End -->
+</main>
+<!-- Main End -->
 
   <!-- -------------------------------------------------+
   Template Scripts

@@ -231,4 +231,10 @@ if ($query) {
   return false;
 }
 }
+public function getJurusan()
+{
+  $sql = 'SELECT * FROM `jurusan`';
+  $res = $this->db->query($sql);
+  return $res->result();
+}
 }
