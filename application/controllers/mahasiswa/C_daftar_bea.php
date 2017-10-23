@@ -156,9 +156,10 @@ public function pengaturan()
 public function pengaturanDaerah()
     {
         $nim = $this->session->userdata('username');
-        $id = $this->input->post('idPengaturan');
-        if ($id != null) {
-            $dataMhs = $this->mod->getdataMhs_byId($nim);
+  $id = $this->input->post('idPengaturan');
+  $dataMhs = $this->mdl->cekNimMhs($nim);
+  if ($dataMhs != 0) {
+      $dataMhs = $this->mod->getdataMhs_byId($nim);
             $data = array(
                 'idBea' => $id,
                 'namaBea' => $this->mod->get_nama_bea($id),

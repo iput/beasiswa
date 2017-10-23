@@ -119,7 +119,7 @@ $pdf->setTextShadow(array('enabled' => true, 'depth_w' => 0.2, 'depth_h' => 0.2,
 $html = '<h3 style="text-align:center; text-transform:uppercase;">PERMOHONAN<br>SURAT KETERANGAN '.$pendaftar->namabea.' '.date("Y").'</h3>
 <table>
         <tr><td></td><td></td></tr>
-        <tr><td>Kepada Yth. Kabag.Kemahasiswaan dan Alumni </td><td> </td></tr>
+        <tr><td>Kepada Yth. <b>Kabag.Kemahasiswaan dan Alumni</b> </td><td> </td></tr>
         <tr><td></td><td></td></tr>
         <tr><td>Yang bertanda tangan dibawah ini:</td><td></td></tr>
         <tr><td></td><td></td></tr>
@@ -130,7 +130,7 @@ $html = '<h3 style="text-align:center; text-transform:uppercase;">PERMOHONAN<br>
 		<tr><td>TTL </td><td>: '.$pendaftar->tempatLahir.', '.$newDate.'</td> </tr>
 		<tr><td>ALAMAT ASAL (sesuai KK)</td><td>: '.$pendaftar->alamatlengkap.'</td> </tr>
 		<tr><td>ALAMAT MALANG</td><td>: '.$pendaftar->alamatmalang.'</td> </tr>
-		<tr><td>TELP</td><td>: '.$pendaftar->telp.'</td></tr><ol><li>Saya terdaftar sebagai mahasiswa semester '.$angka.' tahun akademik '.date("Y").'/'.$nextyear.'</li><li>Saya memiliki Indek Prestasi Akademik <b>'.$pendaftar->ipk.'</b> dengan SKS yang terambil sebanyak <b>'.$pendaftar->sks.'</b></li><li>Saya belum pernah menerima beasiswa di tahun '.date("Y").' dari instansi manapun. </li></ol><br><p align="justify">Surat keterangan ini saya ajukan untuk dipergunakan sebagai persyaratan mengajukan :<br>Beasiswa <b>'.$bead->penyelenggara.'</b><br>Demikian surat permohonan ini dibuat untuk dipergunakan sebagaimana mestinya.</p>
+		<tr><td>TELP</td><td>: '.$pendaftar->telp.'</td></tr><ol><li>Saya terdaftar sebagai mahasiswa semester '.$angka.' tahun akademik '.date("Y").'/'.$nextyear.'</li><li>Saya memiliki Indek Prestasi Akademik <b>'.$pendaftar->ipk.'</b> dengan SKS yang terambil sebanyak <b>'.$pendaftar->sks.'</b></li><li>Saya belum pernah menerima beasiswa di tahun '.date("Y").' dari instansi manapun. </li></ol><br><p align="justify">Surat keterangan ini saya ajukan untuk dipergunakan sebagai persyaratan mengajukan <br>Beasiswa <b>'.$bead->penyelenggara.'</b><br>Demikian surat permohonan ini dibuat untuk dipergunakan sebagaimana mestinya.</p>
 ';
 
 
