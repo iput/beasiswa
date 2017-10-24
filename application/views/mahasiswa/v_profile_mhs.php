@@ -65,7 +65,8 @@
 															<i class="mdi-maps-local-library prefix" style="font-size: 2em;"></i>
 														</div>
 														<div class="col m11">
-															<select name="jurusan" id="jurusan" required>
+														<label>Jurusan</label>
+															<select name="jurusan" id="jurusan" class="browser-default" required> 
 																<option value="" disabled selected>-Pilihan Jurusan</option>
 																<?php
 																foreach ($comboJurusan as $jur) {
@@ -78,7 +79,7 @@
 																}
 																?>
 															</select>
-															<label>Jurusan</label>
+															
 														</div>
 													</div>
 

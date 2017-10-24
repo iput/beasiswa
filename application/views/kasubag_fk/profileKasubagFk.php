@@ -48,7 +48,8 @@
 															<i class="mdi-maps-local-library prefix" style="font-size: 2em;"></i>
 														</div>
 														<div class="col m11">
-															<select name="fakAmpu" id="fakAmpu" required>
+														<label>Mengampu Fakultas</label>
+															<select class="browser-default"  name="fakAmpu" id="fakAmpu" required>
 																<option value="" disabled selected>-Pilihan Fakultas</option>
 																<?php
 																foreach ($dataFak as $fk) {
@@ -61,7 +62,7 @@
 																}
 																?>
 															</select>
-															<label for="levelPengguna">Mengampu Fakultas</label>
+															
 														</div>
 													</div>
 												</div>

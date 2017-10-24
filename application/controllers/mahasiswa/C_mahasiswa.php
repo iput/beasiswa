@@ -147,6 +147,7 @@ public function datatable(){
     $sub_array[] = $row->namaFk;
     $sub_array[] = $row->namaJur;
     $sub_array[] = $row->namaBeasiswa;
+    $sub_array[] = $row->penyelenggaraBea;
     $sub_array[] = $row->tahun;
     $data[] = $sub_array;
   }
@@ -181,6 +182,7 @@ public function datatableStatus(){
     $sub_array[] = $row->namaFk;
     $sub_array[] = $row->namaJur;
     $sub_array[] = $row->namaBeasiswa;
+    $sub_array[] = $row->penyelenggaraBea;
     $date        = $row->periodeBerakhir;
     $date       = date('d F Y', strtotime($date));
     $date1        = $row->beasiswaDibuka;

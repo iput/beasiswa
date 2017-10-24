@@ -9,7 +9,7 @@ class PengumumanPenerimaBeasiswa extends CI_Model {
 	
 
 	var $table = "pendaftar";
-	var $select_column = array("pendaftar.nim", "identitas_mhs.namaLengkap", "jurusan.namaJur", "fakultas.namaFk", "bea.namaBeasiswa", "YEAR(bea.beasiswaDibuka) tahun");
+	var $select_column = array("pendaftar.nim", "identitas_mhs.namaLengkap", "jurusan.namaJur", "fakultas.namaFk", "bea.namaBeasiswa","bea.	penyelenggaraBea" ,"YEAR(bea.beasiswaDibuka) tahun");
 	var $order_column = array("pendaftar.nim", "identitas_mhs.namaLengkap", "jurusan.namaJur", "fakultas.namaFk", "bea.namaBeasiswa", null);
 	var $column_search = array("pendaftar.nim", "identitas_mhs.namaLengkap", "jurusan.namaJur", "fakultas.namaFk", "bea.namaBeasiswa");
 

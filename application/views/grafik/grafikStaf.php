@@ -18,7 +18,7 @@
           ?>
           <div class="col m6">
             <font size="4pt" class="blue-text">Pilih periode beasiswa: </font><br>
-            <select class="" name="pilih_tahun" id="pilih_tahun" onChange="refresh_chart()">
+            <select class="browser-default" name="pilih_tahun" id="pilih_tahun" onChange="refresh_chart()">
               <option value="kosong">-Pilih Tahun</option>
               <?php
               foreach ($tahun as $th) {

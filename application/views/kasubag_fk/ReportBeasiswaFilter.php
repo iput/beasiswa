@@ -7,7 +7,7 @@
           <div class="row">
             <div class="col s3">
               <label>tahun</label>
-              <select name="tahun" id="tahun" onChange="viewTabel()">
+              <select class="browser-default"  name="tahun" id="tahun" onChange="viewTabel()">
                 <option value="" disabled selected>Pilih Tahun</option>
                 <?php
                 foreach ($tahun as $row) {
@@ -18,7 +18,7 @@
               </div>
               <div class="col s3">
                 <label>Fakultas</label>
-                <select name="fakultas" id="fakultas" onChange="viewTabel()">
+                <select class="browser-default"  name="fakultas" id="fakultas" onChange="viewTabel()">
                   <option value="" disabled selected>Pilih Fakultas</option>
                   <?php foreach ($fakultas as $rowFK): ?>
                     <option value="<?php echo $rowFK['id'] ?>"><?php echo $rowFK['namaFk'] ?></option>
@@ -27,13 +27,13 @@
               </div>
               <div class="col s3">
                 <label>jurusan</label>
-                <select name="jurusan" id="jurusan" onChange="viewTabel()">
+                <select class="browser-default"  name="jurusan" id="jurusan" onChange="viewTabel()">
                   <option value="" disabled selected>Pilih Jurusan</option>
                 </select>
               </div>
               <div class="col s3">
                 <label>Jenis Beasiswa</label>
-                <select name="beasiswa" id="beasiswa" onChange="viewTabel()">
+                <select class="browser-default"  name="beasiswa" id="beasiswa" onChange="viewTabel()">
                   <option value="" disabled selected>Pilih beasiswa</option>
                   <?php foreach ($beasiswa as $rowsBea): ?>
                     <option value="<?php echo $rowsBea['id'] ?>"><?php echo $rowsBea['namaBeasiswa'] ?></option>
@@ -54,6 +54,7 @@
                 <td data-field="fakultas">Fakultas</td>
                 <td data-field="jurusan">Jurusan</td>
                 <td data-field="beasiswa">Jenis Beasiswa</td>
+                <th data-field="penyelenggara">Penyelenggara</th>
                 <td data-field="angkatan">Tahun</td>
               </tr>
             </thead>

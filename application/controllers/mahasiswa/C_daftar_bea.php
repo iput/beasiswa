@@ -122,6 +122,7 @@ public function pengaturan()
   $nim = $this->session->userdata('username');
   $id = $this->input->post('idPengaturan');
   $dataMhs = $this->mdl->cekNimMhs($nim);
+  $getIdJur = $this->mod->getdataMhs_byId($nim)->idJrs;
   if ($dataMhs != 0) {
     $dataMhs = $this->mod->getdataMhs_byId($nim);
     $data = array(
@@ -136,7 +137,8 @@ public function pengaturan()
       'asalKota' => $dataMhs->asalKota,
       'noTelp' => $dataMhs->noTelp,
       'idJurus' => $dataMhs->idJrs,
-      'dataJur'   => $this->mdl->getJurusan()
+      'dataJur'   => $this->mdl->getJurusan(),
+      'namaJurusan' => $this->mod->getNamaJurusan($getIdJur)->namaJur
       );
   }else {
     redirect('mahasiswa/C_mahasiswa/profile');
@@ -149,6 +151,7 @@ public function pengaturanDaerah()
   $nim = $this->session->userdata('username');
   $id = $this->input->post('idPengaturan');
   $dataMhs = $this->mdl->cekNimMhs($nim);
+  $getIdJur = $this->mod->getdataMhs_byId($nim)->idJrs;
   if ($dataMhs != 0) {
     $dataMhs = $this->mod->getdataMhs_byId($nim);
     $data = array(
@@ -163,7 +166,8 @@ public function pengaturanDaerah()
       'asalKota' => $dataMhs->asalKota,
       'noTelp' => $dataMhs->noTelp,
       'idJurus' => $dataMhs->idJrs,
-      'dataJur'   => $this->mdl->getJurusan()
+      'dataJur'   => $this->mdl->getJurusan(),
+      'namaJurusan' => $this->mod->getNamaJurusan($getIdJur)->namaJur
       );
   }else {
     redirect('mahasiswa/C_mahasiswa/profile');

@@ -9,8 +9,9 @@
             <div class="row">
               <div class="card-panel">
                 <div class="row">                        
-                  <div class="input-field col s3">
-                    <select id="tahun" name="tahun" onChange="viewTabel()">
+                  <div class="  col s3">
+                    <label>Tahun</label>
+                    <select class="browser-default"  id="tahun" name="tahun" onChange="viewTabel()">
                       <option value="" disabled selected>Pilih Tahun</option>
                       <?php
                       foreach ($tahun as $row) {
@@ -18,10 +19,11 @@
                         <option value="<?php echo $row->tahun;?>"><?php echo $row->tahun;?></option>
                         <?php }?>
                       </select>
-                      <label>Tahun</label>
+                      
                     </div>
-                    <div class="input-field col s3">
-                      <select id="fakultas" name="fakultas" onChange="viewTabel()">
+                    <div class="  col s3">
+                      <label>Fakultas</label>
+                      <select class="browser-default"  id="fakultas" name="fakultas" onChange="viewTabel()">
                         <option value="" disabled selected>Fakultas</option>
                         <?php
                         foreach ($fakultas as $row) {
@@ -29,16 +31,18 @@
                           <option value="<?php echo $row->id;?>"><?php echo $row->namaFk;?></option>
                           <?php }?>
                         </select> 
-                        <label>Fakultas</label>                   
+                                           
                       </div>
-                      <div class="input-field col s3" id="comboJurusan">
-                        <select id="jurusan" name="jurusan" onChange="viewTabel()">
+                      <div class="  col s3" id="comboJurusan">
+                        <label>Jurusan</label>
+                        <select class="browser-default"  id="jurusan" name="jurusan" onChange="viewTabel()">
                           <option value="">Pilihlah Jurusan</option>
                         </select>
-                        <label>Jurusan</label>
+                        
                       </div>
-                      <div class="input-field col s3">
-                        <select id="beasiswa" name="beasiswa" onChange="viewTabel()">
+                      <div class="  col s3">
+                      <label>Nama Beasiswa</label>
+                        <select class="browser-default"  id="beasiswa" name="beasiswa" onChange="viewTabel()">
                           <option value="" disabled selected>Beasiswa</option>
                           <?php
                           foreach ($beasiswa as $row) {
@@ -46,7 +50,6 @@
                             <option value="<?php echo $row->id;?>"><?php echo $row->namaBeasiswa;?></option>
                             <?php }?>
                           </select>
-                          <label>Nama Beasiswa</label>
                         </div>
                       </div>
                     </div>
@@ -65,6 +68,7 @@
                         <th data-field="fakultas">Fakultas</th>
                         <th data-field="jurusan">Jurusan</th>
                         <th data-field="beasiswa">Beasiswa</th>
+                        <th data-field="Penyelenggara">Penyelenggara</th>
                         <th data-field="update">Tahun</th>
                       </tr>
                     </thead>

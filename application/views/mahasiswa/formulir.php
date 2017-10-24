@@ -74,27 +74,11 @@
                       <label for="email" class="center-align">Nama Lengkap</label>
                     </div>
                   </div>
-                  <div class="col s12">
-                    <div class="row">
-                      <div class="col m1">
-                        <i class="mdi-action-label-outline prefix" style="font-size: 2em;"></i>
-                      </div>
-                      <div class="col m11">
-                        <select name="fakAmpu" id="fakAmpu" required>
-                          <option value="" disabled selected>-Pilihan Jurusan</option>
-                          <?php
-                          foreach ($dataJur as $jr) {
-                            if ($idJurus==$jr->id) {
-                              $select = 'selected';
-                            }else{
-                              $select = '';
-                            }
-                            echo '<option value="'.$jr->id.'" '.$select.'>'.$jr->namaJur.'</option>';
-                          }
-                          ?>
-                        </select>
-                        <label for="levelPengguna">Mengampu Fakultas</label>
-                      </div>
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <i class="mdi-action-perm-identity prefix"></i>
+                      <input id="email" name="nama" type="text" class="validate" value="<?php echo $namaJurusan;?>" readonly>
+                      <label for="email" class="center-align">Jurusan</label>
                     </div>
                   </div>
                   <div class="row">

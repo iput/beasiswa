@@ -54,6 +54,7 @@
                 <th>Fakultas</th>
                 <th>Jurusan</th>
                 <th>Jenis Beasiswa</th>
+                <td>Penyelenggara</td>
                 <th>Tahun</th>
               </tr>
             </thead>
@@ -67,6 +68,7 @@
               <td><?php echo $data->namaFk?></td>
               <td><?php echo $data->namaJur?></td>
               <td><?php echo $data->namaBeasiswa?></td>
+              <td><?php echo $data->penyelenggaraBea?></td>
               <td><?php echo $data->angkatan?></td>
               </tr>
               <?php endforeach; ?>

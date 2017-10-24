@@ -8,7 +8,7 @@ defined('BASEPATH')OR exit('no direct script access allowed');
 class ReportBeasiswa extends CI_Model {
 
     var $table = "pendaftar";
-    var $select_column = array("pendaftar.nim", "identitas_mhs.namaLengkap","YEAR(bea.beasiswaDibuka) tahun", "jurusan.namaJur", "fakultas.namaFk", "bea.namaBeasiswa");
+    var $select_column = array("pendaftar.nim", "identitas_mhs.namaLengkap","YEAR(bea.beasiswaDibuka) tahun", "jurusan.namaJur", "fakultas.namaFk", "bea.penyelenggaraBea","bea.namaBeasiswa");
     var $order_column = array("pendaftar.nim", "identitas_mhs.namaLengkap", "jurusan.namaJur", "fakultas.namaFk", "bea.namaBeasiswa", "YEAR(bea.beasiswaDibuka) tahun");
     var $column_search = array("pendaftar.nim", "identitas_mhs.namaLengkap", "jurusan.namaJur", "fakultas.namaFk", "bea.namaBeasiswa");
 

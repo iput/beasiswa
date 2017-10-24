@@ -169,6 +169,7 @@ class C_kasubagfk extends CI_Controller
       $sub_array[] = $row->namaFk;
       $sub_array[] = $row->namaJur;
       $sub_array[] = $row->namaBeasiswa;
+      $sub_array[] = $row->penyelenggaraBea;
       $sub_array[] = $row->tahun;
       $data[] = $sub_array;
     }
@@ -197,6 +198,7 @@ class C_kasubagfk extends CI_Controller
       $sub_array[] = $row->namaFk;
       $sub_array[] = $row->namaJur;
       $sub_array[] = $row->namaBeasiswa;
+      $sub_array[] = $row->penyelenggaraBea;
       $sub_array[] = $row->tahun;
       $data[] = $sub_array;
     }

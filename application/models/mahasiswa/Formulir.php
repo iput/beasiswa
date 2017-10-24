@@ -145,6 +145,13 @@ public function get_jurusan()
   $res = $this->db->get()->result();
   return $res;
 }
+public function getNamaJurusan($id)
+  {
+    $this->db->from('jurusan');
+    $this->db->where('jurusan.id',$id);
+    $query = $this->db->get();
+    return $query->row();
+  }
 
 public function FunctionName()
 {

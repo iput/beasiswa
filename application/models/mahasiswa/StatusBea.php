@@ -8,7 +8,7 @@ class StatusBea extends CI_Model {
 	}
 
 	var $table = "pendaftar";
-	var $select_column = array("pendaftar.nim", "identitas_mhs.namaLengkap", "jurusan.namaJur", "fakultas.namaFk", "bea.namaBeasiswa","bea.periodeBerakhir", "bea.beasiswaDibuka");
+	var $select_column = array("pendaftar.nim", "identitas_mhs.namaLengkap", "jurusan.namaJur", "fakultas.namaFk", "bea.namaBeasiswa","bea.periodeBerakhir","bea.penyelenggaraBea", "bea.beasiswaDibuka");
 	var $order_column = array("pendaftar.nim", "identitas_mhs.namaLengkap", "jurusan.namaJur", "fakultas.namaFk", "bea.namaBeasiswa","bea.periodeBerakhir", null);
 	var $column_search = array("pendaftar.nim", "identitas_mhs.namaLengkap", "jurusan.namaJur", "fakultas.namaFk", "bea.namaBeasiswa","bea.periodeBerakhir","bea.beasiswaDibuka");
 
