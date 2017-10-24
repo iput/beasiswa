@@ -57,7 +57,7 @@
 													</div>
 													<div class="input-field">
 														<i class="mdi-action-account-box prefix"></i>
-														<input name="namaMhs" id="namaMhs" type="tel" class="validate" placeholder="Nama Mahasiswa" value="<?php echo $namaLengkap;?>" required>
+														<input name="namaMhs" id="namaMhs" type="text" class="validate" placeholder="Nama Mahasiswa" value="<?php echo $namaLengkap;?>" required>
 														<label for="phone">Nama Mahasiswa</label>
 													</div>
 													<div class="row">
@@ -103,23 +103,23 @@
 											<div class="col s12 m6 l6">
 												<div class="input-field">
 													<i class="mdi-social-group prefix"></i>
-													<input id="namaOrtu" name="namaOrtu" type="text" class="validate" placeholder="Nama Orang Tua" value="<?php echo $namaOrtu;?>" required>
-													<label for="first_name">Nama Orang Tua</label>
+													<input id="namaOrtu" name="namaOrtu" type="text" class="validate" placeholder="Nama Ayah" value="<?php echo $namaOrtu;?>" required>
+													<label for="first_name">Nama Ayah</label>
 												</div>
 												<div class="input-field">
 													<i class="mdi-action-home prefix"></i>
-													<input id="alamatOrtu" name="alamatOrtu" type="text" class="validate" placeholder="Alamat Orang Tua" value="<?php echo $alamatOrtu;?>" required>
-													<label for="last_name">Alamat Orang Tua</label>
+													<input id="alamatOrtu" name="alamatOrtu" type="text" class="validate" placeholder="Alamat Orang Ayah" value="<?php echo $alamatOrtu;?>" required>
+													<label for="last_name">Alamat Ayah</label>
 												</div>
 												<div class="input-field">
 													<i class="mdi-communication-location-on prefix"></i>
-													<input id="kotaOrtu" name="kotaOrtu" type="tel" class="validate" placeholder="Kota Orang Tua" value="<?php echo $kotaOrtu;?>" required>
-													<label for="phone">Kota Orang Tua</label>
+													<input id="kotaOrtu" name="kotaOrtu" type="text" class="validate" placeholder="Kota Orang Tua" value="<?php echo $kotaOrtu;?>" required>
+													<label for="phone">Kota Ayah</label>
 												</div>
 												<div class="input-field">
 													<i class="mdi-communication-location-off prefix"></i>
 													<input id="provinsiOrtu" name="provinsiOrtu" type="text" class="validate" placeholder="Provinsi Orang Tua" value="<?php echo $propinsiOrtu;?>" required>
-													<label for="last_name">Provinsi Orang Tua</label>
+													<label for="last_name">Provinsi Ayah</label>
 												</div>
 												<div class="input-field">
 													<i class="mdi-action-home prefix"></i>

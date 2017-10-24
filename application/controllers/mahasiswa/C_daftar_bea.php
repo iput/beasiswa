@@ -1,7 +1,6 @@
 <?php defined('BASEPATH')OR exit('tidak ada akses diizinkan');
 class C_daftar_bea extends CI_Controller
 {
-
   function __construct()
   {
     parent::__construct();
@@ -14,15 +13,12 @@ class C_daftar_bea extends CI_Controller
 /*  public function index()
   {
     $nim  = $this->session->userdata('username');
-
     //mengecek apakah mhs dg nim ada di database(count)
     $pendaftar    = $this->mdl->ceknimPendaftar($nim);
     $penerima_bea = $this->mdl->ceknimPenerimaBea($nim);
-
     //ambil value dari database
     $pendaftarr   = $this->mdl->get_pendaftar($nim);
     $penerima     = $this->mdl->get_penerimaBea($nim);
-
     if ($pendaftar != 0){
       $status     = $pendaftarr->status;
       $nimPendaf  = $pendaftarr->nim;
@@ -48,11 +44,9 @@ class C_daftar_bea extends CI_Controller
     $this->pendafBea();
   }
 }*/
-
 public function index()
 {
   $pendaftar = $this->mdl->ceknimPendaftarBea();
-
   if (!$pendaftar) {
     $this->pendafBea();
   }elseif($pendaftar){
@@ -63,7 +57,6 @@ public function index()
         $nimDiterima=1;
       }
     }
-
     if ($nimDiterima=1) {
       $this->statusDiterimaBea();
     }else{
@@ -73,18 +66,15 @@ public function index()
     $this->pendafBea();
   }
 }
-
 public function pendafBea()
 {
   $this->load->view('attribute/header_mhs');
   $this->load->view('mahasiswa/daftar_bea');
   $this->load->view('attribute/footer');
 }
-
 public function statusDiterimaBea(){
   $pendaftar = $this->mdl->ceknimPendaftarBea2();
   $date = date("Y-m-d");
-
   if($pendaftar) {
     if ($pendaftar->status == 1) {
       if ($pendaftar->periodeBerakhir >=$date) {
@@ -127,7 +117,6 @@ public function statusDiterimaBea(){
   $this->load->view('mahasiswa/statusDiterimaBea',$data);
   $this->load->view('attribute/footer');
 }
-
 public function pengaturan()
 {
   $nim = $this->session->userdata('username');
@@ -159,7 +148,8 @@ public function pengaturanDaerah()
 {
   $nim = $this->session->userdata('username');
   $id = $this->input->post('idPengaturan');
-  if ($id != null) {
+  $dataMhs = $this->mdl->cekNimMhs($nim);
+  if ($dataMhs != 0) {
     $dataMhs = $this->mod->getdataMhs_byId($nim);
     $data = array(
       'idBea' => $id,
@@ -178,7 +168,6 @@ public function pengaturanDaerah()
   }else {
     redirect('mahasiswa/C_mahasiswa/profile');
   }
-
   $this->load->view('mahasiswa/formulirDaerah', $data);
 //        $this->load->view('attribute/footer');
 }
@@ -195,22 +184,17 @@ public function datatable(){
     $sub_array[] = $row->penyelenggaraBea;
     $sub_array[] = $row->beasiswaDibuka;
     $sub_array[] = $row->beasiswaTutup;
-
     $nim = $this->session->userdata('username');
     $getId = $this->mdl->get_id($nim,$row->id);
     $ceknim = $row->nim;
     $alamat = null;
     $alamat2 = null;
     if ($ceknim == null) {
-
       if ($row->namaBeasiswa == "Beasiswa Putra Daerah"){
         $alamat = base_url('mahasiswa/C_daftar_bea/pengaturanDaerah');
-
       }else{
         $alamat = base_url('mahasiswa/C_daftar_bea/pengaturan');
-
       }
-
       $sub_array[] = '
       <form action="'.$alamat.'" method="post">
         <button class="btn-floating waves-effect waves-light red" title="Daftar" type="submit" name="idPengaturan" value="'.$row->id.'"><i class="mdi-action-account-balance-wallet"></i></button>
@@ -218,10 +202,8 @@ public function datatable(){
       ';
     }else{
       if ($row->namaBeasiswa == "Beasiswa Putra Daerah"){
-
         $alamat2 = base_url('mahasiswa/C_mahasiswa/dataDaerah/'.$getId->id);
       }else{
-
         $alamat2 = base_url('mahasiswa/C_mahasiswa/data_pendaftar/'.$getId->id);
       }
       $sub_array[] = '
@@ -229,7 +211,6 @@ public function datatable(){
       
       ';
     }
-
     $data[] = $sub_array;
   }
   $output = array(
@@ -240,13 +221,11 @@ public function datatable(){
     );
   echo json_encode($output);
 }
-
 public function get_scoring_data()
 {
   $data = $this->mdl->get_scoring();
   echo json_encode($data);
 }
-
 public function add_data()
 {
   $data_bea = array(
@@ -258,7 +237,6 @@ public function add_data()
     'selektor' => $this->input->post('selektor')
     );
   $insert_bea = $this->mdl->save_bea($data_bea);
-
   $count_score = count($this->input->post('score'));
   $data = array();
   for ($i=0;$i<$count_score;$i++) {

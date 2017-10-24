@@ -45,7 +45,7 @@
 												<div class="col s12">
 													<div class="input-field">
 														<i class="mdi-action-account-box prefix"></i>
-														<input name="nama" id="nama" type="tel" class="validate" placeholder="Nama" value="<?php echo $nama;?>" required>
+														<input name="nama" id="nama" type="text" class="validate" placeholder="Nama" value="<?php echo $nama;?>" required>
 														<label for="phone">Nama</label>
 													</div>
 												</div>
