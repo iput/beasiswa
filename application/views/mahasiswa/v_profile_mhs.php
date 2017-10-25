@@ -109,18 +109,18 @@
 												</div>
 												<div class="input-field">
 													<i class="mdi-action-home prefix"></i>
-													<input id="alamatOrtu" name="alamatOrtu" type="text" class="validate" placeholder="Alamat Orang Ayah" value="<?php echo $alamatOrtu;?>" required>
+													<input id="alamatOrtu" name="alamatOrtu" type="text" class="validate" placeholder="Alamat Ayah" value="<?php echo $alamatOrtu;?>" required>
 													<label for="last_name">Alamat Ayah</label>
 												</div>
 												<div class="input-field">
 													<i class="mdi-communication-location-on prefix"></i>
-													<input id="kotaOrtu" name="kotaOrtu" type="text" class="validate" placeholder="Kota Orang Tua" value="<?php echo $kotaOrtu;?>" required>
+													<input id="kotaOrtu" name="kotaOrtu" type="text" class="validate" placeholder="Kota Ayah" value="<?php echo $kotaOrtu;?>" required>
 													<label for="phone">Kota Ayah</label>
 												</div>
 												<div class="input-field">
 													<i class="mdi-communication-location-off prefix"></i>
-													<input id="provinsiOrtu" name="provinsiOrtu" type="text" class="validate" placeholder="Provinsi Orang Tua" value="<?php echo $propinsiOrtu;?>" required>
-													<label for="last_name">Provinsi Ayah</label>
+													<input id="provinsiOrtu" name="provinsiOrtu" type="text" class="validate" placeholder="Propinsi Ayah" value="<?php echo $propinsiOrtu;?>" required>
+													<label for="last_name">Propinsi Ayah</label>
 												</div>
 												<div class="input-field">
 													<i class="mdi-action-home prefix"></i>
