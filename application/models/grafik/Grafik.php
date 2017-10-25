@@ -20,7 +20,7 @@ class Grafik extends CI_Model
   public function get_data_grafik($thn)
   {
     $sql = '
-    SELECT bea.id, bea.namaBeasiswa,
+    SELECT bea.id, bea.namaBeasiswa, bea.penyelenggaraBea,
     (SELECT COUNT(pendaftar.nim) FROM `pendaftar` WHERE pendaftar.idBea=bea.id && pendaftar.status="1") penerima,
     (SELECT COUNT(pendaftar.nim) FROM `pendaftar` WHERE pendaftar.idBea=bea.id) mhsDaftar
     FROM `bea`

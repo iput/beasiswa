@@ -11,7 +11,7 @@
                   $terima = array();
                   $daftar = array();
                   foreach ($view_grafik as $vg) {
-                    $nama_bea[] = $vg->namaBeasiswa;
+                    $nama_bea[] = $vg->namaBeasiswa.' ('.$vg->penyelenggaraBea.')';
                     $terima[] = $vg->penerima;
                     $daftar[] = $vg->mhsDaftar;
                   }
@@ -51,7 +51,7 @@
                     <div class="col-xs-12">
                         <h2 class="page-header">
                             <img width="35px" height="35px" src="<?php echo base_url('assets/img/UIN ukuran 512.png'); ?>">&nbsp;Grafik perbandingan Pendaftar dan Penerima Beasiswa  <small class="pull-right">Tahun  <?php echo date('Y'); ?></small>
-                            
+
                         </h2>
                     </div>
                     <!-- /.col -->
@@ -59,7 +59,7 @@
                 <!-- info row -->
                 <div class="row invoice-info">
                     <div class="col-sm-4 invoice-col">
-    
+
                         <address>
                             <strong>Kemahasiswan UIN Maulana Malik Ibrahim Malang</strong><br>
                             Jalan  Gajayana Nomor 50 Kecamatan Lowokwaru Malang<br>
@@ -69,17 +69,17 @@
                     <!-- /.col -->
                 </div>
                 <!-- /.row -->
-               
+
                 <!-- Table row -->
                 <div class="row"">
                     <div class="col m12">
                     <canvas id="grafik2" style="overflow-x: scroll;"></canvas>
 
                   </div>
-                  
-                    
-                  
-                    <!-- /.col -->      
+
+
+
+                    <!-- /.col -->
                 </div>
                 <!-- /.row -->
             </section>
