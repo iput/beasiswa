@@ -73,10 +73,10 @@
               </div>
             </div>
             <div class="row">
-              <div class="col m1">
+              <!-- <div class="col m1">
                 <i class="mdi-maps-local-library prefix" style="font-size: 2em;"></i>
-              </div>
-              <div class="input-field col m11 with-note">
+              </div> -->
+              <div class="input-field col s12 with-note">
 
                 <select name="levelPengguna" id="levelPengguna">
                   <option>Pilih Level Pengguna</option>
@@ -89,27 +89,25 @@
                 </select>
                 <label for="levelPengguna">Level Pengguna</label>
               </div>
-            </div>
-            <div class="row">
-            <div class="col m1">
-              <p></p>
-            </div>
-              <div class="input-field col m11 with-note">
+              <div class="col m12" align="center">
                 <?php echo $captcha;?>
-                <small class="blue-text">Jika saat login ada notifikasi "Data anda tidak terdaftar dalam sistem"<br/> *  Pastikan anda memasukkan username dan password dengan benar <br/>**  Anda Kemungkinan terdaftar sebagai penerima Beasiswa lain di periode ini <br/>***  Hubungi Bagian Kemahasiswaan</small>
               </div>
-            </div>
-            <div class="row">
-              <div class="input-field col s12">
-                <button type="submit" class="btn-large waves-effect waves-light col s12">Login</button>
-                <!-- <input type="hidden" name="status" value="<?php echo $stat?>"> -->
+              <div class="col m12" align="justify">
+                <small class="blue-text"><br/>Jika saat login ada notifikasi "Data anda tidak terdaftar dalam sistem"<br/> *  Pastikan anda memasukkan username dan password dengan benar <br/>**  Anda Kemungkinan terdaftar sebagai penerima Beasiswa lain di periode ini <br/>***  Hubungi Bagian Kemahasiswaan</small>
               </div>
             </div>
           </div>
-        </form>
-      </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <button type="submit" class="btn-large waves-effect waves-light col s12">Login</button>
+              <!-- <input type="hidden" name="status" value="<?php echo $stat?>"> -->
+            </div>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
+</div>
 </main>
 <!-- Main End -->
 
