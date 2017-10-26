@@ -15,6 +15,7 @@
   <link href="<?php echo base_url()?>assets/css/plugins/prism.css" type="text/css" rel="stylesheet" media="screen">
   <link href="<?php echo base_url()?>assets/css/plugins/simplebar.css" type="text/css" rel="stylesheet" media="screen">
   <link href="<?php echo base_url()?>assets/css/assistance.css" type="text/css" rel="stylesheet" media="screen">
+  <?php echo $script_captcha;?>
   <style type="text/css">
     html,
     body{
@@ -60,19 +61,23 @@
             <div class="row">
               <div class="input-field col s12">
                 <i class="mdi-social-person prefix"></i>
-                <input id="username" type="text" class="validate" name="username">
+                <input id="username" type="text" class="validate" name="username" required>
                 <label for="username" class="center-align">Username</label>
               </div>
             </div>
             <div class="row">
               <div class="input-field col s12">
                 <i class="mdi-action-lock prefix"></i>
-                <input id="password" type="password" name="password">
+                <input id="password" type="password" name="password" required>
                 <label for="password">Password</label>
               </div>
             </div>
             <div class="row">
-              <div class="input-field col s12 with-note">
+              <div class="col m1">
+                <i class="mdi-maps-local-library prefix" style="font-size: 2em;"></i>
+              </div>
+              <div class="input-field col m11 with-note">
+
                 <select name="levelPengguna" id="levelPengguna">
                   <option>Pilih Level Pengguna</option>
                   <option value="6">Admin</option>
@@ -83,7 +88,15 @@
                   <option value="5">Mahasiswa</option>
                 </select>
                 <label for="levelPengguna">Level Pengguna</label>
-                <small class="blue-text">Jika saat login ada notifikasi "Data anda tidak terdaftar dalam sistem"<br/> *  Pastikan Anda memasukkan userId dan Password dengan benar <br/>**  Anda Kemungkinan terdaftar sebagai penerima Beasiswa Lain di periode ini <br/>***  Hubungi Bagian Kemahasiswaan</small>
+              </div>
+            </div>
+            <div class="row">
+            <div class="col m1">
+              <p></p>
+            </div>
+              <div class="input-field col m11 with-note">
+                <?php echo $captcha;?>
+                <small class="blue-text">Jika saat login ada notifikasi "Data anda tidak terdaftar dalam sistem"<br/> *  Pastikan anda memasukkan username dan password dengan benar <br/>**  Anda Kemungkinan terdaftar sebagai penerima Beasiswa lain di periode ini <br/>***  Hubungi Bagian Kemahasiswaan</small>
               </div>
             </div>
             <div class="row">
@@ -97,7 +110,6 @@
       </div>
     </div>
   </div>
-
 </main>
 <!-- Main End -->
 

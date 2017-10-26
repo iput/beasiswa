@@ -9,6 +9,7 @@ class Login extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->library('Loginauth');
+		$this->load->library('Recaptcha');
 		$this->loginauth->view_page();
 	}
 
@@ -21,7 +22,11 @@ class Login extends CI_Controller
 			redirect('FunctLogin/prosesLogin',$data);
 		} else
 		{	
-			$this->load->view('login');
+			$data =array(
+			'captcha' => $this->recaptcha->getWidget(), // menampilkan recaptcha
+            'script_captcha' => $this->recaptcha->getScriptTag() // javascript recaptcha ditaruh di head
+            );
+			$this->load->view('login',$data);
 		}
 	}
 }
