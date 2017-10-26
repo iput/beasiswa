@@ -53,7 +53,8 @@
                 <th>NAMA</th>
                 <th>Fakultas</th>
                 <th>Jurusan</th>
-                <th>Jenis Beasiswa</th>
+                <th>Nama Beasiswa</th>
+                <th>Penyelenggara Beasiswa</th>
                 <th>Tahun</th>
               </tr>
             </thead>
@@ -67,6 +68,7 @@
               <td><?php echo $data->namaFk?></td>
               <td><?php echo $data->namaJur?></td>
               <td><?php echo $data->namaBeasiswa?></td>
+              <td><?php echo $data->penyelenggaraBea?></td>
               <td><?php echo $data->tahun?></td>
               </tr>
               <?php endforeach; ?>
