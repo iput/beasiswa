@@ -277,7 +277,7 @@ class ReportBeasiswa extends CI_Model {
         $this->db->join('jurusan', 'identitas_mhs.idJrs = jurusan.id', 'left');
         $this->db->join('bea', 'bea.id = pendaftar.idBea', 'left');
         $this->db->join('fakultas', 'fakultas.id = jurusan.idFk', 'left');
-        $this->db->where("pendaftar.status=0");
+        // $this->db->where("pendaftar.status=0");
 
         if ($tahun != 0 && $fakultas == 0 && $jurusan == 0 && $bea == 0) {
             $this->db->where("YEAR(bea.beasiswaDibuka)", $tahun);
@@ -340,7 +340,7 @@ class ReportBeasiswa extends CI_Model {
         $this->db->join('jurusan', 'identitas_mhs.idJrs = jurusan.id', 'left');
         $this->db->join('bea', 'bea.id = pendaftar.idBea', 'left');
         $this->db->join('fakultas', 'fakultas.id = jurusan.idFk', 'left');
-        $this->db->where("pendaftar.status=0");
+        // $this->db->where("pendaftar.status=0");
 
         if ($tahun != 0 && $fakultas == 0 && $jurusan == 0 && $bea == 0) {
             $this->db->where("YEAR(bea.beasiswaDibuka)", $tahun);
