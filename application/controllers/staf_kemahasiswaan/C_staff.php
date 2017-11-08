@@ -133,9 +133,12 @@ class C_staff extends CI_Controller
     $bea = $this->input->post('beasiswa')?$this->input->post('beasiswa'):0;
 
     $fetch_data = $this->ReportBeasiswa->make_datatables($tahun, $fakultas, $jurusan, $bea);
+    $no = 0;
     $data = array();
     foreach ($fetch_data as $row) {
+      $no+=1;
       $sub_array = array();
+      $sub_array[] = $no;
       $sub_array[] = $row->nim;
       $sub_array[] = $row->namaLengkap;
       $sub_array[] = $row->namaFk;
@@ -162,9 +165,12 @@ class C_staff extends CI_Controller
     $bea = $this->input->post('beasiswa')?$this->input->post('beasiswa'):0;
 
     $fetch_data = $this->ReportBeasiswa->make_datatablesPemohon($tahun, $fakultas, $jurusan, $bea);
+    $no = 0;
     $data = array();
     foreach ($fetch_data as $row) {
+      $no+=1;
       $sub_array = array();
+      $sub_array[] = $no;
       $sub_array[] = $row->nim;
       $sub_array[] = $row->namaLengkap;
       $sub_array[] = $row->namaFk;
@@ -201,8 +207,8 @@ class C_staff extends CI_Controller
     $this->load->view('attribute/footer');
   }
   public function semuaDataPenerima() {
-      $data['databea'] = $this->ReportBeasiswa->semuaPenerimaBeasiswa();
-      $this->load->view('kasubag/masterDataPenerima', $data);
+    $data['databea'] = $this->ReportBeasiswa->semuaPenerimaBeasiswa();
+    $this->load->view('kasubag/masterDataPenerima', $data);
   }
   public function get_data_print($tahun, $fakultas,$jurusan,$bea)
   {
@@ -215,9 +221,9 @@ class C_staff extends CI_Controller
     // echo json_encode($fetch_data);
     $data['databea'] = $this->ReportBeasiswa->make_query1($tahun, $fakultas, $jurusan, $bea);
     $this->load->view('kasubag/masterDataPenerima', $data);
-}
-public function get_data_print1($tahun, $fakultas,$jurusan,$bea)
-{
+  }
+  public function get_data_print1($tahun, $fakultas,$jurusan,$bea)
+  {
 
   // $fetch_data = $this->ReportBeasiswa->make_query1($tahun, $fakultas, $jurusan, $bea);
   //
@@ -225,10 +231,10 @@ public function get_data_print1($tahun, $fakultas,$jurusan,$bea)
   //
   // echo json_encode($fetch_data);
   // echo json_encode($fetch_data);
-  $data['databea'] = $this->ReportBeasiswa->make_queryPemohon1($tahun, $fakultas, $jurusan, $bea);
-  $this->load->view('kasubag/masterDataPemohon', $data);
-}
-
+    $data['databea'] = $this->ReportBeasiswa->make_queryPemohon1($tahun, $fakultas, $jurusan, $bea);
+    $this->load->view('kasubag/masterDataPemohon', $data);
   }
+
+}
 
 ?>

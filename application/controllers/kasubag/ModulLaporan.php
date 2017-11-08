@@ -88,11 +88,14 @@ class ModulLaporan extends CI_Controller {
         $fakultas = $this->input->post('fakultas')?$this->input->post('fakultas'):0;
         $jurusan = $this->input->post('jurusan')?$this->input->post('jurusan'):0;
         $bea = $this->input->post('beasiswa')?$this->input->post('beasiswa'):0;
-
+        
         $fetch_data = $this->ReportBeasiswa->make_datatables($tahun, $fakultas, $jurusan, $bea);
+        $no = 0;
         $data = array();
         foreach ($fetch_data as $row) {
+            $no+=1;
             $sub_array = array();
+            $sub_array[] = $no;
             $sub_array[] = $row->nim;
             $sub_array[] = $row->namaLengkap;
             $sub_array[] = $row->namaFk;
@@ -119,9 +122,12 @@ class ModulLaporan extends CI_Controller {
         $bea = $this->input->post('beasiswa')?$this->input->post('beasiswa'):0;
 
         $fetch_data = $this->ReportBeasiswa->make_datatablesPemohon($tahun, $fakultas, $jurusan, $bea);
+        $no = 0;
         $data = array();
         foreach ($fetch_data as $row) {
+            $no+=1;
             $sub_array = array();
+            $sub_array[] = $no;
             $sub_array[] = $row->nim;
             $sub_array[] = $row->namaLengkap;
             $sub_array[] = $row->namaFk;

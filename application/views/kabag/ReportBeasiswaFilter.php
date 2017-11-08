@@ -49,6 +49,7 @@
            <table class="striped table-responsive highlight bordered" id="tabelBeasiswa">
             <thead>
               <tr>
+                <td data-field="no">No</td>
                 <td data-field="nim">NIM</td>
                 <td data-field="nama">NAMA</td>
                 <td data-field="fakultas">Fakultas</td>
@@ -96,6 +97,7 @@
           <table class="striped table-responsive highlight bordered" id="tabelBeasiswa2">
             <thead>
               <tr>
+                <td data-field="no">No</td>
                 <td data-field="nim">NIM</td>
                 <td data-field="nama">NAMA</td>
                 <td data-field="fakultas">Fakultas</td>
